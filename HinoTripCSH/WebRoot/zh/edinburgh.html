@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Hino Travel - 海诺旅游 </title>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<link rel=stylesheet type=text/css href="css/qq.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type=text/javascript src="js/kefu.js"></script>
+
+<style type="text/css">
+	body {	
+		height: 3000px;	
+		margin: 0 auto;
+		padding: 0 0 0 0;
+	}
+	
+	.main {
+		background: url('./img/edinburgh/edinburgh_bg.jpg') no-repeat;
+		height: 3000px;
+		width: 1500px;
+		margin: 0 auto;
+		padding: 0 0 0 0;
+	}
+	
+	.video-screen {
+		height: 330px;
+		width: 371px;
+		position: absolute;
+		margin-top: 258px;
+		margin-left: 170px;
+	}
+	
+	.video-youtube {
+		cursor: pointer;
+		height: 50px;
+		width: 100px;
+		position: absolute;
+		margin-top: 610px;
+		margin-left: 240px;
+	}
+	
+	.video-pps {
+		cursor: pointer;
+		height: 50px;
+		width: 130px;
+		position: absolute;
+		margin-top: 610px;
+		margin-left: 370px;
+	}
+
+	.booking_top {
+		cursor: pointer;
+		height: 110px;
+		width: 110px;
+		position: absolute;
+		margin-top: 20px;
+		margin-left: 1280px;
+		border-radius: 55px;
+	}
+	
+	.booking_bottom {
+		cursor: pointer;
+		height: 110px;
+		width: 110px;
+		position: absolute;
+		margin-top: 2705px;
+		margin-left: 892px;
+		border-radius: 55px;
+	}
+	
+
+	
+	.copyright1 {
+		color: #654226;
+		margin-top: 2850px;
+		position: absolute;
+		letter-spacing: 1px;
+		FONT: 12px/1.5 "微软雅黑";
+		font-weight: 700;
+		width: 1500px;
+		
+		padding: 0 0 0 0;
+	}
+	
+	.copyright {
+		
+	}
+	
+	.foot_menu {
+		background-color: grey; 
+		filter: alpha(opacity=50); 
+		opacity: 0.5;
+		height: 31px;
+		line-height: 31px;
+		width: 1500px;
+		text-align: center;
+		color: black;		
+	}
+	
+	a {
+		color: black;
+		text-decoration: none;
+	}
+	
+	.blank {
+		width: 100%;
+		height: 15px;
+	}
+</style>
+	
+<script>	
+	kf_createList();
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var video_src_1 = "<embed class='pps' width='371px' height='330px' wmode='opaque' type='application/x-shockwave-flash' src='http://player.pps.tv/player/sid/35S4PD/v.swf' allowscriptaccess='sameDomain' allowfullscreen='true'>";
+			
+	var video_src_2 = "<object width='371' height='330'>"
+  					+ "<param name='movie' value='https://www.youtube.com/v/y-lHHzp44gg?rel=1&color1=0x2b405b&"
+    				+ "color2=0x6b8ab6&border=1&fs=1'></param>"
+  					+ "<param name='allowFullScreen' value='true'></param>"
+  					+ "<param name='autoplay' value='1'></param>"
+  					+ "<embed src='https://www.youtube.com/v/y-lHHzp44gg?rel=1&color1=0x2b405b&color2=0x6b8ab6&border=1&fs=1'"
+    				+ "type='application/x-shockwave-flash'"
+    				+ "width='371' height='330'" 
+    				+ "allowfullscreen='true'></embed>"
+					+ "</object>";
+	//"<embed class='youtube' width='371px' height='330px' wmode='opaque' type='application/x-shockwave-flash' src='http://www.youtube.com/v/y-lHHzp44gg&hl=pt-br&autoplay=1' allowscriptaccess='sameDomain' allowfullscreen='true'>";
+
+	$(".video-pps").click(function(){
+		if($(".pps").length == 0) {
+			$(".video-screen").html(eval("video_src_1")).fadeIn(1000);
+		}
+	});
+	
+	$(".video-youtube").click(function(){
+		if($(".youtube").length == 0) {
+			$(".video-screen").html(eval("video_src_2")).fadeIn(1000);
+		}
+	});
+	
+	$(".video-youtube").click();
+});
+
+</script>
+
+</head>
+
+<body>
+  	
+    <div class="main">
+    
+		<div id="floatTools" class="float0831" style="z-index:30000">
+		  	<div class="floatL">
+			  	<a style="display: none" id="aFloatTools_Show" class="btnOpen" title="查看在线客服 " onclick="javascript:$('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:none');$('#aFloatTools_Hide').attr('style','display:block');"  href="javascript:void(0);">展开</a> 
+				<a id="aFloatTools_Hide" class="btnCtn" title="关闭在线客服 " onclick="javascript:$('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:block');$('#aFloatTools_Hide').attr('style','display:none');"  href="javascript:void(0);">收缩</a> 
+			</div>
+		  	<div id="divFloatToolsView" class="floatR">
+		    	<div class="tp"></div>
+			    <div class="cn">
+					<ul>
+						<li class="top_qqkefu">
+						  <h3 class="titZx">海诺客服</h3>
+						</li>
+						<li>
+							<span class="icoZx">在线咨询</span> 
+						</li>
+						<li class="ke_list">
+						
+						</li>			      					    
+					</ul>
+					<ul>
+						<li>
+						  <h3 class="titDh">电话咨询</h3>
+						</li>
+						<li>
+							<span class="icoTl">033-3900-9888</span> 
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="video-screen">
+		
+		</div>
+
+    	<div class="video-youtube"></div>
+    	
+    	<div class="video-pps"></div>
+    	
+		<a href="./route_detail.htm?routeid=77">
+    		<div class="booking_top"></div>
+    	</a>
+    	
+		<a href="./route_detail.htm?routeid=77">
+    		<div class="booking_bottom"></div>
+    	</a>    
+
+    	<div class="copyright1">
+    	  <div class="foot_menu"><a href="./index.htm">海诺旅游网首页</a> | <a href="#">English</a> | <a href="#">刮刮卡</a> | <a href="#">导游风采</a> | <a href="#">会刊</a> | <a href="./route_detail.htm?routeid=60">会员专享</a> | <a href="./recruit.htm">诚聘英才</a> | <a href="./about.htm">关于我们</a> | <a href="http://www.hinotravel.com.cn/">中国海诺旅游网</a> </div>
+		    <div class="blank"></div>		    
+		    <div class="copyright">
+		    	<div>
+				    <table style="margin: 0 auto; padding: 0 0 0 0;">
+				    	<tr>
+				    		<td>
+				    			<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+				    		</td>
+				    		
+				    		<td style="padding-left: 30px;color: grey; text-align: left; line-height: 27px;">
+				    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888<br>
+				    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842 <div style="float: right; margin-right: 165px;"><script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script></div>
+				    				    		
+				    		</td>
+				    	</tr>
+				    </table>
+				</div>				
+		    </div>    
+		
+		    <div style="height:10px;"></div>
+		  </div>   
+			<!--版权-->
+    </div>
+  </body>
+</html>

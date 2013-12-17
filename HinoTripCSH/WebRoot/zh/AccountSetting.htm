@@ -1,0 +1,142 @@
+
+<!--网站主体开始-->
+<div class="main">
+	<div class="second_menu"></div>
+	<div class="user">
+		<div class="user_t"></div>
+		<div class="user_l">
+			<ul>
+				<li><a href="#" id="myac_action_1" onclick="ShowContent(1)">我的海诺</a></li>
+				<li><a href="#" id="myac_action_2" onclick="ShowContent(1)">修改基本信息</a></li>
+				<li><a href="#" id="myac_action_3" onclick="ShowContent(1)">修改密码</a></li>
+				<li><a href="#" id="myac_action_4" onclick="ShowContent(1)">我的订单</a></li>
+			</ul>
+		</div>
+		<div class="user_c">
+			<!--会员基本信息开始-->
+			<div class="user_info">
+				<span class="user_name">#if($cur_customer)
+					$cur_customer.firstname $cur_customer.lastname #end</span> / <a href="#">退出</a>
+				<div class="vip">
+					#if($cur_customer.genIsVip()) <img src="images/vip.gif" /> #else <img
+						src="images/no_vip.gif" />#end
+				</div>
+			</div>
+			<div class="jifen">您现在的积分还有：$cur_customer.point (如何使用积分？）</div>
+			<!--会员基本信息结束-->
+			<div id="myac_1">
+				<div class="user_lm">我的订单</div>
+				<div class="user_content">
+					<div class="home_order_lib">
+						<ul>
+							#foreach ($dbooking in $mydepart)
+							<li class="new"><a href="#" name="$dbooking.bookingRef"
+								class="view_booking">$dbooking.group.gen_depart_date()<span
+									class="red">$dbooking.chinesename</span>将参加<span class="red">$dbooking.group.route.name</span>，接车地点在<span
+									class="red">$dbooking.pickup</span> </a></li> #end
+						</ul>
+
+					</div>
+				</div>
+				<div class="user_sj">
+					#if(!$cur_customer.genIsVip()) <a href="#" id="upgrade_vip">您目前还不是海诺VIP点击这里升级到<span
+						class="red">VIP</span> #end</a>
+				</div>
+			</div>
+			<div id="myac_2" style="display:none">
+				<div class="user_lm">修改详细</div>
+				<div class="user_content">$basic_form</div>
+			</div>
+		</div>
+		<div id="myac_3" style="display:none">
+			<div class="user_lm">修改密码</div>
+			<div class="user_content">$psd_form</div>
+		</div>
+	</div>
+	<div id="myac_4" style="display:none">
+		<div class="user_lm">
+			<span id="myac_action_6">我的订单</span><span class="xx"
+				id="myac_action_5">详细信息</span>
+		</div>
+		<div class="user_content">
+			<table width="580" border="0" align="center" cellpadding="0"
+				cellspacing="0" class="order_lib">
+				<tr>
+					<td width="75" class="order_name">订单号</td>
+					<td width="210" class="order_name">出游路线</td>
+					<td width="100" class="order_name">客户姓名</td>
+					<td width="70" class="order_name">日期</td>
+					<td width="65" class="order_name">状态</td>
+					<td width="60" class="order_name">详细</td>
+				</tr>
+				#foreach ($booking in $mybooking)
+				<tr>
+					<td width="75" class="order_name">$booking.bookingRef</td>
+					<td width="210" class="order_name">$booking.group.route.name</td>
+					<td width="100" class="order_name">$booking.firstname
+						$booking.lastname</td>
+					<td width="70" class="order_name">$booking.group.gen_depart_date()</td>
+					<td width="65" class="order_name">$booking.genStatusStr()</td>
+					<td width="60" class="order_name"><a href="#"
+						name="$booking.bookingRef" class="view_booking">详细</a></td>
+				</tr>
+				#end
+
+
+			</table>
+		</div>
+	</div>
+	<div id="myac_5" style="display:none">
+		<div class="user_lm">
+			<span id="myac_action_6">我的订单</span><span class="xx"
+				id="myac_action_5">详细信息</span>
+		</div>
+		<div class="user_content">
+			<div class="order_intro" id="booking_detail"></div>
+			<div class="order_intro" id="pay_detail"></div>
+
+		</div>
+	</div>
+</div>
+
+<div class="user_r">
+	<!--网站公告开始-->
+	<div class="user_r_box">
+		<div class="tit">网站公告</div>
+		<div class="lib">
+			<ul>
+				<!--  <li>·<a href="#">中文中文中文中文中文中文中文中文</a></li>-->
+				$notice
+			</ul>
+		</div>
+	</div>
+	<!--网站公告结束-->
+	<!--最新秒杀开始-->
+	<div class="user_r_box2">
+		<div class="tit">最新秒杀</div>
+		<div class="lib">
+			<ul>
+				#foreach($group in $secopeninglist)
+				<li>·<a href="./sec_index.htm">【抢购】$group.route.name</a></li> #end
+			</ul>
+		</div>
+	</div>
+	<!--最新秒杀结束-->
+	<!--最新团购开始-->
+	<div class="user_r_box">
+		<div class="tit">最新团购</div>
+		<div class="lib">
+			<ul>
+				#foreach($group in $golist)
+				<li>·<a href="./go_index.htm">【团购】$group.route.name</a></li> #end
+
+			</ul>
+		</div>
+	</div>
+	<!--最新团购结束-->
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="user_ft"></div>
+<div class="blank15"></div>
+</div>

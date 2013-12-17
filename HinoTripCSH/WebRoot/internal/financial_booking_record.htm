@@ -1,0 +1,85 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Show customer detail
+	jQuery(".ajaxDetail").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+				var customerDetail = "<table>"+
+					"<tr><td><b>订单号</b></td><td>"+json.bookingRef+"</td></tr>"+
+					"<tr><td><b>团名称</b></td><td>"+json.groupname+"</td></tr>"+
+					"<tr><td><b>出团时间</b></td><td>"+json.departure+"</td></tr>"+
+					"<tr><td><b>订单状态</b></td><td>"+json.status+"</td></tr>"+
+					"<tr><td><b>销售代表</b></td><td>"+json.rep+"</td></tr>"+
+					"<tr><td><b>下单时间</b></td><td>"+json.time+"</td></tr>"+
+					"<tr><td><b>中文名</b></td><td>"+json.chinesename+"</td></tr>"+
+					"<tr><td><b>Name</b></td><td>"+json.fullname+"</td></tr>"+
+					"<tr><td><b>电邮</b></td><td>"+json.email+"</td></tr>"+
+					"<tr><td><b>电话</b></td><td>"+json.phone+"</td></tr>"+
+					"<tr><td><b>性别</b></td><td>"+json.gender+"</td></tr>"+		
+					"<tr><td><b>接车点</b></td><td>"+json.pickup+"</td></tr>"+
+					"<tr><td><b>优惠券</b></td><td>"+json.voucher+"</td></tr>"+
+					"<tr><td><b>住宿</b></td><td>"+json.room+"</td></tr>"+
+					"<tr><td><b>备注</b></td><td>"+json.comments+"</td></tr>"+
+					"</table>";
+
+				jQuery("#facebox_title").html("订单详细信息")
+				jQuery("#facebox_content").html(customerDetail);
+				jQuery.facebox({ div: '#facebox_container' });
+		});
+		
+		return false;
+	});
+	
+	jQuery(".ajaxPdCredit").click(function(event){
+		
+		var targetCreditObj = jQuery(this).parent().prev();
+		
+		var newCredit = window.prompt("请输入应付金额", targetCreditObj.html());
+		if(newCredit ==null)
+		{	
+			return false;
+		}
+		if(!(/^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/.test(newCredit))) {
+			alert("数字不合法");
+			return false;
+		}
+		
+		// In order for Click to identify the Ajax target, we pass the link ID
+		// attribute as request parameters
+		var extraData = "newcredit="+newCredit;
+		// The Ajax URL is set to the link 'href' URL which contains all the link default parameters,
+		// including it's name/value pair: 'actionLink=link'
+		var url = jQuery(this).attr('href');
+	
+		//alert("url: "+url+" data: "+extraData);
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+					alert("Result: "+json.result);
+					targetCreditObj.html(newCredit);
+		});
+		
+		// Prevent the default browser behavior of navigating to the link
+		return false;
+	});
+});
+
+</script>
+<h2>订单查询</h2>
+	<div class="clickform">$sform</div>
+	<div class="clear"></div>
+<hr />
+
+<h2>查询结果</h2>
+	$btable
+<hr />

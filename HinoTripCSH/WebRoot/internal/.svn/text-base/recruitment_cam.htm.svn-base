@@ -1,0 +1,21 @@
+<h2><b>添加新招聘信息</b></h2><br />
+<div class="clickform">$recruitment_cam_form</div>
+<div class="clear"></div>
+
+
+<script charset="utf-8" src="$icxt/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="$icxt/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+   	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="description"]', {
+			uploadJson : '$icxt/kindeditor/jsp/upload_json.jsp',
+               fileManagerJson : '$icxt/kindeditor/jsp/file_manager_json.jsp',
+			allowFileManager : true,
+			afterBlur: function(){this.sync();}
+		});
+	});
+
+});
+</script>

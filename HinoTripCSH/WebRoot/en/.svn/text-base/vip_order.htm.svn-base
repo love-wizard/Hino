@@ -1,0 +1,98 @@
+<!-- 预订 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 多步骤表单 -->
+	<div class="col_full">
+		<div class="full_img">
+		<img src="./images/step_vip.png" />
+		</div>
+		<div class="full_form">
+		<div class="full_form_top">
+			VIP Upgrading
+		</div>
+		<div class="full_form_mid">
+
+			$jsData
+
+		    <div id="order_div">
+				<form class="niceform">
+
+					<table class="form">
+					<tbody>
+					<tr>
+						<td>Choose payment method<span style="color:red">*</span></td>
+						<td>
+						<select id="paymethodsel" name="paymethodsel">
+						<option value="-1">Choose payment method</option>
+						<option value="1">Bank transfer</option>
+						<option value="2">Google Checkout</option>
+						<option value="3">Cash</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Choose delivery method<span style="color:red">*</span></td>
+						<td>
+						<select id="delivery" name="delivery">
+						<option value="">Choose delivery method</option>
+						<option value="0">Send by post</option>
+						<option value="1">Collect by myself</option>
+						</select>
+						</td>
+					</tr>
+					<tr>
+						<td>VIP name<span style="color:red">*</span></td>
+						<td><input id="name" type="text" size="50" /></td>
+					</tr>
+					<tr>
+						<td>Phone<span style="color:red">*</span></td>
+						<td><input id="phone" type="text" size="50" /></td>
+					</tr>
+					<tr>
+						<td>Post address<br /><span style="color:red">If send by post</span></td>
+						<td><textarea name="address" id="address" rows="10" cols="35"></textarea></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input id="vip_submit" type="button" value="Upgrade" />
+							<input id="vip_calcel" type="button" value="Cancel" />
+						</td>
+					</tr>
+					</tbody>
+					</table>
+				</form>
+			</div>
+			
+	        <div id="order_result">
+
+	        	<!-- <table class="form"><tr><td>付款前请先仔细阅读并同意 <a id="agreementlink" href="./resource/Hino_Customer_Contract.pdf" target="_blank">Hino Travel的旅客协议</a></td></tr></table> -->
+				<table class="form" id="paymethod">
+				<tbody>
+				<tr>
+				<td></td>
+				<td><strong><span id="pay"></span></strong><br /></td>
+				</tr>
+				<tr>
+					<td>How to pay</td>
+					<td><form class="niceform"><textarea id="paymethoddetail" rows="10" cols="45" style="line-height:1.5em"></textarea></form></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><br /><a href="./index.htm">Back to Home</a></td>
+				</tr>
+				</tbody>
+				</table>
+			</div>		
+		</div>
+		<div class="full_form_bot"></div>
+		</div>
+	</div>
+
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

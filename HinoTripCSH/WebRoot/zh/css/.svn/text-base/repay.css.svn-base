@@ -1,0 +1,99 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+	/*background:url(ny_bg.jpg) repeat-x #f2f5f6;
+	background:url(../img/myaccount/myacc_bg.jpg) repeat-x #fefefe;*/
+	background: rgb(166, 166, 166);
+	height: 1600px;
+}
+
+/*头部开始*/
+.head {
+    background: url("../images/ny_head.png") no-repeat scroll 0 0 transparent;
+    height: 155px;
+    margin: 0 auto;
+  
+    width: 974px;
+}
+
+.head .logo_link
+{
+	display:block;
+	padding-top:44px;
+}
+
+.search_bar {
+	display: none;
+}
+
+/*网站主体  begin*/
+.main
+{
+	background: #d3d3d3;
+	padding: 0px;
+	width:974px;
+	height: 1200px;
+	margin:0 auto;
+}
+
+.menu_line {
+	top: 50px;
+}
+
+.pragraph-box {
+	background: url('../img/repay/repay_bg.png') no-repeat;	
+	height: 638px;
+	width: 898px;
+	margin: -10px auto;
+	color: black;
+	padding-top: 60px;	
+}
+
+.thanks, .text {
+	width: 100%;
+	text-align: center;	
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+.thanks {
+	font-size: 36px;
+	line-height: 120px;
+}
+
+.text {
+	font-size: 17px;
+	line-height: 32px;
+}
+
+.repay-btn {
+	background: url('../img/repay/repay_button.jpg') no-repeat;	
+	margin: 30px auto;
+	width: 178px;
+	height: 58px;
+	cursor: pointer;
+}
+
+.details {
+	color: red;
+}
+
+.error {
+	width: 100%;
+	text-align: center;	
+	letter-spacing: 1px;
+	font-size: 30px;
+	line-height: 70px;
+	margin-top: 50px;
+}
+
+/*版权*/
+.copyright{
+	clear: both; 
+	width: 974px; 
+	height: 42px; 
+	line-height: 32px; 
+	background: #d3d3d3; 
+	text-align: center
+}

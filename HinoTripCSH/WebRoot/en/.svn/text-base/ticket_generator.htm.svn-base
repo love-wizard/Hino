@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hino E-TICKET</title>
+</head>
+
+<body>
+<div style="margin: 0; padding: 0;">
+<img src="../internal/images/ticket.png" />
+</div>
+<div style="margin: -350px 0 50px 0; padding: 0;">
+<table width="800" height="300" border="0">
+  <tr>
+    <td height="65" colspan="4" align="center">$title</td>
+  </tr>
+  <tr>
+    <td width="15%">Name：</td>
+    <td width="35%">$name</td>
+    <td width="15%">Booking Ref：</td>
+    <td width="35%">$ref</td>
+  </tr>
+  <tr>
+    <td>Gender：</td>
+    <td>$gender</td>
+    <td>Price：</td>
+    <td>$price</td>
+  </tr>
+  <tr>
+    <td>Email：</td>
+    <td>$email</td>
+    <td>Pick Up：</td>
+    <td>$pickup</td>
+  </tr>
+  <tr>
+    <td>Phone：</td>
+    <td>$phone</td>
+    <td>Room：</td>
+    <td>$room</td>
+  </tr>
+  <tr>
+    <td height="150" colspan="4"> Notice：<br />
+      -Insurance is not include<br />
+      -Make sure the correctness of information above<br />
+      -We will text you the latest pickup information<br /> 
+      -More information at www.hinotravel.com</td>
+  </tr>
+</table>
+</div>
+<div><input type="button" value="Print" onclick="window.print();"/></div>
+</body>
+</html>

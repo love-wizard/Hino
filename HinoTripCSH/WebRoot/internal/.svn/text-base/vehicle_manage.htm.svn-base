@@ -1,0 +1,10 @@
+<h2>新增车辆 </h2>
+$addvehicle <br>
+
+<br />
+<hr />
+<br />
+
+<h2>已有车辆列表</h2>
+$vehicleTable
+

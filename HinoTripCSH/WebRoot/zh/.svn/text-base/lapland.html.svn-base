@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Hino Travel - 海诺旅游 </title>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<link rel=stylesheet type=text/css href="css/qq.css" />
+<link rel=stylesheet type=text/css href="css/lapland.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type=text/javascript src="js/kefu.js"></script>
+<script type=text/javascript src="js/lapland.js"></script>
+
+<script>	
+	kf_createList();
+</script>
+
+</head>
+
+<body>
+
+	<div id="floatTools" class="float0831" style="z-index:30000">
+	  	<div class="floatL">
+		  	<a style="display: none" id="aFloatTools_Show" class="btnOpen" title="查看在线客服 " onclick="javascript:$('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:none');$('#aFloatTools_Hide').attr('style','display:block');"  href="javascript:void(0);">展开</a> 
+			<a id="aFloatTools_Hide" class="btnCtn" title="关闭在线客服 " onclick="javascript:$('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:block');$('#aFloatTools_Hide').attr('style','display:none');"  href="javascript:void(0);">收缩</a> 
+		</div>
+	  	<div id="divFloatToolsView" class="floatR">
+	    	<div class="tp"></div>
+		    <div class="cn">
+				<ul>
+					<li class="top_qqkefu">
+					  <h3 class="titZx">海诺客服</h3>
+					</li>
+					<li>
+						<span class="icoZx">在线咨询</span> 
+					</li>
+					<li class="ke_list">
+					
+					</li>			      					    
+				</ul>
+				<ul>
+					<li>
+					  <h3 class="titDh">电话咨询</h3>
+					</li>
+					<li>
+						<span class="icoTl">033-3900-9888</span> 
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+  	
+  	<div class="bg">
+  		<img style="width:100%" src="./img/lapland/lapland_bg.png"/>
+  	</div>
+  	
+  	<div class="con-box">
+  		<div class="index-link">
+  			<div><a href="./index.htm">返回海诺首页</a></div>
+  		</div>
+  		
+  		<div class="sights">
+	  		
+	  	</div>
+	  	
+	  	<div class="con">
+	  		<div class="travel-days travel-days-l1">
+	  			<ul>
+	  				<li idx="1" class="day-highlight">第1天</li>
+	  				<li idx="2">第2天</li>
+	  				<li idx="3">第3天</li>
+	  				<li idx="4">第4天</li>
+	  				<li idx="5">第5天</li>
+	  				<li idx="6">第6天</li>
+	  				<li idx="7">第7天</li>
+	  			</ul>
+	  		</div>
+	  		
+	  		<div class="travel-days travel-days-l2">
+	  			<ul>
+	  				
+	  				<li idx="8">第8天</li>
+	  				<li idx="9">第9天</li>
+	  				<li idx="10" style="width: 70px;">第10天</li>
+	  				<li idx="11" style="width: 70px;">第11天</li>
+	  				<li idx="12" style="width: 70px;">第12天</li>
+	  				<li idx="13" style="width: 70px;">第13天</li>
+	  			</ul>
+	  		</div>
+	  		
+	  		<div class="intro-box">
+	  			<div class="blank"></div>
+	  			<div class="blank"></div>	  			
+	  			
+	  			<div class="title">
+	  				<img src="./img/blank.gif" class="title-1"/>
+	  			</div>
+	  			
+	  			<div class="blank"></div>
+	  			
+	  			<div class="description">
+	  				<div class="t-bg"></div>
+	  				<div class="m-bg">
+	  					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从伦敦飞往芬兰首都赫尔辛基，踏上北欧的土地，开始这段神奇的拉普兰大陆探险之旅。拥有大面积水域的海港城市赫尔辛基优雅地融入波罗的海，这与它一国之都的身份非常相称。<br/><div class='intro-line-separator'></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;赫尔辛基的迷人很大程度上在于它的古老，简朴但辉煌的新艺术主义建筑，宽敞雅致的百年咖啡店，许多博物馆里保存完好的芬兰遗产，20世纪30年代以来就从未改变菜单和家具陈设的餐馆，这一切都是这座城市醉人魅力的一部分。<br/><div class='intro-line-separator'></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在赫尔辛基海港旁边的露天自由市场逛一逛夜市吧，您会发现自己会喜欢上赫尔辛基的。
+	  				</div>
+	  				<div class="b-bg"></div>
+	  			</div>
+	  		</div>
+	  		
+	  		<div class="sights-nav">
+	  			<ul>
+		  			<li idx="1"><div class="sn-highlight">破冰船</div></li>
+	  				<li idx="2"><div>圣诞村</div></li>
+	  				<li idx="3"><div>分界碑</div></li>
+	  				<li idx="4"><div>冰旅馆</div></li>
+	  				<li idx="5"><div>玻璃屋</div></li>
+	  				<li idx="6"><div>北极光</div></li>
+	  				<li idx="7"><div>桑拿浴</div></li>
+	  				<li idx="8"><div>哈士奇</div></li>
+	  				<li idx="9"><div>雪摩托</div></li>
+	  				<li idx="10"><div>滑雪课</div></li>
+	  				<li idx="11"><div class="" style="color: red;">半价优惠</div></li>
+  				</ul>
+	  		</div>
+	  	</div>
+  	</div>
+  	
+  	<div class="img-buffer">
+  		<img src="./img/lapland/sight-1.png"/>
+  		<img src="./img/lapland/sight-2.png"/>
+  		<img src="./img/lapland/sight-3.png"/>
+  		<img src="./img/lapland/sight-4.png"/>
+  		<img src="./img/lapland/sight-5.png"/>
+  		<img src="./img/lapland/sight-6.png"/>
+  		<img src="./img/lapland/sight-7.png"/>
+  		<img src="./img/lapland/sight-8.png"/>
+  		<img src="./img/lapland/sight-9.png"/>
+  		<img src="./img/lapland/sight-10.png"/>
+  	</div>
+  	
+  	<div class="copyright1">
+  		<div class="foot-bg">
+  			<img src="./img/lapland/lapland_foot_bg.jpg" width="100%" height="126px"/>
+  		</div>
+  		<div class="foot-con">
+		    <div class="blank"></div>
+		    <div class="blank"></div>
+		    <div class="copyright">
+		    	<div>
+				    <table style="margin: 0 auto; padding: 0 0 0 0;">
+				    	<tr>
+				    		<td>
+				    			<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+				    		</td>
+				    		
+				    		<td style="color: grey; text-align: left; line-height: 27px;">
+				    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888<br>
+				    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842 <div style="float: right; margin-right: 200px;"><script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script></div>
+				    				    		
+				    		</td>
+				    	</tr>
+				    </table>
+				</div>				
+		    </div>
+		    </div>
+		  </div>   
+			<!--版权-->
+  </body>
+</html>

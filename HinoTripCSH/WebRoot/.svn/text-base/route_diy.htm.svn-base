@@ -1,0 +1,35 @@
+			
+<!-- DIY线路 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 可选的板块介绍
+     <div class="more_top"></div>
+     <div class="more_bg">
+         <p>
+         	<b>如何DIY线路</b><br />
+         	请填写如下表格，我们的工作人员会主动联系您。
+         </p>
+         
+         <div style="clear: both"></div>
+     </div>
+     <div class="more_bot"></div> -->
+
+	<!-- DIY线路表单 -->
+	<div class="col_full">
+		<div class="full_img">
+		<img src="./images/step_diy.png" />
+		</div>
+		<div class="full_form">
+		<div class="full_form_top">DIY自由行申请咨询</div>
+		<div class="full_form_mid">$diyform</div>
+		<div class="full_form_bot"></div>
+		</div>
+	</div>
+
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

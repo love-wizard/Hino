@@ -1,0 +1,19 @@
+<h3>VIP代理申请</h3>
+
+<h3>填写客户信息</h3>
+<form id="sales_booking_from" method="post">
+	<div id="customer_field">
+		<label for="email">Email</label><input type="text" id="email" name="email" /><input type="button" id="find" value="查找" /><br/>
+		<label for="customer">用户姓名</label><input type="text" id="customer" name="customer" disabled="disabled"/><br/>
+		<!-- TD#31 delete option 邮寄 -->
+		<label for="delivery">会员卡交付</label><select id="delivery" name="delivery"><option value="0">自取</option></select><br>
+		<label for="expireYear">VIP有效期（N年）</label><input type="text" id="expireYear" name="expireYear" /><br>
+		<hr/>
+		<h3>邮寄信息</h3>
+		<label for="reciever">收卡人</label><input type="text" id="reciever" name="reciever" /><br/>
+		<label for="phone">电话</label><input type="text" id="phone" name="phone" /><br/>
+		<label for="address">地址</label><textarea id="address" name="address" rows="10" cols="50"></textarea><br/>
+	</div>
+	<input type="button" id="submit" value="提交"/>
+	<input type="button" id="cancel" value="取消"/>
+</form>

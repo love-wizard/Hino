@@ -1,0 +1,12 @@
+
+<div class="clickform">$vehicle_cam_form</div>
+<div class="clear"></div>
+
+<br />
+<hr />
+<br />
+
+<b>图片预览</b><br />
+#if($fullimg)
+$fullimg
+#end

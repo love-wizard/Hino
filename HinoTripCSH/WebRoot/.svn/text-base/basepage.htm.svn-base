@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_cn">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Hino Travel</title>
+	<meta name="keywords" content="Hino Travel, 海诺旅游, 英国" />
+	<meta name="description" content="Hino Travel Ltd" />
+	<!-- TradeDoubler site verification 2003622 -->
+	
+	<!-- Begin CSS -->
+	<link href="css/styles.css" rel="stylesheet" type="text/css" media="screen" />
+		
+	<!-- Begin JavaScript -->
+	<script type="text/javascript" src="js/jquery.1.4.2.js"></script>
+	<script type="text/javascript" src="js/jquery.tools.js"></script>
+	<script type="text/javascript" src="js/jquery.custom.js"></script>
+	<script type="text/javascript" src="js/json2.js"></script>
+	<script type="text/javascript" src="js/qq.js"></script>
+	
+	<!-- JiaThis Button BEGIN -->
+    <script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
+    <script type="text/javascript" src="http://v2.jiathis.com/code/jiathis_r.js?move=0&amp;uid=1569980" charset="utf-8"></script>
+    <!-- JiaThis Button END -->
+	
+	<!-- nice form css and js -->
+	<script language="javascript" type="text/javascript" src="js/niceforms.js"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="css/niceforms-default.css" />
+	$headElements 
+	$jsElements
+	
+</head>
+<body>
+
+    <SPAN class=spanclass id=span_ad_01>
+    <!--以下内容可以更改为你自己的任意内容-->  
+    <table border="0" width="110" cellspacing="0" cellpadding="0">
+    <tr>
+    <td valign=middle  background=images/kefu_middle.gif align="center"><br/>
+       <img src="images/QQonline.gif" border=0 align=middle></img>
+       <a class='qqb' target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=1692574111>英国</a>
+    </td>
+    </tr>
+    <tr>
+    <td valign=middle  background=images/kefu_middle.gif align="center"><br/>
+       <img src=images/QQonline.gif border=0 align=middle></img>
+       <a class='qqb' target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=2586696597>独立成团</a>
+    </td>
+    </tr>
+    <tr>
+    <td valign=middle  background=images/kefu_middle.gif align="center"><br/>
+       <img src=images/QQonline.gif border=0 align=middle></img>
+       <a class='qqb' target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=1692574111>诺丁汉</a>
+    </td>
+    </tr>
+    <tr>
+    <td valign=middle  background=images/kefu_middle.gif align="center"><br/>
+       <img src=images/QQonline.gif border=0 align=middle></img>
+       <a class='qqb' target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=120727249>莱斯特</a>
+    </td>
+    </tr>
+    <tr>
+    <td valign=middle  background=images/kefu_middle.gif align="center"><br/>
+       <img src=images/QQonline.gif border=0 align=middle></img>
+       <a class='qqb' target=blank href=http://wpa.qq.com/msgrd?V=1&Uin=2315663632>北京</a>
+    </td>
+    </tr>
+    </table> 
+    <!--可更改内容结束-->
+    </SPAN>
+    <SCRIPT>ad_01.innerHTML=span_ad_01.innerHTML;span_ad_01.innerHTML="";</SCRIPT>
+
+	<div id="bg_top">
+		<!-- Fixed Search Bar -->
+		<div id="search_bar">
+			<input type="text" value ="For testing only..."/>
+		</div>
+		<!-- 菜单栏 -->
+		<div id="menu_container">
+			<div id="menu">
+				<ul>
+					<!-- <li><a href="#" class="active"><img src="images/lightbulb.png" /></a></li> -->
+					<li><a href="index.htm" class="active">首e页</a></li>
+					<li><a href="route_diy.htm">DIY自由行</a></li>
+					<li><a href="region_list.htm">精品线路</a></li>
+					<li><a href="partner.htm">酒店机票</a></li>
+					<li><a href="carservice.htm">海诺车服</a></li>
+					<!-- <li><a href="credit.htm">海诺服务</a></li>  -->
+					<!-- <li><a href="login.htm">会员登录</a></li>  -->
+					<li><a href="aboutus.htm">关于海诺</a></li> 
+					<!--  <li><a href="contact.htm">联系我们</a></li>  -->
+				</ul>
+				<div style="clear: both"></div>
+			</div><!-- menu -->
+		</div><!-- menu_container -->
+            
+		<div id="wrap">
+			
+			<!-- 语言选择 -->
+			<div id="logo">
+				<img src="images/logo.png" />
+				<div class="bannerlink">
+					<a href="./index.htm"><img src="images/cn.png" style="float:left; margin-left: 5px;" /> 简体中文</a>
+					<a href="./en/index.htm"><img src="images/en.png" style="float:left; margin-left: 5px;" /> English</a>
+				</div>
+			</div><!-- logo -->
+			
+			<!-- main content -->
+			#parse($path)
+			
+			<!-- 在线客服、联系方式 -->
+			<div class="con_top"></div>
+			<div id="footer_box">
+				<div class="foot_chat">
+					<h3>在线客服</h3>
+					<br />
+					
+					<!-- 开始Comm100在线客服系统按钮代码
+					<link href="http://chatserver.comm100.cn/css/comm100_livechatbutton.css" rel="stylesheet" type="text/css" />
+					<div id="comm100_ChatButton">
+						<div id="comm100_warp">
+							<center>
+							<div id="comm100_dvhelp">
+								<div id="comm100_LiveChatDiv"></div>
+								<a class="comm100_ahelp_css" href="http://www.comm100.cn/livechat/" onclick="comm100_Chat();return false;" target="_blank" title="在线客服">
+								<img id="comm100_ButtonImage" src="http://chatserver.comm100.cn/BBS.aspx?siteId=80028030&amp;planId=135&amp;partnerId=-1" style="border:0px" alt="在线客服" /></a>
+								<script src="http://chatserver.comm100.cn/js/LiveChat.js?siteId=80028030&amp;planId=135&amp;partnerId=-1" type="text/javascript"></script>
+								<!- <div id="comm100_track"><a style="color: #009999; cursor: pointer;" onclick="javascript:document.getElementById('comm100_dvbox').style.display='';">Comm100</a>技术提供</div> ->
+							</div>
+							<!- <div id="comm100_dvbox" class="comm100_dvbox_css" style="display: none;" onmouseover="this.style.display=''" onmouseout="this.style.display='none'">
+								<div class="comm100_dvcontent_css">
+									<p class="comm100_ptitle_css">
+									<b><a href="http://www.comm100.cn/" target="_blank" class="comm100_atitle_css">Comm100</a>产品：</b>
+									</p>
+									<ul class="comm100_ulbox_css">
+									<li style="display: none;" class="comm100_onelinone">&nbsp;</li>
+									<li><a href="http://www.comm100.cn/" target="_blank">客户服务</a>软件</li>
+									<li><a href="http://www.comm100.cn/livechat/" target="_blank">在线客服</a>软件</li>
+									<li><a href="http://www.comm100.cn/emailmarketingnewsletter/" target="_blank">邮件营销</a>软件</li>
+									<li><a href="http://www.comm100.cn/knowledgebase/" target="_blank">知识管理</a>软件</li>
+									<li><a href="http://www.comm100.cn/emailticket/" target="_blank">邮件管理</a>软件</li>
+									</ul>
+								</div>
+							</div> ->
+							</center>
+						</div>
+					</div>
+					结束Comm100在线客服系统按钮代码-->
+					
+					<!-- BEGIN Comm100 Live Chat Button Code -->
+					<link href="http://chatserver.comm100.com/css/comm100_livechatbutton.css" rel="stylesheet" type="text/css"/>
+					<div id="comm100_ChatButton">
+					<div id="comm100_warp">
+						<center>
+						<div id="comm100_dvhelp">
+							<a class="comm100_ahelp_css" href="http://www.comm100.com/livechat/" onclick="comm100_Chat();return false;" target="_blank" title="Live Chat Software for Website">
+							<img id="comm100_ButtonImage" src="http://chatserver.comm100.com/BBS.aspx?siteId=74254&amp;planId=1042&amp;partnerId=-1" style="border:0px" alt="Live Chat Software for Website" /></a>
+							<script src="http://chatserver.comm100.com/js/LiveChat.js?siteId=74254&amp;planId=1042&amp;partnerId=-1" type="text/javascript"></script>
+							<!-- <div id="comm100_track"><a href="http://www.comm100.com/livechat/" target="_blank"><b>Live Chat</b></a> by <a style="color:#009999;cursor:pointer;" onclick="javascript:document.getElementById('comm100_dvbox').style.display='';">Comm100</a></div> -->
+						</div>
+						<!-- <div id="comm100_dvbox" class="comm100_dvbox_css" style="display:none;" onmouseover="this.style.display=''" onmouseout="this.style.display='none'">
+						<div class="comm100_dvcontent_css">
+						<p class="comm100_ptitle_css"><b>
+						<a href="http://www.comm100.com/" target="_blank" class="comm100_atitle_css" >Comm100</a> 
+						Products:</b></p>
+						<ul class="comm100_ulbox_css">
+						<li style="display:none;" class="comm100_onelinone">&nbsp;</li>
+						<li><a href="http://www.comm100.com/" target="_blank">Customer Service Software</a></li>
+						<li><a href="http://www.comm100.com/livechat/" target="_blank" >Live Chat Software</a></li>
+						<li><a href="http://www.comm100.com/emailmarketingnewsletter/" target="_blank">Email Marketing Software</a></li>
+						<li><a href="http://www.comm100.com/livechat/" target="_blank">Live Help</a></li>
+						<li><a href="http://www.comm100.com/emailmarketingnewsletter/" target="_blank">Email Marketing</a></li>
+						<li><a href="http://www.comm100.com/livechat/" target="_blank">Live Support</a></li>
+						</ul>
+						</div>
+						</div> -->
+						</center>
+					</div>
+					</div>
+					<!-- End Comm100 Live Chat Button Code -->
+
+				</div><!-- foot_chat -->
+				<div class="foot_contact">
+					<h3>联系方式</h3>
+					<div class="pad_left" style="background: url(images/phone.png) no-repeat left top">
+						英国： 0044(0)1159881662 <br />
+						中国：  0086(0)0451-51836255 <br />
+						机票： 0086(0)0451-51836258 <br />
+						旅游： 0086(0)0451-51836255 <br />
+						购票热线： 0044(0)1159881662
+					</div>
+					<div class="pad_left" style="background: url(images/email.png) no-repeat left center">
+						电子邮件：info@hinotravel.com
+					</div>
+					<div class="pad_left" style="background: url(images/qq.png) no-repeat left center">
+						QQ客服：1692574111
+					</div>
+					<div class="footer_more"><a href="contact.htm">more</a></div>
+				</div><!-- foot_contact -->
+				<div style="clear: both"></div>
+
+				<!-- 版权、小图标 -->
+				<div id="footer">
+					<div class="more_top"></div>
+					<div class="footer_bg">
+						<div id="footer_text" style="float: left;">
+							<p>Copyright  2011 Hino Travel Limited 海诺集团版权所有. <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#" title="This page validates as XHTML 1.0 Transitional"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> | <a href="#" title="This page validates as CSS"><abbr title="Cascading Style Sheets">CSS</abbr></a></p>
+						</div>
+						<div class="footer_img">
+							<a href="#"><img src="images/link1.png" alt="" title=""/></a>
+							<a href="#"><img src="images/link2.png" alt="" title=""/></a>
+							<a href="#"><img src="images/link3.png" alt="" title=""/></a>
+							<a href="#"><img src="images/link4.png" alt="" title=""/></a>
+							<a href="#"><img src="images/link5.png" alt="" title=""/></a>
+						</div>
+						<div style="clear: both"></div>
+					</div><!-- footer_bg -->
+					<div class="more_bot"></div>
+					<div class="clear_con"></div>
+				</div><!-- footer -->
+			</div><!-- footer_box -->
+      <div class="con_bot"></div>
+       <div class="clear_con"></div>
+		</div><!-- wrap -->
+	</div><!-- bg_top -->
+	</body>
+</html>

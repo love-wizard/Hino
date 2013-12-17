@@ -1,0 +1,371 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+background:url(../img/miaosha_bg.png) repeat-x 50% 0;
+/* background:url(../img/site_bg.jpg) repeat #f2f5f6; */
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+.head .logo_link
+{
+display:block;
+padding-top:44px;
+}
+/*导航菜单 begin*/
+.second_menu{position:absolute; top:0px; right:100px;}
+.second_menu a{ color:#a95c00}
+
+/*网站主体  begin*/
+.main
+{
+background:#fff;
+padding:25px 25px 0px 77px;
+width:872px;
+margin:0 auto;
+}
+
+.ms_t
+{
+width:872px;
+height:64px;
+background:url(../img/ms_top_bg.png) no-repeat;
+position:relative;
+}
+.ms_t .ms_time
+{
+width:166px;
+height:116px;
+background:url(ms_time.png) no-repeat;
+position:absolute;
+top:-29px;
+left:-66px;
+font-family:"微软雅黑", Arial, Helvetica, sans-serif;
+font-size:44px;
+line-height:116px;
+padding-left:125px;
+font-style:italic;
+color:#666;
+}
+.ms_t .now_time
+{
+position:absolute;
+right:109px;
+height:64px;
+line-height:64px;
+font-family:Arial, Helvetica, sans-serif;
+font-size:22px;
+font-weight:bold;
+color:#fff;
+text-align:center;
+width:90px;
+}
+.ms_t .jilu
+{
+width:373px;
+height:40px;
+overflow:hidden;
+position:absolute;
+top:12px;
+right:245px;
+text-align:left;
+}
+.ms_t .jilu li
+{
+line-height:20px;
+width:383px;
+height:20px;
+overflow:hidden;
+color: rgb(216, 38, 52);
+}
+.ms_t .jilu li a
+{
+color:#267e8c;
+}
+/*秒杀左侧*/
+.ms_l
+{
+background:url(../img/ms_rule_bg.png) no-repeat;
+width:190px;
+padding:95px 10px 0px;
+height:auto!important;
+height:755px;  
+min-height:755px;
+float:left;
+line-height:21px;
+color:#fff;
+}
+/*秒杀右侧*/
+.ms_r
+{
+width:650px;
+float:right;
+}
+.ms_lib
+{
+width:100%;
+padding-top:10px;
+}
+.ms_box
+{
+border:1px solid rgb(238, 50, 65);
+background:url(../img/seckill/seckill_box_active_bg.png) repeat-x #f7eeed;
+padding:10px;
+}
+/*单个秒杀商品*/
+.ms_item
+{
+width:628px;
+position:relative;
+margin-bottom:25px;
+}
+.ms_item .pic
+{
+width:192px;
+float:left;
+position:relative;
+}
+.ms_item .qgzt
+{
+width:115px;
+height:121px;
+position:absolute;
+bottom:-5px;
+right:25px;
+}
+.ms_item .pic .ms_pic
+{
+width:190px;
+height:190px;
+border:1px solid rgb(250, 5, 44);
+}
+.ms_item .info
+{
+width:425px;
+float:right;
+}
+.ms_item .info .t
+{
+height:48px;
+border-bottom:1px solid rgb(206, 12, 27);
+}
+.ms_item .info .t span
+{
+float:left;
+margin-right:8px;
+}
+.ms_item .info .t .tit
+{
+font-family:"微软雅黑", " 黑体", "宋体";
+font-size:24px;
+color: rgb(184, 22, 42);
+line-height:41px;
+width:300px;
+height:41px;
+overflow:hidden;
+float:left;
+}
+
+.ms_item .info .t .me
+{
+background:url(me_bg.png) no-repeat;
+width:55px;
+height:23px;
+text-align:center;
+line-height:23px;
+color:#fff;
+margin-top:10px;
+float:left;
+}
+.ms_item .info .t .zt
+{
+padding-top:13px;
+float:left;
+}
+
+.ms_item .info .intro
+{
+padding:10px 0px;
+line-height:22px;
+border-bottom:1px solid rgb(231, 170, 189);
+height:82px;
+width:100%;
+overflow:hidden;
+color: rgb(71, 6, 9);
+}
+.ms_item .info .price
+{
+padding-top:15px;
+text-align:right;
+font-size:30px;
+color:#ff0000;
+font-family:"黑体", SimHei, Helvetica, sans-serif;
+}
+.ms_item .info .price .yj
+{
+font-family:"黑体", Arial, Helvetica, sans-serif;
+font-size:13px;
+color:#000;
+padding-left:10px;
+text-decoration:line-through;
+}
+.ms_item .qg_bt
+{
+width:240px;
+height:52px;
+position:absolute;
+left:214px;
+bottom:-15px;
+}
+.ms_item .bt1
+{
+background:url(qg_bg1.png) no-repeat;
+}
+.ms_item .bt2
+{
+background:url(qg_bg2.png) no-repeat;
+}
+.ms_item .bt3
+{
+background:url(../img/seckill/seckill_group_timer_bg.png) no-repeat;
+}
+.ms_item .qg_bt .qg
+{
+width:125px;
+height:40px;
+overflow:hidden;
+float:left;
+margin-left:23px;
+margin-top:6px;
+display:inline;
+padding-top: 8px;
+font-size: 17px;
+text-align: center;
+font-weight: 600;
+color: #f72363;
+}
+
+.ms_item .qg_bt .qg_timer
+{
+width:125px;
+height:40px;
+overflow:hidden;
+float:left;
+margin-left:23px;
+margin-top:6px;
+display:inline;
+padding-top: 8px;
+font-size: 17px;
+text-align: center;
+font-weight: 600;
+color: #f72363;
+display: none;
+}
+
+.ms_item .qg_bt .qg a
+{
+width:80px;
+height:40px;
+padding-left:200px;
+display:block;
+}
+.ms_item .qg_bt .ckyj
+{
+float:left;
+display:inline;
+line-height:52px;
+text-align:left;
+padding-top: 2px;
+}
+.ms_item .bt1 .ckyj a
+{
+color:#fff;
+}
+.ms_item .bt2 .ckyj a
+{
+color:#fff;
+}
+.ms_item .bt3 .ckyj a
+{
+color:#f72363;
+}
+/*昨日抢购*/
+.ms_zrqg
+{
+width:628px;
+position:relative;
+padding-bottom:0px;
+height:auto!important;
+height:100px;
+min-height:100px;
+}
+.ms_zrqg .zs
+{
+background:url(../img/seckill/seckill_history_icon.png) no-repeat;
+position:absolute;
+top:0px;
+left:0px;
+width:92px;
+height:67px;
+}
+.ms_zrqg .lib
+{
+padding-left:95px;
+width:550px;
+}
+
+.zrqg_item
+{
+float:left;
+width:270px;
+height:110px;
+overflow:hidden;
+}
+.zrqg_item .pic
+{
+width:105px;
+float:left;
+}
+.zrqg_item .pic img
+{
+width:95px;
+height:95px;
+border:1px solid #000;
+}
+.zrqg_item .info
+{
+padding-top:10px;
+width:160px;
+float:left;
+overflow:hidden;
+}
+.zrqg_item .info li
+{
+line-height:20px;
+white-space:nowrap;
+}
+.zrqg_item .info li.yj
+{
+text-decoration:line-through;
+}
+.zrqg_item .info li.ckyj a
+{
+color:#155864;
+}
+/*秒杀攻略*/
+.msgl
+{
+padding:15px 15px;
+line-height:21px;
+margin-top:15px;
+color: black;
+}
+/*版权*/
+.copyright{ width:974px; height:32px; background:#c9cccb; text-align:center}

@@ -1,0 +1,5 @@
+<h2>创建团</h2>
+	<div class="clickform">$group_cam_form</div>
+	<div class="clear"></div>
+	<hr/>
+	<a href="./general_sales_group_manage.htm">取消并返回出团管理</a>

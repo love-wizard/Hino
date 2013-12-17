@@ -1,0 +1,302 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+background:url(ny_bg.jpg) repeat-x #f2f5f6;
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+
+/*网站主体  begin*/
+.main
+{
+background:#fff;
+padding:25px 0px 0px;
+width:974px;
+margin:0 auto;
+}
+.second_menu{position:absolute; top:0px; right:600px;}
+.second_menu a{ color:#a95c00}
+.pay_step
+{
+width:887px;
+margin:0 auto;
+height:60px;
+}
+.pay_contair
+{
+width:876px;
+margin:0 auto;
+background:url(pay_bg.jpg) repeat-x #29b2c5;
+}
+.pay_bg
+{
+width:100%;
+background:url(pay_bg2.png) no-repeat;
+}
+
+.line_title
+{
+padding-left:10px;
+height:48px;
+line-height:48px;
+font-family:"微软雅黑","黑体","宋体";
+font-size:24px;
+}
+.pay_frm
+{
+padding-bottom:10px;
+position:relative;
+width:100%;
+padding-top:45px;
+}
+.pay_frm .number
+{
+position:absolute;
+left:-5px;
+top:0px;
+width:846px;
+height:40px;
+padding:0px 20px;
+background:url(pay_number.png) no-repeat;
+font-family:"微软雅黑","黑体","宋体";
+font-size:20px;
+color:#fff;
+line-height:39px;
+font-weight:bold;
+}
+.pay_frm .number .t
+{
+float:left;
+}
+.pay_frm .number .x
+{
+float:right;
+padding-top:5px;
+}
+.pay_frm td
+{
+padding-right:5px;
+padding:5px 0px;
+}
+.pay_frm .text
+{
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+line-height:35px;
+}
+.w1
+{
+width:460px;
+}
+.w2
+{
+width:221px;
+}
+.w3
+{
+width:267px;
+}
+.w4
+{
+width:150px;
+}
+.w5
+{
+width:472px;
+}
+.pay_input
+{
+height:33px;
+border:1px solid #188899;
+background:url(reg_input_bg.gif) no-repeat;
+padding:0px 5px;
+line-height:33px;
+}
+.pay_select
+{
+height:33px;
+border:1px solid #188899;
+background:url(reg_input_bg.gif) no-repeat;
+line-height:33px;
+}
+
+
+.pay_bt
+{
+width:100%;
+height:41px;
+background:url(reg_s_bg.png) repeat-x left center;
+margin-top:10px;
+text-align:center;
+}
+.pay_submit
+{
+background:url(reg_submit.png) no-repeat;
+width:196px;
+height:41px;
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+}
+.paypal_submit
+{
+background:url(paypal.png) no-repeat;
+width:197px;
+height:42px;
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+}
+
+.pay_xy
+{
+width:100%;
+text-align:center;
+padding-top:15px;
+}
+.pay_xy a
+{
+color:#fff;
+}
+/*选择支付方式*/
+.choose_contair
+{
+width:876px;
+margin:0 auto;
+background:url(pay_bg.jpg) left center repeat-x #29b2c5;
+}
+
+.pay_choose 
+{
+width:810px;
+margin:0 auto;
+border-top:1px solid #a6c7d1;
+padding:20px 20px 30px;
+height:auto!important;
+height:200px;  
+min-height:200px;
+}
+.pay_choose .title
+{
+background:url(gou.png) no-repeat;
+padding-left:22px;
+line-height:19px;
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+}
+.pay_choose .intro
+{
+font-size:12px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+padding-top:10px;
+line-height:22px;
+}
+.pay_way
+{
+width:810px;
+margin:0 auto;
+border-top:1px solid #a6c7d1;
+padding:30px 20px;
+}
+.pay_way .text
+{
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+line-height:35px;
+}
+/*确认支付方式*/
+.pay_confirm
+{
+width:810px;
+margin:0 auto;
+border-top:1px solid #a6c7d1;
+padding:20px 20px 30px;
+height:auto!important;
+height:120px;  
+min-height:120px;
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+line-height:35px;
+}
+.pay_way_intro
+{
+width:810px;
+margin:0 auto;
+border-top:1px solid #a6c7d1;
+padding:20px;
+}
+.pay_way_intro .t
+{
+font-family:"微软雅黑","黑体","宋体";
+font-size:24px;
+text-align:center;
+color:#fff;
+line-height:32px;
+height:32px;
+padding-bottom:10px;
+width:100%;
+}
+.pay_way_intro .c
+{
+font-family:"微软雅黑","黑体","宋体";
+font-size:14px;
+text-align:left;
+color:#fff;
+line-height:32px;
+padding:5px 0px;
+width:100%;
+}
+.pay_way_intro .map
+{
+width:100%;
+text-align:center;
+padding:20px 0px;
+}
+/*支付成功*/
+.pay_success 
+{
+width:810px;
+margin:0 auto;
+border-top:1px solid #a6c7d1;
+padding:20px 20px 30px;
+height:auto!important;
+height:260px;  
+min-height:260px;
+}
+.pay_success .t
+{
+font-family:"微软雅黑","黑体","宋体";
+font-size:24px;
+text-align:center;
+color:#fff;
+line-height:32px;
+height:32px;
+padding-bottom:10px;
+width:100%;
+padding-top:100px;
+}
+.pay_success .c
+{
+font-family:"微软雅黑","黑体","宋体";
+font-size:18px;
+text-align:center;
+color:#fff;
+line-height:32px;
+padding:5px 0px;
+width:100%;
+}
+/*版权*/
+.copyright{clear:both; width:974px; height:32px; line-height:32px; background:#c9cccb; text-align:center}

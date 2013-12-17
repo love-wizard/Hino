@@ -1,0 +1,37 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Show customer detail
+	jQuery(".ajaxDetail").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+				var customerDetail = "<table>"+
+					"<tr><td width='20%'><b>申请人 </b></td><td>"+json.name+"</td></tr>"+
+					"<tr><td><b>电子邮件 </b></td><td>"+json.email+"</td></tr>"+
+					"<tr><td><b>联系电话 </b></td><td>"+json.phone+"</td></tr>"+
+					"<tr><td><b>DIY描述 </b></td><td>"+json.description+"</td></tr>"+
+					"</table>";
+
+				jQuery("#facebox_title").html("DIY线路申请详情")
+				jQuery("#facebox_content").html(customerDetail);
+				jQuery.facebox({ div: '#facebox_container' });
+		});
+		
+		return false;
+	});
+	
+});
+
+</script>
+
+<h2>DIY线路申请列表</h2>
+
+	$diyroutetable <br />

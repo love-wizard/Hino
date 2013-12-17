@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="HinoTripCSH"
+  id="myeclipse.1294425204917"
+  context-root="/HinoTripCSH"
+  j2ee-spec="5.0"
+  archive="HinoTripCSH.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

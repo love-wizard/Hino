@@ -1,0 +1,865 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hino Travel - 海诺英国旅游</title>
+<link href="./images/common.css" rel="stylesheet" type="text/css" />
+<link href="./images/banner.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="js/json2.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookies.2.2.0.min.js"></script>
+<script type="text/javascript" src="js/banner.js"></script>
+<script type=text/javascript src="js/kefu.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<link rel=stylesheet type=text/css href="css/qq.css" />
+<script  src="js/swfobject_source.js" type=text/javascript></script>
+<script type=text/javascript src="js/jquery.custom.js"></script>
+<script type=text/javascript src="js/nav.js"></script>
+<script type="text/javascript" src="js/time.js"></script>
+<script type="text/javascript" src="js/jquery.countDown.js"></script>
+$headElements
+$jsElements
+<!--[if IE 6]>
+<script type="text/javascript" src="js/DD_belatedPNG.js" ></script>
+<script type="text/javascript">   DD_belatedPNG.fix('div, ul, img, li, input,a,img,p');   </script>
+<![endif]-->
+   
+<script type="text/javascript">
+
+var timer;
+
+function ShowArea() {
+    //$(".hot_search").hide();
+    var key = jQuery.trim($("#txt_s_k").val());
+    if (key != "") {
+    	$(".search_result").show();
+    }    
+    //setTimeout("document.getElementById('div_hotSearch').style.display='none'", 3000 );
+}
+function HideArea() {
+    setTimeout("document.getElementById('search_result').style.display='none'", 300);
+}
+
+function Search(month){
+	window.location.href= "./search_result.htm?idx=1&st=1&dcode=" + jQuery("#ct_code").val() + "&k=" + month;
+}
+
+function SearchByDestination(destination){
+	if(destination == "") return;
+	jQuery("#txt_s_k").val(destination);
+	jQuery("#frm_s").attr("action", "./search_result.htm?idx=1&st=2&dcode=" + jQuery("#ct_code").val());
+	jQuery("#frm_s").submit();
+}
+
+function AdvancedSmartSearch() {
+	var k = jQuery.trim(jQuery("#txt_s_k").val());
+	SearchByDestination(k);
+}
+
+function addToFav(){
+        var url = "http://www.hinotravel.com";
+        var title = "海诺旅游";
+                
+        if (window.sidebar) { // Mozilla Firefox Bookmark
+                window.sidebar.addPanel(title, url,"");
+        } else if( window.external ) { // IE Favorite
+        		try{
+                window.external.AddFavorite( url, title);
+                } catch (e){
+                	alert('您使用的浏览器不支持此功能，请按“Ctrl + D”键手工收藏海诺');
+                }
+        } else if(window.opera) { // Opera 7+
+                alert('您使用的浏览器不支持此功能，请按“Ctrl + D”键手工收藏海诺'); 
+        } else { 
+                alert('您使用的浏览器不支持此功能，请按“Ctrl + D”键手工收藏海诺');	
+        }
+} 
+
+function ShowMonthResult(id, obj) {
+	
+	$(".month_tab").each(function(i){
+		$(this).removeClass("month_selected");
+	});
+	
+	$(obj).addClass("month_selected");
+	
+	$(".month_search_result").each(function(i){
+		$(this).removeClass("show_month_search_result");
+		$(this).addClass("hide_month_search_result");
+	});
+	
+	$("#msr_" + id).removeClass("hide_month_search_result");
+	$("#msr_" + id).addClass("show_month_search_result");
+}
+
+$(document).ready(function() {
+	var prevKey = "";
+	var prevDcode = "";
+	
+	//$("#txt_s_k").change(function(){
+	$("#txt_s_k").keyup(function(event){
+		var url = "./index.htm";
+		var key = jQuery.trim($("#txt_s_k").val());
+		var dcode =  jQuery.trim($("#ct_code").val());
+		//alert(prevDcode + " ===?=== " + $("#ct_code").val());
+		if(event.keyCode > 40 || event.keyCode == 8 || event.keyCode ==32 || event.keyCode == undefined || event == null) {
+					
+			if((prevKey != key || prevDcode != dcode) && key != "") {
+				jQuery.ajax({
+					url: url,
+					type: "POST",
+					data: {
+						"smart_search": "1",
+						"key": key,
+						"dcode": dcode
+					},
+					dataType: "JSON",
+					success: function(data, textStatus) {
+						prevKey = data.key;
+						prevDcode = data.dcode;
+						
+						var srConDiv = "<div id='smart_search_panel'>";
+						
+						var srTab = "<div><table width='545px'>";
+						srTab = srTab + "<tr>";
+						srTab = srTab + "<td width='30px'></td>";
+						jQuery.each(data.set, function(sIdx, set) {
+							srTab = srTab + "<td width='55px'>";
+							srTab = srTab + 	"<div class='month_tab " + (sIdx == 0? "month_selected": "") + "' onMouseOver='ShowMonthResult("+ sIdx + ", this)'>" + set['month'] + "</div>";
+							srTab = srTab + "</td>";
+						});
+						srTab = srTab + "<td style='height:28px; text-align: right;'>";
+						srTab = srTab + 	"<a href='javascript:void(0);' style='color: #af0013; font-size: 12.5px; text-shadow: 1px 0 rgb(224, 197, 197), 0 1px rgb(240, 208, 208), 0 -1px rgb(238, 236, 236), -1px 0 rgb(213, 211, 211);' onclick='AdvancedSmartSearch()'>不满意结果？进入高级搜索</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+						srTab = srTab + "</td>";
+						srTab = srTab + "</tr></table></div>";
+						
+						srConDiv = srConDiv + srTab;
+						
+						jQuery.each(data.set, function(sIdx, set) {
+							// build div for a month
+							var srmDiv = "<div class='month_search_result " + (sIdx == 0? "show_month_search_result": "hide_month_search_result") + "' id='msr_" + sIdx + "' name='msr_" + sIdx + "'>"; 
+							
+							//alert("Month: " + set.month + " \t Routes:" + set.routes.length);
+							
+							srmDiv = srmDiv + "<table width='545px'>";
+							jQuery.each(set.routes, function(rIdx, routes){
+								if(rIdx < 3) {
+									switch (parseInt(routes.route['type'])){
+										case 1: // 常规
+											sc = "#ff00d9"; break;
+										case 2: // 精品
+											sc = "#1b7598"; break;
+										case 3: // 团购
+											sc = "#df0606"; break;
+										case 4:
+											sc = "#5ffd00"; break;	
+										case 5:
+											sc = "#5ffd00"; break;
+										default:
+											sc = ""; break;
+									}
+									
+									srmDiv = srmDiv + "<tr onMouseOver='HighlightMonthLine(this)' class='month_result_line'>";
+									srmDiv = srmDiv + 	"<td >";									
+									
+									srmDiv = srmDiv + 		"<table width='545px'>";							
+									srmDiv = srmDiv + 			"<tr>";
+									srmDiv = srmDiv + 				"<td width='30px'></td>";
+									srmDiv = srmDiv + 				"<td rowspan='2'  width='23px' style='vertical-align: top; padding-top: 1px;'>";
+									srmDiv = srmDiv + 					"<img src='./img/blank.gif' class='route_type_icon_" + routes.route['type'] + "'/>";
+									srmDiv = srmDiv + 				"</td>";
+									srmDiv = srmDiv + 				"<td colspan='3' class='route_type_" + routes.route['type'] + "'>";
+									srmDiv = srmDiv + 					"<a style='color: " + sc + "' href='./route_detail.htm?routeid=" + routes.route['id'] + "'>" + routes.route['name'] + "</a>";
+									srmDiv = srmDiv + 				"</td>";
+									srmDiv = srmDiv + 			"</tr>"; 
+									
+									srmDiv = srmDiv + 			"<tr>";
+									srmDiv = srmDiv + 				"<td width='30px'></td>";
+									srmDiv = srmDiv + 				"<td width='200px' style='color: white;'>";
+									srmDiv = srmDiv + 					"出团日期：" + routes.route['departDays'];
+									srmDiv = srmDiv + 				"</td>";
+									srmDiv = srmDiv + 				"<td width='200px' style='color: white;'>";
+									srmDiv = srmDiv + 					"出发地：" + routes.route['departCities'];
+									srmDiv = srmDiv + 				"</td>";
+									srmDiv = srmDiv + 				"<td style='color: white;'>";
+									srmDiv = srmDiv + 					routes.route['price'];
+									srmDiv = srmDiv + 				"</td>";
+									srmDiv = srmDiv + 			"</tr>";
+									srmDiv = srmDiv + 		"</table>";
+									
+									srmDiv = srmDiv + 	"</td>";
+									srmDiv = srmDiv + "</tr>";
+								}
+							});
+							
+							srmDiv = srmDiv + "</table></div>";
+							
+							srConDiv = srConDiv + srmDiv;
+						});
+						srConDiv = srConDiv + "</div>";
+						
+						//alert(srConDiv);
+						$(".search_result").html(srConDiv);
+					},
+					beforeSend:function(){
+						var loadingDiv = "<div class='loading_msg'>";
+						loadingDiv = loadingDiv + "<div class='loading_icon'/>";
+						loadingDiv = loadingDiv + "<div class='loading_text'>";
+						loadingDiv = loadingDiv + 	"正在努力为您搜索，请稍后";
+						loadingDiv = loadingDiv + "</div>";
+						loadingDiv = loadingDiv + 
+										 "</div>";
+						$(".search_result").html(loadingDiv);					
+			        },
+			    	complete:function(){
+			            $(".loading_msg").remove();
+			        }
+				});
+			}
+		}
+		
+		if (key != "") {
+			$(".search_result").show();
+		} else {
+			$(".search_result").html("");
+			$(".search_result").hide();
+		}
+	});
+	
+	var prevCKey = "-1";
+	$(".choice").mouseover(function(){
+		var key = jQuery.trim($("#txt_s_k").val());
+		/*if (key == "") {
+			key = "$![]!$";
+		}*/
+		
+		//if(prevCKey != key && key != "") {
+		if(prevCKey != key) {
+			var url = "./index.htm";
+			jQuery.ajax({
+				url: url,
+				type: "POST",
+				data: {
+					"choose_depart_city": "1",
+					"key": key
+				},
+				dataType: "JSON",
+				success: function(data, textStatus) {
+					prevCKey = data.key;
+					
+					var srConDiv = "<table width='100%' id='dpt_ct_tbl' style='margin:0px; padding:0px; border:0px;border-style:collapse; line-height: 25px;'  border='0' cellpadding='0' cellspacing='0'>";
+					srConDiv = 	srConDiv + "<tr>";
+					srConDiv = 	srConDiv + 		"<td width='20px' height='3px' style='background: url(./img/depart_city_bg.png) no-repeat; height: 3px; width: 20px;'></td>";
+					srConDiv = 	srConDiv + 		"<td width='145px' style='background: url(./img/depart_city_bg.png) -20px 0 no-repeat; height: 3px; width: 145px;'></td>";
+					srConDiv = 	srConDiv + 		"<td width='80px' style='background: url(./img/depart_city_bg.png) -165px 0 no-repeat; height: 3px; width: 80px;'></td>";
+					srConDiv = 	srConDiv + "</tr>";
+
+					jQuery.each(data.cities, function(cIdx, city) {
+						srConDiv = 	srConDiv + "<tr onmouseover='HighlightDepartCity(this)' onclick='ShowPage(" + city['code'] + ")'>";
+						srConDiv = 	srConDiv + 		"<td width='20px' style='background: url(./img/depart_city_bg.png) 0 -" + ((3 + (cIdx > 4? 4: cIdx) * 27) - (cIdx == 0? 0: 2)) + "px repeat-y; height: " + ((cIdx == 0? 0: 2) + 25) + "px; width: 20px; text-align: center'></td>";
+						srConDiv = 	srConDiv + 		"<td width='145px' style='background: url(./img/depart_city_bg.png) -20px -" + ((3 + (cIdx > 4? 4: cIdx) * 27) - (cIdx == 0? 0: 2)) + "px repeat-y; height: " + ((cIdx == 0? 0: 2) + 25) + "px; width: 145px;'>" + city['cname'] + " " + city['name'] +  "</td>";
+						srConDiv = 	srConDiv + 		"<td width='80px' style='background: url(./img/depart_city_bg.png) -165px -" + ((3 + (cIdx > 4? 4: cIdx) * 27) - (cIdx == 0? 0: 2)) + "px repeat-y; height: " + ((cIdx == 0? 0: 2) + 25) + "px; width: 80px; text-align: right;'>" + city['count'] + "个团次&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+						srConDiv = 	srConDiv + "</tr>";
+					});	
+
+					srConDiv = 	srConDiv + 		"<tr>";				
+					srConDiv = 	srConDiv + 			"<td width='20px' height='3px' style='background: url(./img/depart_city_bg.png) 0 -137px no-repeat; height: 11px; width: 20px;'></td>";
+					srConDiv = 	srConDiv + 			"<td width='145px' style='background: url(./img/depart_city_bg.png) -20px -137px no-repeat; height: 11px; width: 145px;'></td>";
+					srConDiv = 	srConDiv + 			"<td width='80px' style='background: url(./img/depart_city_bg.png) -165px -137px no-repeat; height: 11px; width: 80px;'></td>";
+					srConDiv = 	srConDiv + 		"</tr>";
+					srConDiv = 	srConDiv + "</table>";
+					//alert(srConDiv);
+					$(".dc_con").html(srConDiv);
+				}
+			});				
+		}
+
+        $(".more_city").show();
+        
+        $(".choice").addClass("over_choic");
+    });
+	
+    $(".sear_rlt_marker").mouseout(function(){
+    	timer = setTimeout("document.getElementById('search_result').style.display='none'", 3000);
+    });
+    
+    $(".sear_rlt_marker").mouseover(function(){
+    	clearTimeout(timer);
+    });
+	
+	$("#txt_s_k").focus(function(){
+		ShowArea();
+		//clearTimeout(timer);
+	});
+	
+	$("#txt_s_k").blur(function(){
+		//HideArea();
+		//timer = setTimeout("document.getElementById('search_result').style.display='none'", 3000);
+	});
+	
+	$(".search_result").mouseover(function(){
+		clearTimeout(timer);
+	});
+	
+	$(".search_result").mouseout(function(){
+		timer = setTimeout("document.getElementById('search_result').style.display='none'", 3000);
+	});
+		
+	//$(".search_result").attr("style", "display: none");
+	//$("#txt_s_k").keyup();
+});
+
+function HighlightMonthLine(obj){
+
+	$(".month_result_line").each(function(i){
+		$(this).removeClass("month_result_light");			
+	});
+	
+	$(obj).addClass("month_result_light");
+}
+
+</script>
+
+<style>
+.loading_msg {
+	padding-top: 70px;
+	text-align: center;
+}
+
+.loading_icon {
+	background: url('./img/loading.gif') no-repeat;
+	height: 20px;
+	width: 20px;
+}
+
+.loading_text {
+	color: black;
+	line-height: 40px;
+}
+
+.search_result {
+	background: url('./img/ocean/idx_ser_rlt.png') no-repeat;
+	height: 170px;
+	width: 545px;
+	margin-right: 0px;	
+}
+
+.hide_month_search_result {
+	display: none;
+}
+
+.show_month_search_result {
+	display: block;
+}
+
+.month_result_line {}
+
+.month_result_light {
+	background: url(./img/ocean/result_bg_light.png) no-repeat;
+}
+
+.month_tab {
+	font-size: 13px;
+	color: #1b7598;	
+	letter-spacing: 1px;
+	text-align: center;
+}
+
+.month_selected {
+	background: url('./img/ocean/month_selected.png') no-repeat;
+	height: 22px;
+	width: 53px;
+	color: white;
+}
+
+.hello_smart {
+	background: url('./img/hello_smart.png') no-repeat; 
+	height: 60px; 
+	width: 120px;
+	margin-top: -115px; 
+	margin-right: -125px;
+}
+
+.dpt_ct_light {
+	color: black;
+	font-weight: bold;
+}
+
+/* 常规 */
+.route_type_icon_1 {
+	background: url(./img/group_type_icon.png) no-repeat; height:17px; width:17px;
+}
+
+.route_type_1 {
+	font-weight: bold;
+	/*font-size: 13px;*/
+	color: #ff00d9;
+}
+
+/* 精品  */
+.route_type_icon_2 {
+	background: url(./img/group_type_icon.png) 0 -40px no-repeat; height:17px; width:17px;
+}
+
+.route_type_2 {
+	font-weight: bold;
+	/*font-size: 13px;*/
+	color: #1b7598; 
+}
+
+/* 团购  */
+.route_type_icon_3 {
+	background: url(./img/group_type_icon.png) 0 -20px no-repeat; height:17px; width:17px;
+}
+
+.route_type_3 {
+	font-weight: bold;
+	color: #df0606;
+}
+
+/* DIY  */
+.route_type_icon_4 {
+	background: url(./img/group_type_icon.png) no-repeat; height:17px; width:17px;
+}
+
+.route_type_4 {
+	font-weight: bold;
+	color: #ff00d9;
+}
+
+/* 热门推荐  */
+.route_type_icon_5 {
+	background: url(./img/group_type_icon.png) no-repeat; height:17px; width:17px;
+}
+
+.route_type_5 {
+	font-weight: bold;
+	color: #ff00d9;
+}
+
+.copyright-diy {
+	display: none;
+}
+
+</style>
+
+</head>
+<body>
+<center>
+<div id="banner" style="top:0px;width:973px; height:200px;display:none;position:relative; z-index:10" lostfocus="displayAD()"><a href="./lapland.html"><img src="img/adbig3.jpg"/></a>
+	<div style="width:20px; height:20px;background:red; margin-top:-350px; margin-right:40px" onClick="closeAD()"><a  href ="#"><img src = "img/closeAd.png" /></div>
+</div>
+<div id="top" style="display:none;margin-top:0px;position:relative;z-index:9"><a href="./lapland.html"><img src="img/adSmall3.jpg" width="980px" height="43" /></a></div>
+
+<div id="noticescroll" style="display:none; margin-Left:155px;height:25px; width:980px;">
+	<!-- $notice 从数据库读取notice board数据 上限60字 -->
+	<table>
+	<tr>
+		<td style="width: 920px; ">
+			<div id ="notice" style="height:25px; width: 920px; text-align:center; overflow:hidden;padding-top:0px; padding-bottom:2px;"> <a style="color:#f8623f;" href= "$link">$notice</a></div>
+		</td>
+		
+		<td style="width:20px;">
+			<div id ="countdown" style="height:25px;margin-top:-5px;"></div>
+		</td>
+		
+		<td style="width:2px;">
+			<div style="margin-top:-5px;padding-bottom:5px;">sec</div>
+		</td>
+	</tr>
+	</table>
+	<!--<div id ="countdown" style="height:20px; width:20px;margin-right:25px;margin-top:-20px;float:right;"></div>-->
+</div>
+</center>
+<div id="floatTools" class="float0831" style="z-index:30000">
+  <div class=floatL><A style="DISPLAY: none" id=aFloatTools_Show class=btnOpen 
+title=查看在线客服 
+onclick="javascript:$('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:none');$('#aFloatTools_Hide').attr('style','display:block');" 
+href="javascript:void(0);">展开</A> <A id=aFloatTools_Hide class=btnCtn 
+title=关闭在线客服 
+onclick="javascript:$('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:block');$('#aFloatTools_Hide').attr('style','display:none');" 
+href="javascript:void(0);">收缩</A> </DIV>
+  <div id="divFloatToolsView" class="floatR">
+    <div class="tp"></div>
+    <div class="cn">
+      <UL>
+        <LI class="top_qqkefu">
+          <H3 class=titZx>海诺客服</H3>
+        </LI>
+        <LI><SPAN class=icoZx>在线咨询</SPAN> </LI>
+       #foreach($qq in $qqList)
+		<li><a class="icoTc"
+				href="$qq.genLink()">$qq.getServiceName()</a> </li>
+        #end
+  <!--       
+		<LI><A class=icoTc href="
+			http://wpa.qq.com/msgrd?V=1&Uin=2355254114">常规团客服一 </A>
+		</LI>
+		<LI><A class=icoTc
+			href="http://wpa.qq.com/msgrd?V=1&Uin=2355254110">常规团客服二 </A>
+		</LI>
+		<LI><A class=icoTc
+			href="http://wpa.qq.com/msgrd?V=1&Uin=2355254111">同业地接客服 </A>
+		</LI>
+		<LI><A class=icoTc
+			href="http://wpa.qq.com/msgrd?V=1&Uin=2355254118">机票咨询客服 </A>
+		</LI>
+		<LI><A class=icoTc
+			href="http://wpa.qq.com/msgrd?V=1&Uin=2355254123">签证咨询客服 </A>
+		</LI>
+		<LI><A class=icoTc
+			href="http://wpa.qq.com/msgrd?V=1&Uin=2355254119">DIY个性定制 </A>
+		</LI>
+ -->
+	</UL>
+      <UL>
+        <LI>
+          <H3 class=titDh>电话咨询</H3>
+        </LI>
+        <LI><SPAN class=icoTl>033-3900-9888</SPAN> 
+        </LI>
+
+      </UL>
+    </div>
+  </div>
+</DIV>
+
+	<!--顶部注册，欢迎词开始-->
+    <div class="top">
+        <div class="block">
+            <!--欢迎词开始-->
+            <!-- <div id="timebox" class="welcom f_l">晚上好!欢迎来到海诺旅游 hinotravel.com</div> -->
+           	<!-- <div style = "float:left;margin-left:150px;height:40px;line-height:40px;">E-mail:info@hinotravel.com</div> -->
+            <!--欢迎词结束,顶部登录开始-->
+            <div class="user f_r">
+            #if($cur_customer.firstname)
+            <a href="#" style="float:right;width:60px;margin-left:25px;margin-top:-10px;cursor:pointer;height: 40px; line-height: 40px;" onclick="addToFav()">收藏海诺</a>
+			<div style="float:right;margin-top:-10px;">您好, $cur_customer.lastname $cur_customer.firstname
+			<a href="./myaccount.htm"><b><font color="Red">我的海诺</font></b></a> <a href="#" id="logout_button">退出登录</a>
+			</div>
+			<script type=text/javascript>var logged=true;</script>
+			#else
+			<form id="login_form" action="" method="get">
+				<a href="#" style="float:right;width:60px;margin-left:20px;margin-top:-10px;cursor:pointer; height: 40px; line-height: 40px;" onclick="addToFav()">收藏海诺</a>
+				<a href="#" id="resetpwd_button" style="float:right;margin-top:-10px;margin-left: 5px;">找回密码</a>
+				<a href="./registration.htm" style="float:right;margin-top:-10px"><font color="Red">注册</font></a>
+				<a href="#" id="login_button" style="float:right;" class="user_bnt">登录</a>
+				<input id="login_form_password"  type="password" class="user_input" value="密 码" onfocus="if(this.value=='密 码') this.value='';" onblur="if(this.value=='') this.value='密 码';" tabindex="2"/>
+			  <input id="login_form_username" type="text" class="user_input" value="用户名" onfocus="if(this.value=='用户名') this.value='';" onblur="if(this.value=='') this.value='用户名';" tabindex="1"/>       
+            </form>
+            <script type=text/javascript>var logged=false;</script>
+			#end 
+             <!-- <span class="lan"><a href="#">中文版</a> / <a href="#">English</a></span> -->
+           </div>
+            <!--顶部登录结束-->
+        </div>
+    </div>
+    <!--顶部注册，欢迎词结束-->   
+    <div class= "indexback">
+    <div id = "corner" style="display:none; width:248px; height:156px; position:absolute; margin-top:-20px ;right:0px; top:0px; background: url('./images/corner.png') no-repeat"></div>
+    <!--头部开始-->
+	<div class="head"><div class="logo">
+		<div class="logo_link">
+			<a href="index.htm"><img src="images/ny_head_logo.png"></a>
+		</div>
+		
+	</div>
+	<!-- Devon King - 2012/09/02 - 头部固定搜索框开始 -->
+	<div class="search_bar">
+	<div class="search_bar">
+		<div style="height: 170px; width: 545px; margin-right: 0px; margin-top: 23px;">
+			<div class="search_result" id="search_result" style="display: none">
+			
+			</div>
+		</div>		
+		
+		<div class="search_blk">
+		<div style="float: right; margin-right: -1px;" class="sear_rlt_marker">
+		<table border="0" cellpadding="0" cellspacing="0" style="margin:0px; padding:0px; border:0px;border-style:collapse;">
+			<tr style="text-align: right; vertical-align: top;">
+				<td></td>
+				<td width="10px" class="choice" >
+					<div style="background: url('./img/ocean/search_bar.png') no-repeat; height: 38px; width: 10px;"></div>
+				</td>
+				<td  class="choice" >
+					<div class="choice_city" style="background: url('./img/ocean/search_bar_depart_bg.png') repeat-x; height: 38px;">
+						<span class="city_name">出发地</span>						
+					</div>
+				</td>
+				<td width="25px" class="choice" >
+					<div style="background: url('./img/ocean/search_bar.png') -65px 0 no-repeat; height: 38px; width: 25px;"></div>
+				</td>
+				<td width="455px">
+					<div class="search_blkbg">
+						<form id="frm_s" name="frm_s" action="./search_result.htm" method="post">
+							<input type="text" id="txt_s_k" name="txt_s_k" value="$defKey" class="inputtxt ac_input" autocomplete="off"/>
+							<input type="submit" id="btn_s" name="btn_s" class="s_btn" value=""/>
+						</form>			
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="4">
+					<div class="more_city" style="display: none; z-index: 30010; position: absolute; margin-top:-2px;">
+						<input type="hidden" id="ct_code" value="0"/>
+						<!-- 
+						<div style="background: url('./img/depart_cities.png') no-repeat; height: 6px; width: 230px;"></div>
+						<div class="dc_con" style="background: url('./img/depart_cities_bg.png') repeat-y; width: 230px;">
+							<table width='100%' id='dpt_ct_tbl' name='dpt_ct_tbl' style='line-height: 30px'>
+								<tr>
+									<td></td>
+								</tr>
+							</table>
+						</div>
+						<div style="background: url('./img/depart_cities.png') 0 -132px no-repeat; height: 13px; width: 230px;"></div>
+						 -->						
+						<div class="dc_con" style="width: 245px; margin-top: 3px;">
+							
+						</div>			
+					</div>
+				</td>
+			</tr>
+		</table>
+		</div>
+			<div class="search_keywords">
+				<div style="height:60px"></div>
+			</div>
+			 
+		</div>
+	</div>
+	<div class="hello_smart">
+	
+	</div>	
+	
+	<div class="hot_search" id="div_hotSearch" style="display: none; ">
+	  <div class="hot_title">
+	    <span class="keyword">关键词</span>
+	    <a class="shutdown" onclick="HideArea();" style="cursor: pointer">关闭</a>
+	  </div>
+	  <div class="hr_5"></div>
+	  <div class="hot_destination">
+	    <span class="title">目的地</span>
+	    	<div class = "search_area">
+	    		<div class = "search_area_title">
+	    			<a href="./classic.htm?rid=1">英格兰</a>
+	    		</div>
+		    	<div class = "search_specific">
+		    		  <a href="javascript:void(0);" onclick="SearchByDestination('伦敦');">伦敦</a>  
+				      <a href="javascript:void(0);" onclick="SearchByDestination('牛津');">牛津</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('剑桥');">剑桥</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('比斯特');">比斯特</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('华威古堡');">华威古堡</a>
+			      	  <a href="javascript:void(0);" onclick="SearchByDestination('达西庄园');">达西庄园</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('布莱顿');">布莱顿</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('怀特岛');">怀特岛</a>
+		    	</div>
+	    	</div>
+	    	<div class = "search_area">
+	    		<div class = "search_area_title">
+	    		 	<a href="./classic.htm?rid=6">威尔士</a>
+	    		 </div>
+		    	<div class = "search_specific">
+		    		  <a href="javascript:void(0);" onclick="SearchByDestination('卡迪夫');">卡迪夫</a>  
+				      <a href="javascript:void(0);" onclick="SearchByDestination('斯望西');">斯望西</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('北威尔士');">北威尔士</a>
+		    	</div>
+	    	</div>
+	    	<div class = "search_area">
+	    		<div class = "search_area_title">
+	    			<a href="./classic.htm?rid=2">苏格兰</a>
+	    		</div>
+		    	<div class = "search_specific">
+		    		  <a href="javascript:void(0);" onclick="SearchByDestination('爱丁堡');">爱丁堡</a>  
+				      <a href="javascript:void(0);" onclick="SearchByDestination('湖区');">湖区</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('尼斯湖');">尼斯湖</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('Sky岛');">Sky岛</a>
+		    	</div>
+	    	</div>
+	    	<div class = "search_area">
+	    		<div class = "search_area_title">
+	    			<a href="./classic.htm?rid=3">北爱尔兰</a>
+	    		</div>
+		    	<div class = "search_specific">
+		    		  <a href="javascript:void(0);" onclick="SearchByDestination('巨人之路');">巨人之路</a>  
+				      <a href="javascript:void(0);" onclick="SearchByDestination('贝尔法斯特');">贝尔法斯特</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('锁桥');">锁桥</a>
+		    	</div>
+	    	</div>
+	    	<div class = "search_area">
+	    		<div class = "search_area_title">
+	    			<a href="./classic.htm?rid=5">欧洲</a>
+	    		</div>
+		    	<div class = "search_specific">					 
+		    		  <a href="javascript:void(0);" onclick="SearchByDestination('巴黎');">巴黎</a>  
+				      <a href="javascript:void(0);" onclick="SearchByDestination('日内瓦');">日内瓦</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('布鲁赛尔');">布鲁赛尔</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('米兰');">米兰</a>
+				      <a href="javascript:void(0);" onclick="SearchByDestination('布拉格');">布拉格</a>
+		    	</div>
+	    	</div>
+	    	<div class = "search_area">
+	    		<div class = "search_area_title">
+	    		<a href="./classic.htm?rid=4">非洲</a>
+	    		</div>
+		    	<div class = "search_specific">
+		    		  <a href="javascript:void(0);" onclick="SearchByDestination('埃及');">埃及</a>  
+		    	</div>
+	    	</div> 	    
+	  </div>
+	</br>
+	  <div class="hot_theme">
+	    <span class="title">出发日期</span>
+	    <div class="search_month">
+	    	#foreach($m in $mlist)
+
+			<a href="#" onclick = "Search($m)" >
+				#if($m == 1) 一 月 #elseif ($m == 2) 二月  #elseif ($m == 3) 三月 #elseif ($m == 4) 四月 #elseif ($m == 5) 五月
+				#elseif ($m == 6) 六月  #elseif ($m == 7) 七月  #elseif ($m == 8) 八月  #elseif ($m == 9) 九月 #elseif ($m == 10) 十月
+				#elseif ($m == 11) 十一月  #elseif ($m == 12) 十二月 
+				#end
+			</a>
+			#end
+	  	</div>
+	  </div>
+	  <div class="hr_10"><font style="color:white">d</font></div>
+	</div>
+	</div>
+	<!-- Devon King - 2012/09/02 -  头部固定搜索栏结束 -->
+
+	</div>
+
+	<!--导航菜单开始-->
+	<div class = "mainbody">
+    <div class="menu">
+    	<ul>
+        	<li><a href="./index.htm">首页</a></li>
+        	<li><a href="./diy.htm">DIY个性定制</a></li>
+        	<li><a href="./classic.htm">精品线路</a>
+            <ul class="secondNav">
+               <li><a href="http://www.hinotravel.com/zh/classic.htm?rid=1">英格兰 </a></li>
+               <li><a href="http://www.hinotravel.com/zh/classic.htm?rid=2">苏格兰</a></li>
+               <li><a href="http://www.hinotravel.com/zh/classic.htm?rid=3">北爱尔兰</a></li>
+               <li><a href="http://www.hinotravel.com/zh/classic.htm?rid=4">埃及 </a></li>
+               <li><a href="http://www.hinotravel.com/zh/classic.htm?rid=5">欧洲 </a></li>
+               <li><a href="http://www.hinotravel.com/zh/classic.htm?rid=6">威尔士</a></li>
+               <li><a href="http://www.hinotravel.com/zh/classic.htm?rid=7">海诺旅游巴士</a></li>
+            </ul> 
+            </li>
+        	<li><a href="./go_index.htm">驴友团购</a>
+            <ul class="secondNav">
+               <li><a href="http://www.hinotravel.com/zh/go_index.htm#">团购首页</a></li>
+               <li><a href="http://www.hinotravel.com/zh/go_index.htm#">团购记录</a></li>
+               <li><a href="http://www.hinotravel.com/zh/go_dream.htm">团我所爱</a></li>
+       	    </ul> 
+            </li>
+        	<li><a href="./sec_index.htm">秒杀专区</a></li>
+        	<li><a href="./airline.htm">机票</a></li>
+        	<li><a href="./car_service.htm">海诺巴士</a>
+            <ul class="secondNav">
+               <li><a id="show_car1" href="http://www.hinotravel.com/zh/car_service.htm">在线订车 </a></li>
+               <li><a id="show_car2"href="http://www.hinotravel.com/zh/car_service.htm">车型展示</a></li>
+               <li><a id="show_car3"href="http://www.hinotravel.com/zh/car_service.htm">机场接送 </a></li>
+               <li><a id="show_car4"href="http://www.hinotravel.com/zh/car_service.htm">旅行用车</a></li>
+       	    </ul> 
+            </li>
+        	<li><a href="./about.htm">关于海诺</a>
+            <ul class="secondNav">
+               <li><a  href="http://www.hinotravel.com/zh/about.htm">联系我们 </a></li>
+               <li><a  href="http://www.hinotravel.com/zh/payinfo.htm">支付信息</a></li>
+               <li><a  href="http://www.hinotravel.com/zh/hinoservice.htm">特色服务</a></li>
+               <li><a  href="http://www.hinotravel.com/zh/recruit.htm">诚聘英才</a></li>
+       	    </ul> 
+            </li>
+        </ul>
+        <div class="menu_line"></div>
+    </div>
+	<!--导航菜单结束-->
+	<!--网站主体开始-->
+
+	#parse($path)
+	</div>
+ </div>   
+    <!--网站主体结束-->
+    <!--版权-->
+    <!-- 
+	<div  style="width:974px; background-color: white">
+	<div class="foot_menu"><a href="http://www.hinotravel.com/zh/index.htm">海诺旅游网首页</a> | <a href="#">English</a> | <a href="#">刮刮卡</a> | <a href="#">导游风采</a> | <a href="#">会刊</a> | <a href="http://www.hinotravel.com/zh/route_detail.htm?routeid=60">会员专享</a> | <a href="http://www.hinotravel.com/zh/recruit.htm">诚聘英才</a> | <a href="http://www.hinotravel.com/zh/about.htm">关于我们</a> | <a href="http://www.hinotravel.com.cn/">中国海诺旅游网</a> </div>    
+	<div class="blank"></div>
+    <div class="copyright1" style="width: 100%;text-align: center; line-height: 24px;color: #489DA0;">
+   	<center>
+	    <table>
+	    	<tr>
+	    		<td>
+	    			<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+	    		</td>
+	    		
+	    		<td style="padding-left: 30px;color: grey;">
+	    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888
+	    		<br>
+	    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842 
+	    		<script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script>		    		
+	    		</td>
+	    	</tr>
+	    </table>
+	</center>
+    </div>    
+    <div style="height:10px;"></div>
+    <div style="text-align: center">
+		<a href="http://www.vosa.gov.uk/"><img style="background: url(./img/certification.gif) no-repeat; height:56px; width:116px;" src="./img/blank.gif"></img></a>
+		<a href="http://www.caac.gov.cn/L1/L5/L5_6/"><img style="background: url(./img/certification.gif) -131px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+		<a href="http://www.ukinbound.org/"><img style="background: url(./img/certification.gif) -261px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+		<a href="http://www.caa.co.uk/default.aspx?catid=27&pageid=13227"><img style="background: url(./img/certification.gif) -391px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+    </div>
+    <div style="height:130px;"></div>
+    </div>
+     -->
+    <div class="copyright">
+    	<center>
+    	<table>
+    		<tr>
+    			<td style="padding-top: 6px;" class="word">
+    				版权为海诺旅游集团所有，未经允许不得转载或链接 copyright @ 2012 
+	    		</td>
+		    	<td>
+		    		<script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script>
+		    	</td>
+	    	</tr>
+	    </table>
+	    </center>
+    </div>
+    
+    <div class="copyright-diy">
+       	<div class="foot_menu2" style="position:relative;z-index:40;margin-top:-22px"><a href="http://www.hinotravel.com/zh/index.htm">海诺旅游网首页</a> | <a href="#">English</a> | <a href="#">刮刮卡</a> | <a href="#">导游风采</a> | <a href="#">会刊</a> | <a href="http://www.hinotravel.com/zh/route_detail.htm?routeid=60">会员专享</a> | <a href="http://www.hinotravel.com/zh/recruit.htm">诚聘英才</a> | <a href="http://www.hinotravel.com/zh/about.htm">关于我们</a> | <a href="http://www.hinotravel.com.cn/">中国海诺旅游网</a> </div>
+    
+	    <div class="copyright1" style="margin-top:15px; position:relative; z-index:40">
+	    	<center>
+			    <table>
+			    	<tr>
+			    		<td>
+			    			<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+			    		</td>
+			    		
+			    		<td style="padding-left: 30px;color: grey; text-align: left; line-height: 25px;">
+			    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888<br>
+			    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842
+			    		<div style="margin-top:-27px;margin-left:425px; position: absolute;"><script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script></div> 
+			    				    		
+			    		</td>
+			    	</tr>
+			    </table>
+			</center>		
+	    </div> 
+	    
+	    <div style="text-align: center;position:relative;z-index:40; --margin-top:80px">
+			<a href="http://www.vosa.gov.uk/"><img style="background: url(./img/certs_transparent.png) no-repeat; height:56px; width:116px;" src="./img/blank.gif"></img></a>
+			&nbsp;&nbsp;<a href="http://www.iata.org/about/Pages/index.aspx"><img style="background: url(./img/certs_transparent.png) -131px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+			&nbsp;&nbsp;<a href="http://www.ukinbound.org/"><img style="background: url(./img/certs_transparent.png) -261px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+			&nbsp;&nbsp;<a href="http://www.caa.co.uk/default.aspx?catid=27&pageid=13227"><img style="background: url(./img/certs_transparent.png) -391px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+	    </div>
+	    	   
+	    <div class="blank15"></div>
+    </div>
+     
+</body>
+</html>

@@ -1,0 +1,234 @@
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,table,td,th,form,fieldset,img,dl,dt,dd
+{
+margin:0px;
+padding:0px; 
+}
+
+body
+{
+background:url(../img/route_bg.png) repeat-x 50% 0;
+}
+
+.line_xx_top {
+width: 100%;
+background: url(../img/route_slider_bg.gif) no-repeat left center;
+text-align: center;
+}
+
+.menu_line {
+background: url(../images/main_bg.png) repeat-x;
+height: 30px;
+width: 974px;
+position: absolute;
+top: 40px;
+left: 15px;
+}
+
+a{ color:#35679a; text-decoration:none;}
+
+a:hover{ color:#c00; text-decoration:underline;}
+
+img{ border:none;}
+
+li{ list-style:none;}
+
+.cont{ background:#080808; padding:8px; width:535px;  margin:0 auto;}
+
+.main{ }
+
+h2{ font-size:16px; font-family:"黑体"; color:#35679a;; padding:4px 10px; margin:10px 0 16px; font-weight:100; border-bottom:2px solid #ccc;}
+
+h3{ padding-left:50px; font-size:16px; color:#555;}
+
+.testtab{ border:1px solid  #8BB5BB; margin:0 0; width:535px; float: left;}
+
+.tabtag{ line-height:30px; height:30px; background:url(../img/tab_head.jpg) repeat-x;}
+
+.tabtag li{ width:15%; float:left; text-align:center;color:#165865; font-weight:bold;}
+
+.tabtag li.cur{ color:#165865; background:#fff;}
+
+.tabcon{ height:215px; overflow:hidden; background:#fff;}
+
+.tabcon div.f{padding:10px; color:#165865;}
+
+.tabcon li{ line-height:23px;}
+
+pre{ color:#444;}
+
+pre strong{ font-weight:900;}
+
+.set_guard {	
+	width: 125px;
+	height: 19px;
+	font-size: 12px;
+	padding-left: 15px;
+	margin-top: 5px;	
+	line-height: 19px;
+}
+
+.expand_schedule {
+	background: transparent url(../img/double_arrow.gif) -5px -20px no-repeat scroll;
+}
+
+.fold_schedule {
+	background: transparent url(../img/double_arrow.gif) -5px 0 no-repeat scroll;
+}
+
+
+*{outline: none;}
+img {border: 0;}
+.container {
+	width: 869px;
+	height: 300px;
+	padding: 0;
+	margin: 0 auto;
+}
+.folio_block {
+	left: 50%; 
+}
+
+
+/*--Main Container--*/
+.main_view {
+	float: left;
+	position: relative;
+}
+/*--Window/Masking Styles--*/
+.window {
+	height:300px;	
+	width: 869px;
+	overflow: hidden; /*--Hides anything outside of the set width/height--*/
+	position: relative;
+}
+.image_reel {
+	position: absolute;
+	top: 0; left: 0;
+}
+.image_reel img {float: left;}
+
+/*--Paging Styles--*/
+.paging {
+	position: absolute;
+	bottom: 20px; right: -7px;
+	width: 178px; height:47px;
+	z-index: 100; /*--Assures the paging stays on the top layer--*/
+	text-align: center;
+	line-height: 40px;
+	 /*background: url(../img/paging_bg2.png) no-repeat;*/
+	display: none; /*--Hidden by default, will be later shown with jQuery--*/
+}
+.paging a {
+	padding: 5px;
+	text-decoration: none;
+	color: #fff;
+}
+.paging a.active {
+	font-weight: bold; 
+	background: #920000; 
+	border: 1px solid #610000;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.paging a:hover {font-weight: bold;}
+
+.current {
+	
+}
+
+.up_arrow {
+
+}
+
+.zoompic {}
+
+.schedule_days {}
+.schedule_block {}
+.hide_schedule {display: none;}
+.show_schedule {display: block;}
+
+.rt_cgy {
+	color: rgb(241, 101, 1);
+}
+.rt_diy {
+	color: rgb(6, 124, 177);
+}
+.rt_jpxt {
+	color: purple;
+}
+.rt_cztg {
+	color: rgb(113, 160, 3);
+}
+.rt_rmtj {
+	color: rgb(195, 26, 16);
+}
+
+.gdayShadow {
+	text-shadow: 1px -1px 1px #FFF;
+}
+
+.calendar_left_sider {
+	background: url(../img/calendar_left_sider.jpg) no-repeat;
+}
+
+.calendar_left_sider_highlighted {
+	background: url(../img/calendar_left_sider.jpg) 0 -21px no-repeat;
+}
+
+.calendar_right_sider {
+	background: url(../img/calendar_right_sider.jpg) no-repeat;
+}
+
+.calendar_right_sider_highlighted {
+	background: url(../img/calendar_right_sider.jpg) 0 -21px no-repeat;
+}
+
+#calendar_left_sider {
+	width: 10px;
+	height: 21px;
+	position: absolute;
+	margin-left: -11px;
+	margin-top: 2px;
+}
+
+#calendar_right_sider {
+	width: 10px;
+	height: 21px;
+	position: absolute;
+	margin-top: 2px;
+	margin-left: 40px;
+}
+
+.scroll {
+
+}
+
+.tab_scroll {
+	width: 510px;
+	height: 190px;
+	overflow: scroll;
+}
+
+.schedule_scroll {
+    float:left;
+    _display:inline;
+    
+    width:550px;
+    height:170px;
+    overflow: scroll;
+    position:relative;
+    padding-right:10px;
+}
+
+.schedule_date {
+	color:#002751;
+	font-size:14px;
+}
+
+.ct_item .contract_title {
+	width: 100%;
+	float: left;	
+	padding-left: 13px;
+	position: relative;
+}

@@ -1,0 +1,953 @@
+	<link href="css/myaccount.css" rel="stylesheet" type="text/css" />
+	<link href="css/jquery.paymethodbox.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./js/jquery.paymethodbox.js"></script>
+
+    <!--网站主体开始-->
+    <div class="main">
+        <div class="second_menu"></div>
+        <div class="account_header">
+	        <!--会员基本信息开始-->
+			<div class="user_info">
+				中午好 <span class="user_name">#if($cur_customer) $cur_customer.firstname $cur_customer.lastname #end</span>
+			    #if($cur_customer.genIsVip()) <em class="vip">VIP</em> #else <em class="not_vip">VIP</em> #end
+			</div>
+			<div class="jifen">我的积分：$cur_customer.point <a href="./service_center.htm?helpId=18">如何使用？</a></div>
+        </div>
+        <div style="height: 5px; width: 100%;"></div>
+		<div class="user">
+            <div class="user_l">
+            	<ul>
+                	<li>
+                		<!-- <img class="icon_cat_info_expanded" src="./img/blank.gif"></img> -->
+                		<div class="nav_cat"><img class="icon_cat_info_expanded" src="./img/blank.gif"></img>&nbsp;<span id="cat_info">我的信息</span></div>
+                		<div class="nav_con">
+                		<div class="nav_blank"></div>
+                		<ul>                			
+                			<li>
+                				<img class="icon_member_center_100" src="./img/blank.gif"></img><a href="#" class="myac nav-highlight" style="color: #0d81c8;" id="myac_action_8">会员中心</a>
+                			</li>
+                			<li>
+                				<img class="icon_groups_finished" src="./img/blank.gif"></img><a href="#" class="myac" id="myac_action_4">我参加过的团次</a>
+                			</li>
+                			<li>
+                				<img class="icon_groups_booking" src="./img/blank.gif"></img><a href="#" class="myac" id="myac_action_1">我预定的团次</a>
+                			</li>
+                			<li>
+                				<img class="icon_point" src="./img/blank.gif"></img><a href="#" class="myac" id="myac_action_7">填写问卷得积分</a>
+                			</li>
+                		</ul>
+                		<div class="nav_blank"></div>
+                		</div>
+                	</li>
+                	<li>
+                		<div class="nav_cat"><img class="icon_cat_info_expanded" src="./img/blank.gif"></img>&nbsp;<span id="cat_setting">个人设置</span></div>
+                		<div class="nav_con">
+                		<div class="nav_blank"></div>
+                		<ul>
+                			<li>
+                				<img class="icon_basic_info" src="./img/blank.gif"></img><a href="#" class="myac" id="myac_action_2">基本信息设置</a>
+                			</li>
+                			<li>
+                				<img class="icon_password" src="./img/blank.gif"></img><a href="#" class="myac" id="myac_action_3">修改密码</a>
+                			</li>
+                		</ul>
+                		<div class="nav_blank"></div>
+                		</div>
+                	</li>
+                	<li>
+                		<div class="nav_cat"><img class="icon_cat_info_expanded" src="./img/blank.gif"></img>&nbsp;<span id="cat_links">常用链接</span></div>
+                		<div class="nav_con">
+                		<div class="nav_blank"></div>
+                		<ul>
+                			<li>
+                				<img class="icon_contact_us" src="./img/blank.gif"></img><a href="./about.htm" id="myac_contact_us">联系我们</a>
+                			</li>
+                			<li>
+                				<img class="icon_service_center" src="./img/blank.gif"></img><a href="./service_center.htm" id="myac_service_center">服务中心</a>
+                			</li>
+                		</ul>
+                		<div class="nav_blank"></div>
+                		</div>
+                	</li>
+                	<li>
+                		<div class="nav_cat"><img class="icon_cat_info_expanded" src="./img/blank.gif"></img>&nbsp;<span id="cat_sns">海诺社交平台</span></div>
+                		<div class="nav_con">
+						<div class="sns_section">
+	               			<div class="navi_sns"> <!-- 40 / 280 -->        	
+					       		<div id="thumbnail_">
+					       			 <table id="sns_table">
+					       			 	<tr>
+					       			 		<td width="34px"><div id="sns_xinlan" class="sns_tab" style="background: url(./img/myaccount/sns_bg.png) 0 0 no-repeat; height:30px; width:30px;"></div></td>
+					       			 		<td width="34px"><div id="sns_renren" class="sns_tab" style="background: url(./img/myaccount/sns_bg.png) -35px 0 no-repeat; height:30px; width:30px;"></div></td>
+					       			 		<td width="34px"><div id="sns_weixin" class="sns_tab" style="background: url(./img/myaccount/sns_bg.png) -70px 0 no-repeat; height:30px; width:30px;"></div></td>
+					       			 		<td width="34px"><div id="sns_facebook" class="sns_tab" style="background: url(./img/myaccount/sns_bg.png) -105px 0 no-repeat; height:30px; width:30px;"></div></td>
+					       			 		<td width="34px"><div id="sns_qq" class="sns_tab" style="background: url(./img/myaccount/sns_bg.png) -140px 0 no-repeat; height:30px; width:30px;"></div></td>
+					       			 	</tr>
+					       			 	<tr>
+					       			 		<td height="10px;"></td>
+					       			 		<td></td>
+					       			 		<td></td>
+					       			 		<td></td>
+					       			 		<td></td>
+					       			 	</tr>
+					       			 	<tr>
+					       			 		<td colspan="5" height="1px" style="background: url(./img/left_navi_bg.gif) -1680px 0 no-repeat;"></td>
+					       			 	</tr>
+					       			 	<tr>
+					       			 		<td height="9px"><div class="sns_arrow"></div></td>
+					       			 		<td><div class=""></div></td>
+					       			 		<td><div class=""></div></td>
+					       			 		<td><div class=""></div></td>
+					       			 		<td><div class=""></div></td>
+					       			 	</tr>
+					       			 </table>
+					       		</div>
+					       		
+					       		<div style="height:10px; width:100%;"></div>
+					       							       		
+					       		<div id="sns_xinlan_con" class="sns_con">
+					       			 <!--
+					       			<iframe width="350" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=350&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1914684074&verifier=a06243e0&dpc=1"></iframe>
+					        		<iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=350&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=2680429091&verifier=a4fa3086&dpc=1"></iframe><br>
+					        		-->
+					        		<iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=2680429091&verifier=a4fa3086&dpc=1"></iframe>
+					        		<iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1914684074&verifier=a06243e0&dpc=1"></iframe>
+					       		</div>
+					       		<div id="sns_renren_con" class="sns_con" style="display: none;">
+					       			<!-- renren -->
+					       			<iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://widget.renren.com/plugin/followbutton?page_id=601242643&color=0&model=1" style="width:150px;height:40px;" ></iframe>  
+					       		</div>
+					       		<div id="sns_weixin_con" class="sns_con" style="padding-left: 0px; display: none;">
+					       			<!-- weixin -->
+					       			<img alt="hinotravel" src="./img/weixing_2.jpg" width="170px" height="170px">
+					       		</div>
+					       		<div id="sns_facebook_con" class="sns_con" style="display: none;">
+					       			<!-- facebook -->
+					       			<a href="http://facebook.com/hino.hinotravel"><img alt="hinotravel" src="./img/facebook.jpg" width="170px" height="43px"></a>
+					       		</div>
+					       		<div id="sns_qq_con" class="sns_con" style="display: none;">
+					       			<iframe src="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=hinotravel&style=1&t=1358449862102&f=0" frameborder="0" scrolling="auto" width="167px" height="75px" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
+					       		</div>
+					        </div>
+				        </div>
+				        </div>
+                	</li>
+                </ul>
+            </div>
+            <div class="user_c">
+            	<div class="nav_blank"></div>
+               	<div class="nav_blank"></div>
+               	
+				<div class="search-section">
+               		<input type="text" class="search-bar"> <button class="search-btn">立即搜索</button>
+               	</div>
+               	<div class="nav_blank"></div>
+               	<div class="nav_blank"></div>
+               	<div class="nav_blank"></div>
+               	<div class="nav_blank"></div>
+               	
+                <!--会员基本信息结束-->
+                <div id="myac_1" style="display:none">
+	                <div class="user_lm">我预定的团次</div>
+	                <div class="user_content">
+                        <table width="550" border="0" align="center" cellpadding="0" cellspacing="0" class="order_lib" style="border: 1px solid;">
+		                  <tr style="background-color: rgb(185, 185, 185); color: white;">
+		                    <td width="300" class="">&nbsp;&nbsp;出游团次</td>
+		                    <td width="100" class="order_name">游客姓名</td>
+		                    <td width="70" class="order_name">日期</td>
+		                    <td width="80" class="order_name">付款</td>
+		                  </tr>
+		                  #set($idx = 0)
+		                  #foreach ($booking in $mydepart)
+		                  #set($idx = $idx + 1)
+		                  <tr class="show-bookingref" bookingref="$booking.bookingRef" style="background-color: #if($idx % 2 eq 1) #EEEEEE #else #D7D7D7 #end;">
+		                    <td class="" title="$booking.group.route.name">$booking.group.route.name</td>
+		                    <td class="order_name">$booking.firstname $booking.lastname</td>
+		                    <td class="order_name">$booking.group.gen_depart_date()</td>
+		                    <td class="order_name">
+		                    	<em pmval="$booking.booking_method" class="#if($booking.status eq 0) unpay-color immediate_pay #elseif($booking.status eq 1) paying-color #elseif($booking.status eq 2) confirmed-color #end">#if($booking.status eq 0) 立即付款  #else $booking.genStatusStr() #end</em>
+		                    </td>
+		                  </tr>
+		                  #end
+		                  
+		                </table>
+		                <div class="nav_blank10"></div>
+		                <div class="booking-section">
+		                <div>订单号：<span class="text-bookingref"></span></div>
+		                <div class="nav_blank"></div>
+		               	<div class="nav_blank10"></div>
+		                <div>注：</div>
+		                <div><em class="unpay-color">立即付款</em>：系统已经接受了您的团次预定申请。</div>
+		                <div><em class="paying-color">付款中</em>：我们已经收到了您的付款确认申请。</div>
+		                <div><em class="confirmed-color">已确认</em>：我们已经确认收到了您的团次款项。</div>
+		                </div>
+	                </div>
+	                <!-- 
+	                #if(!$cur_customer.genIsVip()) <div class="user_sj"><a href="#" id="upgrade_vip">您目前还不是海诺VIP点击这里升级到<span class="red">VIP</span> </a></div>#end
+	                 -->
+                </div>
+                <div id="myac_2" style="display:none">
+                <div class="user_lm">修改基本信息</div>
+              	<div class="user_content">
+                  <div class="c_password">
+                    
+                      <table align="center" class="user_tb">
+                      	  <tr>
+                            <td align="right">姓(pinyin)：</td>
+                            <td><input type="text" id="res_ln" class="c_input" value="#if($cur_customer.lastname)$cur_customer.lastname#end"/></td>
+                          </tr>
+                          <tr>
+                            <td align="right">名(pinyin)：</td>
+                            <td><input type="text" id="res_fn" class="c_input" value="#if($cur_customer.firstname)$cur_customer.firstname#end"/></td>
+                          </tr>
+                          <tr>
+                            <td align="right">中文名：</td>
+                            <td><input type="text" id="res_cn" class="c_input" value="#if($cur_customer.chinesename)$cur_customer.chinesename#end"/></td>
+                          </tr>
+                          <tr>
+                            <td align="right">大学：</td>
+                            <td><input type="text" id="res_uni" class="c_input" value="#if($cur_customer.university)$cur_customer.university#end"/></td>
+                          </tr>
+                          <tr>
+                            <td align="right">电话：</td>
+                            <td><input type="text" id="res_ph" class="c_input" value="#if($cur_customer.phone)$cur_customer.phone#end" /></td>
+                          </tr>
+                          <tr>
+                            <td align="right">地址：</td>
+                            <td><input type="text" id="res_ad" class="c_input" value="#if($cur_customer.address)$cur_customer.address#end" /></td>
+                          </tr>
+                          <tr>
+                            <td align="right">&nbsp;</td>
+                            <td align="right">                            	
+                            	<input type="submit" id="acc_basic_button" name="button" value="提交" class="c_submit" style="cursor: pointer"/>
+                            </td>
+                          </tr>
+                          <tr>
+                          	<td></td>
+                          	<td align="left">
+                          		<label id="acc_basic_mes" style="display:none;"></label>
+                          	</td>
+                          </tr>
+                       </table>
+                     
+                  </div>      
+              	</div>
+                </div>
+                <div id="myac_3" style="display:none">
+                <div class="user_lm">修改密码</div>
+	              <div class="user_content">
+	                  <div class="c_password">
+	                  
+	                      <table align="center" class="user_tb">
+	                          <tr>
+	                            <td align="right">原始密码：</td>
+	                            <td><input type="text" id="res_passo"  class="c_input"/></td>
+	                          </tr>
+	                          <tr>
+	                            <td align="right">新密码：</td>
+	                            <td><input type="text" id="res_pass1"  class="c_input" /></td>
+	                          </tr>
+	                          <tr>
+	                            <td align="right">确认密码：</td>
+	                            <td><input type="text" id="res_pass2"  class="c_input" /></td>
+	                          </tr>
+	                          <tr>
+	                            <td align="right">&nbsp;</td>
+	                            <td align="right">
+	                            	<input  type="submit" id="acc_pass_button" name="button" value="提交" class="c_submit"  style="cursor: pointer"/>
+	                            </td>
+	                          </tr>
+	                          <tr>
+	                          	<td></td>
+	                          	<td align="left">
+	                          		<label id="acc_pass_mes" style="display:none;"></label>
+	                          	</td>
+	                          </tr>
+	                       </table>
+	                       
+	                  </div>      
+	              </div>
+                </div>
+                <div id="myac_4" style="display:none">
+                <div class="user_lm"><span id="myac_action_6">已经参加过的团次</span></div>
+                <div class="user_content">
+                <table width="550" border="0" align="center" cellpadding="0" cellspacing="0" class="order_lib" style="border: 1px solid;">
+                  <tr style="background-color: rgb(185, 185, 185); color: white;">
+                    <td width="300" class="">&nbsp;&nbsp;出游路线</td>
+                    <td width="100" class="order_name">客户姓名</td>
+                    <td width="70" class="order_name">日期</td>
+                    <td width="80" class="order_name">状态</td>
+                  </tr>
+                  #set($idx = 0)
+                  #foreach ($booking in $mybooking)
+                  #set($idx = $idx + 1)
+                  <tr class="show-bookingref" bookingref="$booking.bookingRef" style="background-color: #if($idx % 2 eq 1) #EEEEEE #else #D7D7D7 #end;">
+                    <td class="" title="$booking.group.route.name">$booking.group.route.name</td>
+                    <td class="order_name">$booking.firstname $booking.lastname</td>
+                    <td class="order_name">$booking.group.gen_depart_date()</td>
+                    <td class="order_name">$booking.genStatusStr()</td>
+                  </tr>
+                  #end
+                </table>
+               	<div class="nav_blank10"></div>
+               	<div class="booking-section">
+               	订单号：<span class="text-bookingref"></span>
+               	</div>
+                </div>
+                </div>
+                <div id="myac_5" style="display:none">
+	                <div class="user_lm"><span id="myac_action_6">我的订单</span><span class="xx" id="myac_action_5">详细信息</span></div>
+	                <div class="user_content">
+	                	<div class="order_intro" id="booking_detail">
+	                    	
+	                    </div>
+	                    <div class="order_intro" id="pay_detail">
+	                    	
+	                    </div>
+	                    <br>
+	                    <div class="order_intro" id="epdq_pay_detail">
+	                    	
+	                    </div>
+	                </div>
+                </div>
+                <div id="myac_7" style="display:none">
+               <div class="user_lm">请选择您要填写问卷的团次 <span style = "color:red">填写完毕立即获得500积分=5€</span></div>
+               <div class="user_content">
+               <div>
+               	<table width="550" border="0" align="center" cellpadding="0" cellspacing="0" class="order_lib" style="border: 1px solid;">
+                  <tr style="background-color: rgb(185, 185, 185); color: white;">
+                    <td width="300" class="">&nbsp;&nbsp;出游路线</td>
+                    <td width="120" class="order_name">客户姓名</td>
+                    <td width="80" class="order_name">日期</td>
+                    <td width="50" class="tianxie"></td>
+                    
+                  </tr>
+                  #set($idx = 0)
+                  #foreach ($group in $surveyList)
+                  #set($idx = $idx + 1)
+                  <tr class="show-bookingref" style="background-color: #if($idx % 2 eq 1) #EEEEEE #else #D7D7D7 #end;">
+                    <td class="" title="$group.route.name">$group.route.name</td>
+                    <td class="order_name">#if($cur_customer) $cur_customer.firstname $cur_customer.lastname #end</td>
+                    <td class="" title="$group.genDepartDateString()">$group.genDepartDateString()</td>
+                    <td ><button class="tianxie" groupid=$group.id>填写</button></td>
+                    
+                  </tr>
+                  #end
+                </table>
+            </div>
+            <div class="nav_blank10"></div>
+			<div class="Questionnair">
+				<TABLE border=0 cellPadding=4 cellSpacing=0 height=79 width=500>
+						<TR>
+							<TD height=10><SPAN
+								style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 15px">
+									&nbsp; &nbsp; 为了今后更好地服务顾客，提高公司的服务质量，请您抽出宝贵的几分钟，填写以下调查问卷。公司将查
+									漏补缺，更好的为您真诚服务！</SPAN>
+							</TD>
+						</TR>
+				</TABLE>
+			</DIV>
+			
+			<!-- <DIV align=left style="background: url(./img/bb.png) 0 0 repeat-y"> -->
+			<DIV id="survey_div" align=left style="display:none;background: url(./img/bb.png) 0 0 repeat-y">
+				<!-- <FORM id=survey action="./myaccount.htm?actionLink=submit_survey" method="post"> -->
+				<FORM id=survey action="./myaccount.htm?actionLink=submit_survey">
+					<INPUT type="hidden" id="group_id" value=""/>
+					<div id="survey_table">
+					<TABLE border=0 height=388 width=517>
+						<TBODY>
+							<TR>
+								<TD height=1 width=517><SPAN 
+									style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>1.
+											您对这次旅行是否满意：</b></span><span><BR> 
+									<INPUT name=r1 type=radio value=5>&nbsp;5-非常满意
+									<INPUT name=r1 type=radio value=4>&nbsp;4-满意 
+									<INPUT name=r1 type=radio value=3>&nbsp;3-一般 
+									<INPUT name=r1 type=radio value=2>&nbsp;2-不满意 
+									<INPUT name=r1 type=radio value=1>&nbsp;1-极不满意
+									</SPAN>
+								</TD>
+							</TR>
+							<TR>
+								<TD height=1 width=517><SPAN
+									style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>2.对于此次旅行服务，您觉得需要改进的地方有：</b><BR>
+										<INPUT name=c2 type=checkbox value=21>巴士舒适度 
+										<INPUT name=c2 type=checkbox value=22>导游讲解 
+										<INPUT name=c2 type=checkbox value=23>住宿条件 
+										<INPUT name=c2 type=checkbox value=24>行程安排 
+										<BR><INPUT name=c2 type=checkbox value=99>其它
+										<textarea name=t2 cols="50" rows="1"></textarea>
+										</SPAN>
+								</TD>
+							</TR>
+							<TR>
+								<TD height=1 width=517><SPAN
+									style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>3.
+											请您给以下几项服务评分：</b><BR> （&nbsp;5-非常满意 &nbsp;4-满意 &nbsp;3-一般 &nbsp;2-不满意 &nbsp;1-极不满意）
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>a.
+														行程安排评分：</b><br>
+												<INPUT name=r3 type=radio value=5>&nbsp;5-非常满意
+												<INPUT name=r3 type=radio value=4>&nbsp;4-满意 
+												<INPUT name=r3 type=radio value=3>&nbsp;3-一般 
+												<INPUT name=r3 type=radio value=2>&nbsp;2-不满意 
+												<INPUT name=r3 type=radio value=1>&nbsp;1-极不满意
+												<BR> 不满意因素：
+												<INPUT name=c3 type=checkbox value=31>时间安排太紧 
+												<INPUT name=c3 type=checkbox value=32>时间安排太松 
+												<INPUT name=c3 type=checkbox value=33>参观景点太少
+												<INPUT name=c3 type=checkbox value=34>参观景点过多 
+												<INPUT name=c3 type=checkbox value=35>购物时间太多 
+												<INPUT name=c3 type=checkbox value=36>购物时间太少 
+												<BR><INPUT name=c3 type=checkbox value=99>其它
+												<textarea name=t3 cols="50" rows="1"></textarea>
+											</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>b.
+														导游评分：</b><br>
+													<INPUT name=r4 type=radio value=5>&nbsp;5-非常满意
+													<INPUT name=r4 type=radio value=4>&nbsp;4-满意 
+													<INPUT name=r4 type=radio value=3>&nbsp;3-一般 
+													<INPUT name=r4 type=radio value=2>&nbsp;2-不满意 
+													<INPUT name=r4 type=radio value=1>&nbsp;1-极不满意
+													<BR> 需要改进之处：
+													<INPUT name=c4 type=checkbox value=41>服务态度 
+													<INPUT name=c4 type=checkbox value=42>讲解内容 
+													<INPUT name=c4 type=checkbox value=43>讲解质量 
+													<INPUT name=c4 type=checkbox value=44>维护客人利益 
+													<BR><INPUT name=c4 type=checkbox value=99>其它
+													<textarea name=t4 cols="50" rows="1"></textarea>
+												</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>c.
+														交通评分：</b><br> 
+													<INPUT name=r5 type=radio value=5>&nbsp;5-非常满意
+													<INPUT name=r5 type=radio value=4>&nbsp;4-满意 
+													<INPUT name=r5 type=radio value=3>&nbsp;3-一般 
+													<INPUT name=r5 type=radio value=2>&nbsp;2-不满意 
+													<INPUT name=r5 type=radio value=1>&nbsp;1-极不满意
+													<BR> 不满意因素：
+													<INPUT name=c5 type=checkbox value=50>座位不舒适
+													<INPUT name=c5 type=checkbox value=51>噪音过大
+													<INPUT name=c5 type=checkbox value=52>空调过热 
+													<INPUT name=c5 type=checkbox value=53>空调过冷 
+													<INPUT name=c5 type=checkbox value=54>音响质量不好 
+													<INPUT name=c5 type=checkbox value=55>车上有异味 
+													<INPUT name=c5 type=checkbox value=56>司机技术不好 
+													<INPUT name=c5 type=checkbox value=57>司机迟到 
+													<INPUT name=c5 type=checkbox value=58>司机迷路 
+													<INPUT name=c5 type=checkbox value=59>司机不友善 
+													<BR><INPUT name=c5 type=checkbox value=99>其它
+													<textarea name=t5 cols="50" rows="1"></textarea>
+												</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 15px"><b>d.
+														住宿评分：</b><br>
+													<INPUT name=r6 type=radio value=5>&nbsp;5-非常满意
+													<INPUT name=r6 type=radio value=4>&nbsp;4-满意 
+													<INPUT name=r6 type=radio value=3>&nbsp;3-一般 
+													<INPUT name=r6 type=radio value=2>&nbsp;2-不满意 
+													<INPUT name=r6 type=radio value=1>&nbsp;1-极不满意 
+													<BR> 不满意因素：
+													<INPUT name=c6 type=checkbox value=61>房间大小 
+													<INPUT name=c6 type=checkbox value=62>房间基础设施 
+													<INPUT name=c6 type=checkbox value=63>房间卫生
+													<INPUT name=c6 type=checkbox value=64>房间位置 
+													<BR><INPUT name=c6 type=checkbox value=99>其它
+													<textarea name=t5 cols="50" rows="1"></textarea>
+												</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>e.
+														整体评分： </b> 
+														<INPUT name=r7 type=radio value=5>&nbsp;5-非常满意
+														<INPUT name=r7 type=radio value=4>&nbsp;4-满意 
+														<INPUT name=r7 type=radio value=3>&nbsp;3-一般 
+														<INPUT name=r7 type=radio value=2>&nbsp;2-不满意 
+														<INPUT name=r7 type=radio value=1>&nbsp;1-极不满意 
+														<BR>您认为我们需要改进的地方是：
+														<textarea name=t7 cols="50" rows="2"></textarea>
+											</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>4.
+														您觉得此次旅行的花费是否合理：</b><BR>
+												<INPUT name=c8 type=checkbox value=81>太贵了
+												<INPUT name=c8 type=checkbox value=82>有点贵 
+												<INPUT name=c8 type=checkbox value=83>还可以
+												<INPUT name=c8 type=checkbox value=84>便宜 
+												<INPUT name=c8 type=checkbox value=85>非常便宜
+											</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>5.
+														您是通过什么方式了解到海诺旅游公司的：</b><BR>
+												<INPUT name=c9 type=checkbox value=91>海报或宣传单
+												<INPUT name=c9 type=checkbox value=92>朋友介绍 
+												<INPUT name=c9 type=checkbox value=93>邮件
+												<INPUT name=c9 type=checkbox value=94>学联及其他社团 
+												<INPUT name=c9 type=checkbox value=95>微信平台 
+												<INPUT name=c9 type=checkbox value=96>网络（微博或QQ等社交媒体） 
+												<BR><INPUT name=c9 type=checkbox value=99>其它
+												<textarea name=t5 cols="50" rows="1"></textarea> 
+											</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>6.
+														在接下来的几个月，您倾向选择的旅游产品是：</b><BR>
+												<INPUT name=c10 type=checkbox value=101>一日游（牛津、剑桥、约克等）
+												<INPUT name=c10 type=checkbox value=102>两日游（温莎巴斯、卡迪夫斯旺西等）
+												<INPUT name=c10 type=checkbox value=103>多日游（海滨团、苏格兰、北爱等）
+												<INPUT name=c10 type=checkbox value=104>境外游（欧洲、埃及等）
+											</SPAN>
+											</TD>
+										</TR>
+										<TR>
+											<TD height=35 width=517><SPAN
+												style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>7.
+														在接下来几个月，您想要旅游的地方是：</b><BR>
+													<textarea name=t11 cols="50" rows="2"></textarea>
+													<TR>
+														<TD height=35 width=517><SPAN
+															style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px"><b>8.
+																	您对海诺旅游的宝贵建议：</b><BR>
+																（如果您的建议被采纳，公司将为您免费提供<font color="red">【本年度内一日游】</font>旅游一趟） 
+														<textarea name=t12 cols="50" rows="2"></textarea>
+														</SPAN>
+														</TD>
+													</TR>
+													<TR>
+													<TR>
+														<BR>
+														<TD>感谢您的支持与配合，祝您工作顺利，学业有成！</TD>
+														<BR>
+													</TR>
+													<TD align=middle height=25 width=517>
+													<button class="commit_survey">提交问卷</button>
+													</TD>
+										</TR>
+						</TBODY>
+					</TABLE>
+					</div>
+				</FORM>
+			</DIV>
+               </div>
+              </div>
+              
+                
+                <div id="myac_8" style="display: block;">	                
+	                <div class="user_content">	                	
+	                	<div class="recommend">经理推荐 <img class="icon_recommend" src="./img/blank.gif"></img></div>
+	                	<div class="nav_blank10"></div>
+	                	<div class="recommend-groups">
+	                		<table>
+	                			<tr height="1px">
+	                				<td width="178px"></td>
+	                				<td width="17px"></td>
+	                				<td width="178px"></td>
+	                				<td width="17px"></td>
+	                				<td width="178px"></td>
+	                			</tr>
+	                			#set($idx = 0)
+	                			
+	                			#if(!$cur_customer.genIsVip())
+		                			#if($vipGroup)
+		                			<tr>
+			                			<td align="center" valign="top">	                        			
+		                        			<div class="pic">
+												<a href="route_detail.htm?routeid=$vipGroup.route.id">
+													<img width="168px" height="101px" src="../$pathpre$vipGroup.route.thumbUrl" />
+												</a>
+											</div>
+											<div class="title" title="$group.name">您还不在VIP赶快加入我们吧</div>
+											<div class="price">
+												£$vipGroup.price
+											</div>
+		                        		</td>
+		                        		
+		                        		<td></td>
+		                        	#set($idx = $idx + 1)
+		                        	#end
+	                        	#end
+		                        		
+	                			#foreach($group in $recomandlist)
+		                           	#if($idx % 3 eq 0)
+		                           		<tr>
+		                        	#end
+		                        	
+	                        		<td align="center" valign="top">	                        			
+	                        			<div class="pic">
+											<a href="route_detail.htm?routeid=$group.route.id">
+												<img width="168px" height="101px" src="../$pathpre$group.route.thumbUrl" />
+											</a>
+										</div>
+										<div class="title" title="$group.name">$group.genMobileGroupName()</div>
+										<div class="price">
+											#if($group.group_price > 0)
+												#if($group.group_vip_price > 0)
+													VIP £<em class="vip">$group.group_vip_price</em> | 
+												#end
+												£$group.group_price
+											#else
+												#if($group.vip_price > 0)
+													VIP £<em class="vip">$group.vip_price |</em> 
+												#end
+												£$group.price
+											#end
+										</div>
+	                        		</td>
+	                        		
+	                        		#if($idx % 3 eq 0 || $idx % 3 eq 1)
+		                           		<td></td>
+		                        	#end
+	
+		                        	#set($idx = $idx + 1)
+	
+		                        	#if($idx % 3 eq 0)
+		                           		</tr>
+		                        	#end
+		                        	
+		                        	#if($idx / 3 eq 2)
+		                           		#break
+		                        	#end
+	                        	#end
+	                        	
+	                        	#if($idx % 3 gt 0 && $idx % 3 <= 1)
+	                           		<td></td><td></td>
+	                        	#end
+	                        	
+	                        	#if($idx % 3 gt 0 && $idx % 3 <= 2)
+	                           		<td></td></tr>
+	                        	#end
+	                        </table>
+	                	</div>
+	                	
+	                	<div class="nav_blank"></div>
+	                	<div class="nav_blank"></div>
+	                	
+	                	<div class="top10-groups">
+	                		<div class="title">
+	                			最热团次 <em style="color: red;">TOP 10</em>
+	                		</div>
+	                		<div class="group-list">
+	                			<ul>
+	                				#set($idx = 0)
+	                				#foreach($group in $top10list)
+	                				<li><div class="g-name"><a href="./route_detail.htm?routeid=$group.route.id">$group.name</a></div>
+	                				<div class="g-price">
+	                				#if($group.group_price > 0)
+										#if($group.group_vip_price > 0)
+											VIP £<em class="vip">$group.group_vip_price</em> | 
+										#end
+										£$group.group_price
+									#else
+										#if($group.vip_price > 0)
+											VIP £<em class="vip">$group.vip_price</em> | 
+										#end
+										£$group.price
+									#end
+	                				</div>
+	                				</li>
+	                				#set($idx = $idx + 1)
+	                				
+	                				#if($idx / 10 eq 1)
+		                           		#break
+		                        	#end
+	                				#end	                				
+	                			</ul>
+	                		</div>
+	                	</div>
+	                </div>
+                </div>
+            </div>
+            
+            <div class="user_r">
+            	<div class="user-name">
+            		<img class="icon_username" src="./img/blank.gif"></img> #if($cur_customer) $cur_customer.firstname $cur_customer.lastname #end
+            		<img class="icon_username_arrow logout_button" src="./img/blank.gif"></img>
+            	</div>
+            	            	
+            	<!--最新团购开始-->
+                <div class="latest-groups">
+                    <div class="cat-title nav_cat"><img class="icon_cat_info_expanded" src="./img/blank.gif"></img>&nbsp;<span>最新团购</span></div>
+                    <div class="nav_con">
+                    <div class="list">
+                        <ul>
+                        #set($idx = 0)
+                        #foreach($group in $golist)
+                            <li>
+	                            <div class="pic">
+									<a href="./go_view.htm?gid=$group.id">
+										<img width="160px" height="96px" src="../$pathpre$group.route.thumbUrl" />
+									</a>
+								</div>
+								<div class="title" title="$group.name">$group.genMobileGroupName()</div>
+                            </li>
+                         #set($idx = $idx + 1)
+                         
+                         #if($idx >= 4)
+                         	#break
+                         #end
+                         #end
+                            
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            	<!--最新团购结束-->
+            	
+            	<!--日历开始-->
+                <div class="calendar">
+                	<a name="cal"></a>
+                    <div class="cat-title nav_cat"><img class="icon_cat_info_expanded" src="./img/blank.gif"></img>&nbsp;团购日历</div>
+                    <div class="nav_con">
+                    <div class="calendar-panel">
+                        $gcDiv
+                    </div>
+                    </div>
+                </div>
+            	<!--日历结束-->
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="blank15"></div>
+    </div>
+    <script>
+		jQuery(document).ready(function() {
+		
+			$(".top10-groups .group-list li .g-name a").mouseover(function(event){
+				$(".top10-groups .group-list li").removeClass("top-highlight");
+				$(".top10-groups .group-list li .arrow").remove();
+				$(this).parent().parent().addClass("top-highlight");
+				$(this).parent().prepend("<div class='arrow'>&gt;</div>");
+			});
+			
+			$(".top10-groups .group-list li .g-name a").mouseout(function(event){
+				$(".top10-groups .group-list li").removeClass("top-highlight");
+				$(".top10-groups .group-list li .arrow").remove();
+			});
+		
+			$(".nav_cat").click(function(event){
+				$(this).siblings(".nav_con").toggle();
+				
+				if($(this).siblings(".nav_con").is(":visible")){
+					$(this).find("img").removeClass("icon_cat_info_folded");
+					$(this).find("img").addClass("icon_cat_info_expanded");
+				} else {
+					$(this).find("img").removeClass("icon_cat_info_expanded");
+					$(this).find("img").addClass("icon_cat_info_folded");
+				}
+			});
+		
+			$(".sns_tab").mouseover(function(event) {
+				var sid = $(this).attr("id");
+				var tr = $(this).parent().parent();
+				var col = tr.children().index($(this).parent());
+
+				$("#sns_table tr:eq(3) td div")
+						.removeClass("sns_arrow");
+				//alert(1);
+				$("#sns_table tr:eq(3) td:eq(" + col + ") div")
+						.addClass("sns_arrow");
+				// alert(2);
+
+				$(".sns_con").each(function(i) {
+					$(this).css({
+						"display" : "none"
+					});
+				});
+
+				$("#" + sid + "_con").css({
+					"display" : "block"
+				});
+			});
+			
+		    jQuery("#acc_basic_button").click(function(event){
+	
+		    	var fn = jQuery.trim(jQuery("#res_fn").val());
+						
+				if(fn=="")
+				{
+					alert("First Name should not be empty!");
+					return; 
+				}
+					
+				var ln = jQuery.trim(jQuery("#res_ln").val());
+				if(ln=="")
+				{
+					alert("Last Name should not be empty");
+					return; 
+				}
+				var cn = jQuery.trim(jQuery("#res_cn").val());
+						
+				var uni = jQuery.trim(jQuery("#res_uni").val());
+				var ad = jQuery.trim(jQuery("#res_ad").val());
+				var phone = jQuery.trim(jQuery("#res_ph").val());	
+			    
+			    jQuery.ajax({
+	                url:"./myaccount.htm",
+	                data:{"acc_basic":1, "fn":fn, "ln":ln, "cn":cn, "uni":uni , "ad":ad,"ph":phone},
+	                cache:false, 
+	                async:false,
+	                type:"POST",
+	                dataType:"json",
+	                success:function (result){
+						jQuery("#acc_basic_mes").css("display", "block");
+						
+	                	if(result.result == 1) {
+	                	
+		                	jQuery(".user_name").html(" " + fn + " " + ln + " ");
+		                    jQuery("#acc_basic_mes").html("修改成功！");
+		                    jQuery("#acc_basic_mes").css("color", "green");
+	                    } else if(result.result == 0){
+	                    
+		                    jQuery("#acc_basic_mes").css("color", "red");
+	                    	jQuery("#acc_basic_mes").html("修改失败！请正确填写信息后，重试！");
+	                    } else {	     
+	                                   	
+		                    jQuery("#acc_basic_mes").css("color", "red");
+	                    	jQuery("#acc_basic_mes").html("Unkown operation!");
+	                    }
+	                    
+	                    //setTimeout("document.getElementById('acc_basic_mes').style.display='none'", 3000 );
+	                }
+            	});
+		    });
+		    
+		    
+		    jQuery("#acc_pass_button").click(function(event){
+	
+		    	var po = jQuery.trim(jQuery("#res_passo").val());
+				if(po == "")
+				{
+					alert("原始密码不能为空！");
+					return; 
+				}
+					
+				var p1 = jQuery.trim(jQuery("#res_pass1").val());
+				if(p1 == "")
+				{
+					alert("新密码不能为空！");
+					return; 
+				}
+				
+				var p2 = jQuery.trim(jQuery("#res_pass2").val());
+				if(p2 == "")
+				{
+					alert("确认密码不能为空！");
+					return; 
+				}
+				
+				if(p1 != p2) {
+					alert("新密码 与 确认密码 必须一致！");
+					return; 
+				}
+				
+			    jQuery.ajax({
+	                url:"./myaccount.htm",
+	                data:{"acc_pass":1, "po":po, "p1":p1, "p2":p2},
+	                cache:false,
+	                async:false,
+	                type:"POST",
+	                dataType:"json",
+	                success:function (result){
+						jQuery("#acc_pass_mes").css("display", "block");
+						
+	                	if(result.result == 1) {
+	                		
+		                    jQuery("#acc_pass_mes").html("修改成功！");
+		                    jQuery("#acc_pass_mes").css("color", "green");
+	                    } else if(result.result == 0){
+	                    	
+		                    jQuery("#acc_pass_mes").css("color", "red");
+	                    	jQuery("#acc_pass_mes").html("修改失败！请正确填写信息后，重试！");
+	                    		                    	
+	                    } else {
+							
+		                    jQuery("#acc_pass_mes").css("color", "red");
+	                    	jQuery("#acc_pass_mes").html("Unkown operation!");
+	                    }
+	                    
+	                    //setTimeout("document.getElementById('acc_pass_mes').style.display='none'", 3000 );
+	                    setTimeout("ClearPsdForm()", 3000 ); 
+	                }
+            	});
+		    });
+		});
+		
+		function ClearPsdForm () {
+	    	document.getElementById("res_passo").value = "";
+    		document.getElementById("res_pass1").value = "";
+	    	document.getElementById("res_pass2").value = "";
+	    	
+	    	document.getElementById("res_passo").focus();
+	    }
+	</script>
+		
+    <!-- paymethod == 2 -->	
+    <form id="frmPaypal" name= "frmPaypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+		<input type="hidden" name="cmd" value="_xclick">
+		<input type="hidden" name="business" value="justin@hinotravel.com">
+		<input type="hidden" name="lc" value="GB">
+		<input type="hidden" name="item_name" value="">
+		<input type="hidden" name="item_number" value="">
+		<input type="hidden" name="amount" value="">
+		<input type="hidden" name="currency_code" value="GBP">
+		<input type="hidden" name=button_subtype" value="services">
+		<input type="hidden" name="no_note" value="0">
+		<input type="hidden" name="cn" value="Add special instructions to the seller">
+		<input type="hidden" name=no_shipping" value="1">
+		<input type="hidden" name="rm" value="1">
+		<input type="hidden" name="return" value="http://www.hinotravel.com">
+		<input type="hidden" name=cancel_return" value="http://www.hinotravel.com">
+		<input type="hidden" name="shipping" value="0.00">
+		<input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
+	</form>			
+	
+	<!-- paymethod == 4 -->						
+	<form name="frmEpdq" id="frmEpdq" action="https://payments.epdq.co.uk/ncol/prod/orderstandard.asp" method="post" target="_blank">
+		<input type="hidden" value="epdq1010898" name="PSPID">
+		<input type="hidden" value="" name="ORDERID">
+		<input type="hidden" value="" name="AMOUNT">
+		<input type="hidden" value="GBP" name="CURRENCY">
+		<input type="hidden" value="en_US" name="LANGUAGE">
+		<input type="hidden" value="" name="CN">
+		<input type="hidden" value="" name="EMAIL">
+		<input type="hidden" value="" name="OWNERZIP">
+		<input type="hidden" value="" name="OWNERADDRESS">
+		<input type="hidden" value="" name="OWNERCTY">
+		<input type="hidden" value="" name="OWNERTOWN">
+		<input type="hidden" value="" name="OWNERTELNO">
+		<input type="hidden" value="" name="SHASIGN">
+		<input type="hidden" value="" name="TITLE">
+		<input type="hidden" value="" name="BGCOLOR">
+		<input type="hidden" value="" name="TXTCOLOR">
+		<input type="hidden" value="" name="TBLBGCOLOR">
+		<input type="hidden" value="" name="TBLTXTCOLOR">
+		<input type="hidden" value="" name="BUTTONBGCOLOR">
+		<input type="hidden" value="" name="BUTTONTXTCOLOR">
+		<input type="hidden" value="" name="LOGO">
+		<input type="hidden" value="" name="FONTTYPE">
+		<input type="hidden" value="http://www.hinotravel.com" name="ACCEPTURL">
+		<input type="hidden" value="http://www.hinotravel.com" name="DECLINEURL">
+		<input type="hidden" value="http://www.hinotravel.com" name="EXCEPTIONURL">
+		<input type="hidden" value="http://www.hinotravel.com" name="CANCELURL">
+	</form>

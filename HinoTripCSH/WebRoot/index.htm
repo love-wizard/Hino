@@ -1,0 +1,64 @@
+			
+<!-- 图片轮转 -->
+<div class="con_top"></div>			
+<div class="prev_box_header">
+	<div id="slider_bg">
+		<div class="waveshow">
+			<img src="images/album01.jpg" alt="" title="album01" />
+			<img src="images/album02.jpg" alt="" title="album02" />
+			<img src="images/album03.jpg" alt="" title="album03" />
+		</div> <!-- waveshow -->
+	</div> <!-- slider_bg -->				
+</div>
+<div class="con_bot"></div>			
+<div class="clear_con"></div>
+
+
+<!-- 热门线路、登录 -->
+<div class="con_top"></div>
+<div id="index_box">
+<p><MARQUEE scrollamount=2>暂无公告</MARQUEE></P>
+	$index_group_list_panel
+
+	<div class="index_col3">
+	#if($cur_customer)
+	<h3>欢迎回来, $cur_customer.lastname $cur_customer.firstname</h3>
+		
+		您目前有积分：$cur_customer.point<br />
+		#if(!$notVip)VIP到期：$vipexpdate#end
+		<br /><br />
+		账户管理：<br />
+		<a href="account_setting.htm?type=basic" class="ls_style">修改基本信息</a><br />
+		<a href="account_setting.htm?type=psd" class="ls_style">修改密码</a><br />
+		<a href="account_setting.htm?type=mybooking" class="ls_style">我的订单</a><br />
+		#if($notVip)<a href="vip_order.htm" class="ls_style">升级成为VIP(£10)</a><br />#end
+		$logoutLink
+	#else
+	<h3>会员登录</h3>
+		#if($error)
+			$error
+		#end
+		$form
+		<a href="./reset_password.htm" class="ls_style">忘记密码</a>
+		<a href="./registration.htm" class="ls_style">免费注册</a>
+	#end
+	</div>
+	<div style="clear: both"></div>
+	<!--  -->
+</div><!-- index_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>
+             
+<!-- 热门线路 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 缩略图九宫格 -->
+	<h3>热门线路</h3>
+	
+	$index_route_list_panel
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

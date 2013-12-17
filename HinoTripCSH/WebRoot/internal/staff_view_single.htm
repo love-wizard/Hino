@@ -1,0 +1,81 @@
+<h2>员工详细消息</h2>
+#if($staffno)
+<b>员工号：</b> $staffno
+#end
+<br/>
+
+#if($dob)
+<b>生日：</b>$dob
+#end
+<br/>
+
+#if($email)
+<b>电子邮箱：</b>$email
+#end
+<br/>
+
+#if($fullname)
+<b>全名：</b>$fullname
+#end
+<br/>
+
+#if($chinesename)
+<b>中文名：</b>$chinesename
+#end
+<br/>
+
+#if($gender)
+<b>性别：</b>$gender
+#end
+<br/>
+
+#if($phone)
+<b>联系电话：</b>$phone
+#end
+<br/>
+
+#if($address)
+<b>联系地址：</b>$address
+#end
+<br/>
+
+#if($city)
+<b>城市：</b>$city
+#end
+<br/>
+
+#if($postcode)
+<b>邮编：</b>$postcode
+#end
+<br/>
+
+#if($create_time)
+<b>创建时间：</b>$create_time
+#end
+<br/>
+
+#if($last_login_time)
+<b>上次登录时间：</b>$last_login_time
+#end
+<br/>
+
+<div id="status_div">
+#if($status)
+<b>状态：</b>$status
+#end
+</div>	
+<br/>
+
+<b>头像：</b><br />
+$avatar<br/><br />
+
+
+$changestatus<br/>
+$resetpriviledge<br/>
+	
+$staffid<br/>
+$msg<br/>
+<br />
+
+<div class="clickform">$pri_change_form</div>
+<div class="clear"></div>

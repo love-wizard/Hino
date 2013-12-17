@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* index 首页样式 */
+/*网站风格背景*/
+body
+{
+background:url(bg.jpg) repeat-x #ba0a42;
+}
+/*背景切换*/
+/*body
+{
+background:url(bg2.jpg) repeat-x #ba0a42;
+}*/
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:262px;
+background:url(index_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+
+/*导航菜单 begin*/
+.second_menu{position:absolute; top:0px; right:100px;}
+.second_menu a{ color:#a95c00}
+
+/*网站主体  begin*/
+.main
+{
+background:#fff;
+}
+.m_l{ width:260px; padding-left:6px;}
+.m_r{ width:678px; padding-right:10px;}
+
+/*网站公告*/
+.notice{ width:100%; background:url(notice_t.jpg) no-repeat; height:66px; border-bottom:1px solid #e1cdb3; padding-top:30px; overflow:hidden;}
+.notice .lib{ padding:10px;}
+#scrollDiv{overflow:hidden;height:35px;}
+#scrollDiv li{height:45px;padding-left:10px;}
+
+/*最新团次*/
+.newteam{ width:100%; background:url(team_t.jpg) no-repeat; padding-top:94px; position:relative; height:132px; overflow:hidden;}
+.newteam .more{ position:absolute; top:70px; right:5px; width:34px; height:12px; overflow:hidden;}
+.newteam .more a{width:34px; height:12px; display:blockl; padding-left:300px;}
+.newteam .lib{ padding:0px; width:253px; margin:0 auto;}
+.newteam .lib li{ width:100%; background:url(team_line.jpg) no-repeat; line-height:30px; height:30px;}
+.newteam .lib li a{ padding-left:15px;}
+
+/*新浪微博*/
+.webo{ width:100%; background:url(webo_t.jpg) no-repeat; padding-top:50px;}
+.webo .user{ width:240px; margin:0 4px 0 17px; height:70px;}
+.webo .user .textinfo{margin-left:10px; display:inline;}
+.webo .user .textinfo p{padding-top:6px;}
+.webo .description{width:240px; margin:0 4px 0 17px; background:url(line_up.jpg) no-repeat; padding-top:15px; line-height:22px;}
+.webo .down{ background:url(line_down.jpg) no-repeat; width:240px; margin:0 4px 0 17px; height:10px; margin-top:5px;}
+
+/*焦点图片*/
+.focus2{ width:666px; background:url(focus_bg.jpg) no-repeat; height:219px; padding:6px;}
+
+.nivoSlider {
+	POSITION: relative
+}
+.nivoSlider IMG {
+	POSITION: absolute; TOP: 0px; LEFT: 0px
+}
+.nivoSlider A.nivo-imageLink {
+	Z-INDEX: 60; BORDER-BOTTOM: 0px; POSITION: absolute; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; DISPLAY: none; HEIGHT: 100%; BORDER-TOP: 0px; TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px; LEFT: 0px
+}
+.nivo-slice {
+	Z-INDEX: 50; POSITION: absolute; DISPLAY: block; HEIGHT: 100%
+}
+.nivo-caption {
+	Z-INDEX: 89; POSITION: absolute; PADDING-LEFT: 10px; WIDTH: 100%; BOTTOM: 0px; COLOR: #000; FONT-WEIGHT: bold; LEFT: 0px
+}
+.nivo-caption P {
+	PADDING-BOTTOM: 10px; TEXT-INDENT: -9999%; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 10px
+}
+.nivo-directionNav A {
+	Z-INDEX: 99; POSITION: absolute; TEXT-INDENT: -9999%; WIDTH: 45px; HEIGHT: 60px; TOP: 41%; CURSOR: pointer
+}
+.nivo-prevNav {
+	BACKGROUND: url(but_left.png) no-repeat; LEFT: 20px
+}
+.nivo-nextNav {
+	BACKGROUND: url(but_right.png) no-repeat; RIGHT: 0px
+}
+.nivo-controlNav {
+	POSITION: absolute; BOTTOM: -20px; RIGHT: 0px
+}
+.nivo-controlNav A {
+	Z-INDEX: 99; POSITION: relative; TEXT-INDENT: -9999%; WIDTH: 14px; DISPLAY: block; BACKGROUND: url(../images/scroll_small.png) no-repeat right top; FLOAT: left; HEIGHT: 14px; CURSOR: pointer
+}
+.nivo-controlNav A.active {
+	MARGIN-TOP: -1px; BACKGROUND-POSITION: left top
+}
+
+/*团购热门线路*/
+/* 
+.group {margin-top:6px; padding-top:31px;}
+.group_box{ border:2px solid #f8a645; height:262px; border-top:none; padding-top:50px; }
+.group_box .img_list{ width:520px; height:262px; border-right:1px solid #CCCCCC; overflow:hidden;}
+.Item{width:255px; height:115px; float:left; position:relative; overflow:hidden; margin:5px 9px 20px 0px;}
+.Item .pic{ width:122px; height:108px; background:url(pic_bg.jpg) no-repeat; padding:3px 0px 0px 3px;}
+.Item .pic img{ width:109px; height:105px;}
+.Item .text{ margin-left:8px; display:inline; font-family:"微软雅黑","黑体","宋体"; font-size:14px; color:#585a64; line-height:20px;}
+.Item .text .tit a{ color:#ffa200; font-weight:bold; font-size:15px; }
+.group_box .text_list{ width:135px; font-size:14px; line-height:22px; color:#848c89;}
+.group_box .text_list a{ color:#848c89;} */
+
+/*滚动告示*/
+.main .info{ background:url(info_bg.jpg) no-repeat; height:26px; line-height:26px; border:#dddddd solid; border-width:1px 0px; width:900px; margin:0px 0px 0px 15px; padding-left:50px;}
+
+/*热门线路*/
+.hot_line{ background:url(hot_line_t.jpg) no-repeat; padding-top:50px; width:910px; margin:0px 0px 0px 15px; padding-left:40px;}
+.lineItem {width:288px; height:360px; float:left; margin:0px 10px 0px 0px; display:inline; position:relative;}
+.lineItem a{width:288px; height:360px; display:block; background:url(line_bg.png) no-repeat;}
+.lineItem a:hover{background:url(line_bg.png) no-repeat 0px -360px; text-decoration:none;}
+.lineItem .pic{ width:288px; height:180px;}
+.lineItem .pic img{ width:288px; height:180px;}
+.lineItem .title{ font-size:18px; font-weight:bold; top:10px; left:10px; position:absolute;}
+.lineItem .detail{ padding:10px 15px;}
+
+/*网站地图*/
+.map{ background:url(map.jpg) no-repeat; padding-top:23px;  width:870px; margin:0px 0px 0px 15px; padding-left:80px; border-bottom:1px solid #c9cccb; padding-bottom:10px;}
+.map dl{ width:145px; float:left; font-size:14px; font-weight:bold; letter-spacing:1px;}
+.map dt{ height:40px; line-height:40px; }
+.map dt a{color:#5a0000; text-decoration:none;}
+.map dd{ height:24px; line-height:24px;}
+.map dd a{ color:#7b3737}
+
+
+/*版权*/
+.copyright{ width:100%; height:32px; line-height:32px; background:#c9cccb; text-align:center}

@@ -1,0 +1,56 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Update credit
+	jQuery(".uploadGuide1Button").click(function(event){
+		
+		// Set upload form hidden field value as group id
+		var targetGroupIdObj = jQuery(this).parent().prev().prev().prev().prev().prev().prev().prev().prev();
+		//alert(targetGroupIdObj.html());
+		jQuery('#targetGroupId').attr("value", targetGroupIdObj.html());
+		jQuery('#targetGuideType').attr("value", "guide1");
+		
+		// Show upload form
+		jQuery.facebox({ div: '#upload_container' });
+		
+		// Prevent the default browser behavior of navigating to the link
+		return false;
+	});
+	
+	// Update credit
+	jQuery(".uploadGuide2Button").click(function(event){
+		
+		// Set upload form hidden field value as group id
+		var targetGroupIdObj = jQuery(this).parent().prev().prev().prev().prev().prev().prev().prev().prev();
+		//alert(targetGroupIdObj.html());
+		jQuery('#targetGroupId').attr("value", targetGroupIdObj.html());
+		jQuery('#targetGuideType').attr("value", "guide2");
+		
+		// Show upload form
+		jQuery.facebox({ div: '#upload_container' });
+		
+		// Prevent the default browser behavior of navigating to the link
+		return false;
+	});
+	
+});
+
+</script>
+
+<h2> 已出团团记录</h2>
+
+	$grouptable
+	<div class="clear"></div>
+
+<br />
+<hr />
+<br />
+
+<!-- Upload Facebox -->
+<div id="upload_container" style="display: none">
+	<h3>上传导游反馈</h3>
+	<div class="clickform">$groupform</div>
+</div>

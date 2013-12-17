@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>海诺旅游电子出票</title>
+</head>
+
+<body>
+<div style="margin: 0; padding: 0;">
+<img src="./internal/images/ticket.png" />
+</div>
+<div style="margin: -350px 0 50px 0; padding: 0;">
+<table width="800" height="300" border="0">
+  <tr>
+    <td height="65" colspan="4" align="center">$title</td>
+  </tr>
+  <tr>
+    <td width="15%">姓名：</td>
+    <td width="35%">$name</td>
+    <td width="15%">订单号：</td>
+    <td width="35%">$ref</td>
+  </tr>
+  <tr>
+    <td>性别：</td>
+    <td>$gender</td>
+    <td>标准价格：</td>
+    <td>$price</td>
+  </tr>
+  <tr>
+    <td>邮箱：</td>
+    <td>$email</td>
+    <td>接车信息：</td>
+    <td>$pickup</td>
+  </tr>
+  <tr>
+    <td>手机：</td>
+    <td>$phone</td>
+    <td>住宿信息：</td>
+    <td>$room</td>
+  </tr>
+  <tr>
+    <td height="150" colspan="4"> 备注：<br />
+      -票价未含保险，请在出团前购买必要的旅行保险。<br />
+      -请确保上述信息的准确性， 如有变动，请联系我们。<br />
+      -接车时间为参考时间，请以出团前导游的短信为准。<br /> 
+    -更多信息请查看：www.hinotravel.com</td>
+  </tr>
+</table>
+</div>
+<div><input type="button" value="打印" onclick="window.print();"/></div>
+</body>
+</html>

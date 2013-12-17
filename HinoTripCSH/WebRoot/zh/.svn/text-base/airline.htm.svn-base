@@ -1,0 +1,1302 @@
+<!-- 脚本 -->
+<script type="text/javascript" src="./js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="./js/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="./js/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="./js/jquery.slide.js"></script>
+<script type="text/javascript" src="./js/jquery.scroll.js"></script>
+<script type="text/javascript" src="./js/jquery.confirm.js"></script>
+<link href="css/jquery.scrollbars.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.confirm.css" rel="stylesheet" type="text/css" />
+<link href="css/1.10.3/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/jquery.scrollbars.js"></script>
+
+<style type="text/css">
+
+.datepicker {
+	height:25px;
+	width: 157px;
+	border: 1px solid #b4b4b4;
+}
+
+.ui-widget {
+	font-size: 0.9em;
+}
+
+.ui-widget-header .ui-icon {
+    background-image: url("./img/jquery/ui-icons_222222_256x240.png");
+}
+
+/* For Jquery.Slide Plugin Start */
+.slide-box {
+	width: 700px; 
+	height: 230px; 
+	overflow:hidden; 
+	position:relative;
+}
+
+.slide-list { 
+	position:relative;
+}
+
+.slide-list li { 
+	float:left;
+	width:700px; 
+	height:230px; 
+	overflow:hidden; 
+}
+
+/* .slide-list li a { 
+	display:block;
+	float:left;
+} */
+
+#btn-bg { 
+	width: 100%; 
+	height: 50px; 
+	line-height: 50px; 
+	position:absolute; 
+	left:0; 
+	bottom:0; 
+	/* background:rgba(0, 0, 0, 0.6)!important; 
+	background:#000; 
+	filter:Alpha(opacity='60'); 
+	font-size: 18px; 
+	color: #f1f1f1; */
+	text-indent: 10px;
+}
+
+#btn { 
+	position:absolute; 
+	bottom:10px; 
+	right: 10px; 
+}
+
+#btn span { 
+	display: block; 
+	padding:3px 8px; 
+	margin-left: 10px; 
+	border:1px solid #f6f6f6; 
+	background:#62b4e4; 
+	color: #fff; 
+	cursor:pointer; 
+	float:left;
+}
+
+#btn span.current { 
+	background:#f06e06;
+}
+
+#prev, #next { 
+	display: block; 
+	width: 45px; 
+	height: 100px; 
+	cursor: pointer; 
+	position:absolute; 
+	top: 75px; 
+	background: url(images/silder_btn.gif) no-repeat; 
+	opacity: 0.6;
+}
+
+#prev { 
+	left: 0; 
+	background-position: left 0;
+}
+
+#next { 
+	right: 0; 
+	background-position: right 0;
+}
+
+p { 
+	margin: 20px 0; 
+	font-size: 16px; 
+	font-weight: bold;
+}
+/* For Jquery.Slide Plugin End */
+
+fieldset { padding:0; border:0; margin-top:25px; }
+</style>
+
+<div class="main">
+	<div class="layout_left">
+	    <div class="slider">
+	    	<div class="slide-box" id="airline_slider">
+			    <ul class="slide-list">
+			        <li><a href="javascript:;"><img src="../internal/resource/airline_image01.jpg"/></a></li>
+			        <li><a href="javascript:;"><img src="../internal/resource/airline_image02.jpg"/></a></li>
+			        <li><a href="javascript:;"><img src="../internal/resource/airline_image03.jpg"/></a></li>
+			        <li><a href="javascript:;"><img src="../internal/resource/airline_image04.jpg"/></a></li>
+			    	<li><a href="javascript:;"><img src="../internal/resource/airline_image05.jpg"/></a></li>
+			    </ul>
+			</div>
+	    </div>
+	    
+	    <div class="blank"></div>
+	    
+	    <div class="airlines">
+	    	<div class="areas">
+	    		<div>
+	    			<ul>
+	    				#foreach($alsCat in $alsCatList)
+		    				<li>
+		    					<div class="area" id="area_$alsCat.airlineCatalog.id">
+		    						<div>
+		    							$alsCat.airlineCatalog.catalog_name
+		    						</div>
+		    					</div>
+		    				</li>	    			
+	    				#end
+	    			</ul>
+	    		</div>
+	    	</div>
+	    	
+	    	<div class="table">
+	    		
+	    		<div class="blank"></div>
+	    		
+	    		<div class="blank5" style="height: 5px;"></div>
+	    		
+	    		#foreach($alsCat in $alsCatList)
+			    	<div class="list" id="list_$alsCat.airlineCatalog.id"  style="display: none;">
+			    		<table>
+			    			<thead>
+			    				<tr>		    					
+			    					<td width="100px">目的地</td>
+			    					<td width="80px">航空公司</td>
+			    					<td width="60px">单程/往返</td>
+			    					<td width="125px">出发时段</td>
+			    					<td width="40px">价格</td>
+			    					<td width="35px">行李</td>
+			    					<td></td>
+			    				</tr>
+			    			</thead>
+			    			<tbody>
+			    				#foreach($al in $alsCat.airlines)
+				    				<tr>
+				    					<td>$al.departure.airport_city - $al.arrival.airport_city</td>
+				    					#foreach($ac in $airlineCompanies)
+				    						#if($ac.id == $al.airline)
+				    						<td title= $ac.company_full_name>$ac.company_display_name</td>
+				    						#end
+				    					#end
+				    					<td>#if($al.single_trip_price > 0) 单程 #else 往返 #end</td>
+				    					<td>$al.genDepartBeginEnd()</td>
+				    					<td style="color: red;">£#if($al.single_trip_price > 0)$al.single_trip_price  #else$al.round_trip_price  #end</td>
+				    					<td>${al.luggage_allowance}kg</td>
+				    					<td style="color: red;">订票</td>
+				    				</tr>
+			    				#end
+			    			</tbody>
+			    		</table>
+			    	</div>
+			    #end
+	    	</div>
+	    </div>
+	    
+	    <div class="blank"></div>
+	    
+	    <div class="questions">
+	    	<div class="row">
+	    		<ul>
+	    			<li class="horizon">
+	    				<div class="booking_process">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">订票流程</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $bookingProcedureQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="first_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><a class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</a></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    			<li class="horizon">
+	    				<div class="pay_method">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">付款方式</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $payMethodQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="first_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><a class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</a></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    			<li class="horizon">
+	    				<div class="electric_ticket">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">电子票<div class="ticket_status_enquiry">&nbsp;出票状态查询</div></div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $electricTicketQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="first_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><a class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</a></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    		</ul>
+	    	</div>
+	    	
+	    	<div class="blank"></div>
+	    	
+	    	<div class="answer_area">
+		    	<div class="info_required" style="margin-top: -12px;">
+		    		<div class="info_question">
+		    			预定机票需要提供的信息？
+		    		</div>
+		    		<div class="info_text scroll">
+		    			预定英国起飞的单程或往返国际机票，只需要你的姓名拼音和性别即可。您提供的姓名拼音需要跟护照上的信息完全一致，不需要提供	护照号码、出生日期等其他个人信息。中国起飞的机票预定时除需要提供姓名、性别等信息，还需要提供生日、护照号、预留到期日等信息，具体我们会在邮件中为您列明，您确认后，需要提供个人信息给我们。
+		    		</div>
+		    	</div>
+		    	<div class="blank"></div>
+	    	</div>
+	    	
+	    	<div class="row">
+	    		<ul>
+	    			<li class="horizon">
+	    				<div class="update_ticket">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">改退机票</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $updateTicketQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="second_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><span class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</span></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    			<li class="horizon">
+	    				<div class="flight_info_confirm">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">航班信息确认</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $flightInfoConfirmQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="second_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><span class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</span></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    			<li class="horizon">
+	    				<div class="network_checkin">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">网络Check-in</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $networkCheckinQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="second_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><span class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</span></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    		</ul>
+	    	</div>
+	    	
+	    	<div class="blank"></div>	    	
+	    	<div class="answer_area_second">
+		    	<div class="info_required" style="margin-top: -12px;">
+		    		<div class="info_question">
+		    			预定机票需要提供的信息？
+		    		</div>
+		    		<div class="info_text scroll">
+		    			预定英国起飞的单程或往返国际机票，只需要你的姓名拼音和性别即可。您提供的姓名拼音需要跟护照上的信息完全一致，不需要提供	护照号码、出生日期等其他个人信息。中国起飞的机票预定时除需要提供姓名、性别等信息，还需要提供生日、护照号、预留到期日等信息，具体我们会在邮件中为您列明，您确认后，需要提供个人信息给我们。
+		    		</div>
+		    	</div>
+		    	<div class="blank"></div>
+	    	</div>
+	    	<div class="row">
+	    		<ul>
+	    			<li class="horizon">
+	    				<div class="baggage_question">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">行李问题</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $baggageQuestionQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="third_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><span class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</span></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    			<li class="horizon">
+	    				<div class="special_ticket">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">特价机票</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $specialTicketQAs)
+	    								#set($idx = $idx + 1)
+	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="third_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><span class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</span></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    			<li class="horizon">
+	    				<div class="other_question">
+	    					<div class="question_banner"></div>
+	    					<div class="question_desc">其他问题</div>
+	    					<div class="question_list">
+	    						<ul>
+	    							#set($idx = 0)
+	    							#foreach($qa in $otherQuestionQAs)
+	    								#set($idx = $idx + 1)	    								
+	    								<li style="#if($idx > 7) display: none; #end"><a href="javascript: void(0);" title="$qa.answer" class="third_area">$qa.question</a></li>
+	    							#end
+	    						</ul>
+	    						#if($idx > 7)
+	    							<div style="width: 100%; height: 5px;"></div>
+	    							<div style="width: 200px; text-align: right;"><span class="more_question" href="javascript: void(0);">更多 ...&nbsp;&nbsp;</span></div>
+	    						#end
+	    					</div>
+	    				</div>
+	    			</li>
+	    		</ul>
+	    	</div>
+	    </div>
+    </div>
+    
+    <div class="layout_right">
+    	<div class="online_customer_service">
+    		<a href="./Kefu.html" target="blank">
+				<img src="./img/airline/kefu.jpg" height="82px" width="192px">	
+    		</a>
+    		<!-- <script language="JavaScript" src=http://float2006.tq.cn/floatcard?adminid=9490881&sort=0></script> -->
+    	</div>
+    	
+    	<div class="blank"></div>
+    	
+    	<div class="ticket_enquiry">
+    		<div class="enquiry_form">
+    		
+    		</div>
+    		
+    		<div class="blank"></div>
+    		<div class="blank"></div>
+    		
+    		<div class="enquiry_bottom">
+    			<div id="ticket_button">
+    				立即查询
+    			</div>    			
+    		</div>
+    	</div>
+    	
+    	<div class="blank"></div>
+    	
+    	<div class="airline_link">
+    		<!-- <div class="iata"></div>
+    		<div class="blank"></div>
+    		<div class="china_air"></div> -->
+    	</div>
+    </div>
+</div>
+
+<style type="text/css">
+.select_label {
+	color:#982F4D;
+	float:left;
+	line-height:25px;
+	padding-right:10px;
+	font-size:14px;
+	font-weight:700;
+}
+
+.select_box {
+	float:left;
+	border:solid 1px #EDE7D6;
+	color:#444;
+	position:relative;
+	cursor:pointer;
+	width:157px;
+	background:url(../select_bg.jpg) repeat-x;
+	font-size:14px;
+}
+
+.selet_open {
+	display:inline-block;
+	border-left:solid 1px #E5E5E5;
+	position:absolute;
+	right:0;
+	top:0;
+	width:30px;
+	height:25px;
+	background:url(../select_up.jpg) no-repeat center center;
+}
+.select_txt {
+	width:157px;
+	border: 0px;
+	display:inline-block;
+	line-height:25px;
+	height:25px;
+	cursor:text;
+	overflow:hidden;
+}
+.option {
+	width:157px;
+	border:solid 1px #EDE7D6;
+	position:absolute;
+	top:25px; 
+	left:-1px;
+	z-index:2;
+	overflow:hidden;
+	display:none;
+	font-size:12px;
+}
+.option a {
+	display:block;
+	/*height:26px;*/
+	line-height:26px;
+	text-align:left;
+	padding:0 5px;
+	/*width:100%;*/
+	background:#fff;
+}
+.option a:hover {
+	background:#FDE0E5;
+	text-decoration: none;
+}
+</style>
+
+<div class="hidden_area">
+	<div class="enquiry_form_copy">
+		<div class="form">
+	   		<table style="width: 180px;">
+	   			<tr>
+	   				<td align="right">
+	   					<div style="font-size: 17px; font-weight: bold;">免费电话</div>
+	   				</td>
+	   			</tr>
+	   			<tr>
+	   				<td align="right">
+	   					<div style="font-size: 14px; font-weight: bold; color: blue;">(UK) 03339009888</div>
+	   					<div style="font-size: 14px; font-weight: bold; color: red;">(CN) 400 6257 888</div>
+	   					<div style="height: 5px;"></div>
+	   					<div style="height: 5px;"></div>
+	   				</td>
+	   			</tr>
+	   			<tr>
+	   				<td>
+	   					<div><input type="radio" class="airline_type" id="airline_type_round_trip" name="airline_type" value="2" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;往返</div>
+	   					<div><input type="radio" class="airline_type" id="airline_type_one_way" name="airline_type" value="1" checked="unchecked">&nbsp;&nbsp;&nbsp;&nbsp;单程</div>
+	   				</td>
+	   			</tr>
+	   			<tr>
+	   				<td>
+	   					<div style="height: 5px;"></div>
+	   					<div>起飞城市与机场</div>
+	   					<div style="height: 5px;"></div>
+	   					<div>
+	   					<!-- Departure Start -->
+
+	   						<div class="depart_select">
+								<ul>
+									<li>
+										<span class="select_label"></span>
+										<div class="select_box">
+											<input type="hidden" class="previous_txt" value="请选择机场">
+											<input class="select_txt" value="请选择机场" onfocus="selectAirportFocused(this)" onkeyup="completeAirport(this)">
+											<div class="option">												
+												#foreach($ap in $airports)
+					   								<!-- <a onclick='selectAirport(this)' value="$ap.id">$ap.airport_city - $ap.airport_name</a> -->
+					   								<a onclick='selectAirport(this)' value="$ap.id">$ap.airport_city - $ap.genCityAirport()</a>
+					   							#end
+											</div>
+										</div>
+										<br clear="all" />
+									</li>
+								</ul>
+								
+								<input type="hidden" class="selected_value" value="-1"/>
+							</div>
+	   						
+	   					<!-- Departure End -->
+	   					</div>
+	   				</td>
+	   			</tr>
+	   			<tr>
+	   				<td>
+	   					<div style="height: 5px;"></div>
+	   					<div>抵达城市与机场</div>
+	   					<div style="height: 5px;"></div>
+	   					<div>
+	   						<!-- Land Start -->
+	   											
+	   						<div class="land_select">
+								<ul>
+									<li>
+										<span class="select_label"></span>
+										<div class="select_box">
+											<input type="hidden" class="previous_txt" value="请选择机场">
+											<input class="select_txt" value="请选择机场" onfocus="selectAirportFocused(this)" onkeyup="completeAirport(this)">
+											<div class="option">												
+												#foreach($ap in $airports)
+					   								<!-- <a onclick='selectAirport(this)' value="$ap.id">$ap.airport_city - $ap.airport_name</a> -->
+					   								<a onclick='selectAirport(this)' value="$ap.id">$ap.airport_city - $ap.genCityAirport()</a>
+					   							#end
+					   							<a onclick='selectAirport(this)' value="-999">All</a>
+											</div>
+										</div>
+										<br clear="all" />
+									</li>
+								</ul>
+								
+								<input type="hidden" class="selected_value" value="-1"/>
+							</div>
+							
+							<!-- Land End -->
+	   					</div>
+	   				</td>
+	   			</tr>
+	   			<tr height="30px;">
+	   				<td>
+	   					<div style="height: 5px;"></div>
+	   					<div>人数</div>
+	   					<div style="height: 5px;"></div>
+	   					<div>
+	   						<select id="no_of_people" class="long_select">
+	   							<option value="-1"></option>
+	   							<option value="1" selected>1</option>
+	   							<option value="2">2</option>
+	   							<option value="3">3</option>
+	   							<option value="4">4</option>
+	   							<option value="5">5</option>
+	   							<option value="6">6</option>
+	   							<option value="7">7</option>
+	   							<option value="8">8</option>
+	   						</select>
+	   					</div>
+	   				</td>
+	   			</tr>
+	   			<tr>
+	   				<td>
+	   					<div style="height: 5px;"></div>
+	   					<div>出发日期（月/日/年）</div>
+	   					<div style="height: 5px;"></div>
+	   					<div>
+	   						<input type="text" class="datepicker" id="departure"/>
+	   					</div>
+	   				</td>
+	   			</tr>
+	   			<tr>
+	   				<td>
+	   					<div style="height: 5px;"></div>
+	   					<div id = "return_text">回程日期（如果有）</div>
+	   					<div style="height: 5px;"></div>
+	   					<div>
+	   						<input type="text" class="datepicker" id="return"/>
+	   					</div>
+	   					<!-- <div> 
+							<select id="return_day" class="short_select">
+								<option value="-1"></option>
+							</select>
+							
+							<select id="return_month" class="return_date short_select" onChange="updateSelectableDays('return_')">
+								<option value="-1"></option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+							<select id="return_year" class="return_date short_select" onChange="updateSelectableDays('return_')">
+								<option value="-1"></option>
+								<SCRIPT language="JavaScript">
+									WriteReturnYearOptions(2);
+								</SCRIPT>
+							</select>
+	   					</div>
+	   					-->
+	   				</td>
+	   			</tr>
+	   			<tr>
+	   				<td></td>
+	   			</tr>
+	   		</table>
+   		</div>
+  	</div>
+  		
+	<div class="waiting">
+		<div class="form">
+			<div class="waiting">
+				<div class="text">
+					正在为您查询<br>请稍后 <br>...
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="single_result">
+		<div class="form">
+			<div class="result">
+				<div class="single">
+					<table>
+						<tr>
+							<td><span class="airline_and_date"></span></td>
+						</tr>
+						<tr>
+							<td><span class="price"></span></td>
+						</tr>
+						<tr>
+							<td><span class="company"></span></td>
+						</tr>
+						<tr>
+							<td><span class="model"></span></td>
+						</tr>
+						<tr>
+							<td><span class="flight_connections"></span></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="customer_service">
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							以上结果，仅为参考价格<br>
+							如需详细信息请直接联系客服
+						</td>
+					</tr>
+					<tr>
+						<td>QQ:</td>
+						<td>2355254118</td>
+					</tr>
+					<tr>
+						<td valign="top">电话：</td>
+						<td>
+							<div style="font-weight: bold;">(UK) 03339009888</div>
+		    				<div style="font-weight: bold;">(CN) 400 6257 888</div>
+		    			</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div>
+								<a href="./Kefu.html" target="blank">
+									<img src="./img/airline/kefu.jpg" height="72px" width="172px">
+								</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<div class="multiple_results">
+		<div class="form">
+			<div class="result">
+				<div class="multiple">
+					<table>
+						<tr>
+							<td align="right"><span class="date"></span></td>
+						</tr>
+						<tr>
+							<td align="right"><span class="type"></span></td>
+						</tr>
+						<tr>
+							<td height="25px"></td>
+						</tr>
+						<tr>
+							<td align="left">
+								<div class="brief_list">
+								
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		
+			<div class="customer_service">
+				<table>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							以上结果，仅为参考价格<br>
+							如需详细信息请直接联系客服
+						</td>
+					</tr>
+					<tr>
+						<td>QQ:</td>
+						<td>2355254118</td>
+					</tr>
+					<tr>
+						<td valign="top">电话：</td>
+						<td>
+							<div style="font-weight: bold;">(UK) 03339009888</div>
+		    				<div style="font-weight: bold;">(CN) 400 6257 888</div>
+		    			</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div>
+								<a href="./Kefu.html" target="blank">
+									<img src="./img/airline/kefu.jpg" height="72px" width="172px">
+								</a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pre_load_imgs">
+	<img src="./img/airline/question_bg_baggage_question.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_booking_process.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_electric_ticket.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_flight_info_confirm.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_network_checkin.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_other_question.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_pay_menthod.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_special_ticket.png" width="1px" height="1px"/>
+	<img src="./img/airline/question_bg_update_ticket.png" width="1px" height="1px"/>
+</div>
+<!-- 
+<div id="dialog-form" style="background: url('./img/airline/ticket_status.png') no-repeat;">
+  <form>
+	  <fieldset>
+	    <label for="name">姓</label>
+	    <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+	    <label for="pnr">订单号（PNR）</label>
+	    <input type="text" name="pnr" id="pnr" value="" class="text ui-widget-content ui-corner-all" />
+	  </fieldset>
+  </form>
+</div>
+ -->
+
+ 
+<script type="text/javascript"> 
+    
+function getLastDay(year, month)      
+{      
+	var new_year = year;    	//取当前的年份      
+	var new_month = month ++;	//取下一个月的第一天，方便计算（最后一天不固定）      
+	if(month > 12)            	//如果当前大于12月，则年份转到下一年      
+	{      
+		new_month -= 12;        //月份减      
+		new_year ++;            //年份增      
+	}
+	var new_date = new Date(new_year, new_month, 1);                //取当年当月中的第一天      
+	return (new Date(new_date.getTime() - 1000*60*60*24)).getDate();//获取当月最后一天日期      
+}
+
+function updateSelectableDays(cid_prefix) {
+	var curDaySelected = $("#" + cid_prefix + "day").val(); 
+	
+	$("#" + cid_prefix + "day option").each(function(i) {
+		if ($(this).val() != -1) {
+			$(this).remove();
+		}
+	});
+	
+	var y = $("#" + cid_prefix + "year").val();
+	if (y == "") return;
+	
+	var m = $("#" + cid_prefix + "month").val();
+	if (m == "") return;
+	
+	var ld = getLastDay(y, m);
+	
+	for (var i = 1; i <= ld; i ++) {
+		$(".enquiry_form #" + cid_prefix + "day").append("<option value='" + (i < 10? "0": "") + i + "'>" + (i < 10? "0": "") + i + "</option>");		
+		$(".enquiry_form_copy #" + cid_prefix + "day").append("<option value='" + (i < 10? "0": "") + i + "'>" + (i < 10? "0": "") + i + "</option>");
+	}
+	
+	$(".enquiry_form #" + cid_prefix + "day").val(curDaySelected);
+}
+
+function SetToToday()
+{
+	Now = new Date();
+	var NowDay = Now.getDate();
+	var NowMonth = Now.getMonth()+1;
+	var NowYear = Now.getFullYear();
+
+ 
+    $(".enquiry_form #depart_month").val((NowMonth < 10? "0": "")+ NowMonth.toString());
+    $(".enquiry_form #depart_year").val(NowYear);
+   	updateSelectableDays("depart_");
+    $(".enquiry_form #depart_day").val((NowDay < 10? "0": "") + NowDay.toString());
+}
+
+function WriteYearOptions(YearsAhead)
+{
+	Now = new Date();
+	var NowYear = Now.getFullYear();
+
+	for(var i=0;i<YearsAhead;i++){
+		NowYearDisplay = NowYear.toString();
+		NowYearDisplay=NowYearDisplay.substring(2,4);
+		$("<option value='" + NowYear +"'>"+ NowYearDisplay+ "</option>").appendTo($(".enquiry_form #depart_year"));
+  		NowYear+=1;
+  	}
+  
+}
+
+function WriteReturnYearOptions(YearsAhead)
+{
+	Now = new Date();
+	var NowYear = Now.getFullYear();
+
+	for(var i=0;i<YearsAhead;i++){
+		NowYearDisplay = NowYear.toString();
+		NowYearDisplay=NowYearDisplay.substring(2,4);
+		$("<option value='" + NowYear +"'>"+ NowYearDisplay+ "</option>").appendTo($(".enquiry_form #return_year"));
+  		NowYear+=1;
+  	}
+  
+}
+
+function completeAirport(obj) {
+	var url = "./airline.htm";
+	var airportName = $(obj).val();
+	airportName = jQuery.trim(airportName);
+	var prevName = $(obj).siblings(".previous_txt").val();
+	
+	$(obj).siblings(".option").show();
+	
+	if(airportName != prevName) {
+		
+		jQuery.ajax({
+			url: url,
+			type: "POST",
+			data: {
+				"ajax_airports": "1", "an": airportName
+			},
+			dataType: "JSON",
+			success: function(data, textStatus) {
+				// get previous successed text
+				$(obj).siblings(".previous_txt").val(data.pan);
+				
+				var has1 = false;
+				var has999 = false;
+				
+				$(obj).siblings(".option").find("a").each(function(i) {
+					if ($(this).attr("value") == "-1")
+						has1 = true;
+					
+					if ($(this).attr("value") == "-999")
+						has999 = true;					
+				});
+				
+				$(obj).siblings(".option").find("a").remove(); 
+				
+				if(has1) {
+					$(obj).siblings(".option").append("<a onclick='selectAirport(this)' value='-1'>请选择机场</a>");
+				}
+				
+				jQuery.each(data.airports, function(idx, airport) {
+					$(obj).siblings(".option").append("<a onclick='selectAirport(this)' value='" + airport['id'] + "'>" + airport['c'] + " - "+ airport['n'] +"</a>");
+				});
+				
+				if(has999) {
+					$(obj).siblings(".option").append("<a onclick='selectAirport(this)' value='-999'>All</a>");
+				}
+			}
+		});
+	} else {
+		// do nothing
+	}
+}
+
+function selectAirportFocused(obj) {
+	$(obj).select();
+}
+
+function selectAirport(obj) {
+	var value = $(obj).text();
+	$(obj).parent().siblings(".select_txt").val(value);
+	var sv = $(obj).attr("value");
+	//alert(sv);
+	
+	$(obj).parent().parent().parent().parent().siblings(".selected_value").val(sv);
+}
+
+function selectAirportByValue(selObj, val) {
+	$(selObj).find(".option a").each(function(i) {
+		if ($(this).attr("value") == ("" + val)) {
+			selectAirport(this);
+		}
+	});
+}
+</script>
+
+<script type="text/javascript">    
+$(document).ready(function() {
+	
+	$("#airline_slider").slide();
+	$(".airlines .list").Scroll({control: "table", line:1, speed:1000, timer:2000});
+	$(".enquiry_form").html($(".enquiry_form_copy").html());
+	$(".enquiry_form input[name='airline_type']:first").attr("checked", "checked");
+
+	SetToToday();
+	$(".area").click(function(){
+		var aid = $(this).attr("id");
+		var lid = aid.replace("area", "list");
+		
+		$(".list").hide();
+		$("#" + lid).show();
+		
+		$(".area_selected").addClass("area");
+		$(".area").removeClass("area_selected");
+		$("#" + aid).addClass("area_selected");
+		$("#" + aid).removeClass("area");
+				
+		$(".airlines #" + lid).Scroll({control: "table", line:1, speed:1000, timer:2000});
+	});
+	
+	$(".airlines .areas .area:first").click();
+	$(".answer_area").show();
+	$(".answer_area_second").hide();
+	$(".question_list a").mouseover(function() {
+		var qestId = $(this).parent().parent().parent().parent().attr("class");
+
+		if(qestId == "baggage_question" || qestId == "special_ticket" || qestId == "other_question")
+		{
+			$(".answer_area").hide();
+			$(".answer_area_second").show();
+		}
+		else
+		{
+			$(".answer_area").show();
+			$(".answer_area_second").hide();
+		}
+
+		$(".info_required .info_question").html($(this).text());
+		$(".info_required .info_text").html($(this).attr("title"));
+		
+		$(".info_required").css({"background-image":"url('img/airline/question_bg_" + qestId  + ".png')"});	
+		
+		$(".info_required .info_text").attr("class", "info_text scroll");
+		
+		$(".scroll").scrollbars();
+	});
+	
+	$(".table .list table tbody tr").mouseover(function(){
+		$(".table .list table tbody tr").removeClass("orange_font");
+		$(this).addClass("orange_font");
+	});
+	
+	var aType, dAirport, lAirport, nPeople, dy, dm, dd, ry, rm, rd;
+	
+	$("#ticket_button").click(function(){
+		var where = $(".ticket_enquiry .enquiry_bottom #ticket_button").text();		
+		if (where.indexOf("立即查询") >= 0) { 
+			aType = $(".enquiry_form input[name='airline_type']:checked").val();
+			
+			// client validation
+			dAirport = $(".enquiry_form .depart_select .selected_value").val();
+			if (dAirport == -1) {
+				alert("请选择出发城市！");
+				return;
+			}			
+			
+			lAirport = $(".enquiry_form .land_select .selected_value").val();
+			if (lAirport == -1) {
+				alert("请选择抵达城市！");
+				return;
+			}
+			
+			nPeople = $(".enquiry_form #no_of_people").val();
+			//alert(nPeople);
+			if (nPeople == -1) {
+				// is it optional?
+			}
+			
+			var dDate = $(".enquiry_form #departure").val();
+			
+			dy = dDate.substring(6, 10);
+			dd = dDate.substring(3, 5);
+			dm = dDate.substring(0, 2);
+			dDate = dy + "-" + dm + "-" + dd;
+			
+			var dDate2 = dy + "/" + dm + "/" + dd + " 23:59:59";
+			dDate3 = new Date(dDate2);
+			nowDate = new Date();
+			if(dDate3<nowDate){
+				alert("出发日期不能在过去！");
+				return;
+			}
+			
+			if (dy == "-1" || dm == "-1" || dd == "-1") {
+				alert("请正确填写出发日期！");
+				return;
+			}
+			
+			if (aType == 2){
+				var dReturnDate = $(".enquiry_form #return").val();
+				ry = dReturnDate.substring(6, 10);
+				rd = dReturnDate.substring(3, 5);
+				rm = dReturnDate.substring(0, 2);
+				
+				var rDate = ry + "-" + rm + "-" + rd;
+				
+				var rDate2 = ry + "/" + rm + "/" + rd + " 23:59:59";
+				rDate3 = new Date(rDate2);
+	
+				if(rDate3<dDate3){
+					alert("回程日期必须在出发日期之后！");
+					return;
+				}
+				
+				if (ry == "-1" || rm == "-1" || rd == "-1") {
+					alert("请正确填写返程日期！");
+					rDate = "";
+					return;
+				}
+			}
+			// ajax request
+			var url = "./airline.htm";
+			jQuery.ajax({
+				url: url,
+				type: "POST",
+				data: {
+					"ticket_enquiry": "1", "ty": aType, "dc": dAirport, "lc": lAirport, "np": 1, "dd": dDate, "rd": rDate //Todo: nPeople
+				},
+				dataType: "JSON",
+				success: function(data, textStatus) {
+					var l = data.tickets.length;
+					
+					if (l == 0) {
+						$(".enquiry_form").html($(".hidden_area .waiting").html());
+						$(".enquiry_form .waiting .text").html("Opps! No ticket(s) available.");
+						
+					} else if (l == 1) {
+						$(".enquiry_form").html($(".hidden_area .single_result").html());
+						jQuery.each(data.tickets, function(idx, ticket) {
+							if (idx == 0) {								
+								$(".enquiry_form .airline_and_date").html(ticket['dc'] + "-" + ticket['lc'] + " " + ticket['d']);
+								$(".enquiry_form .price").html("£" + ticket['p']);
+								$(".enquiry_form .company").html(ticket['c']);
+								$(".enquiry_form .model").html(ticket['m']);
+								$(".enquiry_form .flight_connections").html(ticket['fc']);
+							}
+						});
+						
+					} else if (l > 1) {
+						$(".enquiry_form").html($(".hidden_area .multiple_results").html());
+						var dt = "";
+						var tp = "";
+						var lines = "<ul>";
+						var line = "";
+						jQuery.each(data.tickets, function(idx, ticket) {
+							if (dt == "") dt = ticket['d'];
+							if (tp == "") tp = ticket['t'];
+							line = 			"<li>";
+							line = line + 		ticket['dc'] + "<span style='color:rgb(255, 126, 0);'>-" + ticket['lc'] + " £" + ticket['p'] + "</span> <span style='color:red;''>" + ticket['rm'] + "</span>";
+							line = line + 	"</li>";
+							
+							lines = lines + line;
+						});
+						lines = lines + "</ul>";
+						$(".enquiry_form .brief_list").html(lines);
+												
+						$(".enquiry_form .date").html(dt);
+						$(".enquiry_form .type").html(tp);
+						
+						// auto scroll the list if content is too many
+						$(".enquiry_form .brief_list").Scroll({line:1, speed:1000, timer:2000});
+					}
+					
+					$(".ticket_enquiry .enquiry_bottom #ticket_button").html("返回重新查询");
+				},
+				beforeSend:function(){
+					$(".enquiry_form").html($(".hidden_area .waiting").html());
+					$(".ticket_enquiry .enquiry_bottom #ticket_button").html("<div style='padding-top: 7px;'><img src='./img/airline/waiting_icon.png'/></div>");	
+		        }
+			});
+		} else {
+			$(".enquiry_form").html($(".enquiry_form_copy").html());
+			$(".enquiry_form input[name='airline_type'][value=" + aType + "]").attr("checked",true);
+			selectAirportByValue($(".enquiry_form .depart_select"), dAirport);
+			selectAirportByValue($(".enquiry_form .land_select"), lAirport);
+			$(".enquiry_form #no_of_people").val(nPeople);
+			/* $(".enquiry_form #return_year").val(ry);
+			$(".enquiry_form #return_month").val(rm);
+			$(".enquiry_form #return_day").val(rd); */
+			
+			$(".enquiry_form #departure").val(dm + "/" + dd + "/" + dy);
+			if(rm!=null||rm!=undefined){
+				$(".enquiry_form #return").val(rm + "/" + rd + "/" + ry);
+			}
+			$(".ticket_enquiry .enquiry_bottom #ticket_button").html("立即查询");
+			
+			$(".select_box").click(function(event){   
+				event.stopPropagation();
+				$(this).find(".option").toggle();
+				$(this).parent().siblings().find(".option").hide();
+			});
+			
+			$(".enquiry_form #departure").datepicker();
+			$(".enquiry_form #return").datepicker();
+			
+			$("#airline_type_round_trip").click(function(){
+				$(".enquiry_form #return_text").show();
+				$(".enquiry_form #return").show();
+			});
+			
+			$("#airline_type_one_way").click(function(){
+				$(".enquiry_form #return_text").hide();
+				$(".enquiry_form #return").hide();
+			});
+			
+			aType = $(".enquiry_form input[name='airline_type']:checked").val();
+			
+			if (aType == 2) {
+				$("#airline_type_round_trip").click();
+			} else {
+				$("#airline_type_one_way").click();
+			}
+		}
+	});
+	
+	/* Drop-Down list Starts */
+	$(".select_box").click(function(event){   
+		event.stopPropagation();
+		$(this).find(".option").toggle();
+		$(this).parent().siblings().find(".option").hide();
+	});
+	
+	$(document).click(function(event){
+		var eo=$(event.target);
+		if($(".select_box").is(":visible") && eo.attr("class")!="option" && !eo.parent(".option").length)
+			$('.option').hide();           
+	});
+	
+	$(".more_question").click(function(event){
+		var t = $(this).html();
+		var c = $(this).parent().siblings("ul").find("li:eq(7)").is(":visible");
+		
+		if (! c) {
+			t = t.replace("更多", "隐藏");
+		} else {
+			t = t.replace("隐藏", "更多");
+		}
+		
+		$(this).html(t);
+		$(this).parent().siblings("ul").find("li:gt(6)").toggle();
+	});
+	
+	$(".pre_load_imgs").hide();
+	
+	$(".scroll").scrollbars();
+	
+	$(".ticket_status_enquiry").click(function(){
+		//var elem = $(this).closest(".item");
+		jQuery.confirm({
+			"title" : "出票状态查询",
+			"message" : "",
+			"buttons" : {
+				"Yes" : {
+					"class" : "blue",
+					"action": function(){
+						//elem.slideUp();
+					}
+				},
+				"No": {
+					"class" : "gray",
+					"action": function(){} // Nothing to do in this case. You can as well omit the action property.
+				}
+			}
+		});
+	});
+	
+	$(".enquiry_form #departure").datepicker();
+	$(".enquiry_form #return").datepicker();
+	
+	$("#airline_type_round_trip").click(function(){
+		$(".enquiry_form #return_text").show();
+		$(".enquiry_form #return").show();
+	});
+	
+	$("#airline_type_one_way").click(function(){
+		$(".enquiry_form #return_text").hide();
+		$(".enquiry_form #return").hide();
+	});
+	
+});
+
+</script>
+
+<!-- 脚本 -->

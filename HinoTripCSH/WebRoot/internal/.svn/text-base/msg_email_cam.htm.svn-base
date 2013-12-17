@@ -1,0 +1,6 @@
+<h2>系统消息管理</h2>
+
+	<div class="clickform">$stafffilterform</div>
+	<div class="clickform">$msgemailform</div>
+	<div class="clear"></div>
+

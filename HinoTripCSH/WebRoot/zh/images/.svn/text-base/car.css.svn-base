@@ -1,0 +1,520 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	background: url(ny_bg.jpg) repeat-x #f2f5f6;
+	/* background:url(../img/site_bg.jpg) repeat #f2f5f6; */
+}
+/*头部开始*/
+.head {
+	width: 974px;
+	height: 155px;
+	background: url(ny_head.png) no-repeat;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.head .logo_link {
+	display: block;
+	padding-top: 44px;
+}
+/*导航菜单 begin*/
+.second_menu {
+	position: absolute;
+	top: 0px;
+	right: 100px;
+}
+
+.second_menu a {
+	color: #a95c00
+}
+
+/*网站主体  begin*/
+.main {
+	background: white;
+	padding: 90px 0px 0px;
+	width: 974px;
+	min-height: 1800px;
+	margin: 0 auto;
+	background: url(auto_service_main_bg.png) no-repeat #FFFFFF;
+}
+
+.auto_service_desc {
+	width: 903px;
+	margin: 0px 17px 0px 48px;
+	position: relative;
+	padding-bottom: 35px;
+}
+
+.auto_service_desc .cate {
+	width: 100%;
+	height: 44px;
+	background: url(car_t_bg.jpg) no-repeat;
+	margin-left: -4px;
+	margin-top: 2px;
+}
+
+.auto_service_desc .cate span {
+	line-height: 44px;
+	padding-left: 15px;
+	font-size: 24px;
+	font-family: "黑体";
+	color: #2198ae;
+}
+
+.auto_service_desc .text_area {
+	padding: 15px 15px 0px;
+	line-height: 22px;
+	font-size: 110%;
+	color: #24A9BD;
+}
+
+.line_gray {
+	margin-left: 44px;
+	width: 903px;
+	height: 5px;
+	background: url(auto_line_gray.png) no-repeat;
+}
+
+.car_8 {
+	width: 903px;
+	height: 300px;
+}
+
+.car_8 .car_small_left_8 {
+	float: left;
+	height: 220px;
+	width: 250px;
+	margin-left: 30px;
+	margin-top: 12px;
+	background: url(auto_8.png) no-repeat;
+}
+
+.car_8 .car_small_right {
+	float: right;
+	width: 600px;
+	height: 250px;
+	margin-top: 24px;
+}
+
+.car_8 .car_title {
+	width: 600px;
+	height: 30px;
+	font-size: 120%;
+}
+
+.car_8 .car_service_desc_small {
+	width: 600px;
+	height: 60px;
+	font-size: 110%;
+	letter-spacing: 1px;
+	line-height: 20px;
+	background: url(auto_service_bg_gray_small.png) no-repeat;
+}
+
+.car_8 .car_service_bref {
+	width: 600px;
+	height: 130px;
+	line-height: 20px;
+}
+
+.car_16 {
+	width: 903px;
+	height: 250px;
+}
+
+.car_16 .car_small_left_16 {
+	float: left;
+	height: 220px;
+	width: 250px;
+	margin-left: 30px;
+	margin-top: 12px;
+	background: url(auto_16.png) no-repeat;
+}
+
+.car_16 .car_small_right {
+	float: right;
+	width: 600px;
+	height: 250px;
+	margin-top: 12px;
+}
+
+.car_16 .car_title {
+	width: 600px;
+	height: 30px;
+	font-size: 120%;
+}
+
+.car_16 .car_service_desc_small {
+	width: 600px;
+	height: 60px;
+	font-size: 110%;
+	letter-spacing: 1px;
+	line-height: 20px;
+	background: url(auto_service_bg_gray_small.png) no-repeat;
+}
+
+.car_16 .car_service_bref {
+	width: 600px;
+	height: 170px;
+	line-height: 20px;
+}
+
+.car_big_tab {
+	width: 903px;
+	height: 50px;
+	float: left;
+}
+
+.car_big_title_1 {
+	width: 136px;
+	height: 45px;
+	position: relative;
+	float: left;
+	margin-left: 124px;
+	margin-top: 10px;
+	background: url(car_tab_title_enable.png) no-repeat;
+}
+
+.car_big_title_2 {
+	width: 136px;
+	height: 45px;
+	position: relative;
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	background: url(car_tab_title_disable.png) no-repeat;
+}
+
+.car_big_title_3 {
+	width: 136px;
+	height: 45px;
+	position: relative;
+	float: left;
+	margin-top: 10px;
+	margin-left: 10px;
+	background: url(car_tab_title_disable.png) no-repeat;
+}
+
+.car_big_1 .car_big_2 .car_big_3 {
+	width: 903px;
+	height: 700px;
+}
+
+.car_29 {
+	width: 745px;
+	height: 600px;
+	margin-top: -30px;
+	background: url(auto_29.png) no-repeat;
+}
+
+.car_49 {
+	margin-top: -30px;
+	width: 745px;
+	height: 600px;
+	background: url(auto_49_59.png) no-repeat;
+}
+
+.car_70 {
+	margin-top: -30px;
+	width: 745px;
+	height: 600px;
+	background: url(auto_79.png) no-repeat;
+}
+
+.car_service_desc_big {
+	margin-top: 80px;
+
+	width: 745px;
+	height: 100px;
+
+	background: url(auto_service_bg_gray_big.png) no-repeat;
+}
+
+/*车型展示*/
+.car_box {
+	width: 903px;
+	margin: 0px 17px 0px 48px;
+	border: 3px solid;
+	border-color: #1f8e9f;
+	border-bottom-color: #69b3bf;
+	position: relative;
+	padding-bottom: 35px;
+}
+
+.car_box .zx_yd {
+	background: url(car_l_u.jpg) no-repeat;
+	height: 35px;
+	width: 35px;
+	position: absolute;
+	bottom: -7px;
+	left: -7px;
+}
+
+.car_box .cate {
+	width: 100%;
+	height: 44px;
+	background: url(car_t_bg.jpg) no-repeat;
+}
+
+.car_box .cate span {
+	line-height: 44px;
+	padding-left: 15px;
+	font-size: 24px;
+	font-family: "黑体";
+	color: #2198ae;
+}
+
+.car_box .text_area {
+	padding: 15px 15px 0px;
+	line-height: 24px;
+}
+
+.car_box .pic_area {
+	border-top: 3px solid #d9e4e6;
+	padding-top: 10px;
+	text-align: center;
+}
+
+/*机场用车*/
+.car_box .jcjs {
+	padding: 0px 20px 0px 30px;
+}
+
+.car_box .jcjs .lib {
+	width: 275px;
+	background: url(jcjs_t.jpg) no-repeat;
+	padding-top: 25px;
+	float: left;
+}
+
+.car_box .jcjs .lib .c {
+	width: 273px;
+	border: 1px solid #2ab1c5;
+	background: url(jcjs_bg.jpg) repeat-y;
+	padding: 8px 0px;
+	font-family: "微软雅黑", "黑体";
+	font-size: 14px;
+	line-height: 24px;
+	color: #28b3c6;
+}
+
+.car_box .jcjs .lib .c a {
+	color: #28b3c6;
+}
+
+.car_box .jcjs .lib .c td {
+	padding-left: 7px;
+}
+
+.car_box .note {
+	background: url(zysy_bg.jpg) no-repeat;
+	width: 465px;
+	height: 120px;
+	float: left;
+	margin-left: 30px;
+	margin-top: 10px;
+	display: inline;
+	padding: 43px 65px 0px 18px;
+	font-size: 12px;
+	font-family: "微软雅黑", "黑体";
+	color: #fff;
+	line-height: 22px;
+}
+
+/*旅游用车*/
+.car_box .lyyc {
+	padding: 15px 15px 0px;
+	line-height: 24px;
+}
+
+.car_box .lyyc .text {
+	color: #158393;
+	line-height: 22px;
+	width: 485px;
+	float: left;
+}
+
+.car_box .lyyc .zs {
+	width: 375px;
+	float: left;
+	margin-left: 10px;
+	display: inline;
+	overflow: hidden;
+}
+
+.car_box .lyyc .zs li {
+	float: left;
+	margin-right: 15px;
+	display: inline;
+}
+/*用车服务*/
+.ycff_box {
+	width: 903px;
+	margin: 0px 17px 0px 48px;
+	border: 3px solid;
+	border-color: #1f8e9f;
+	border-bottom-color: #69b3bf;
+	position: relative;
+	height: 423px;
+}
+
+.ycff_box .zx_yd {
+	background: url(car_l_u.jpg) no-repeat;
+	height: 35px;
+	width: 35px;
+	position: absolute;
+	bottom: -7px;
+	left: -7px;
+}
+
+.ycff_box .text {
+	width: 417px;
+	line-height: 24px;
+	padding: 10px 10px 0px 20px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.ycff_box .yd_t {
+	position: absolute;
+	width: 92px;
+	height: 28px;
+	top: -28px;
+	left: 447px;
+	background: url(zxyd_t.jpg) no-repeat;
+}
+
+.ycff_box .zxyd {
+	background: url(zxyd_bg.jpg) no-repeat;
+	width: 346px;
+	height: 393px;
+	padding: 20px 55px 0px 55px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.ycff_box .zxyd .order_input {
+	width: 238px;
+	height: 23px;
+	line-height: 23px;
+	border: 1px solid #bfc5c6;
+	padding: 0px 5px;
+}
+
+.ycff_box .zxyd .order_input2 {
+	width: 238px;
+	height: 69px;
+	line-height: 23px;
+	border: 1px solid #bfc5c6;
+	padding: 0px 5px;
+}
+
+.ycff_box .zxyd td {
+	padding: 5px 0px;
+	line-height: 23px;
+}
+
+.ycff_box .zxyd .name {
+	font-family: "微软雅黑", "黑体";
+	font-size: 14px;
+	padding-right: 15px;
+}
+/*约定确定*/
+.ycff_box .ydqd {
+	background: url(zxyd_bg.jpg) no-repeat;
+	width: 416px;
+	height: 373px;
+	padding: 20px;
+	display: inline;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.ycff_box .ydqd .tit {
+	width: 100%;
+	border-bottom: 2px solid #edf6f7;
+	height: 35px;
+	line-height: 35px;
+	color: #435254;
+	font-size: 20px;
+	font-family: "微软雅黑", "黑体";
+	margin-bottom: 10px;
+}
+
+.ycff_box .ydqd .qdxx {
+	padding-left: 130px;
+	padding-top: 30px;
+	line-height: 27px;
+}
+
+.ycff_box .ydqd .tj {
+	padding-top: 40px;
+	text-align: right;
+}
+
+/*预定成功*/
+.ycff_box .ydcg {
+	background: url(zxyd_bg.jpg) no-repeat;
+	width: 426px;
+	height: 333px;
+	padding: 80px 0px 0px 30px;
+	display: inline;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.ycff_box .ydcg .order_info {
+	background: url(order_bg.png) no-repeat;
+	width: 233px;
+	height: 211px;
+	padding: 32px 20px 0px 82px;
+	color: #fff;
+	font-family: "微软雅黑", "黑体";
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.ycff_box .ydcg .order_info .process {
+	font-size: 24px;
+	padding-top: 5px;
+	padding-bottom: 3px;
+}
+
+.ycff_box .ydcg .order_info .order_c {
+	font-size: 18px;
+	padding-bottom: 5px;
+}
+/*资质证明*/
+.zzzm_t {
+	width: 938px;
+	background: url(zzzm_t.jpg) no-repeat 20px top;
+	height: 28px;
+	margin: 0px 17px 0px 19px;
+}
+
+.zzzm_box {
+	width: 934px;
+	margin: 0px 17px 0px 19px;
+	border: 2px solid #a2d0d7;
+	padding: 20px 0px;
+}
+
+.zzzm_box ul {
+	padding-left: 10px;
+}
+
+.zzzm_box li {
+	float: left;
+	border-right: 2px solid #CCCCCC;
+}
+/*版权*/
+.copyright {
+	width: 974px;
+	height: 32px;
+	background: #c9cccb;
+	text-align: center
+}

@@ -1,0 +1,182 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+background:url(ny_bg.jpg) repeat-x #f2f5f6;
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+
+/*导航菜单 begin*/
+.second_menu{position:absolute; top:0px; right:100px;}
+.second_menu a{ color:#a95c00}
+
+/*网站主体  begin*/
+.main
+{
+background:#fff;
+padding:25px 0px 0px;
+width:974px;
+margin:0 auto;
+}
+ 
+/*精品路线主体*/
+.line_contair
+{
+width:945px;
+margin:0 auto;
+}
+/*路线搜索*/
+.line_search
+{
+padding:10px 35px;
+border-bottom:1px solid #157382;
+height:27px;
+}
+.line_search .hot
+{
+height:27px;
+line-height:27px;
+color:#ff0024;
+float:left;
+}
+.line_search .hot a
+{
+color:#155864;
+}
+.line_search .line_frm
+{
+width:425px;
+float:right;
+}
+.line_search .line_frm .line_input
+{
+width:343px;
+height:25px;
+line-height:25px;
+padding:0px 5px;
+border:1px solid #8bb5bb;
+background:url(search_Bg.gif) no-repeat right bottom #e7f3f4;
+display:inline;
+float:left;
+}
+.line_search .line_frm .line_s
+{
+float:right;
+width:56px;
+height:27px;
+padding:0px;
+margin:0px;
+display:inline;
+}
+
+
+/*详细页面*/
+.line_xx_top
+{
+width:100%;
+background:url(service_t.jpg) no-repeat;
+height:86px;
+text-align:center;
+}
+
+.box_line
+{
+width:920px;
+margin:10px auto 0px;
+background:url(box_line_ft.gif) no-repeat left bottom;
+padding-bottom:20px;
+}
+.box_line .t
+{
+width:890px;
+height:40px;
+background:url(box_line_t.gif) no-repeat;
+padding-left:30px;
+font-size:16px;
+font-family:"微软雅黑","黑体";
+color:#000;
+line-height:30px;
+}
+.box_line .c
+{
+width:880px;
+background:url(box_line_bg.gif) repeat-y;
+overflow:hidden;
+padding:10px 20px;
+color:#07899a;
+line-height:21px;
+}
+
+.box_service
+{
+width:898px;
+margin:0px auto;
+background:#eef9fb;
+padding:20px 10px;
+border:1px solid #3cb0bf;
+}
+.box_service dl
+{
+width:169px;
+float:left;
+display:inline;
+overflow:hidden;
+background:url(dl_line.png) no-repeat right top;
+padding-left:10px;
+}
+.box_service dl.end
+{
+background:none;
+}
+.box_service dt
+{
+padding-left:27px;
+font-size:14px;
+font-family:"微软雅黑","黑体";
+color:#2c2c2c;
+height:40px;
+line-height:24px;
+}
+.box_service .ico1
+{
+background:url(qian.png) no-repeat;
+}
+.box_service .ico2
+{
+background:url(feiji.png) no-repeat;
+}
+.box_service .ico3
+{
+background:url(wenti.png) no-repeat;
+}
+.box_service .ico4
+{
+background:url(hetong.png) no-repeat;
+}
+.box_service .ico5
+{
+background:url(vip.png) no-repeat;
+}
+.box_service dd
+{
+background:url(dl_icon.png) no-repeat 10px center;
+height:24px;
+line-height:24px;
+overflow:hidden;
+padding-left:27px;
+color:#2d646d;
+}
+.box_service dd a
+{
+color:#2d646d;
+}
+/*版权*/
+.copyright{ clear:both; width:974px; height:32px; line-height:32px; background:#c9cccb; text-align:center}

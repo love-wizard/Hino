@@ -1,0 +1,121 @@
+<script type="text/javascript">
+
+function deleteYes(){
+	var url = jQuery("#delUrl").val();
+	
+	window.location.href = url;
+	return true;
+}
+
+function deleteNo(){
+	jQuery.facebox.close();
+	return false;
+}
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Show customer detail
+	jQuery(".ajaxDetail").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+				var customerDetail = "<table>"+
+					"<tr><td><b>订单号</b></td><td>"+json.bookingRef+"</td></tr>"+
+					"<tr><td><b>团名称</b></td><td>"+json.groupname+"</td></tr>"+
+					"<tr><td><b>出团时间</b></td><td>"+json.departure+"</td></tr>"+
+					"<tr><td><b>订单状态</b></td><td>"+json.status+"</td></tr>"+
+					"<tr><td><b>销售代表</b></td><td>"+json.rep+"</td></tr>"+
+					"<tr><td><b>下单时间</b></td><td>"+json.time+"</td></tr>"+
+					"<tr><td><b>中文名</b></td><td>"+json.chinesename+"</td></tr>"+
+					"<tr><td><b>Name</b></td><td>"+json.fullname+"</td></tr>"+
+					"<tr><td><b>电邮</b></td><td>"+json.email+"</td></tr>"+
+					"<tr><td><b>电话</b></td><td>"+json.phone+"</td></tr>"+
+					"<tr><td><b>性别</b></td><td>"+json.gender+"</td></tr>"+		
+					"<tr><td><b>接车点</b></td><td>"+json.pickup+"</td></tr>"+
+					"<tr><td><b>住宿</b></td><td>"+json.room+"</td></tr>"+
+					"<tr><td><b>备注</b></td><td>"+json.comments+"</td></tr>"+
+					"</table>";
+
+				jQuery("#facebox_title").html("订单详细信息");
+				jQuery("#facebox_content").html(customerDetail);
+				jQuery.facebox({ div: '#facebox_container' });
+		});
+		
+		return false;
+	});
+	
+	jQuery(".ajaxTicket").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+	       
+	          if(json!="1")
+	          {
+	          	var ticketurl = "../ticket_generator.htm?authcode="+json.authcode;
+	          	alert("电子票将在新窗口中弹出");
+	          	window.open(ticketurl);
+	          }else
+	          {
+	          	alert("无法生成电子票");
+	          }
+				
+		});
+		
+		return false;
+	});
+	
+	jQuery(".ajaxDelete").click(function(event){
+		
+		var extraData = "";
+		var delUrl = jQuery(this).attr('href');
+		var url = jQuery(this).parent().find(".ajaxDetail").attr('href');
+		
+		jQuery.post(url,
+	          extraData,
+	          function(json) {
+				var customerDetail = "<table>"+
+					
+					"<tr><td><b>中文名:&nbsp;</b></td><td>"+json.chinesename+"</td></tr>"+
+					
+					"<tr><td><b>电&nbsp;&nbsp; 话:&nbsp;</b></td><td>"+json.phone+"</td></tr>"+
+						
+					"<tr><td><b>接车点:&nbsp;</b></td><td>"+json.pickup+"</td></tr>"+
+					
+					"<tr><td><b>&nbsp;</b></td><td></td></tr>"+
+					
+					"<tr><td><b>&nbsp;</b></td><td><input type='hidden' id='delUrl' value='" + delUrl + "'/> <button onclick='deleteYes()'>&nbsp;&nbsp;是&nbsp;&nbsp;</button>&nbsp;&nbsp;<button onclick='deleteNo()'>&nbsp;&nbsp;否&nbsp;&nbsp;</button></td></tr>"+
+					
+					"</table>";
+
+				jQuery("#facebox_title").html("您确定要删除此订单吗？");
+				jQuery("#facebox_content").html(customerDetail);
+				jQuery.facebox({ div: '#facebox_container'});
+		});
+		
+		return false;
+	});
+	
+});
+</script>
+<h2 style="color:blue">$groupinfo</h2>
+<h2>报名信息</h2>
+	<div class="clickform">$bookingSettingForm</div>
+	<div class="clear"></div>
+	
+<hr />
+
+<h2>预订列表</h2>
+	$reserveBookingTable
+<hr/>
+<a href="./general_sales_group_manage.htm">返回出团管理</a>
+	

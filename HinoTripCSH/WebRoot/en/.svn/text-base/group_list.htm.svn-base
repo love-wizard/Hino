@@ -1,0 +1,22 @@
+			
+<!-- 精品线路 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 可选的板块介绍 -->
+     <div class="fullhead_top"></div>
+     <div class="fullhead_bg">
+         <p>Openning Groups</p>
+         <!-- <div class="more"><a href="#">more info</a></div> -->
+         <div style="clear: both"></div>
+     </div><!-- more_bg -->
+     <div class="fullhead_bot"></div>
+
+	<!-- 区域图 -->
+	<div align="center">$booking_table</div>
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

@@ -1,0 +1,346 @@
+<!-- 预订 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 预订表单 -->
+	<script language="javascript">
+	
+	</script>
+
+	<!-- 多步骤表单 -->
+	<div class="col_full">
+		<div class="full_img">
+		<img src="./images/step_booking.png" />
+		</div>
+		<div class="full_form">
+		<div class="full_form_top">
+			#if($groupname) $groupname #else ERROR #end #if($groupdate) $groupdate #else ERROR #end 预订 
+		</div>
+		<div class="full_form_mid">
+
+			$jsData
+
+			<div class="general feature_tour wrapper">
+				<div class="tab">
+					<span class="current">报名信息</span>
+					<span>付款方式</span>
+					<span>确认订单</span>
+					<span>完成预订</span>
+				</div>
+				<a href="route_detail.htm?routeid=$routeid" class="cancel">[ 返回出团信息 ]</a>
+				<div class="nav">
+					<p>
+						<a href="#" class="prev"></a>
+						<a href="#" class="next"></a>
+					</p>
+				</div>
+				<div class="mask">	
+					<div class="maskCon">
+
+					<form class="niceform">
+				        <div id="con1" class="innerCon">
+				        
+				        	<!-- First customer (current user) -->
+							<div id="cus_1">
+							
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>名<span style="color:red">*</span></td>
+								<td><input id="fn_1" type="text" size="50" value="#if($customerFisrtName) $customerFisrtName #end"/></td>
+							</tr>
+							<tr>
+								<td>姓<span style="color:red">*</span></td>
+								<td><input id="ln_1" type="text" size="50" value="#if($customerLastName) $customerLastName #end"/></td>
+							</tr>
+							<tr>
+								<td>中文名</td>
+								<td><input id="cn_1" type="text" size="50" value="#if($customerCnName) $customerCnName #end"/></td>
+							</tr>
+							<tr>
+								<td>性别<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_1" name="gender_1">
+								<option value="">请选择性别</option>
+								<option value="0" #if($customerGenderM)$customerGenderM #end>男</option>
+								<option value="1" #if($customerGenderFM)$customerGenderFM #end>女</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td><input id="email_1" type="text" size="50" readonly="readonly" value="#if($customerEmail) $customerEmail #end"/></td>
+							</tr>
+							<tr>
+								<td>电话<span style="color:red">*</span></td>
+								<td><input id="phone_1" type="text" size="50" value="#if($customerPhone) $customerPhone #end"/></td>
+							</tr>
+							<tr>
+								<td>接车地点<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_1" name="pickup_1" style="width:280px">
+								<option value="">请选择接车地点</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>住宿安排</td>
+								<td><input id="room_1" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							
+							<div id="more">
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form"><tbody>
+							<tr>
+								<td>您可以为同行者进行多人预订：</td>
+								<td>
+								<select id="morecustomer" name="morecustomer">
+								<option value="" selected="selected">请选择同行者人数</option>
+								<option value="2">1</option>
+								<option value="3">2</option>
+								<option value="4">3</option>
+								</select>
+								</td>
+							</tr>
+							</tbody></table>
+							</div>
+							
+							<!-- Second customer -->
+							<div id="cus_2">
+							
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>名<span style="color:red">*</span></td>
+								<td><input id="fn_2" type="text" size="50"/></td>
+							</tr>
+							<tr>
+								<td>姓<span style="color:red">*</span></td>
+								<td><input id="ln_2" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>中文名</td>
+								<td><input id="cn_2" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>性别<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_2" name="gender_2">
+								<option value="">请选择性别</option>
+								<option value="0">男</option>
+								<option value="1">女</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>接车地点<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_2" name="pickup_2" style="width:280px">
+								<option value="">请选择接车地点</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>住宿安排</td>
+								<td><input id="room_2" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							
+							<!-- Third customer -->
+							<div id="cus_3">
+							
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>名<span style="color:red">*</span></td>
+								<td><input id="fn_3" type="text" size="50"/></td>
+							</tr>
+							<tr>
+								<td>姓<span style="color:red">*</span></td>
+								<td><input id="ln_3" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>中文名</td>
+								<td><input id="cn_3" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>性别<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_3" name="gender_3">
+								<option value="">请选择性别</option>
+								<option value="0">男</option>
+								<option value="1">女</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>接车地点<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_3" name="pickup_3" style="width:280px">
+								<option value="">请选择接车地点</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>住宿安排</td>
+								<td><input id="room_3" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							
+							<!-- Fourth customer (current user) -->
+							<div id="cus_4">
+							
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>名<span style="color:red">*</span></td>
+								<td><input id="fn_4" type="text" size="50"/></td>
+							</tr>
+							<tr>
+								<td>姓<span style="color:red">*</span></td>
+								<td><input id="ln_4" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>中文名</td>
+								<td><input id="cn_4" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>性别<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_4" name="gender_4">
+								<option value="">请选择性别</option>
+								<option value="0">男</option>
+								<option value="1">女</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>接车地点<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_4" name="pickup_4" style="width:280px">
+								<option value="">请选择接车地点</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>住宿安排</td>
+								<td><input id="room_4" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							
+							</div>
+							
+						</div>
+						
+						
+				        <div id="con2" class="innerCon">
+				        	
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+				        	<table class="form"><tr><td><input style="none" id="agreed" name="aggreed" type="checkbox" value="1" checked="checked" /> 我已仔细阅读并同意 <a id="agreementlink" href="./resource/Hino_Customer_Contract.pdf" target="_blank">Hino Travel的旅客协议</a></td></tr></table>
+
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form" id="paymethod">
+							<tbody>
+							<tr>
+								<td>付款方式</td>
+								<td>
+								<select id="paymethodsel" name="paymethodsel">
+								<option value="-1">请先阅读协议</option>
+								<option value="1">银行转账付款</option>
+								<option value="2">在线支付</option>
+								<option value="3">公司前台支付</option>
+								</select>
+								<span style="margin-top:-35px;float:right;color:red">同意条款后方可使用 　　　　　　　</span>
+								</td>
+							</tr>
+							<tr>
+								<td>如何付款</td>
+								<td><textarea id="paymethoddetail" rows="10" cols="45" style="line-height:1.5em"></textarea></td>
+							</tr>
+							</tbody>
+							</table>
+						</div>
+						
+				        <div id="con3" class="innerCon">
+
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>您预订的票数</td>
+								<td><input id="ticketno" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							<tr>
+								<td>单价(£)为</td>
+								<td><input id="price_ori" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							<tr>
+								<td>您的账户上目前有积分</td>
+								<td><input id="credit_total" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							<tr>
+								<td>本团最多可抵用<span id="max_credit">ERROR</span>积分<br />请输入本次抵用的积分(100的整数倍)</td>
+								<td><input id="credit_use" type="text" size="50" value="0" /></td>
+							</tr>
+							<tr>
+								<td><br/><input id="calculator" type="button" value="重新计算总价"/></td>
+								<td><br/><input id="price_total" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							</tbody>
+							</table>
+							
+						</div>
+						
+					</form>
+					
+				        <div id="con4" class="innerCon">
+
+							<img src="./images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>您的订单号为: </td>
+								<td><span id="refno">处理中...</span></td>
+							</tr>
+							<tr>
+								<td>请按照您选择的付款方式付款: </td>
+								<td><span id="pay"></span></td>
+							</tr>
+							</tbody>
+							</table>
+						</div>
+					</div>
+			    </div>
+			</div>			
+		</div>
+		<div class="full_form_bot"></div>
+		</div>
+	</div>
+
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

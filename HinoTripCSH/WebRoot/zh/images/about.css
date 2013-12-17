@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+background:url(ny_bg.jpg) repeat-x #f2f5f6;
+/* background:url(../img/site_bg.jpg) repeat #f2f5f6; */
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+.head .logo_link
+{
+display:block;
+padding-top:44px;
+}
+
+/*网站主体  begin*/
+.main
+{
+background:#fff;
+padding:25px 56px 0px 40px;
+width:878px;
+margin:0 auto;
+}
+.second_menu{position:absolute; top:0px; right:100px;}
+.second_menu a{ color:#a95c00}
+/*左侧*/
+.about_l{
+width:193px;
+height:auto!important;
+height:350px;  
+min-height:350px;
+background:url(about_l_bg.jpg) no-repeat;
+float:left;
+}
+.about_l .class{
+width:100%;
+height:80px;
+}
+.about_l .class img{ padding:30px 0px 0px 32px;}
+.about_l .cate
+{
+padding:0px 0px 10px 35px;
+}
+.about_l .cate .title{ font-size:15px; font-family:"微软雅黑","黑体","宋体"; height:24px; line-height:24px; color: #0D707E; cursor:pointer;}
+.about_l .cate ul{ padding-left: 10px; padding-top: 5px;}
+.about_l .cate li{ font-size:14px; font-family:"微软雅黑","黑体","宋体"; height:24px; line-height:24px;}
+.about_l .cate li a{ color:#0d707e;}
+.about_l .cate li a:hover{ color:#2ab3c7;}
+.about_l .cate li a.current{ color:#2ab3c7;}
+
+
+/*右侧*/
+.about_r{width:685px; float:right;}
+.about_r .ico{ width:100%; height:71px; overflow:hidden; text-align:left;}
+.about_r .intro
+{ 
+width:100%; 
+background:url(about_r_bg.jpg) no-repeat;
+height:auto!important;
+height:356px;  
+min-height:356px;
+}
+.about_r .intro h2{ padding:30px 0px 0px 40px; height:33px; line-height:33px; font-size:18px; font-family:"微软雅黑","黑体","宋体"; font-weight:normal;}
+.about_r .intro .textinfo{ padding:28px 50px 0px 22px; line-height:24px;}
+.about_r .intro .imglist{ padding:28px 0px 0px 22px;}
+.about_r .intro .imglist li{ width:194px; float:left; margin:5px 25px 5px 0px; display:inline}
+.about_r .intro .imglist li img{ width:194px; height:125px;}
+.about_r .note{width:667px; margin-left:15px;}
+.about_r .note .tit{ background:url(about_r_bg2.jpg) no-repeat; height:39px; width:657px; padding-left:10px; line-height:39px; font-size:18px; font-family:"微软雅黑","黑体","宋体"; color:#fff; font-weight:bold; font-style:italic;}
+.about_r .note .box{ border:1px solid #c1d1d4; padding:10px; line-height:24px; font-family:Arial, Helvetica, sans-serif;}
+
+
+

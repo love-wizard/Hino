@@ -1,0 +1,100 @@
+<style>
+<!--
+.classic_line_top {
+	width: 974px;
+	background: url(./images/line_top.jpg) no-repeat left center;
+	text-align: center;
+}
+
+.classic_line_top img {
+	width: 870px;
+	height: 190px;
+	margin: 0 auto;
+	display: block;
+-->
+</style>
+<style>
+<!--
+.f_r {float: none;}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+$(document).ready(function() {
+	var rid = $("#classId").val();
+	if(rid==2 || rid==3 || rid==4 || rid==5 || rid==6 || rid==7)
+	{
+		//alert(rid);
+		var line_top = "./img/line_top_" + rid + ".png";
+		var route_logo = "./img/classic_logo_" + rid + ".png";
+		
+		$(".classic_line_top").css({"background-image" : "url(" + line_top + ")"});
+		$(".classic_line_top").css({"background-position-y" : "24px"});
+		
+		$(".line_area .area").html("");
+		$(".line_area .area").css({"background-image" : "url(" + route_logo + ")"});
+	}
+});
+//-->
+</script>
+
+    <div class="main">
+        <div class="second_menu">
+        #foreach($menu in $menulist)
+        <a href="./classic.htm?rid=$menu.id">$menu.name</a> 
+        #end
+        </div>
+    	<!--精品路线专题图开始-->
+        <div class="classic_line_top"><img src="../$pathpre$wm.imageUrl" /></div>
+    	<!--精品路线专题图结束-->
+        <div class="line_contair">
+            <!--搜索开始-->
+            <div class="classic_line_search">
+                <div class="hot">
+                热门搜索：<a href="#">怀特岛三日休闲游</a> <a href="#">曼彻斯特一日游</a>  <a href="#">南部三日集合</a>  <a href="#">天涯海角</a> 
+                </div>
+                <div class="line_frm">
+                	<form action="" method="get">
+                    	<input name="" type="text" class="line_input"/>
+                    	<input type="hidden" id="classId" value="$rid"/>&nbsp; 
+                        <input name="" type="image" class="line_s" src="images/line_search.gif" />
+                    </form>
+                </div>
+            </div>
+            <!--搜索结束-->
+            <!--地区描述开始-->
+            <div class="line_area">
+            	<div class="area">
+                	<span class="c_t">$wm.name</span>
+                    <span class="e_t">$wm.name_en</span>
+                </div>
+                <div class="area_intro">
+                $wm.description                
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!--地区描述结束-->
+    	</div>    
+        <!--精品路线列表开始-->
+        <div class="line_list">
+        		#foreach($wmr in $wmrlist)
+                <div class="line_item">
+                	<a href="./route_detail.htm?routeid=$wmr.route.id">
+                    	<div class="title">$wmr.route.originalRouteName</div>
+                        <div class="pic"><img src="../$pathpre$wmr.route.thumbUrl" /></div>
+                    	<div class="intro" title="$wmr.route.thumbDesc">                    	
+   						$wmr.route.limitedThumbDesc
+                        </div>
+                    </a>
+                </div>
+                #end
+ 
+                
+ 
+ 
+                <div class="clearfix"></div>
+        </div>
+        <!--精品路线列表结束-->
+    </div>
+

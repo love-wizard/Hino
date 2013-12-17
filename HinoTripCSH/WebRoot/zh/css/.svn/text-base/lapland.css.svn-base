@@ -1,0 +1,328 @@
+@charset "utf-8";
+/* CSS Document */
+body {	
+	margin: 0 auto;
+	padding: 0 0 0 0;
+	background-color: #0c222d;
+}
+
+.foot-con {
+	z-index: 20;
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+}
+
+.foot-bg {
+	z-index: 10;
+	width: 100%;
+	height: 126px;
+	padding: 0px;
+	margin: 0 auto;
+	position: absolute;
+}
+
+.foot-bg img {
+	border: 0px;
+	margin: 0 auto;
+}
+
+.copyright1 {
+	color: #654226;
+	letter-spacing: 1px;
+	FONT: 14px/1.5 "微软雅黑";
+	font-weight: 700;
+	width: 100%;
+	
+	padding: 0 0 0 0;
+}
+
+.copyright {
+	margin: 0 auto;
+}
+
+.foot_menu {
+	background-color: grey; 
+	filter: alpha(opacity=50); 
+	opacity: 0.5;
+	height: 31px;
+	line-height: 31px;
+	width: 100%;
+	text-align: center;
+	color: black;		
+	display: none;
+}
+
+a {		
+	text-decoration: none;
+}
+
+.blank {
+	width: 100%;
+	height: 15px;
+}
+
+.bg {
+	position: absolute;
+}
+
+.con-box{
+	position: relative;
+	min-height: 2180px;
+	width: 1270px;
+	margin: 0px auto 0px auto;
+}
+
+.con {
+	background: url('../img/lapland/lapland_bg2.png') no-repeat;
+	height: 2080px;
+	width: 950px;
+	position: absolute;
+	/*margin-top: 25px;*/		
+	padding-left: 160px;
+	padding-right: 160px;
+	z-index: 20;
+}
+
+.con-box .travel-days-l1 ul, .con-box .travel-days-l2 ul {
+	list-style-type: none;
+}
+
+.con-box .travel-days-l1 li {
+	float: left;
+	width: 60px;
+	list-style-type: none;
+	cursor: pointer;
+}
+
+ .con-box .travel-days-l2 li {
+	float: left;
+	width: 60px;
+	list-style-type: none;
+	cursor: pointer;
+}
+
+.day-highlight {
+	color: black;
+}
+
+.travel-days-l1 {
+	height: 30px;
+	line-height: 30px;
+	margin-left: 255px;
+	margin-top: 298px;
+	font-size: 14.5px;
+	color: brown;
+	letter-spacing: 1px;
+}
+
+.travel-days-l2 {
+	height: 30px;
+	line-height: 30px;
+	margin-left: 425px;
+	margin-top: 23px;
+	font-size: 14.5px;
+	color: brown;
+	letter-spacing: 1px;
+}
+
+.index-link {
+	height: 55px;
+	line-height: 55px;
+	color: white;
+}
+
+.index-link a {
+	color: white;
+}
+
+.index-link div {
+	letter-spacing: 1px;
+	margin-left: 150px;
+	font-size: 14.5px;
+	font-weight: bold;
+}
+
+
+.intro-box {
+	width: 850px;
+	height: 345px;
+	margin: 0 auto ;
+}
+
+.description {
+	width: 100%;
+}
+
+.intro-box .t-bg {
+	background: url('../img/lapland/intro_bg.png') no-repeat;
+	width: 100%;
+	height: 20px;
+}
+
+.intro-box .m-bg {
+	background: url('../img/lapland/intro_body_bg.png') repeat-y;
+	width: 94%;
+	color: black;
+    font-size: 14.5px;
+    font-weight: bold;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.intro-box .b-bg {
+	background: url('../img/lapland/intro_bg.png') 0 -180px no-repeat;
+	width: 100%;
+	height: 25px;
+}
+
+.intro-box .title {
+	width: 100%;
+	text-align: center;
+	margin: 0 auto ;		
+}
+
+.intro-box .title-1 {
+	background: url('../img/lapland/day_titles.png') no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-2 {
+	background: url('../img/lapland/day_titles.png') 0 -45px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-3 {
+	background: url('../img/lapland/day_titles.png') 0 -95px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-4 {
+	background: url('../img/lapland/day_titles.png') 0 -145px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-5 {
+	background: url('../img/lapland/day_titles.png') 0 -195px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-6 {
+	background: url('../img/lapland/day_titles.png') 0 -245px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-7 {
+	background: url('../img/lapland/day_titles.png') 0 -295px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-8 {
+	background: url('../img/lapland/day_titles.png') 0 -345px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-9 {
+	background: url('../img/lapland/day_titles.png') 0 -395px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-10 {
+	background: url('../img/lapland/day_titles.png') 0 -445px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-11 {
+	background: url('../img/lapland/day_titles.png') 0 -495px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-12 {
+	background: url('../img/lapland/day_titles.png') 0 -545px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.intro-box .title-13 {
+	background: url('../img/lapland/day_titles.png') 0 -595px no-repeat;
+	height: 50px;
+	width: 498px;		
+}
+
+.sights {	
+	background: url('../img/lapland/sight-1.png') no-repeat;
+	height: 600px;
+    margin-left: 299px;
+    margin-top: 700px;
+    position: absolute;
+    width: 850px;
+    z-index: 10;
+}
+
+.sights-nav {
+	position: absolute;
+	margin-top: 100px;
+	padding-left: 45px;
+	letter-spacing: 1px;
+}
+
+.sights-nav ul li {
+	height: 38px;
+	cursor: pointer;
+}
+
+.sights-nav ul li div {
+	width: 80px;
+	height: 26px;
+	line-hight: 26px;
+	text-align: center;
+	font-size: 17.5px;
+	color: brown;    
+}
+
+.sn-highlight {
+	border-radius: 10px;
+	background-color: white;
+}
+
+.img-buffer {
+	display: none;
+}
+
+.intro-line-separator {
+	height: 5px;	
+}
+
+.text-highlight {
+	color: orange;
+}
+
+.discount-box {
+	color: white;
+	margin-left: 150px; 
+	margin-top: 190px; 
+	width: 500px; 
+	font-size: 14.5px; 	
+	text-align: left; 
+	line-height: 25px;
+	padding: 15px;
+	border:1px dashed white;	
+	border-radius: 10px;
+}
+
+/*
+.travel-days-seperator {
+	height: 5px;
+	width: 100%;
+}*/

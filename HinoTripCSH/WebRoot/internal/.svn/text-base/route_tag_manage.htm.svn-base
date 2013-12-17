@@ -1,0 +1,5 @@
+<h2>设置/更新线路Tag</h2>
+<div class="clickform">$routeTag</div>
+<div class="clear"></div>
+<hr/>
+<a href="./route_manage.htm">取消并返回线路管理</a>

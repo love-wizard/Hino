@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:sec="http://www.springframework.org/schema/security"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:aop="http://www.springframework.org/schema/aop" 
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	   					   http://www.springframework.org/schema/tx
+	   					   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	   					   http://www.springframework.org/schema/security
+	   					   http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+
+<!-- Page Beans -->
+
+<!-- Util Beans -->
+<bean id="dataExporter" class="com.hino.util.DataExporter">
+	<property name="bds" ref="dataSource"></property>
+</bean>
+
+<bean id="fileCenter" class="com.hino.util.FileCenter">
+</bean>
+
+<bean id="emailUtil" class="com.hino.util.EmailUtil">
+</bean>
+
+<!-- Dao Beans -->
+<bean id="staffDaoImpl" class="com.hino.dao.impl.StaffDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="areaBranchDaoImpl" class="com.hino.dao.impl.AreaBranchDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="siteDaoImpl" class="com.hino.dao.impl.SiteDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="routeDaoImpl" class="com.hino.dao.impl.RouteDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="customerDaoImpl" class="com.hino.dao.impl.CustomerDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="resourceDaoImpl" class="com.hino.dao.impl.ResourceDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="webMenuDaoImpl" class="com.hino.dao.impl.WebMenuDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="messageDaoImpl" class="com.hino.dao.impl.MessageDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="webMenuRouteDaoImpl" class="com.hino.dao.impl.WebMenuRouteDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="groupDaoImpl" class="com.hino.dao.impl.GroupDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="bookingDaoImpl" class="com.hino.dao.impl.BookingDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="diyRouteDaoImpl" class="com.hino.dao.impl.DiyRouteDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="transferDaoImpl" class="com.hino.dao.impl.TransferDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="groupProfitDaoImpl" class="com.hino.dao.impl.GroupProfitDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="vipOrderDaoImpl" class="com.hino.dao.impl.VipOrderDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="vehicleDaoImpl" class="com.hino.dao.impl.VehicleDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="carRequestDaoImpl" class="com.hino.dao.impl.CarRequestDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="voucherDaoImpl" class="com.hino.dao.impl.VoucherDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="tourSurveyDaoImpl" class="com.hino.dao.impl.TourSurveyDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="NoticeBoardDaoImpl" class="com.hino.dao.impl.NoticeBoardDaoImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="scheduleDaoImpl" class="com.hino.dao.impl.ScheduleDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="distinguishedGroupDaoImpl" class="com.hino.dao.impl.DistinguishedGroupDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="serviceOptionDaoImpl" class="com.hino.dao.impl.ServiceOptionDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="InfoDaoImpl" class="com.hino.dao.impl.InfoDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="groupTagDaoImpl" class="com.hino.dao.impl.GroupTagDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="qqServiceDaoImpl" class="com.hino.dao.impl.QQServiceDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="customerHistoryDaoImpl" class="com.hino.dao.impl.CustomerHistoryDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="airlineQADAOImpl" class="com.hino.dao.impl.AirlineQADAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="airlineDAOImpl" class="com.hino.dao.impl.AirlineDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="airportDAOImpl" class="com.hino.dao.impl.AirportDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="airlineTipsDAOImpl" class="com.hino.dao.impl.AirlineTipsDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="airlineCatalogDAOImpl" class="com.hino.dao.impl.AirlineCatalogDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="airlineBookingDAOImpl" class="com.hino.dao.impl.AirlineBookingDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="airlineCompanyDAOImpl" class="com.hino.dao.impl.AirlineCompanyDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="groupHistoryDAOImpl" class="com.hino.dao.impl.GroupHistoryDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<bean id="recruitmentDaoImpl" class="com.hino.dao.impl.RecruitmentDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+<bean id="groupSurveyDAOImpl" class="com.hino.dao.impl.GroupSurveyDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+<bean id="groupSurveyAnswerDAOImpl" class="com.hino.dao.impl.GroupSurveyAnswerDAOImpl">
+	<property name="ht" ref="hibernateTemplate"></property>
+</bean>
+
+<!-- Manager Beans -->
+<bean id="bookingGroupManagerImpl" class="com.hino.service.impl.BookingGroupManagerImpl">
+	<property name="customerDao" ref="customerDaoImpl"></property>
+	<property name="groupDao" ref="groupDaoImpl"></property>
+	<property name="bookingDao" ref="bookingDaoImpl"></property>
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="voucherDao" ref="voucherDaoImpl"></property>
+	<property name="voucherGroupManager" ref="voucherGroupManagerImpl"></property>
+	<property name="customerService" ref="customerServiceImpl"></property>
+</bean>
+
+<bean id="voucherGroupManagerImpl" class="com.hino.service.impl.VoucherGroupManagerImpl">
+</bean>
+
+<bean id="vipOrderManagerImpl" class="com.hino.service.impl.VipOrderManagerImpl">
+	<property name="customerDao" ref="customerDaoImpl"></property>
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="vipOrderDao" ref="vipOrderDaoImpl"></property>
+</bean>
+
+<!-- Service Beans -->
+
+<!-- Devong King - 2012/09/08 Configure search result service -->
+<bean id="searchResultServiceImpl" class="com.hino.service.impl.SearchResultServiceImpl">
+	<property name="groupDao" ref="groupDaoImpl"></property>
+	<property name="routeDao" ref="routeDaoImpl"></property>	
+</bean>
+
+<bean id="webServiceImpl" class="com.hino.service.impl.WebServiceImpl">
+	<property name="customerDao" ref="customerDaoImpl"></property>
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="webMenuDao" ref="webMenuDaoImpl"></property>
+	<property name="routeDao" ref="routeDaoImpl"></property>
+	<property name="webMenuRouteDao" ref="webMenuRouteDaoImpl"></property>
+	<property name="groupDao" ref="groupDaoImpl"></property>
+	<property name="fileCenter" ref="fileCenter"></property>
+	<property name="emailUtil" ref="emailUtil"></property>
+	<property name="bookingDao" ref="bookingDaoImpl"></property>
+	<property name="infoDao" ref="InfoDaoImpl"></property>
+	<property name="qqServiceDao" ref="qqServiceDaoImpl"></property>
+	<property name="airlineQADAO" ref="airlineQADAOImpl"></property>
+</bean>
+
+<bean id="salesServiceImpl" class="com.hino.service.impl.SalesServiceImpl">
+	<property name="fileCenter" ref="fileCenter"></property>
+	<property name="routeDao" ref="routeDaoImpl"></property>
+	<property name="resourceDao" ref="resourceDaoImpl"></property>
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="groupDao" ref="groupDaoImpl"></property>
+	<property name="bookingDao" ref="bookingDaoImpl"></property>
+	<property name="customerDao" ref="customerDaoImpl"></property>
+	<property name="bookingGroupManager" ref="bookingGroupManagerImpl"></property>
+	<property name="voucherGroupManager" ref="voucherGroupManagerImpl"></property>
+	<property name="carRequestDao" ref="carRequestDaoImpl"></property>
+	<property name="voucherDao" ref="voucherDaoImpl"></property>
+	<property name="tourSurveyDao" ref="tourSurveyDaoImpl"></property>
+	<property name="groupTagDao" ref="groupTagDaoImpl"></property>
+	<property name="groupHistoryDao" ref="groupHistoryDAOImpl"></property>
+</bean>
+
+<bean id="guideServiceImpl" class="com.hino.service.impl.GuideServiceImpl">
+	<property name="fileCenter" ref="fileCenter"></property>
+	<property name="resourceDao" ref="resourceDaoImpl"></property>
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="groupDao" ref="groupDaoImpl"></property>
+	<property name="groupHistoryDao" ref="groupHistoryDAOImpl"></property>
+</bean>
+
+<bean id="strategyServiceImpl" class="com.hino.service.impl.StrategyServiceImpl">
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="areaBranchDao" ref="areaBranchDaoImpl"></property>
+</bean>
+
+<bean id="travelResourceServiceImpl" class="com.hino.service.impl.TravelResourceServiceImpl">
+	<property name="siteDao" ref="siteDaoImpl"></property>
+	<property name="routeDao" ref="routeDaoImpl"></property>
+	<property name="diyRouteDao" ref="diyRouteDaoImpl"></property>
+	<property name="vehicleDao" ref="vehicleDaoImpl"></property>
+	<property name="scheduleDao" ref="scheduleDaoImpl"></property>
+	<property name="fileCenter" ref="fileCenter"></property>
+	<property name="distinguishedGroupDao" ref="distinguishedGroupDaoImpl"></property>
+	<property name="serviceOptionDao" ref="serviceOptionDaoImpl"></property>
+</bean>
+
+<bean id="humanResourceServiceImpl" class="com.hino.service.impl.HumanResourceServiceImpl">
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="areaBranchDao" ref="areaBranchDaoImpl"></property>
+	<property name="messageDao" ref="messageDaoImpl"></property>
+	<property name="fileCenter" ref="fileCenter"></property>
+	<property name="emailUtil" ref="emailUtil"></property>
+	<property name="resourceDao" ref="resourceDaoImpl"></property>
+	<property name="recruitmentDao" ref="recruitmentDaoImpl"></property>
+</bean>
+
+<bean id="customerServiceImpl" class="com.hino.service.impl.CustomerServiceImpl">
+	<property name="bookingDao" ref="bookingDaoImpl"></property>
+	<property name="groupDao" ref="groupDaoImpl"></property>
+	<property name="customerDao" ref="customerDaoImpl"></property>
+	<property name="fileCenter" ref="fileCenter"></property>
+	<property name="emailUtil" ref="emailUtil"></property>
+	<property name="vipOrderManager" ref="vipOrderManagerImpl"></property>
+	<property name="vipOrderDao" ref="vipOrderDaoImpl"></property>
+	<property name="bookingGroupManager" ref="bookingGroupManagerImpl"></property>
+	<property name="de" ref="dataExporter"></property>
+	<property name="carRequestDao" ref="carRequestDaoImpl"></property>
+	<property name="tourSurveyDao" ref="tourSurveyDaoImpl"></property>
+	<property name="customerHistoryDao" ref="customerHistoryDaoImpl"></property>
+	
+</bean>
+
+<bean id="financialServiceImpl" class="com.hino.service.impl.FinancialServiceImpl">
+	<property name="groupDao" ref="groupDaoImpl"></property>
+	<property name="bookingDao" ref="bookingDaoImpl"></property>
+	<property name="customerDao" ref="customerDaoImpl"></property>
+	<property name="staffDao" ref="staffDaoImpl"></property>
+	<property name="transferDao" ref="transferDaoImpl"></property>
+	<property name="groupProfitDao" ref="groupProfitDaoImpl"></property>
+	<property name="vipOrderDao" ref="vipOrderDaoImpl"></property>
+	<property name="vipOrderManager" ref="vipOrderManagerImpl"></property>
+	<property name="bookingGroupManager" ref="bookingGroupManagerImpl"></property>
+	<property name="emailUtil" ref="emailUtil"></property>
+	<property name="areaBranchDao" ref="areaBranchDaoImpl"></property>
+</bean>
+
+<bean id="noticeServiceImpl" class="com.hino.service.impl.NoticeServiceImpl">
+	<property name="NoticeBoardDao" ref="NoticeBoardDaoImpl"></property>
+</bean>
+ 
+<bean id="airlineServiceImpl" class="com.hino.service.impl.AirlineServiceImpl">
+	<property name="airportDao" ref="airportDAOImpl"></property>
+	<property name="airlineCatalogDao" ref="airlineCatalogDAOImpl"></property>
+	<property name="airlineTipsDao" ref="airlineTipsDAOImpl"></property>
+	<property name="airlineDao" ref="airlineDAOImpl"></property>
+	<property name="airlineQADao" ref="airlineQADAOImpl"></property>
+	<property name="airlineBookingDao" ref="airlineBookingDAOImpl"></property>
+	<property name="airlineCompanyDao" ref="airlineCompanyDAOImpl"></property>
+</bean> 
+<bean id="groupSurveyServiceImpl" class="com.hino.service.impl.GroupSurveyServiceImpl">
+	<property name="groupSurveyAnswerDAO" ref="groupSurveyAnswerDAOImpl"></property>
+	<property name="groupSurveyDAO" ref="groupSurveyDAOImpl"></property>
+	<property name="groupDAO" ref="groupDaoImpl"></property>
+	<property name="customerDAO" ref="customerDaoImpl"></property>
+</bean>
+<!--  
+<bean id="staffManagerImpl" class="com.hino.service.impl.StaffManagerImpl">
+	<property name="staffDao" ref="staffDaoImpl"></property>
+</bean>
+-->
+
+<!-- Database and Session configeration -->
+<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
+
+<!-- Glassfish server DB setting -->
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://localhost/hino2011v1"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="zzhinoc2010"></property>
+	<property name="connectionProperties" value="useUnicode=true;characterEncoding=utf8"></property>
+</bean> 
+
+ 
+<!--  
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://localhost/hino201308v1"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="root"></property>
+	<property name="connectionProperties" value="useUnicode=true;characterEncoding=utf8"></property>
+</bean> 
+ -->
+<!-- My VM server DB setting 
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://localhost:3306/hinolocal01"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="1234"></property>
+	<property name="connectionProperties" value="useUnicode=true;characterEncoding=utf8"></property>
+</bean>
+   -->
+
+<!-- My VM server DB setting 2 laptop
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	<property name="url" value="jdbc:mysql://localhost:3307/hinolocal"></property>
+	<property name="username" value="root"></property>
+	<property name="password" value="1234"></property>
+	<property name="connectionProperties" value="useUnicode=true;characterEncoding=utf8"></property>
+</bean>
+ -->
+
+<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="annotatedClasses">
+		<list>
+			<value>com.hino.model.Staff</value>
+			<value>com.hino.model.Customer</value>
+			<value>com.hino.model.Route</value>
+			<value>com.hino.model.Site</value>
+			<value>com.hino.model.Group</value>
+			<value>com.hino.model.WebMenu</value>
+			<value>com.hino.model.WebMenuRoute</value>
+			<value>com.hino.model.Resource</value>
+			<value>com.hino.model.AreaBranch</value>
+			<value>com.hino.model.Message</value>
+			<value>com.hino.model.Booking</value>
+			<value>com.hino.model.DiyRoute</value>
+			<value>com.hino.model.Transfer</value>
+			<value>com.hino.model.GroupProfit</value>
+			<value>com.hino.model.VipOrder</value>
+			<value>com.hino.model.Vehicle</value>
+			<value>com.hino.model.CarRequest</value>
+			<value>com.hino.model.Voucher</value>
+			<value>com.hino.model.TourSurvey</value>
+			<value>com.hino.model.RORegion</value>
+			<value>com.hino.model.GroupPickupPoint</value>
+			<value>com.hino.model.NoticeBoard</value>
+			<value>com.hino.model.Schedule</value>
+			<value>com.hino.model.ServiceOption</value>
+			<value>com.hino.model.DistinguishedGroup</value>
+			<value>com.hino.model.Info</value>
+			<value>com.hino.model.GroupSearchInfo</value>
+			<value>com.hino.model.GroupTag</value>
+			<value>com.hino.model.QQService</value>
+			<value>com.hino.model.CustomerHistory</value>
+			<value>com.hino.model.AirlineQA</value>
+			<value>com.hino.model.AirlineCatalog</value>
+			<value>com.hino.model.Airline</value>
+			<value>com.hino.model.AirlineTips</value>
+			<value>com.hino.model.Airport</value>
+			<value>com.hino.model.AirlineBooking</value>
+			<value>com.hino.model.AirlineCompany</value>
+			<value>com.hino.model.GroupHistory</value>
+			<value>com.hino.model.Recruitment</value>
+			<value>com.hino.model.GroupSurvey</value>
+			<value>com.hino.model.GroupSurveyAnswer</value>
+		</list>
+	</property>
+	
+	<property name="hibernateProperties">
+		<props>
+			
+			<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>
+			  
+			<prop key="hibernate.show_sql">false</prop>
+			<prop key="hibernate.format_sql">true</prop>
+			
+			<prop key="hibernate.hbm2ddl.auto">update</prop>
+			<prop key="hibernate.current_session_context_class">thread</prop>
+			<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+		</props>
+	</property>
+</bean>
+
+<tx:annotation-driven transaction-manager="txManager"/>
+<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+  <property name="sessionFactory" ref="sessionFactory" />
+</bean>
+
+<!-- Spring Security -->
+<!-- Reference: http://www.blogjava.net/fastzch/archive/2010/03/10/315028.html -->
+<sec:http auto-config="true">
+	<sec:access-denied-handler error-page="/hino403.html"/>
+	<sec:intercept-url pattern="/internal/index.htm" filters="none" />
+	<sec:form-login login-page="/internal/index.htm" authentication-failure-url="/internal/index.htm" />
+	<sec:http-basic />
+    <sec:custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="hinoFilter" />
+</sec:http>
+
+<bean id="hinoFilter" class="com.hino.security.HinoSecurityInterceptor">
+	<property name="authenticationManager" ref="hinoAuthenticationManager" />
+	<property name="accessDecisionManager" ref="hinoAccessDecisionManagerBean" />
+	<property name="securityMetadataSource" ref="hinoSecurityMetadataSource" />
+</bean>
+
+<sec:authentication-manager alias="hinoAuthenticationManager">
+	<sec:authentication-provider user-service-ref="hinoUserDetailService">
+		<!-- <password-encoder hash="md5" /> -->
+	</sec:authentication-provider>
+</sec:authentication-manager>
+<bean id="hinoUserDetailService" class="com.hino.security.HinoUserDetailService" />
+<bean id="hinoAccessDecisionManagerBean" class="com.hino.security.HinoAccessDecisionManager" />
+<bean id="hinoSecurityMetadataSource" class="com.hino.security.HinoInvocationSecurityMetadataSource" />
+</beans>

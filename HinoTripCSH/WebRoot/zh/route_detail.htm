@@ -1,0 +1,711 @@
+﻿<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv='expires' content='0'>
+<link href="css/routedetails.css" rel="stylesheet" type="text/css" />
+<link href="css/jqzoom.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.scrollbars.css" rel="stylesheet" type="text/css" />
+<link href="../css/pirobox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/jquery.scrollbars.js"></script>
+<script type="text/javascript" src="js/jquery.jqzoom1.0.1.js"></script>
+<script type="text/javascript" src="js/hino.tools.js"></script>
+<script type="text/javascript">
+<!--
+function showGroup(d) {
+	var ym = jQuery("#yearmonth").val();
+	jQuery.post("./route_detail.htm", "calendar_action=1&a=day&d=" + d + "&ym=" + ym + "&routeid=$routeid", function(data) {
+		$("#line1").html(data.line1);
+		$("#line2").html(data.line2);
+		$("#line3").html(data.line3);		
+		$("#apply").html("<a href='#group_info'><img alt='' src='./img/apply.jpg'></a>");
+		//alert(ym.substring(0,4) + "    " + ym + "   -   " + d);
+		var dt = new Date();
+		dt.setFullYear(parseInt(ym.substring(0,4)), parseInt(ym.substring(4,6)) - 1, d);
+
+		/* Show date in front of the schedule title */
+		//var month = parseInt(ym.substring(4,6));
+		//var day = d;
+			
+		$(".schedule_date").each(function(i){
+			dt.setDate(dt.getDate() + (i==0?0:1));
+			$(this).html("" + (dt.getMonth() + 1) + "月" + dt.getDate() + "日，");
+			//$(this).html(month + "月" + day + "日，");
+		});
+   	});
+}
+
+function showSchedule (id, obj) {
+	if (jQuery("#setGuard").hasClass("expand_schedule")) {
+		jQuery("#setGuard").removeClass("expand_schedule");
+		jQuery("#setGuard").addClass("fold_schedule");
+		jQuery("#setGuard").find(".recommend").html("展开");
+	}
+	
+	jQuery("#schedule_line_bg").css({"background-image":"url(./img/line_bg_grey.jpg)"});
+	
+	jQuery("#schedule_left_bg").css({"height": "353px"});
+  	jQuery("#schedule_right_bg").css({"height": "353px"});
+	
+	jQuery(".schedule_days").each(function(){		
+    	jQuery(this).css({"background-image":"url(./img/schedule_unselected_icon.jpg)"});
+  	});
+  	
+ 	jQuery(obj).css({"background-image":"url(./img/schedule_selected_icon.jpg)"});
+	
+	jQuery(".schedule_block").each(function(){
+		jQuery(this).removeClass("show_schedule");
+    	jQuery(this).addClass("hide_schedule");
+  	});
+  	
+	jQuery("#schedule_"  + id).removeClass("hide_schedule");
+	jQuery("#schedule_"  + id).addClass("show_schedule");
+}
+
+function showAllSchedules () {		
+	var count = 0;
+	jQuery(".schedule_days").each(function(){		
+    	jQuery(this).css({"background-image":"url(./img/schedule_selected_icon.jpg)"});
+    	count = count + 1;
+  	});
+  	
+ 	jQuery("#schedule_line_bg").css({"background-image":"url(./img/line_bg.jpg)"});
+	
+	jQuery(".schedule_block").each(function(){
+		jQuery(this).removeClass("hide_schedule");
+    	jQuery(this).addClass("show_schedule");
+  	});
+  	
+  	jQuery("#schedule_left_bg").css({"height": (count * 353) + "px"});
+  	jQuery("#schedule_right_bg").css({"height": (count * 353) + "px"});
+}
+
+function foldSchedules () {
+	jQuery(".schedule_days").each(function(){		
+    	jQuery(this).css({"background-image":"url(./img/schedule_unselected_icon.jpg)"});
+  	});
+  	
+  	jQuery("#schedule_line_bg").css({"background-image":"url(./img/line_bg_grey.jpg)"});
+	
+  	jQuery("#schedule_day_1").css({"background-image":"url(./img/schedule_selected_icon.jpg)"});
+  	
+	jQuery(".schedule_block").each(function(){		
+		jQuery(this).removeClass("show_schedule");
+    	jQuery(this).addClass("hide_schedule");
+  	});
+  	
+  	jQuery("#schedule_1").removeClass("hide_schedule");
+    jQuery("#schedule_1").addClass("show_schedule");
+    
+    jQuery("#schedule_left_bg").css({"height": "353px"});
+  	jQuery("#schedule_right_bg").css({"height": "353px"});
+}
+
+function scheduleToggle() {	
+	if (jQuery("#setGuard").hasClass("expand_schedule")) {
+		jQuery("#setGuard").removeClass("expand_schedule");
+		jQuery("#setGuard").addClass("fold_schedule");
+		jQuery("#setGuard").find(".recommend").html("展开");
+		foldSchedules();
+		
+	} else {
+		jQuery("#setGuard").removeClass("fold_schedule");
+		jQuery("#setGuard").addClass("expand_schedule");
+		jQuery("#setGuard").find(".recommend").html("收起");
+		showAllSchedules();
+	}
+}
+
+//-->
+</script>
+<style>
+<!--
+.f_r {float: none;}
+-->
+</style>
+<div class="main">
+    <div class="line_xx_top">
+    	<!-- <img src="./img/route_top.jpg" /> -->
+    	<div class="container">
+	    	<div class="folio_block">
+			    	
+		        <div class="main_view">
+		            <div class="window">	
+		                <div class="image_reel" style="width: 3160px; left: 0px; ">
+		                	#if($curRoute.imageUrl != "")
+		                    <a href=""><img src="../$pathpre$curRoute.imageUrl" alt="" height="290px" width="869px"></a>
+		                   	#end
+		                    #if($curRoute.imageUrl1 != "")
+		                    <a href=""><img src="../$pathpre$curRoute.imageUrl1" alt="" height="290px" width="869px"></a>
+		                    #end
+		                    #if($curRoute.imageUrl2 != "")
+		                    <a href=""><img src="../$pathpre$curRoute.imageUrl2" alt="" height="290px" width="869px"></a>
+		                    #end
+		                    #if($curRoute.imageUrl3 != "")
+		                    <a href=""><img src="../$pathpre$curRoute.imageUrl3" alt="" height="290px" width="869px"></a>
+		                    #end
+		                    #if($curRoute.imageUrl4 != "")
+		                    <a href=""><img src="../$pathpre$curRoute.imageUrl4" alt="" height="290px" width="869px"></a>
+		                    #end
+		                </div>
+		            </div>
+		            <div class="paging" style="display: block; ">
+		            	#if($curRoute.imageUrl != "")
+		                <a href="" rel="1" class="active" id="">1</a>
+		                #end
+		                #if($curRoute.imageUrl1 != "")
+		                <a href="" rel="2" id="" class="">2</a>
+		                #end
+		                #if($curRoute.imageUrl2 != "")
+		                <a href="" rel="3" class="" id="">3</a>
+		                #end
+		                #if($curRoute.imageUrl3 != "")
+		                <a href="" rel="4" class="" id="">4</a>
+		                #end
+		                #if($curRoute.imageUrl4 != "")
+		                <a href="" rel="5" class="" id="">5</a>
+		                #end
+		            </div>
+		        </div>
+		    </div>
+		</div>	
+    </div>
+    <div class="line_contair">
+        <!--搜索开始-->
+        
+            <!-- <img alt="" src="./img/status_search.jpg"> -->
+                <!--搜索开始-->
+		        <div class="line_search" style="border:none;background:url(./img/status_search.jpg) no-repeat;">
+		        	
+		            <div class="line_frm">
+		            	<form id="frm_line_s" name="frm_line_s" action="./search_result.htm" method="post">
+		                	<input type="text" id="txt_line_s_k" name="txt_line_s_k" class="line_input" autocomplete="off"/>
+		                    <input id="btn_line_s" name="btn_line_s" value="" type="submit" class="line_s"/>
+		                </form>
+		            </div>
+		        </div>
+        		<!--搜索结束-->            
+       		
+        <!--搜索结束-->
+	</div>   
+    <!--路线介绍-->
+    <div class="box_line">
+    	<div class="t bshare-custom icon-small" style="padding-top: 3px;height: 30px;">团次信息  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	 &nbsp; &nbsp;
+    	 <span style="margin-right:0"><a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more" style="font-size:12px;">分享到</a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到开心网" class="bshare-kaixin001"></a><a title="分享到豆瓣" class="bshare-douban"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></span><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+    	</div>
+    	
+        <div class="c">
+        	<!-- 开始 -->
+        	<div style="height:50px;border-bottom:1px solid #8BB5BB;">
+	        	<div style="width:680px; float:left; padding:4px 10px; margin:10px 0 16px; font-weight:100;font-size:16px; font-family:'黑体'; color:#35679a;">$route_name</div>
+	        	<div style="width:170px; float:left; padding:4px; margin:10px 0 16px; font-weight:100;font-size:16px; font-family:'黑体'; color:#35679a;">| $satisfaction% <em style="font-size:12px">满意度</em> </div>        	
+        	</div>
+        	
+        	<div style="height:15px;">
+        	</div>
+        	
+       	    <div class="testtab" id="testtab">
+		    	<div id="tabtag" class="tabtag" style="position:relative;">		
+		        	<ul>
+		            	<li class="cur" style="border-right: 1px solid #8BB5BB;">行程路线</li>
+		                <li style="border-right: 1px solid #8BB5BB;">友情提示</li>
+		                <li style="border-right: 1px solid #8BB5BB;">行程特色</li>
+		                <li style="border-right: 1px solid #8BB5BB;">接站信息</li>
+		                <li style="border-right: 1px solid #8BB5BB;">服务标准</li>
+		                <li>支付方式</li>
+		            </ul>
+		        </div>
+		
+		        <div id="tabcon" class="tabcon">
+		        	<div class="f">
+		        		<div class="divFrame">
+		        			<div class="divTitle"></div>
+		        			<div style = "position:absolute; z-index:30000">鼠标悬浮地图可查看清晰大地图</div>
+		        			<div class="divContent">
+		        				<a href="$cxt/$pathpre$curRoute.pageRouteMap" id="jqzoom" title="行程路线" >
+		            				<img alt="" src="../$pathpre$curRoute.pageRouteMapThumbl" height="199px" width="512px">
+		            			</a>
+		            		</div>
+		            	</div>
+		            </div>
+		        	<div class="f">
+		            	<div class="scroll tab_scroll">
+	        				$route_hint
+	        			</div>
+		            </div>
+		            <div class="f">
+		            	<div class="scroll tab_scroll">
+		        			$curRoute.characteristic
+				        </div>
+		            </div>
+		            
+		            <div class="f">
+		            	<div class="scroll tab_scroll">
+		        			$curRoute.pickup_info
+		       			</div>
+		            </div>
+		            
+		            <div class="f">
+		            	<div class="scroll tab_scroll">
+		        			$route_service
+				        </div>
+		            </div>
+		            <div class="f">
+		            	<div class="scroll tab_scroll">
+							客人决定报团后请点击相应团次后的橘色按钮“报名”。<br/>
+							可选择以下三种方式付款：<br/>
+							1. 在线网银支付<br/>
+							您只需按照报名步骤，选择在线网银支付，输入您的卡号信息即可完成付款（推荐付款方式）<br/>
+							<br/>
+							
+							2. 银行转账（网上银行或柜台办理）<br/>
+							我社英国银行信息：<br/>
+							Bank（银行）：Barclays <br/>
+							Card Holder（户名）：HINO TRAVEL LTD<br/>
+							Sort code：20-63-25 <br/>
+							Account number：33250482 <br/>
+							<!-- IBAN： GB84 BARC 2063 2533 2504 82 <br/>
+							SWIFTBIC: BARCGB22<br/>
+							Company Address（公司地址）：17-31 Wollaton Street, Nottingham, UK, NG1 5FW <br/>
+							Bank Address(开户银行)：2 High Street, Nottingham, UK, NG1 2EN<br/> -->
+							网上银行转账一般选择make a payment 然后填写以上相关信息以及转账具体金额，点击确认即可。<br/>
+							注：请在填写reference时，务必写清楚所报团次和客人姓名。此付款方式仅适用于英国的银行卡。<br/>
+							<br/>
+							<!-- #if($isOverseaRoute)
+							#else
+							<br/>
+							3. Paypal付款客人需提供常用邮箱，在收到paypal付款电子邮件后可点击paypal相应付款页面的衔接进行在线paypal付款。<br/>
+							#end -->
+							3. 直接来诺丁汉我社总部办公室刷卡或交付现金。<br/>
+							地址：Crystal One, Ramada Hotel, 17-31 Wollaton Street, Nottingham <br/>
+							邮编：NG1 5FW<br/>
+							请注意：信用卡刷卡会收取0.85%的手续费<br/>
+							
+							<br/>
+							提示：客人付款后请尽快以电话(03339009888)或邮件（info@hinotravel.com）方式通知我社。<br/>					
+				        </div>
+		            </div>
+		        </div>
+		    </div>
+        	<!-- 结束 -->
+
+       		<div style="float: right; background: url('./img/calender.jpg') no-repeat; width:324px; height:250px;">
+       			<div style="height:20px;"> </div>
+       			<div style="padding-left:20px;">
+       				<div id="calendar_left_sider" class="calendar_left_sider"></div>
+       				<div style="width: 40px; position: absolute; margin-top: 3px;">
+       					<font id="group_month" style="font-size: 19px; color:white; font-weight: bold; padding-left: 1px;">$groupMonth</font><em style="color: white; padding-left: 2px; font-size: 10pt">月</em> 
+       					<button id="calendar_action" value="" style="display:none;"></button>
+       					<input type="hidden" id="ori_yearmonth" name="ori_yearmonth" value="$yearmonth"/>
+       					<input type="hidden" id="yearmonth" name="yearmonth" value="$yearmonth"/>
+       					#foreach($gday in $groupdays)
+       						<input type="hidden" id="firstDayHasGroup" name="firstDayHasGroup" value="$gday.day">
+      						#break
+      					#end
+       				</div>
+       				<div id="calendar_right_sider" class="calendar_right_sider"></div>
+       			</div>
+       			
+       			<div id="calendar_table" style="margin-top:48px; padding-left:14px; height: 120px;">
+	        		<table style="text-align:center; border:0px;" >
+	        			
+	        			#foreach($i in [1..42])
+	        				#set($day = $i - $dayofweek)
+	        				
+	        				#set ($dayHasGroup = 0)
+	        				
+	        				#foreach($gday in $groupdays) 
+	        					#if ($gday.day == $day) 
+	        						#set ($dayHasGroup = 1)
+	        						#set ($gdayCls = $gday.cssClass)
+	        					#end	        					
+	        				#end
+	        				
+	        				#if($i == 1)
+	        					<tr style="line-height: 19px;">
+	        					<td style="width:38px;">
+		        					#if($day > 0 && $day <= $daysofmonth) 
+		        						#if($dayHasGroup == 1)
+		        							<a href="javascript:void(0);" class="$gdayCls gdayShadow" style="font-weight:bold;" onmouseover="showGroup($day)"><em class="$gdayCls gdayShadow">$day</em></a> 
+		        						#else
+		        							$day
+		        						#end 
+		        					#end
+	        					</td>
+	        				#elseif($i % 7 == 1)
+	        					<tr style="line-height: 18px;">
+	        					<td style="width:38px;">
+	        						#if($day > 0 && $day <= $daysofmonth) 
+		        						#if($dayHasGroup == 1)
+		        							<a href="javascript:void(0);" class="$gdayCls gdayShadow" style="font-weight:bold;" onmouseover="showGroup($day)"><em class="$gdayCls gdayShadow">$day</em></a> 
+		        						#else
+		        							$day
+		        						#end 
+		        					#end
+		        				</td>
+	        				#elseif($i % 7 == 0)
+	        					<td style="width:40px;">
+	        						#if($day > 0 && $day <= $daysofmonth) 
+		        						#if($dayHasGroup == 1)
+		        							<a href="javascript:void(0);" class="$gdayCls gdayShadow" style="font-weight:bold;" onmouseover="showGroup($day)"><em class="$gdayCls gdayShadow">$day</em></a> 
+		        						#else
+		        							$day
+		        						#end 
+		        					#end
+								</td>
+	        					</tr>
+	        				#elseif($i % 7 == 2)
+								<td style="width:38px;">
+									#if($day > 0 && $day <= $daysofmonth) 
+		        						#if($dayHasGroup == 1)
+		        							<a href="javascript:void(0);" style="font-weight:bold;" onmouseover="showGroup($day)"><em class="$gdayCls gdayShadow">$day</em></a> 
+		        						#else
+		        							$day
+		        						#end 
+		        					#end
+		        				</td>
+	        				#else
+	        					<td style="width:40px;">
+	        						#if($day > 0 && $day <= $daysofmonth) 
+		        						#if($dayHasGroup == 1)
+		        							<a href="javascript:void(0);" class="$gdayCls gdayShadow" style="font-weight:bold;" onmouseover="showGroup($day)"><em class="$gdayCls gdayShadow">$day</em></a> 
+		        						#else
+		        							$day
+		        						#end 
+		        					#end
+		        				</td>
+	        				#end
+	        			#end
+	        		</table>
+        		</div>
+        		
+        		<div style="line-height: 18px;padding-left:13px;">
+        			<table style="width:300px">
+        				<tr>
+        					<td colspan="2"><div id="line1"></div></td>
+        				</tr>
+        				<tr>
+        					<td>
+        						<div id="line2"></div>
+        						<div id="line3"></div>
+        					</td>
+        					<td style="text-align:center">
+        						<div id="apply">
+        						</div>
+        					</td>
+        				</tr>
+        			</table>
+        			
+        			
+        		</div>
+        	</div>
+        </div>
+    </div> 
+    <div class="box_line">
+        <div class="t">参考行程&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; 
+    	 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    	#set($sWth = 0)
+		#foreach($sch in $schedules)
+			#set($sWth = $sWth + 80)
+		#end
+		#if($sWth > 0)
+		<a id="setGuard" style="color: #4199D7;" class="set_guard fold_schedule" onclick="scheduleToggle()" href="javascript:void(0)">
+			<span class="recommend">展开</span>全部线路站点信息
+		</a>
+		#end
+    	 </div>
+        <div class="c">
+    	#set($sWth = $sWth + "px")
+        <div style="height:63px;">        	
+        	<div id="schedule_line_bg" style="background:url('./img/line_bg_grey.jpg') repeat-x; width:880px; height: 30px; text-align: center; margin-top:30px;">
+        		<div style="width:$sWth">
+        		#set($sCount = 0)
+        		#foreach($sch in $schedules)
+        			#set($sCount = $sCount + 1)
+        			
+   					<div id="schedule_day_$sCount" class="schedule_days" onclick="showSchedule($sCount, this);" title="$sch.title" style="float:left; background:url(#if ($sCount == 1) './img/schedule_selected_icon.jpg' #else './img/schedule_unselected_icon.jpg' #end) no-repeat; width: 80px; height:30px; cursor:pointer; margin-top:0px; text-align: center; padding-top: 5px;">
+   						<div style="margin-top: -25px;">
+   						<a href="javascript:void(0);" style="color:red">
+   						 第
+   						#if($sCount==1)一
+   						#elseif($sCount==2)二 
+   						#elseif($sCount==3)三
+   						#elseif($sCount==4)四
+   						#elseif($sCount==5)五 
+   						#elseif($sCount==6)六 
+   						#elseif($sCount==7)七
+   						#elseif($sCount==8)八
+   						#elseif($sCount==9)九
+   						#elseif($sCount==10)十
+   						#else
+   						#end
+   						站 </a>
+   						<div style="height:4px;"></div>
+   						<a href="javascript:void(0);" style="text-shadow: 0 -1px 1px #FFF; font-size:12pt; color:white; font-weight:bold;">$sCount</a>
+   						</div>
+   					</div>
+   					
+   				#end
+   				</div>
+        	</div>
+        </div>
+        
+		#set($schedulDivHeight = (1 * 353) + "px")
+        <div style="background-color: white;">
+            
+	        <div style="background:url('./img/schedule_top.jpg') repeat-x; width:885px; height:10px; margin-left: -5px;"></div>
+
+	        <div id="schedule_left_bg" style="background:url('./img/schedule_left.jpg') repeat-y; width:8px; height:$schedulDivHeight; float:left; margin-left: -6px;"></div>
+	        	        
+	        <div>
+	        	<!-- schedule start -->
+	        	#set($sIdx = 0)
+	        	#foreach($sch in $schedules)
+	        	#set($sIdx = $sIdx + 1)
+		        <div id="schedule_$sIdx" class="schedule_block show_schedule" style="float:left;height: 338px;background-color: white; width: 865px;margin-left: -1px; padding-left:10px; padding-top: 15px;">
+		        	
+		        	<div style="height:290px; width:256px; float:left;">
+		        		<div class="zoompic_$sIdx" style="height:189px; width:256px; background-color: white;">
+		        			<img alt="" src="../$pathpre$sch.material_1" height="189px" width="256px">
+		        		</div>
+		        		
+		        		<div style="height:10px; width:100%;"></div>
+		        		
+		        		<div id="thumbnail_$sIdx" style="height:80px; width:100%; background-color: white;">
+		        			<ul>
+		        				<li style="float:left; text-align:center; padding-bottom:0px;">
+		        					<div style="height:9px;" class="current"><img alt="" src="./img/arrow_sight.jpg"></div>
+		        					<a href="../$pathpre$sch.material_1" target="_blank"> 
+		        						<img alt="" src="../$pathpre$sch.material_1"  title="" height="62px" width="82px"> 
+		        					</a>
+		        				</li>
+		        				<li style="float:left; text-align:center; padding-left: 4px; padding-bottom:0px;">
+			        				<div style="height:9px;"></div>
+		        					<a href="../$pathpre$sch.material_2" target="_blank"> 
+		        						<img alt="" src="../$pathpre$sch.material_2"  title="" height="62px" width="82px"> 
+		        					</a>
+		        				</li>
+		        				<li style="float:left; text-align:center; padding-left: 4px;  padding-bottom:0px;">
+			        				<div style="height:9px;" ></div>
+		        					<a href="../$pathpre$sch.material_3" target="_blank"> 
+		        						<img alt="" src="../$pathpre$sch.material_3" title="" height="62px" width="82px"> 
+		        					</a>
+		        				</li>
+		        			</ul>
+		        		</div>
+		        		
+		        		<div style="height:20px; width:100%;"></div>
+		        	</div>
+		        	
+		        	<div style="position:relative;left:30px; padding-left: 35px;">   
+						<div style="width:550px; float: left; padding-top: 0px;padding-bottom:0px;">
+							<div><span class="schedule_date"></span><font style="color:#002751;font-size:14px;">$sch.title</font></div>
+							<div  title="$sch.title_desc" style="line-height:30px; padding-right:130px; min-height: 65px;">								
+								<font style="color:#002751;font-size:20px;font-weight:bold;">
+								$sch.shortTitleDesc 
+								</font>
+							</div>
+						</div>
+						
+			            <div style="float: left; ">
+				            <div class="scroll schedule_scroll">
+			        			$sch.schedule_desc			        			
+					        </div>
+					    </div>
+					    
+					    <div style="padding-left: 10px;float: left; min-height:20px; max-height:40px; margin-top: 15px; width:550px; border: 1px solid #93d0da; color:#325a60;">
+		        			早餐：$sch.breakfast 午餐：$sch.lunch 晚餐：$sch.dinner 交通：$sch.transport 住宿：$sch.hotel #if("" != $sch.flight) 航班号：$sch.flight #end
+		        		</div>
+		        	</div>
+		        	
+		        </div>
+	        	#end 
+				<!-- schedule end --------------- -->
+		        
+	        </div>
+	        <div id="schedule_right_bg" style="background:url('./img/schedule_right.jpg') repeat-y; width:4px; height:$schedulDivHeight; margin-right: 0;"></div>
+	        
+	        <div style="background:url('./img/schedule_bottom.jpg') repeat-x; width:885px; height:12px;margin-left: -6px;"></div>
+        
+        </div>
+        
+        
+        </div>
+    </div>
+    
+    <div class="blank" style="display:none"></div>
+    
+    <script type="text/javascript" src="../js/pirobox.js"></script>	
+    <script type="text/javascript">
+    $(document).ready(function() {
+        /* ******************************************* */
+	    jQuery("#jqzoom").jqzoom(
+		{
+			zoomWidth: 510,
+			zoomHeight: 400,
+		    position: "right",  //放大图片出现的位置
+		    preload: 0, 
+		    lens:1 
+		});
+		
+   		/* 
+    	jQuery(".divContent").mouseover(function(event){    		
+    		var hasJQzoomLoaded = jQuery("#jqzoom").css("cursor");
+    		if(hasJQzoomLoaded != "crosshair") {
+    			
+	    		jQuery("#jqzoom").jqzoom({
+					zoomWidth: 510,
+					zoomHeight: 400,
+				    position: "right",  //放大图片出现的位置
+				    preload: 0, 
+				    lens:1 
+				});
+    		}
+    	});*/
+    
+    	//jQuery("#jqzoom").find(".jqZoomPup").css("z-index", "50000");
+
+	    jQuery("a.bm").click(function(event){
+	    	/* if(!logged)
+	    	{
+	    		alert("请先登录！");
+	    		return false;
+	    	} */
+	    });
+		jQuery().piroBox({
+				my_speed: 400, //animation speed
+				bg_alpha: 0.1, //background opacity
+				slideShow : false, // true == slideshow on, false == slideshow off
+				slideSpeed : 4, //slideshow duration in seconds(3 to 6 Recommended)
+				close_all : '.piro_close,.piro_overlay'// add class .piro_overlay(with comma)if you want overlay click close piroBox
+		});
+		
+		var calPageNo = 0;
+		
+		jQuery("#calendar_left_sider").mouseover(function(event){
+			$(this).removeClass("calendar_left_sider");
+			$(this).addClass("calendar_left_sider_highlighted");
+		});
+		
+		jQuery("#calendar_left_sider").click(function(event){
+			var yearmonth = jQuery("#yearmonth").val();
+			if (yearmonth != "" && (calPageNo > 0 && calPageNo <= 2)) {
+				var year = parseInt(yearmonth.substring(0, 4));
+				var month = parseInt(yearmonth.substring(4, 6));
+				if (month % 12 == 1) {
+					month = 12;
+					year = year - 1;
+				} else {
+					month = month - 1;
+				}
+				yearmonth = year + "" + (month >= 10? month: "0" + month);
+				jQuery("#yearmonth").val(yearmonth);
+				jQuery.post("./route_detail.htm", "calendar_action=1&a=month&ym=" + yearmonth + "&routeid=$routeid", function(data) {
+					if (data != "") {					
+						jQuery("#calendar_table").html(data.tableStr);
+						if (0 != data.firstDayHasGroup) {
+							//showGroup(data.firstDayHasGroup);
+						}
+						jQuery("#group_month").html((month >= 10? month: "0" + month));
+						calPageNo --;
+					}
+			   	});
+		   	}
+		});
+		
+		jQuery("#calendar_right_sider").mouseover(function(event){
+			$(this).removeClass("calendar_right_sider");
+			$(this).addClass("calendar_right_sider_highlighted");
+		});
+		
+		jQuery("#calendar_right_sider").click(function(event){
+			var yearmonth = jQuery("#yearmonth").val();
+			if (yearmonth != "" && (calPageNo >= 0 && calPageNo < 2)) {
+				var year = parseInt(yearmonth.substring(0, 4));
+				var month = parseInt(yearmonth.substring(4, 6));
+				if (month % 12 == 0) {
+					month = 1;
+					year = year + 1;
+				} else {
+					month = month + 1;
+				}
+				yearmonth = year + "" + (month >= 10? month: "0" + month);
+				jQuery("#yearmonth").val(yearmonth);
+				jQuery.post("./route_detail.htm", "calendar_action=1&a=month&ym=" + yearmonth + "&routeid=$routeid", function(data) {
+					if (data != "") {					
+						jQuery("#calendar_table").html(data.tableStr);
+						if (0 != data.firstDayHasGroup) {
+							//showGroup(data.firstDayHasGroup);
+						}
+						jQuery("#group_month").html((month >= 10? month: "0" + month));
+						calPageNo ++;
+					}
+			   	});
+		   	}
+		});
+		
+		jQuery("#calendar_left_sider").mouseout(function(event){
+			$(this).removeClass("calendar_left_sider_highlighted");
+			$(this).addClass("calendar_left_sider");
+		});
+		
+		jQuery("#calendar_right_sider").mouseout(function(event){
+			$(this).removeClass("calendar_right_sider_highlighted");
+			$(this).addClass("calendar_right_sider");
+		});
+		
+	});
+	
+    </script>
+    <div class="blank"></div>
+    <a name="contract_info"></a>
+    <div class="box_line">
+    	<div class="t">旅游合同 </div>
+        <div class="c">
+        	<div class="ct_lib">
+
+            	<div class="ct_item">
+					<div class="contract_title"><a href="$cxt/resource/Hino_Customer_Contract.pdf" target="_blank">海诺旅游英国境内游合同 &nbsp;&nbsp; 点击下载</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+                </div>
+                
+	            <div class="ct_item">
+					<div class="contract_title"><a href="$cxt/zh/resource/Contract.pdf" target="_blank">海诺旅游英国境外游合同 &nbsp;&nbsp; 点击下载</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="blank"></div>
+    <a name="group_info"></a>
+    <!--出团信息-->
+    <div class="box_line">
+    	<div class="t">出团信息 &nbsp;&nbsp;<a href="#contract_info" style="color:red; font-size:12px;">* 请在确认出团前仔细阅读上面的合同内容，谢谢！</a><span class="p" style="margin-left: 95px;font-size: 12px; color:red;">鼠标悬浮<img src="images/ct_icon.png"/>查看具体出发地</span></div>
+        <div class="c">
+        	<div class="ct_lib">
+            #foreach( $group in $groups )
+            	<div class="ct_item">
+                        <div class="title">$group.name<span class="p"><img src="images/ct_icon.png" title="Pickup service available on $group.genPickupCity()"/></span></div>
+                        <div class="ctrq">$group.genDepartDateString()</div>
+                        <!--Ken Chen 2012/09/16 - TD#14 如果是团购，显示团购价格-->
+                         #if($group.group_price>0 )
+							<div class="price">£$group.group_price</div>
+							<div class="vip_price">VIP £$group.group_vip_price <a href="./booking.htm?gid=$group.id" class="bm"><img src="images/bm.png"/></a></div>
+                        #else
+							<div class="price">£$group.price</div>
+							<div class="vip_price">VIP £$group.vip_price <a href="./booking.htm?gid=$group.id" class="bm"><img src="images/bm.png"/></a></div>
+                        #end
+                </div>
+			#end
+            	
+                	
+            </div>
+        </div>
+    </div>   
+
+    <div class="blank15"></div> 
+</div>

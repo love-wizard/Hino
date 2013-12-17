@@ -1,0 +1,145 @@
+			
+<!-- 线路详情 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 浏览链接 -->
+	$navigation_link
+    <br />
+
+	<!-- 可选的板块介绍 -->
+     <!-- <div class="more_top"></div>
+     <div class="more_bg">
+         <p>
+         	<b>请选择地区后查看该地区线路列表</b><br />
+         </p>
+         <div class="more"><a href="#">more info</a></div>
+         <div style="clear: both"></div>
+     </div> --><!-- more_bg -->
+     <!-- <div class="more_bot"></div> -->
+
+	<!-- 详细信息 -->
+	<div class="col_full">
+		<div class="route_info">
+			<p>
+			
+			<!-- 线路完整图 -->
+			$route_image
+			
+			<!-- <span class="route_title">&bull;&nbsp;线路样板</span> -->
+			<span class="route_detail">
+			
+				<!-- 参考行程 -->
+				<div class="more_top_01_en"></div>
+				<div class="more_bg">
+					<p> 
+					$route_schedule 
+					</p>
+					<!-- <div class="more"><a href="#">more info</a></div> -->
+				</div><!-- more_bg -->
+			    <div class="more_bot"></div>
+			    
+			    <!-- 服务标准 -->
+			    <div class="more_top_02_en"></div>
+				<div class="more_bg">
+					<p>
+					$route_service
+					</p>
+					<!-- <div class="more"><a href="#">more info</a></div> -->
+				</div><!-- more_bg -->
+			    <div class="more_bot"></div>
+			    
+			    <!-- 友情提示 -->
+			    <div class="more_top_03_en"></div>
+				<div class="more_bg">
+					<p>
+					$route_hint
+					</p>
+					<!-- <div class="more"><a href="#">more info</a></div> -->
+				</div><!-- more_bg -->
+			    <div class="more_bot"></div>
+			    
+			    <!-- 线内景点 -->
+			    <script type="text/javascript" src="../js/pirobox.js"></script>
+				<script type="text/javascript">
+				jQuery(document).ready(function() {
+					jQuery().piroBox({
+							my_speed: 400, //animation speed
+							bg_alpha: 0.1, //background opacity
+							slideShow : false, // true == slideshow on, false == slideshow off
+							slideSpeed : 4, //slideshow duration in seconds(3 to 6 Recommended)
+							close_all : '.piro_close,.piro_overlay'// add class .piro_overlay(with comma)if you want overlay click close piroBox
+					});
+				});
+				</script>
+				<link href="../css/pirobox.css" rel="stylesheet" type="text/css" />
+				
+			    <div class="more_top_04_en"></div>
+				<div class="more_bg">
+				$route_site_list	
+				</div><!-- more_bg -->
+			    <div class="more_bot"></div>
+			    
+			    <!-- 出团信息 -->
+			    <div class="more_top_05_en"></div>
+				<div class="more_bg">
+				<style type="text/css">
+				body div#tooltip { position:absolute;z-index:1000;max-width:220px;width:auto !important;width:220px;background:#000;text-align:left;padding:5px;min-height:1em;}
+				body div#tooltip p { margin:0;padding:0;color:#fff;font:12px verdana,arial,sans-serif; }
+				body div#tooltip p em { display:block;margin-top:3px;color:#f60;font-style:normal;font-weight:bold; }
+				</style>
+				<script language="javascript">
+				/*
+				Sweet Titles (c) Creative Commons 2009
+				http://creativecommons.org/licenses/by-nc-sa/3.0/
+				Author: Leeiio | http://leeiio.me
+				*/
+				var sweetTitles = {
+					x : 10,								// @Number: x pixel value of current cursor position
+					y : 20,								// @Number: y pixel value of current cursor position
+					tipElements : ".group_li img",	    			// @Array: Allowable elements that can have the toolTip,split with ","
+					init : function() {
+						jQuery(this.tipElements).mouseover(function(e){
+							this.myTitle = this.title;
+							this.title = "";
+							var tooltip = "<div id='tooltip'><p>"+this.myTitle+"</p></div>";
+							jQuery('body').append(tooltip);
+							jQuery('#tooltip')
+								.css({
+									"opacity":"0.8",
+									"top":(e.pageY+20)+"px",
+									"left":(e.pageX+10)+"px"
+								}).show('fast');	
+						}).mouseout(function(){
+							this.title = this.myTitle;
+							jQuery('#tooltip').remove();
+						}).mousemove(function(e){
+							jQuery('#tooltip')
+							.css({
+								"top":(e.pageY+20)+"px",
+								"left":(e.pageX+10)+"px"
+							});
+						});
+					}
+				};
+				jQuery(function(){
+					sweetTitles.init();
+				});
+				</script>
+
+					$group_list
+					
+					<!-- <div class="more"><a href="#">more info</a></div> -->
+				</div><!-- more_bg -->
+			    <div class="more_bot"></div>
+			    
+			</span>
+			</p>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

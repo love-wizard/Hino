@@ -1,0 +1,12 @@
+<h2>用户邮件群发</h2>
+
+	<div class="clickform">$emailform</div>
+	<div class="clear"></div>
+
+<hr/>
+<h3>邮件地址生成(NEW)</h3>
+<input type="text" id="cecam_groupid" /><input type="button" id="cecam_search_action" value="generate"/><br/>
+Result<br/>
+<textarea id="cecam_group_emails" rows="10" cols="40">
+
+</textarea>

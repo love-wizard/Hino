@@ -1,0 +1,39 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Update credit
+	jQuery(".uploadButton").click(function(event){
+		
+		// Set upload form hidden field value as group id
+		var targetGroupIdObj = jQuery(this).parent().prev().prev().prev().prev().prev().prev();
+		//alert(targetGroupIdObj.html());
+		jQuery('#targetGroupId').attr("value", targetGroupIdObj.html());
+		
+		// Show upload form
+		jQuery.facebox({ div: '#upload_container' });
+		
+		// Prevent the default browser behavior of navigating to the link
+		return false;
+	});
+	
+});
+
+</script>
+
+<h2> 申请带团记录</h2>
+
+	$grouptable
+	<div class="clear"></div>
+
+<br />
+<hr />
+<br />
+
+<!-- Upload Facebox -->
+<div id="upload_container" style="display: none">
+	<h3>上传出团报告</h3>
+	<div class="clickform">$groupform</div>
+</div>

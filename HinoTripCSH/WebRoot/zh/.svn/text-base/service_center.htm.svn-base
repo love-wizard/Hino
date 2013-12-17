@@ -1,0 +1,86 @@
+
+    <div class="main">
+        <div class="second_menu">
+        #foreach($menu in $menulist)
+        <a href="./classic.htm?rid=$menu.id">$menu.name</a> 
+        #end
+        </div>
+    	<!--精品路线专题图开始-->
+        <div class="line_top"><img src="images/service_center.gif" /></div>
+    	<!--精品路线专题图结束-->
+        <div class="line_contair">
+            <!--搜索开始-->
+            <div class="line_search">
+                <div class="hot">
+                热门搜索：<a href="#">怀特岛三日休闲游</a> <a href="#">曼彻斯特一日游</a>  <a href="#">南部三日集合</a>  <a href="#">天涯海角</a> 
+                </div>
+                <div class="line_frm">
+                	<form action="" method="get">
+                    	<input name="" type="text" class="line_input"/>
+                        <input name="" type="image" class="line_s" src="images/line_search.gif" />
+                    </form>
+                </div>
+            </div>
+            <!--搜索结束-->
+           
+    	</div>    
+        <!--帮助信息 开始-->
+    <div class="help">
+          <!-- <dl style="">
+              <dt><a href="#">如何付款和发票</a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(1)">支付宝网银支付</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(2)">信用卡电话支付</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(3)">门店支付或银行汇款</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(4)">悠币抵用和发票</a></dd>
+          </dl> -->
+          <dl>
+              <dt><a href="#">境外游须知</a></dt>
+
+                <dd><a href="#" onclick="ShowHelpContent(5)">关于跟团地点以及接送详情</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(6)">团费介绍</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(7)">酒店相关事宜</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(8)">其他旅行小贴士</a></dd>
+          </dl>
+         <dl>
+              <dt><a href="#">英国境内团此须知 </a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(9)")>关于团次区别</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(10)">参团相关事宜</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(11)">关于多日旅行中酒店的问题</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(12)">其他旅游小贴士</a></dd>
+          </dl>
+          <dl>
+              <dt><a href="#">海诺会员、积分、会刊 </a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(17)">海诺会员注册</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(18)">海诺会员积分</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(19)">会员种类介绍</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(20)">海诺会刊</a></dd>
+          </dl>
+          <dl>
+              <dt><a href="#">合同范本及签证须知</a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(13)">海诺出境游旅游合同范本</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(14)">签证须知</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(15)">海诺旅游公司英国境内旅游合同</a></dd>
+
+          </dl>
+          <div class="bt">
+          <!-- <ul>
+          	<li class="nav1"><a href="#">学生自己的旅游</a></li>
+          	<li class="nav2"><a href="http://page.renren.com/601242643">人人网</a></li>
+            <li class="nav3"><a href="http://1.t.qq.com/hainuolvyou?pref=qqcom.mininav">腾讯微博</a></li>
+            <li class="nav4"><a href="http://www.facebook.com/home.php#!/profile.php?id=100002119193841">facebook</a></li>
+            </ul> -->
+          </div>
+          
+    </div>
+    <!--帮助信息  结束-->
+	    
+
+	    <!--路线介绍-->
+    	<div class="box_line">
+	    	<div class="t">$help_name</div>
+	        <div class="c">
+	        $help_details
+	        </div>
+    	</div> 
+
+    </div>

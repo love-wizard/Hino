@@ -1,0 +1,97 @@
+<!--网站主体开始-->
+<div class="main">
+	<!--注册左侧开始-->
+    <div class="reg_l">
+    	<div class="setep1" id="step_area"></div>
+    </div>
+	<!--注册左侧结束-->
+    <!--注册右侧开始-->
+   <div class="reg_r" id="reg_step1">
+        	<div class="frm1">
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="right" class="text">电子邮件：</td>
+                    <td align="left" class="text"><input type="text" id="reg_email" class="reg_input w1"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">姓：</td>
+                    <td align="left">
+                      <input type="text" id="reg_ln" class="reg_input w2" value="请输入拼音字母" onfocus="if(this.value=='请输入拼音字母') this.value='';" onblur="if(this.value=='') this.value='请输入拼音字母';"/>
+                    <span class="text">名：</span>
+                    <input type="text" id="reg_fn" class="reg_input w2" value="请输入拼音字母" onfocus="if(this.value=='请输入拼音字母') this.value='';" onblur="if(this.value=='') this.value='请输入拼音字母';"/>
+                   </td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">中文名：</td>
+                    <td align="left">
+                      <input type="text" id="reg_cn" class="reg_input w1"/>
+                   
+                   </td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">登陆密码：</td>
+                    <td align="left"><span class="text">
+                      <input type="text" id="reg_ps1" class="reg_input w1"/>
+                    </span></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">确认密码：</td>
+                    <td align="left"><span class="text">
+                      <input type="text" id="reg_ps2" class="reg_input w1"/>
+                    </span></td>
+                  </tr>
+              </table>
+            </div>
+            <div class="reg_bt">
+              <input type="submit" name="button" id="reg_step1_button" value="同意协议" class="reg_submit"/>
+            </div>    
+            <div class="reg_xy"><a href="#"> 《海诺旅游注册协议》</a></div>              
+        </div>
+        <div class="reg_r" id="reg_step2" style="display:none">
+        	<div class="frm1">
+                <table border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="right" class="text">大学：</td>
+                    <td align="left" class="text"><input type="text" id="reg_uni" class="reg_input w1"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">电话：</td>
+                    <td align="left"><span class="text">
+                      <input type="text" id="reg_ph" class="reg_input w1"/>
+                    </span></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">现住城市：</td>
+                    <td align="left"><span class="text">
+                      <input type="text" id="reg_city" class="reg_input w1"/>
+                    </span></td>
+                  </tr>
+                 
+                  <tr>
+                    <td align="right" class="text">性别：</td>
+                    <td align="left" class="text">男
+                    <input name="radio" type="radio" id="reg_male" value="男"/>
+                    女
+                    <input type="radio" name="radio" id="reg_female" value="女" /></td>
+                  </tr>
+              </table>
+            </div>
+            <div class="reg_bt">
+              <input type="submit" name="button" id="reg_step2_button" value="完成注册" class="reg_submit"/>
+            </div>    
+            <div class="reg_xy"><a href="#">我不想填写以上信息-直接注册</a></div>              
+        </div>
+        <div class="reg_r" id="reg_step3" style="display:none">
+   			<div class="success"></div>
+            <div class="success_c" id="reg_result">
+                
+            </div>
+            <div class="reg_bt" style="margin-top:15px">
+              <input type="submit" name="button" id="reg_step3_button" value="立即登陆" class="reg_submit"/>
+            </div>    
+        </div>
+    <!--注册右侧结束-->
+  <div class="clearfix"></div>
+    <div class="blank15"></div>
+</div>
+

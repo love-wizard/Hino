@@ -1,0 +1,53 @@
+<script>
+jQuery(document).ready(function() {
+
+		jQuery("input[name='name_bookingid[]']").click(function(e) {
+			var totalprice = 0;
+			jQuery("input[name='name_bookingid[]']:checked").each(function(e){
+					//alert($(this).val());
+					//alert(parseFloat(jQuery("#pri_"+jQuery(this).val()).val()));
+					totalprice = totalprice + parseFloat(jQuery("#pri_"+jQuery(this).val()).val());
+					//alert(totalprice);
+    		});
+			totalprice = totalprice.toFixed(2);
+			//alert(totalprice);
+			jQuery("#tform_amount").val(""+totalprice);
+		});
+		
+   		jQuery("#tform_submit").click(function(e) {
+		    var bookinglist = "";
+			var hasItem = false;
+			//var totalprice = 0;
+			jQuery("input[name='name_bookingid[]']").each(function(e){
+				if(jQuery(this).attr("checked") == true)
+				{
+					bookinglist = bookinglist + jQuery(this).val() +" ";
+					hasItem = true;
+					//totalprice = totalprice + (double)(jQeruy("#pri_"+jQuery(this).val()).val());
+				}	
+    		});
+			//jQuery("#tran_amount").val() = ""+totalprice;
+			
+			if(!hasItem)
+			{
+				alert("尚未选择订单！");
+				e.preventDefault();
+				return;
+			} else
+			{
+				jQuery("#tform_booking_list").val(bookinglist);
+			}
+   		});
+		
+});
+</script>
+
+<h2>未确认订单列表</h2>
+$btable
+<hr />
+
+<h2>申报信息</h2>
+	<div class="clickform">$tform</div>
+	<div class="clear"></div>
+<hr/>
+<a href="./sales_rep_transfer_record.htm">返回转账申报记录</a>

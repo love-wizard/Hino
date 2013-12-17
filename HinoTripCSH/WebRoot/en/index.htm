@@ -1,0 +1,63 @@
+			
+<!-- 图片轮转 -->
+<div class="con_top"></div>			
+<div class="prev_box_header">
+	<div id="slider_bg">
+		<div class="waveshow">
+			<img src="../images/album01_en.jpg" alt="" title="album01" />
+			<img src="../images/album02_en.jpg" alt="" title="album02" />
+			<img src="../images/album03_en.jpg" alt="" title="album03" />
+		</div> <!-- waveshow -->
+	</div> <!-- slider_bg -->				
+</div>
+<div class="con_bot"></div>			
+<div class="clear_con"></div>
+
+<!-- 热门线路、登录 -->
+<div class="con_top"></div>
+<div id="index_box">
+
+	$index_group_list_panel
+
+	<div class="index_col3">
+	#if($cur_customer)
+	<h3>Welcome back, $cur_customer.lastname $cur_customer.firstname</h3>
+		 
+		Your have points：$cur_customer.point<br />
+		#if(!$notVip)VIP expire date：$vipexpdate#end
+		<br /><br />
+		Account Management：<br />
+		<a href="account_setting.htm?type=basic" class="ls_style">Edit Profile</a><br />
+		<a href="account_setting.htm?type=psd" class="ls_style">Change Password</a><br />
+		<a href="account_setting.htm?type=mybooking" class="ls_style">My Orders</a><br />
+		#if($notVip)<a href="vip_order.htm" class="ls_style">VIP Upgrading(£10)</a><br />#end
+		$logoutLink
+	#else
+	<h3>Login</h3>
+		#if($error)
+			$error
+		#end
+		$form
+		<a href="./reset_password.htm" class="ls_style">Forget Password</a>
+		<a href="./registration.htm" class="ls_style">Registration</a>
+	#end
+	</div>
+	<div style="clear: both"></div>
+	<!--  -->
+</div><!-- index_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>
+             
+<!-- 热门线路 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 缩略图九宫格 -->
+	<h3>Hot Route</h3>
+	
+	$index_route_list_panel
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

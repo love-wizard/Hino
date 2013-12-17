@@ -1,0 +1,61 @@
+    <!--网站主体开始-->
+    <div class="main">
+    
+ 		<div class="pragraph-box">
+ 			#if($status eq 0)  
+ 				<div class="error">支付出现问题<br/>请联系我们的客服帮您解决，谢谢您的配合和支持</div>
+ 			#else
+	 			<div class="thanks">谢谢您 <span class="username">$booking.customer.chinesename</span></div>
+	 			<div class="text">因为银行系统错误，您所支付的 <span class="details">$booking.pd_credit GBP</span></div>
+	 			<div class="text"><span class="details">$booking.group.name  $booking.customer.firstname $booking.customer.lastname  $booking.group.genDepartDateString()</span></div>
+	 			<div class="text">未能成功转入海诺旅游公司账户。请您点击以下链接重新支付</div>
+	 			<div class="text">为了感谢您的支付我们将为您的账户添加500的积分</div>
+	 			<div class="text">再次非常感谢您的配合与支持</div>
+	 		
+	 			<div class="repay-btn"></div>
+ 			#end
+ 		</div>
+ 		
+    </div>
+    <script>
+		$(document).ready(function() {
+		
+			$(".repay-btn").click(function(event){
+				var amt = $("#frmEpdq input[name='AMOUNT']").val();
+				$("#frmEpdq input[name='AMOUNT']").val(amt * 100);				
+				$("#frmEpdq").submit();	
+			});
+			
+		});
+	</script>	
+	
+	
+	<!-- paymethod == 4 -->						
+	<form name="frmEpdq" id="frmEpdq" action="https://payments.epdq.co.uk/ncol/prod/orderstandard.asp" method="post" target="_blank">
+		<input type="hidden" value="epdq1010898" name="PSPID">
+		<input type="hidden" value="$booking.bookingRef" name="ORDERID">
+		<input type="hidden" value="$booking.pd_credit" name="AMOUNT">
+		<input type="hidden" value="GBP" name="CURRENCY">
+		<input type="hidden" value="en_US" name="LANGUAGE">
+		<input type="hidden" value="" name="CN">
+		<input type="hidden" value="" name="EMAIL">
+		<input type="hidden" value="" name="OWNERZIP">
+		<input type="hidden" value="" name="OWNERADDRESS">
+		<input type="hidden" value="" name="OWNERCTY">
+		<input type="hidden" value="" name="OWNERTOWN">
+		<input type="hidden" value="" name="OWNERTELNO">
+		<input type="hidden" value="" name="SHASIGN">
+		<input type="hidden" value="$booking.group.name_en" name="TITLE">
+		<input type="hidden" value="" name="BGCOLOR">
+		<input type="hidden" value="" name="TXTCOLOR">
+		<input type="hidden" value="" name="TBLBGCOLOR">
+		<input type="hidden" value="" name="TBLTXTCOLOR">
+		<input type="hidden" value="" name="BUTTONBGCOLOR">
+		<input type="hidden" value="" name="BUTTONTXTCOLOR">
+		<input type="hidden" value="" name="LOGO">
+		<input type="hidden" value="" name="FONTTYPE">
+		<input type="hidden" value="http://www.hinotravel.com" name="ACCEPTURL">
+		<input type="hidden" value="http://www.hinotravel.com" name="DECLINEURL">
+		<input type="hidden" value="http://www.hinotravel.com" name="EXCEPTIONURL">
+		<input type="hidden" value="http://www.hinotravel.com" name="CANCELURL">
+	</form>

@@ -1,0 +1,79 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Show customer detail
+	jQuery(".ajaxDetail").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+				var customerDetail = "<table>"+
+					"<tr><td><b>Booking Ref</b></td><td>"+json.bookingRef+"</td></tr>"+
+					"<tr><td><b>Tour Name</b></td><td>"+json.groupname+"</td></tr>"+
+					"<tr><td><b>Date</b></td><td>"+json.departure+"</td></tr>"+
+					"<tr><td><b>Status</b></td><td>"+json.status+"</td></tr>"+
+					"<tr><td><b>Sales rep</b></td><td>"+json.rep+"</td></tr>"+
+					"<tr><td><b>Order time</b></td><td>"+json.time+"</td></tr>"+
+					"<tr><td><b>Chinese name</b></td><td>"+json.chinesename+"</td></tr>"+
+					"<tr><td><b>Name</b></td><td>"+json.fullname+"</td></tr>"+
+					"<tr><td><b>Email</b></td><td>"+json.email+"</td></tr>"+
+					"<tr><td><b>Mobile</b></td><td>"+json.phone+"</td></tr>"+
+					"<tr><td><b>Gender</b></td><td>"+json.gender+"</td></tr>"+		
+					"<tr><td><b>Pick up</b></td><td>"+json.pickup+"</td></tr>"+
+					"<tr><td><b>Voucher</b></td><td>"+json.voucher+"</td></tr>"+
+					"<tr><td><b>Roommate</b></td><td>"+json.room+"</td></tr>"+
+					"<tr><td><b>Comment</b></td><td>"+json.comments+"</td></tr>"+
+					"</table>";
+
+				jQuery("#facebox_title").html("Booking Detail");
+				jQuery("#facebox_content").html(customerDetail);
+				jQuery.facebox({ div: '#facebox_container' });
+		});
+		
+		return false;
+	});
+	
+	jQuery(".ajaxTicket").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+	       
+	          if(json!="1")
+	          {
+	          	var ticketurl = "../ticket_generator.htm?authcode="+json.authcode;
+	          	alert("E-Ticket will be opened in new window");
+	          	window.open(ticketurl);
+	          }else
+	          {
+	          	alert("Can not create E-ticket");
+	          }
+				
+		});
+		
+		return false;
+	});
+	
+});
+
+</script>
+
+<h2>Booking Review</h2>
+	<div class="clickform">$sform</div>
+	<div class="clear"></div>
+<hr />
+
+<h2>Search Result</h2> 
+	$btable 
+<hr />
+
+

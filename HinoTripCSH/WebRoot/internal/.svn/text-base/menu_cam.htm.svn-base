@@ -1,0 +1,24 @@
+<h2>板块详情</h2>
+
+	<div class="clickform">$menuform</div>
+
+#if($image)
+<b>已有板块图-中文</b><br />
+$image
+#end
+
+#if($image_en)
+<b>已有板块图-英文</b><br />
+$image_en
+#end
+
+	<div class="clear"></div>
+
+<br />
+<hr />
+<br />
+
+<h2>管理板块</h2>
+
+	$menutable
+	<br />

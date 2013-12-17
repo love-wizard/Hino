@@ -1,0 +1,95 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	jQuery(".ajaxFeedback").click(function(event){
+		
+		var targetCreditObj = jQuery(this).parent().prev().prev();
+		
+		var newCredit = window.prompt("请输入反馈信息", targetCreditObj.html());
+		if(newCredit==null||newCredit=="")
+		{
+			return false;
+		}
+		
+		// In order for Click to identify the Ajax target, we pass the link ID
+		// attribute as request parameters
+		var extraData = "feedbackstr="+newCredit;
+		// The Ajax URL is set to the link 'href' URL which contains all the link default parameters,
+		// including it's name/value pair: 'actionLink=link'
+		var url = jQuery(this).attr('href');
+	
+		//alert("url: "+url+" data: "+extraData);
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+					alert("Result: "+json.result);
+					targetCreditObj.html(newCredit);
+		});
+		
+		// Prevent the default browser behavior of navigating to the link
+		return false;
+	});
+	
+	jQuery(".ajaxDetail").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+				jQuery("#transbookingdata > tbody").children( 'tr' ).remove();
+				var jsondata = json;
+				var p_sum = 0;
+				var ps_sum = 0;
+				for (var obj in jsondata) 
+				{
+					$("#transbookingdata > tbody").append("<tr><td>"+jsondata[obj].brf+"</td><td>"+jsondata[obj].cn+"</td><td>"+jsondata[obj].pp+"</td><td>"+jsondata[obj].gp+"</td><td>"+jsondata[obj].sts+"</td></tr>");
+					p_sum = p_sum + parseFloat(jsondata[obj].pp);
+					ps_sum = ps_sum + parseFloat(jsondata[obj].gp);
+				}
+				jQuery("#transbookingdata > tbody").append("<tr><td>累计</td><td></td><td>"+p_sum.toFixed(2)+"</td><td>"+ps_sum.toFixed(2)+"</td><td></td></tr>");
+				
+				jQuery.facebox({ div: '#facebox_transbooking' });
+
+		});
+		
+		return false;
+	});
+	
+});
+
+</script>
+
+<h2>申报查询</h2>
+	<div class="clickform">$sform</div>
+	<div class="clear"></div>
+<hr />
+
+<h2>查询结果</h2> 
+	$ttable 
+<hr />
+
+<div id="facebox_transbooking" style="display: none">
+   	 <h3>查看详细</h3>
+        <table id="transbookingdata" style="width:450px">
+        <thead>
+        <tr>
+        <th>订单号</th>
+        <th>中文名</th>
+        <th>实际价格</th>
+        <th>标准价格</th>
+        <th>订单状态</th>
+        </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
+        <tbody>
+        </tbody>
+        </table>
+</div>
+

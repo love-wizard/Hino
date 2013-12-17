@@ -1,0 +1,9 @@
+<h2>新增问题</h2>
+$addquestion <br>
+
+<br />
+<hr />
+<br />
+
+<h2>已有问题列表</h2>
+$questionTable

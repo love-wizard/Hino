@@ -1,0 +1,12 @@
+<h2>首页客服QQ设置</h2>
+
+<div class="clickform">$indexQQForm</div>
+<div class="clear"></div>
+
+<br />
+<hr />
+<br />
+
+<h2>管理客服QQ</h2>
+$indexQQTable
+<br />

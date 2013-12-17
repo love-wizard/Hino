@@ -1,0 +1,96 @@
+<div class="clickform">$route_cam_form</div>
+<div class="clear"></div>
+
+<br />
+<hr />
+<b>缩略图预览</b><br />
+#if($compimg)
+$compimg
+#end
+<br />
+<hr />
+
+<b>图片预览</b><br />
+#if($fullimg)
+$fullimg
+#end
+
+<br />
+<hr />
+<b>行程地图预览（大图）</b>
+#if($routeMapImg)
+$routeMapImg
+#end
+<br />
+<hr />
+<b>行程地图预览（小图）</b>
+#if($routeMapThumblImg)
+$routeMapThumblImg
+#end
+
+<br />
+<hr />
+<b>轮换图片2预览</b><br />
+#if($image1)
+$image1
+#end
+<br />
+<hr />
+<br />
+<hr />
+<b>轮换图片3预览</b><br />
+#if($image2)
+$image2
+#end
+<br />
+<hr />
+<br />
+<hr />
+<b>轮换图片4预览</b><br />
+#if($image3)
+$image3
+#end
+<br />
+<hr />
+<br />
+<hr />
+<b>轮换图片5预览</b><br />
+#if($image4)
+$image4
+#end
+<br />
+<hr />
+
+<script charset="utf-8" src="$icxt/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="$icxt/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    	var editor;
+		KindEditor.ready(function(K) {
+			editor = K.create('textarea[name="routeservice"]', {
+				uploadJson : '$icxt/kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '$icxt/kindeditor/jsp/file_manager_json.jsp',
+				allowFileManager : true,
+				afterBlur: function(){this.sync();}
+			});
+			editor = K.create('textarea[name="characteristic"]', {
+				uploadJson : '$icxt/kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '$icxt/kindeditor/jsp/file_manager_json.jsp',
+				allowFileManager : true,
+				afterBlur: function(){this.sync();}
+			});
+			editor = K.create('textarea[name="routetips"]', {
+				uploadJson : '$icxt/kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '$icxt/kindeditor/jsp/file_manager_json.jsp',
+				allowFileManager : true,
+				afterBlur: function(){this.sync();}
+			});
+			editor = K.create('textarea[name="pickup_info"]', {
+				uploadJson : '$icxt/kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '$icxt/kindeditor/jsp/file_manager_json.jsp',
+				allowFileManager : true,
+				afterBlur: function(){this.sync();}
+			});
+		});
+	});
+</script>

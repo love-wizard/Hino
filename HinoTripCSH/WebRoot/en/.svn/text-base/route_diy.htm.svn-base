@@ -1,0 +1,23 @@
+			
+<!-- DIY线路 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- DIY线路表单 -->
+	<div class="col_full">
+		<div class="full_img">
+		<img src="./images/step_diy.png" />
+		</div>
+		<div class="full_form">
+		<div class="full_form_top">DIY Route application form</div>
+		<div class="full_form_mid">$diyform</div>
+		<div class="full_form_bot"></div>
+		</div>
+	</div>
+
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

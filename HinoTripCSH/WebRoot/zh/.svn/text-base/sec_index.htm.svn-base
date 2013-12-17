@@ -1,0 +1,151 @@
+﻿<script src="./js/grayscale.js"></script>
+
+<style>
+<!--
+.f_r {float: none;}
+
+.seckill_flow {
+	height: 120px; 
+	width: 260px; 
+	margin-top: 12px;
+}
+
+.seckill_flow_sel_prod {
+	background: url('./img/seckill/seckill_flow_icons.png') 0 -128px no-repeat;	
+}
+
+.seckill_flow_begin {
+	background: url('./img/seckill/seckill_flow_icons.png') no-repeat;
+}
+
+-->
+</style>
+
+<script>
+var now_time=$london_now;
+
+jQuery(document).ready(function() {
+
+	$(".qgzt").each(function(){
+		var obj = $(this).parent().find(".ms_pic");		
+		grayscale($(obj));
+	});
+	
+});
+</script>
+    <div class="main">
+        <div class="second_menu"></div>
+      <div class="ms_t">
+      		<div class="ms_time"></div>
+      		<div class="jilu" id=demo>
+                <div id=demo1>
+                    <ul>
+                    	#foreach($bk in $winner)
+                        <li>$bk.lastname  成功抢购  【抢购】$bk.group.name $bk.group.genDepartDateString() </li>
+
+                        #end
+                    </ul>
+                </div>
+                <div id=demo2></div>
+            </div>
+			<script type="text/javascript" src="js/notice.js"></script>
+            <div class="now_time" id="time_area"></div>
+      </div>
+      <div class="ms_l">
+        1．海诺旅游每周一、二、三各精选 3款热门旅游线路，限时、限量，特 价秒杀；<br>
+        2．秒杀时间从活动日的<span style="color: black;">15:00 开始 16:00结束</span>（请关注海诺官网时间） ，在线完成PayPal支付即秒杀成功， 秒完即止，为了方便我们查看您的 款项，请您付款后拨打免费热线 0333 9009 888确认到款；<br>
+        3．每款秒杀产品，每个注册用户限 抢1位名额，超出1位即视为无效；<br>
+        4．本秒杀活动仅限注册用户参加；<br>
+        5．为保证公平公正公开，秒杀活动 仅限在线预订和网上支付，恕不接 受电话抢购和上门付款，如网上支 付不成功，订单即被取消；<br>
+        6．特价抢购产品，恕不接受改期和 转让。旅游产品会因旺淡季而存在 不成团的风险，如果发生退订，将 根据产品实际价格进行退赔；如因 顾客自身原因退订产生的损失由订 购人自行承担。请您仔细阅读旅游 合同条款再确认订购，并确保旅客 信息准确、出行证件有效；<br>
+        7．如发生多人同时付款成功的情况 ，系统默认的第一个完成付款的顾 客将获得秒杀产品，其余付款人的款 项将退回到付款账号中；<br>
+        8．在法律允许的范围内，海诺旅游 将保留对本活动的最终解释权。       
+      </div>
+      <div class="ms_r" style="background: url('./img/seckill/seckill_bg.png') no-repeat;">
+      <!--秒杀列表开始-->
+      	<div class="ms_lib">
+      	
+      	<div style="height: 133px;">      		      		
+      		<div class="seckill_flow seckill_flow_sel_prod">
+      		
+      		</div>
+      		
+      		<div style="background: url('./img/seckill/seckill_flow_text.png') no-repeat; height: 50px; width: 120px; margin-right: 95px; margin-top: -132px;">
+      			
+      		</div>
+      	</div>
+      	
+      	<!--单个秒杀商品开始-->
+      	#foreach ($group in $secopeninglist)
+        	<div class="ms_box ms_item">
+            	<div class="pic">
+                    <!--抢购状态-->
+                	#if($group.genSK_over()) <span class="qgzt"><img src="./img/seckill/seckill_soldout_star.png" /> </span>#end
+                	<img src="../$pathpre$group.sk_img_1" class="ms_pic"/>
+                </div>
+                <div class="info">
+                	<div class="t">
+                        <span class="tit">【抢购】$group.route.originalRouteName</span>
+                        <span class="me">仅限$group.gen_seats_remin_sk()名</span>
+                        <span class="zt"><img src="images/new.png" /></span>
+                    </div>
+                    <div class="intro">
+                        $group.route.thumbDesc
+                    </div>
+                    <div class="price">£$group.seckill_price<span class="yj">原价 £$group.price</span></div>
+                </div>
+                <!--抢购按钮开始-->
+                <div class="qg_bt bt2">
+                	<input type="hidden" name="sk_start" value="$group.genTM_sk_start()"/><input type="hidden" name="sk_end" value="$group.genTM_sk_end()"/><input type="hidden" name="sk_full" value="$group.genSK_over()"/>
+                	<div class="qg"><a href="./booking.htm?gid=$group.id&bt=2" class="skbuy">抢购</a></div>
+                	<div class="qg_timer"></div>
+                    <div class="ckyj"><a href="./route_detail.htm?routeid=$group.route.id">查看原价线路</a></div>
+                </div>
+                <!--抢购按钮结束-->
+                <div class="clearfix"></div>
+            </div>
+        #end
+      	<!--单个秒杀商品结束-->
+      	
+        </div>
+      <!--秒杀列表结束-->
+      
+      <!--昨日抢购开始-->
+      	<div class="ms_box ms_zrqg">
+        	<span class="zs"></span>
+            <div class="lib">
+				<!--单个昨日抢购开始-->
+				#foreach ($group in $secclosedlist)
+            	<div class="zrqg_item" name="GID_$group.id">
+                	<div class="pic"><img src="../$pathpre$group.sk_img_2" /></div>
+                    <div class="info">
+                    	<ul>
+                        	<li><a href="#">【抢购】$group.route.name</a></li>
+                        	<li class="red">抢购价：￡$group.seckill_price</li>
+                        	<li class="yj">原价：￡$group.price</li>
+                        	<li class="ckyj"><a href="./route_detail.htm?routeid=$group.route.id">查看原价路线</a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                #end
+                <!--单个昨日抢购结束-->
+				
+                <div class="clearfix"></div>
+            </div>
+        </div>
+      <!--昨日抢购结束-->
+      <!--秒杀攻略开始-->
+          <div class="msgl">
+            秒杀攻略：<br>
+            1.	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注册会员：请先注册成为海诺旅游的会员，您将享受参与本次活动的资格并可以获得500个积分；<br>
+            2.	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;挑选产品：您可以根据个人喜好，提前选择您中意的产品，并及时参与秒杀；<br>
+            3.	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始秒杀：抓住时间，把握关键的机会，一旦发现您中意的产品，请毫不犹豫地立即秒杀并迅速付款；<br>
+            4.	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;推荐浏览器：我们推荐您使用IE、360、谷歌Chrome和搜狗浏览器，以保证您可以秒杀成功。
+          </div>
+      <!--秒杀攻略结束-->
+      </div>
+      <div class="clearfix"></div>
+      <div class="blank15"></div>
+    </div>
+

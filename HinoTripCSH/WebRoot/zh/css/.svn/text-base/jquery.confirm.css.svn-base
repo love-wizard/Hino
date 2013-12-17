@@ -1,0 +1,57 @@
+#confirmOverlay{
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	background:url('ie.png');
+	background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
+	z-index:100000;
+	font-size: 13px;
+}
+
+#confirmBox{
+	background:url('../img/airline/ticket_status.png') repeat-x left bottom #e5e5e5;
+	width:700px;
+	height: 162px;
+	position:fixed;
+	left:50%;
+	top:50%;
+	margin:-130px 0 0 -230px;
+	border: 1px solid rgba(33, 33, 33, 0.6);
+	
+	-moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+	-webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+	box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+}
+
+#confirmForm {
+	position: relative;
+	right: 270px;
+	top: 26px;
+	text-align: right;
+	color: white;
+}
+
+#confirmForm input {
+	height: 22px;
+	line-height: 22px;
+}
+
+#confirmButtons{
+	text-align:center;
+	height: 50px;
+	width: 60px;
+	margin-right: 198px;
+	margin-top: -24px;
+/*	background-color: yellow;*/
+	cursor: pointer;
+}
+
+#confirmText {
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	color: rgb(0, 33, 87);
+}

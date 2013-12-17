@@ -1,0 +1,111 @@
+.general .wrapper {
+	PADDING-RIGHT: 20px;
+	PADDING-LEFT: 20px;
+	FLOAT: none; 
+	PADDING-BOTTOM: 0px; 
+	MARGIN: auto; 
+	WIDTH: 560px; 
+	PADDING-TOP: 0px
+}
+
+.feature_tour .tab {
+	CLEAR: both; 
+	BACKGROUND: url(../images/progress.png) no-repeat; 
+	FLOAT: left; 
+	MARGIN: 10px 20px 0px 50px; 
+	WIDTH: 369px;
+}
+.feature_tour .tab SPAN {
+	DISPLAY: block; 
+	FONT-SIZE: 14px; 
+	FLOAT: left; 
+	WIDTH: 25%; 
+	COLOR: #999; 
+	TEXT-INDENT: 20px; 
+	LINE-HEIGHT: 32px; 
+	HEIGHT: 32px; 
+	text-shadow: 0px 1px 0px #fff;
+}
+.feature_tour .tab SPAN.current {
+	COLOR: #fff; 
+	text-shadow: 0px 1px 0px #788e21;
+}
+.feature_tour .cancel {
+	LINE-HEIGHT: 52px; 
+	HEIGHT: 32px; 
+}
+.feature_tour .mask {
+	CLEAR: both; 
+	FLOAT: left; 
+	MARGIN: 0px 0px 0px 20px; 
+	OVERFLOW: hidden; 
+	WIDTH: 500px; 
+	POSITION: relative; 
+	/*HEIGHT: 455px;*/
+}
+.feature_tour .mask .maskCon {
+	WIDTH: 5000px;
+}
+
+.feature_tour .mask .maskCon .innerCon {
+	FLOAT: left; 
+	WIDTH: 500px; 
+	LINE-HEIGHT: 18px;
+}
+
+.feature_tour .mask .maskCon .innerCon P {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.feature_tour .mask .maskCon .innerCon .breakline {
+	margin: 5px 0 0 10px;
+}
+
+.feature_tour .nav {
+	CLEAR: both; 
+	FLOAT: left; 
+	MARGIN: 5px auto; 
+	WIDTH: 100%;
+}
+.feature_tour .nav P {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	WIDTH: 480px;
+}
+.feature_tour .nav P A {
+	DISPLAY: block; 
+	FLOAT: left; 
+	WIDTH: 240px; 
+	HEIGHT: 50px;
+	LINE-HEIGHT: 50px; 
+}
+.feature_tour .nav P A.prev {
+	BACKGROUND: url(../images/step_arrow.png) no-repeat left 0px;
+}
+.feature_tour .nav P A.prev:hover {
+	BACKGROUND-POSITION: 0px -50px;
+}
+.feature_tour .nav P A.next {
+	BACKGROUND: url(../images/step_arrow.png) no-repeat right 0px;
+}
+.feature_tour .nav P A.next:hover {
+	BACKGROUND-POSITION: right -100px;
+}
+
+.feature_tour .nav P A.prev_en {
+	BACKGROUND: url(../en/images/step_arrow.png) no-repeat left 0px;
+}
+.feature_tour .nav P A.prev_en:hover {
+	BACKGROUND-POSITION: 0px -50px;
+}
+.feature_tour .nav P A.next_en {
+	BACKGROUND: url(../en/images/step_arrow.png) no-repeat right 0px;
+}
+.feature_tour .nav P A.next_en:hover {
+	BACKGROUND-POSITION: right -100px;
+}

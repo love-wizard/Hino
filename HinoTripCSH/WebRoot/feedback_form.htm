@@ -1,0 +1,725 @@
+<script>
+jQuery(document).ready(function() {
+	
+	jQuery(document).ready(function() {
+
+    // Register a 'click' handler on the submit button
+    jQuery("#submitBtn").click(function(event){
+        // Post form to server
+        if(validation())
+        {
+        	postForm();
+        	
+       	} else
+       	{
+       		alert("请检查问卷完整性!");
+       	}
+        
+        // Prevent the default browser behavior of navigating to the link
+        return false;
+    })
+})
+
+function postForm() {
+    // Retrieve the Form and submit button elements
+    var form = jQuery("#feedback_form");
+
+    // The server URL can be retrieved from the Form 'action' event
+    var url = form.attr('action');
+
+	//alert(jQuery('#feedback_form_fbvalue').val());
+    // Use jQuery serialize function to serialize the Form controls into key/value pairs
+    // Note: the jQuery serialize function will *not* add the button name/value
+    // that submitted the form. We will add the submit button name/value manually
+    var formData = form.serialize();
+
+    // Append the form ID attribute so that Click can identify the Ajax target Control
+    formData+='&'+form.attr('id')+'=1';
+
+    // Append the name/value pair of the Submit button that submitted the Form
+    formData+='&submitBtn=1';
+
+    jQuery.post(url, formData, function(data) {
+        if(data == "0")
+        {
+        	alert('反馈提交成功，已得到回馈积分50分，谢谢您的参与!');
+        	window.location = "./index.htm";
+        } else
+        {
+        	alert(data);
+        	window.location = "./index.htm";
+       	}
+    });
+}
+	
+	function validation()
+	{
+		var q1a = jQuery('input[name="q1"]:checked').val();
+		//alert(q1a);
+		if(q1a === undefined)
+		{
+			jQuery('input[name="q1"]').focus();
+			return false;
+		}
+		
+		var q2a = ""; 
+		jQuery('input[name="q2[]"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q2a = q2a+jQuery(this).val();
+			}	
+		});
+		
+		if(q2a.length==0)
+		{
+			jQuery('input[name="q2[]"]').focus();
+			return false;
+		}
+		
+		var q3a = "";
+		jQuery('input[name*="q3_"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q3a = q3a+jQuery(this).val();
+			}	
+		});
+		
+		if(q3a.length!=10)
+		{
+			jQuery('input[name="q3_1"]').focus();
+			return false;
+		}
+		
+		var q4a = "";
+		jQuery('input[name*="q4_"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q4a = q4a+jQuery(this).val();
+			}	
+		});
+		
+		if(q4a.length!=4)
+		{
+			jQuery('input[name="q4_1"]').focus();
+			return false;
+		}
+		
+		var q5a = jQuery('input[name="q5"]:checked').val();
+		if(q5a === undefined)
+		{
+			jQuery('input[name="q5"]').focus();
+			return false;
+		}
+		
+		var q6a = ""; 
+		jQuery('input[name="q6[]"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q6a = q6a+jQuery(this).val();
+			}	
+		});
+		
+		if(q6a.length==0)
+		{
+			jQuery('input[name="q6[]"]').focus();
+			return false;
+		}
+		//alert(q6a);
+		
+		var q7a = ""; 
+		jQuery('input[name="q7[]"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q7a = q7a+jQuery(this).val();
+			}	
+		});
+		
+		if(q7a.length==0)
+		{
+			jQuery('input[name="q7[]"]').focus();
+			return false;
+		}
+		//alert(q7a);
+		
+		var q8a = jQuery('#q8').val();
+		if(q8a == "")
+		{
+			jQuery('#q8').focus();
+			return false;
+		}
+		
+		var q9a = jQuery('#q9').val();
+		if(q9a == "")
+		{
+			jQuery('#q9').focus();
+			return false;
+		}
+		
+		var qfinish = q1a + "-" + q2a + "-" + q3a + "-" + q4a + "-" + q5a + "-" + q6a + "-" + q7a + "-" + q8a + "-" + q9a;
+		jQuery("#feedback_form_fbvalue").val(qfinish);
+		return true;
+	}
+	
+	
+		
+});
+</script>
+					
+<div class="con_top"></div>
+<div class="prev_box">
+
+     <div class="fullhead_top"></div>
+     <div class="fullhead_bg">
+         <p style="font-size:12px; line-height: 18px; text-align:left; margin:5px;"><strong>尊敬的游客，您好！</strong><br />
+	        <strong>　　在您的旅途告一段落之际，为了今后更好的服务顾客，提高公司服务质量，请您抽出宝贵的几分钟，填写以下调查问卷。公司客户服务部门将对此调查进行搜集总结。对不足之处我们将进行调整，如有严重问题，公司将会把问题解决方案尽快反馈顾客。谢谢。</strong>
+	     </p>
+         <!-- <div class="more"><a href="#">more info</a></div> -->
+         <div style="clear: both"></div>
+     </div><!-- more_bg -->
+     <div class="fullhead_bot"></div>
+
+
+<div width="500px">
+<div align="center">
+  <br />
+  <table border="0" cellspacing="0" cellpadding="0" width="700px">
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>1. 您对本次旅游是否满意： [单选题]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="radio" name="q1" value="1"/>
+                非常满意</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="2"/>
+                满意</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="3"/>
+                一般</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="4"/>
+                部分不满意</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="5"/>
+                不满意</p></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>2.&nbsp;对于此次旅行服务，您觉得需要改进的地方： [多选题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="1"/>
+                交通工具</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="2"/>
+                导游服务</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="3"/>
+                酒店安排</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="4"/>
+                行程安排</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="5"/>
+                其它</p></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>3. 请您给以下几项关于导游的服务评分：（1 - 不满意，2 - 部分不满意，3 - 一般，4 - 满意，5      - 很满意&nbsp;） [矩阵多选题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td></td>
+              <td width="72"><p>很不满意</p></td>
+              <td width="72"><p>不满意</p></td>
+              <td width="72"><p>一般</p></td>
+              <td width="72"><p>满意</p></td>
+              <td width="72"><p>很满意</p></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">服务态度和工作热情</p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">时间掌握</p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">和顾客的沟通</p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">讲解速度</p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">讲解内容的丰富程度</p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">语言表达能力</p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">工作办事效率</p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">应急应变能力</p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">对顾客的关心程度</p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">职业道德</p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>4. 请您给以下几项服务评分：（1 - 不满意，2 - 部分不满意，3 - 一般，4 - 满意，5      - 很满意&nbsp;） [矩阵多选题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td></td>
+              <td width="72"><p>很不满意</p></td>
+              <td width="72"><p>不满意</p></td>
+              <td width="72"><p>一般</p></td>
+              <td width="72"><p>满意</p></td>
+              <td width="72"><p>很满意</p></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">景点路线安排</p></td>
+             <td><p>
+                <input type="radio" name="q4_1" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">时间安排</p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">购物安排</p></td>
+             <td><p>
+                <input type="radio" name="q4_3" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">交通工具</p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>5. 您觉得此次旅行的花费是否合理： [单选题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="radio" name="q5" value="1"/>
+                太贵了</p></td>
+              <td><p>
+                <input type="radio" name="q5" value="2"/>
+                有点贵</p></td>
+              <td><p>
+                <input type="radio" name="q5" value="3"/>
+                一般</p></td>
+              <td><p>
+                <input type="radio" name="q5" value="4"/>
+                合理</p></td>
+                <td><p>
+                <input type="radio" name="q5" value="5"/>
+                非常合理</p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>6. 您是通过什么方式了解海诺 [多选题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="1"/>
+                超市广告</p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="2"/>
+                朋友介绍</p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="3"/>
+                海诺员工推荐</p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="4"/>
+                学联及其它社团</p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="5"/>
+                网络和邮件</p></td>
+                <td><p>
+                <input type="checkbox" name="q6[]" value="6"/>
+                其他途径</p></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>7. 在接下来的几个月，您倾向的旅游产品是： [多选题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="1"/>
+                一日游 （牛津，剑桥，约克等）</p></td>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="2"/>
+                两日游 （温莎巴斯巨石阵，丘吉尔庄园卡迪夫等）</p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="3"/>
+                多日游 （苏格兰，北爱等）</p></td>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="4"/>
+                境外游 （埃及，欧洲多国游等）</p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="5"/>
+                其它</p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>8. 在接下来的几个月，您想要旅游的地方是： [主观题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><textarea rows="3" cols="80" id="q8"></textarea> 
+          </td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>9. 您对海诺旅游的宝贵建议和意见：<br />
+            （如果您的宝贵建议被公司采纳，公司将为您提供本年度免费旅游一次） [主观题] [必答题]</strong></td>
+        </tr>
+        <tr>
+          <td><textarea rows="3" cols="80" id="q9"></textarea> </td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+  </table>
+  $feedback_form
+</div>
+</div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

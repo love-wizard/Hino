@@ -1,0 +1,629 @@
+<link href="./css/searchresults.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript" src="js/json2.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(function ShowMoreDestinations() {
+			$("#showAll").click(function() {
+				$(".more_destinations").toggle();
+			});
+		});
+
+		$(function ShowMoreCity() {
+			$("#show_city").click(function() {
+				$(".city_to_pick").slideToggle();
+			});
+		});
+
+		$("#order_by_depart_date").click(function() {
+			var val = $("#obdd").val();
+			if (val == 0 || val == 2) {
+				// desc....
+				$("#obdd").val(1);
+			} else {
+				// asc....
+				$("#obdd").val(2);
+			}
+			$("#obp").val(0);
+			$("#obd").val(0);
+			jQuery("#h_s_f").submit();
+		});
+
+		$("#order_by_price").click(function() {
+			var val = $("#obp").val();
+			if (val == 0 || val == 2) {
+				// desc....
+				$("#obp").val(1);
+			} else {
+				// asc....
+				$("#obp").val(2);
+			}
+			$("#obdd").val(0);
+			$("#obd").val(0);
+			jQuery("#h_s_f").submit();
+		});
+
+		$("#order_by_days").click(function() {
+			var val = $("#obd").val();
+			if (val == 0 || val == 2) {
+				// desc....
+				$("#obd").val(1);
+			} else {
+				// asc....
+				$("#obd").val(2);
+			}
+			$("#obdd").val(0);
+			$("#obp").val(0);
+			jQuery("#h_s_f").submit();
+		});
+
+		//排序方式：开始
+
+	});
+
+	function SearchM(month){
+		//window.location.href= "./search_result.htm?st=1&dest=" + $dest + "&k=" + month;
+		
+		$("#obd").val(0);
+		$("#obdd").val(0);
+		$("#obp").val(0);
+		jQuery("#routeType").val("");
+		jQuery("#st").val(2);
+		jQuery("#dm").val(month);
+		jQuery("#h_s_f").submit();
+	}
+	
+	function SearchByDest(destination){
+		$("#obd").val(0);
+		$("#obdd").val(0);
+		$("#obp").val(0);
+		jQuery("#routeType").val("");
+		jQuery("#st").val(2);
+		jQuery("#dest").val(destination);
+		jQuery("#h_s_f").submit();
+	}
+	
+	function searchByPR(pr) {
+	//./search_result.htm?idx=1&dcode=178&lp=lp&up=up
+		//window.location.href= "./search_result.htm?idx=1&st=4&dcode=" + $("#ct_code").val() + "&lp=" + lp + "&up=" + up;
+		var price;
+		var lp = 0;
+		var up = 1000000;
+		
+		if(pr.indexOf("以下") > 0) {
+			price = pr.replace("以下", "");
+			up = parseInt(price);
+		} else if(pr.indexOf("以上") > 0) {
+			price = pr.replace("以上", "");
+			lp = parseInt(price);
+		} else if (pr.indexOf("-") > 0) {
+			price = pr.split("-");
+			lp = parseInt(price[0]);
+			up = parseInt(price[1]);
+		}
+		
+		$("#obd").val(0);
+		$("#obdd").val(0);
+		$("#obp").val(0);
+		$("#lp").val(lp);
+		$("#up").val(up);
+		jQuery("#routeType").val("");
+		jQuery("#st").val(4);
+		jQuery("#h_s_f").submit();
+	}
+	
+	function searchByAllPR() {
+		jQuery("#st").val(2);
+		jQuery("#h_s_f").submit();
+	}
+	
+	function searchByDR(ld, ud) {
+	//./search_result.htm?idx=1&dcode=178&lp=lp&up=up
+		//window.location.href= "./search_result.htm?idx=1&st=5&dcode=" + $("#ct_code").val() + "&ld=" + ld + "&ud=" + ud;
+		$("#obd").val(0);
+		$("#obdd").val(0);
+		$("#obp").val(0);
+		$("#ld").val(ld);
+		$("#ud").val(ud);
+		jQuery("#routeType").val("");
+		jQuery("#st").val(5);
+		jQuery("#h_s_f").submit();
+	}
+	
+	function searchByAllDR() {
+		jQuery("#st").val(2);
+		jQuery("#h_s_f").submit();
+	}
+	
+</script>
+<style>
+<!--
+.f_r {float: none;}
+-->
+</style>
+<div id="search_results">
+
+	<div class="content">
+		<div class="route">
+			您现在的位置：<a href="./index.htm" title="">海诺旅游首页</a> &gt; <em>$searchResult.tanslatedKeyword</em>&nbsp;的搜索结果
+		</div>
+		<div class="search_title" id="div_search_title">
+			     您搜索的关键词为 <em>#if($noResult == 1) 
+								$searchResult.keyword
+							#else 
+								#if($pickupCity != "") $pickupCity出发 #end 
+								#if($searchResult.searchType == 2) 
+									#if($departMonth != "") $departMonth #end
+									#if($destination != "") $destination #end 
+								#else
+									$searchResult.tanslatedKeyword
+								#end
+								#if($routeTypeName != "") $routeTypeName #end
+								#if($priceRange) $priceRange #end
+								#if($dayRange) $dayRange #end
+								#if($famousPlace) $famousPlace #end
+							#end
+							</em> ，为您查询到 <em id="em_count"> $searchResult.page.totalCount </em>条满足条件的路线
+		</div>
+		<div class="seerch_options" id="div_seerch_options">
+		 
+			<input id="hidden_CurrentPage" name="hidden_CurrentPage" type="hidden" value="$searchResult.page.currentPage"> 
+			<input id="hidden_RecordCount" name="hidden_RecordCount" type="hidden" value="$searchResult.page.totalCount"> 
+			<!-- 
+			<input id="hidden_DepartureID" name="hidden_DepartureID" type="hidden" value=""> 
+			<input id="hidden_DepartureName" name="hidden_DepartureName" type="hidden" value=""> 
+			<input id="hidden_RegionID" name="hidden_RegionID" type="hidden" value="">
+
+			<input id="hidden_TravelDay" name="hidden_TravelDay" type="hidden"
+				value=""> <input id="hidden_DepartureDate"
+				name="hidden_DepartureDate" type="hidden" value=""> <input
+				id="hidden_PriceRange" name="hidden_PriceRange" type="hidden"
+				value=""> <input id="hidden_CruisePrice"
+				name="hidden_CruisePrice" type="hidden" value=""> <input
+				id="hidden_OrderBy" name="hidden_OrderBy" type="hidden"
+				value="RecentStartDate"> <input id="hidden_OrderSeq"
+				name="hidden_OrderSeq" type="hidden" value="asc"> 
+			  -->
+			<input id="pc" name="pc" type="hidden" value="$searchResult.page.totalPage">
+			<input id="cp" name="cp" type="hidden" value="$searchResult.page.currentPage">
+			<form id="h_s_f" name="h_s_f" action="./search_result.htm" method="post">
+				<input id="np" name="np" type="hidden" value=""> 
+				<input id="k" name="k" type="hidden" value="$searchResult.keyword">
+				<input id="st" name="st" type="hidden" value="$searchResult.searchType"> 
+				<input id="obdd" name="obdd" type="hidden" value="$orderByDepartDate">
+				<input id="obp" name="obp" type="hidden" value="$orderByPrice"> 
+				<input id="obd" name="obd" type="hidden" value="$orderByDays"> 
+				<input id="dest" name="dest" type="hidden" value="$destination">
+				<input id="dcode" name="dcode" type="hidden" value="$departCityCode">
+				<input id="dm" name="dm" type="hidden" value="$departMonthCode">
+				<input id="lp" name="lp" type="hidden" value="$lp">
+				<input id="up" name="up" type="hidden" value="$up">
+				<input id="ld" name="ld" type="hidden" value="$ld">
+				<input id="ud" name="ud" type="hidden" value="$ud">
+				<input id="fp" name="fp" type="hidden" value="$fp">
+				<input id="routeType" name="routeType" type="hidden" value="$routeType">
+			</form>
+
+			<ul>
+				<li id="li_Product_Level"><span>产品类型：</span>
+					<ul class="options">
+						<li id="li_filter_productlevel_-1"
+							name="li_filter_productlevel_-1" class="curr"><a
+							style="cursor: pointer" onclick="AllRouteType(this);"
+							type="submit">全部</a>
+						</li>
+
+						#foreach($total in $searchResult.searchResultSummay.routeType.entrySet())    
+						<li id="li_filter_departureid_175"
+							name="li_filter_departureid_175"><a style="cursor: pointer"
+							onclick="FilterRouteType($total.key,this)">
+							#if($total.key == 1)
+								常规团 ($total.value)
+							#elseif($total.key == 2)
+								精品小团 ($total.value)
+							#elseif($total.key == 3)
+								超值团购 ($total.value)
+							#elseif($total.key == 4)
+								DIY拼团游 ($total.value)
+							#elseif($total.key == 5)
+								热门推荐 ($total.value)
+							#end
+								
+							</a>
+						</li> 
+						#end
+						<!-- 
+						<li id="li_filter_productlevel_0" name="li_filter_productlevel_0"
+							class="" onclick=""><a style="cursor: pointer"
+							onclick="Set_Product_Type_Group()" type="submit">常规团</a></li>
+
+						<li id="li_filter_productlevel_166"
+							name="li_filter_productlevel_166" class="" onclick=""><a
+							style="cursor: pointer" onclick="Set_Product_Type_Group()"
+							type="submit"> 热门推荐</a></li>
+
+						<li id="li_filter_productlevel_150"
+							name="li_filter_productlevel_150" class="" onclick=""><a
+							style="cursor: pointer" onclick="Set_Product_Type_Group()"
+							type="submit"> 超值团购</a></li>
+
+						<li id="li_filter_productlevel_150"
+							name="li_filter_productlevel_150" class="" onclick=""><a
+							style="cursor: pointer" onclick="Set_Product_Type_Group()"
+							type="submit"> 精品小团</a></li>
+
+						<li id="li_filter_productlevel_150"
+							name="li_filter_productlevel_150" class="" onclick=""><a
+							style="cursor: pointer" onclick="Set_Product_Type_Group()"
+							type="submit"> DIY拼团游</a></li> -->
+					</ul>
+				</li>
+				<!-- Kevin Zhong -->
+				<div class="dot_line">
+					<img src="images/dot_line.jpg">
+				</div>
+				<li id="li_Departure_ID"><span>出&nbsp;发&nbsp;地：</span>
+					<ul class="options">
+						<li id="li_filter_departureid_-1" name="li_filter_departureid_-1"
+							class="curr" onclick=""><a style="cursor: pointer" onclick="AllDepartCities(0, this)")>全部</a>
+						</li> 
+						#foreach($total in $searchResult.searchResultSummay.lkDepartPlace.entrySet())    
+						<li id="li_filter_departureid_175"
+							name="li_filter_departureid_175" ><a
+							style="cursor: pointer" onclick="FilterDepartCity($total.value.placeCode , this)">$total.value.chineseName（$total.value.count）</a>
+						</li> 
+						#end
+
+					</ul></li>
+				<!-- Kevin Zhong -->
+				<div class="dot_line">
+					<img src="images/dot_line.jpg">
+				</div>
+				<li id="li_Region_ID" class="expand"><span>目&nbsp;的&nbsp;地：</span>
+					<ul class="options" id="ul_regions">
+						<li id="li_filter_regionid_-1" name="li_filter_regionid_-1" class="curr" onclick="">
+							<a style="cursor: pointer" href="javascript:void();" onclick="SearchByDest('');">全部</a>
+						</li>
+
+						<li><a href="javascript:void();" onclick="SearchByDest('伦敦');">伦敦</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('牛津');">牛津</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('剑桥');">剑桥</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('比斯特');">比斯特</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('华威古堡');">华威古堡</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('达西庄园');">达西庄园</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('布莱顿');">布莱顿</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('怀特岛');">怀特岛</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('卡迪夫');">卡迪夫</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('斯望西');">斯望西</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('北威尔士');">北威尔士</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('爱丁堡');">爱丁堡</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('湖区');">湖区</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('尼斯湖');">尼斯湖</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('Sky岛');">Sky岛</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('巨人之路');">巨人之路</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('贝尔法斯特');">贝尔法斯特</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('锁桥');">锁桥</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('巴黎');">巴黎</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('日内瓦');">日内瓦</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('布鲁赛尔');">布鲁赛尔</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('意大利米兰');">意大利米兰</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('布拉格');">布拉格</a></li>
+						<li><a href="javascript:void();" onclick="SearchByDest('埃及');">埃及</a></li>
+
+						<li id="ul_showAll"><a id="showAll" style="cursor: pointer;display:none"
+							onclick="ShowMoreDestinations"><font color="red">全部目的地▼</font>
+						</a></li>
+					</ul></li>
+				<div class="more_destinations" style="display:none">
+					<ul>
+						<li id="li_filter_regionid_757" name="li_filter_regionid_757"
+							onclick=""><a style="cursor: pointer"> Comming soon...</a></li>
+					</ul>
+				</div>
+				<!-- Kevin Zhong -->
+				<div class="dot_line">
+					<img src="images/dot_line.jpg">
+				</div>
+				<li id="li_Travel_Day"><span>行程天数：</span>
+					<ul class="options">
+						<li id="li_Travel_Day_-1" class="curr"><a
+							style="cursor: pointer" href="javascript:void(0);" onclick="searchByAllDR()">全部</a></li>
+
+						<li id="li_Travel_Day_3">
+							<a style="cursor: pointer" href="javascript:void(0);" onclick="searchByDR(1, 2)">
+								1 - 2天
+							</a>
+						</li>
+						<li id="li_Travel_Day_3"><a style="cursor: pointer" href="javascript:void(0);" onclick="searchByDR(3, 4)">
+								3 - 4天</a></li>
+						<li id="li_Travel_Day_3"><a style="cursor: pointer" href="javascript:void(0);" onclick="searchByDR(5, 8)">
+								5 - 8天</a></li>
+						<li id="li_Travel_Day_3"><a style="cursor: pointer" href="javascript:void(0);" onclick="searchByDR(9, 12)">
+								9 - 12天</a></li>
+
+					</ul></li>
+				<!-- Kevin Zhong -->
+				<div class="dot_line">
+					<img src="images/dot_line.jpg">
+				</div>
+				<li id="li_Price_Range"><span>价格区间：</span>
+					<ul class="options">
+						<li id="li_Price_Range_-1" name="li_Price_Range_-1" class="curr"
+							onclick=""><a style="cursor: pointer" href="javascript:void(0);" onclick="searchByAllPR()"> 全部</a></li>
+						#foreach($total in
+						$searchResult.searchResultSummay.priceRange.entrySet())    
+						<li id="li_Price_Range_-1" name="li_Price_Range_-1" class="curr"
+							onclick=""><a style="cursor: pointer" href="javascript:void(0);" onclick="searchByPR('$total.key')">£ $total.key（$total.value）</a>
+						</li> #end
+
+					</ul></li>
+				<!-- Kevin Zhong -->
+				<div class="dot_line">
+					<img src="images/dot_line.jpg">
+				</div>
+				<li id="li_Departure_Date"><span>出发日期：</span>
+                        <ul class="options">
+                        	<li id="li_depart_date_1" name="li_depart_date_1" class="curr" onclick="">
+                        		<a style="cursor: pointer" href="javascript:void();" onclick="SearchM(0);">全部</a>
+                        	</li>
+                            #foreach($m in $mlist)
+
+							<li><a href="#" onclick = "SearchM($m)" >
+								#if($m == 1) 一 月 #elseif ($m == 2) 二月  #elseif ($m == 3) 三月 #elseif ($m == 4) 四月 #elseif ($m == 5) 五月
+								#elseif ($m == 6) 六月  #elseif ($m == 7) 七月  #elseif ($m == 8) 八月  #elseif ($m == 9) 九月 #elseif ($m == 10) 十月
+								#elseif ($m == 11) 十一月  #elseif ($m == 12) 十二月 
+								#end
+							</a></li>
+							#end                          
+                        </ul>
+                 </li>
+			</ul>
+		</div>
+		
+		&nbsp;
+		<!-- 排序方式和上部分页开始 -->
+		<div class="filter" id="div_filter">
+			<span>排序方式：</span>
+			<div class="conditions">
+				<a style="cursor: pointer" class="publish #if($orderByDepartDate == 1) curr_01 #elseif($orderByDepartDate == 2) curr_02 #end" id=#if($noResult == 1) "dummy1" #else "order_by_depart_date" #end>出发日期</a> 
+				<a style="cursor: pointer" class="price #if($orderByPrice == 1) current_01 #elseif($orderByPrice == 2) current_02 #end" id=#if($noResult == 1) "dummy2" #else "order_by_price" #end">价格</a> 
+				<a style="cursor: pointer; visibility:hidden;" class="travel #if($orderByDays == 1) curr_01 #elseif($orderByDays == 2) curr_02 #end" id=#if($noResult == 1) "dummy3" #else "order_by_days" #end>行程天数</a>
+				#if($noResult != 1) 
+				<a id="show_city" style="cursor: pointer" class="depart_city">出发地</a>
+				#else
+				<a id="duumy4" style="cursor: pointer" class="depart_city" >出发地</a>
+				#end
+			</div>
+			<div class="statistics">
+				<span>查询到<em id="em_top_rec_count"><font color="red">&nbsp;$searchResult.page.totalCount&nbsp;</font>
+				</em>条&nbsp;共 <em id="em_top_page_count"><font color="red">&nbsp;$searchResult.page.totalPage&nbsp;</font>
+				</em>页</span> <span class="previous"> #if($searchResult.page.currentPage
+					<= 1) 上一页 #else <a onclick="PriorPage();" style="cursor: pointer">上一页</a>
+					#end </span>
+				<ul>
+					#foreach($pno in [1..10]) #if($pno <= $searchResult.page.totalPage)
+					<li id="page_top_$pno" #if($searchResult.page.currentPage==
+						$pno) class="currpage" #end><a onclick="GoToPage($pno);"
+						style="cursor: pointer">$pno</a></li> #else
+					<li id="page_top_$pno" style="display: none;"><a
+						onclick="GoToPage($pno);" style="cursor: pointer">$pno</a></li> #end
+					#end
+				</ul>
+				<span class="next"> #if($searchResult.page.currentPage >=
+					$searchResult.page.totalPage) 下一页 #else <a onclick="NextPage();"
+					style="cursor: pointer">下一页</a> #end </span>
+			</div>
+		</div>
+		<!-- 排序方式和上部分页结束 -->
+		<!-- Kevin Zhong  下拉城市-->
+		<div class="city_to_pick" style="display: none; ">
+			<a href="#" onclick="FilterDepartCity(186, this)">伦敦</a>|<a href="#"
+				onclick="FilterDepartCity(178, this)">诺丁汉</a>| <a href="#"
+				onclick="FilterDepartCity(179, this)">曼彻斯特</a>|<a href="#"
+				onclick="FilterDepartCity(180, this)">伯明翰</a>|<a href="#"
+				onclick="FilterDepartCity(181, this)">华 威</a>| <a href="#"
+				onclick="FilterDepartCity(182, this)">考文垂</a>|<a href="#"
+				onclick="FilterDepartCity(183, this)">拉夫堡</a>| <a href="#"
+				onclick="FilterDepartCity(184, this)">谢非尔德</a>|<a href="#"
+				onclick="FilterDepartCity(185, this)">莱斯特</a>|
+		</div>
+
+		<div id="div_noresult"
+			style="padding: 80px 0px; text-align: center; display: none;">
+			<div class="text_14_blue_2">
+				很抱歉，暂时没有找到相关的线路！ <img src="./img/sorry.jpg"
+					style="margin-bottom: -20px;">
+			</div>
+			<div style="margin-top: 30px;" class="text_14b_blue_2">
+				您可以联系我们的客服或者尝试一下VIP自由定制旅游线路，<a href="./diy.htm" target="_blank">GO！</a>
+			</div>
+		</div>
+		<!--   
+            <div class="filter_noresult" id="div_noresult" style="display: none; ">
+                <div class="noresults_icon">
+                    <img src="./img/noresults.jpg" alt="">
+                </div>
+                <div class="noresults_cont">
+                    <span class="title">抱歉，暂未找到相关线路！</span> <span>你可以再看看其他旅游线路，或者<a href="http://custommade.caissa.com.cn/">个性定制你的旅行&gt;&gt;</a></span>
+                </div>
+            </div>
+           -->
+
+		<!-- 搜索结果列表开始 -->
+		<div class="filter_list" id="div_filter_list">
+			<ul id="ul_1">
+				#foreach($item in $searchResult.items)
+				<!-- <li id="li_res_1" class="li_res_$item.routeType"> -->
+				<li id="li_res_1" style="background:url($item.routeBg) no-repeat">
+					<div class="icon">
+						<a target="_blank"
+							href="./route_detail.htm?routeid=$item.route.id"
+							title="$item.title"> <!-- <img src="./images/sample.jpg" alt="$item.title"> -->
+							<img src="../$pathpre$item.thumbUrl" alt="$item.title"> </a>
+					</div>
+					<div class="detail">
+						<span > <a style="cursor: pointer"
+							target="_blank" href="./route_detail.htm?routeid=$item.route.id">
+								<em class="f3"
+								style="font-size: 15px; font-weight:bold">$item.title</em>
+						</a> </span> <span> <b>出团日期</b>： $item.departDate </span> <span><b>剩余位数：</b>
+							 $item.seats </span> <span> <b>出发地：</b> $item.departPlace </span> <span>
+							<b>行程天数：</b> N/A <a
+							href="./route_detail.htm?routeid=$item.route.id" target="_blank"
+							class="viewroute"> <img src="./images/check_t.png"
+								align="middle" alt=""> </a> </span>
+					</div>
+					<div class="brief_detail">
+						#if($item.routeType == 3) <span>团购价格<em class="f1">&nbsp
+								£</em> <em class="f2">
+									$item.groupPrice</em> &nbsp;</span> <span>VIP 价格<em class="f1">&nbsp
+								£</em> <em class="f2">
+									$item.groupVipPrice</em> &nbsp;</span> <span> 
+								可用<em class="f2">0</em>积分 </span> 
+						#else <span>标准价格<em
+							class="f1">&nbsp £</em> <em
+								class="f2"> $item.price</em> &nbsp;</span> <span>VIP 价格<em
+							class="f1">&nbsp £</em> <em
+								class="f2"> $item.vipPrice</em> &nbsp;</span> <span>  可用<em class="f2">$item.voucher</em>积分
+						</span>
+						#end
+					</div>
+					<div class="hr_5"></div></li> #end
+
+				<script type="text/javascript" language="javascript">
+					if ($("#hidden_RecordCount")[0].value != "0") {
+						if ($("#div_noresult") != null) {
+							$("#div_noresult").hide();
+						}
+						if ($("#div_custom") != null) {
+							$("#div_custom").show();
+						}
+
+					} else {
+						if ($("#div_custom") != null)
+							$("#div_custom").hide();
+
+						if ($("#div_noresult") != null)
+							$("#div_noresult").show();
+
+					}
+
+					for ( var i = 1; i <= 10; i++) {
+						var pagenum = parseInt($("#hidden_PageCount")[0].value);
+						var currentpage = parseInt($("#hidden_PageCount")[0].value);
+						if (i <= pagenum) {
+							$("#page_" + i).show("<font color='red'>");
+							$("#page_top_" + i).show();
+						} else {
+							$("#page_" + i).hide();
+							$("#page_top_" + i).hide();
+						}
+					}
+
+					$("#em_top_rec_count").html(
+							"<font color='red'>"
+									+ $("#hidden_RecordCount").val()
+									+ "</font>");
+					$("#em_top_page_count").html(
+							"<font color='red'>" + $("#hidden_PageCount").val()
+									+ "</font>");
+					$("#em_tail_rec_count").html(
+							"<font color='red'>"
+									+ $("#hidden_RecordCount").val()
+									+ "</font>");
+					$("#em_tail_page_count").html(
+							"<font color='red'>" + $("#hidden_PageCount").val()
+									+ "</font>");
+
+					function GoToPage(pno) {
+						jQuery("#np").val(pno);
+						jQuery("#h_s_f").submit();
+					}
+
+					function NextPage() {
+						var curPageNo = jQuery("#cp").val();
+						var totalPageCount = jQuery("#pc").val();
+						if (curPageNo >= totalPageCount) {
+							jQuery("#np").val(totalPageCount);
+						} else {
+							jQuery("#np").val(parseInt(curPageNo) + 1);
+						}
+
+						jQuery("#h_s_f").submit();
+					}
+
+					function PriorPage() {
+						var curPageNo = jQuery("#cp").val();
+						if (curPageNo <= 1) {
+							jQuery("#np").val(1);
+						} else {
+							jQuery("#np").val(parseInt(curPageNo) - 1);
+						}
+
+						jQuery("#h_s_f").submit();
+					}
+
+					function FilterRouteType(routeType, obj) {
+						var dest = $(obj).text();
+						jQuery("#routeType").val(routeType);
+						jQuery("#h_s_f").submit();
+					}
+					
+					function FilterDepartCity(dcode, obj) {
+						jQuery("#routeType").val("");
+						jQuery("#dcode").val(dcode);
+						jQuery("#h_s_f").submit();
+					}
+					
+					function AllDepartCities(dcode, obj) {
+						$("#obdd").val(0);
+						$("#obp").val(0);
+						$("#obd").val(0);
+						jQuery("#dcode").val("");
+						jQuery("#routeType").val("");
+						jQuery("#h_s_f").submit();
+					}
+					
+					function AllRouteType(obj) {
+						$("#obdd").val(0);
+						$("#obp").val(0);
+						$("#obd").val(0);
+						jQuery("#routeType").val("");
+						jQuery("#h_s_f").submit();
+					}
+				</script>
+
+			</ul>
+		</div>
+		<!-- 搜索结果列表结束 -->
+
+		<div id="page">
+			<span>查询到<em id="em_tail_rec_count"><font color="red">&nbsp;$searchResult.page.totalCount&nbsp;</font>
+			</em>条&nbsp;共 <em id="em_tail_page_count"><font color="red">&nbsp;$searchResult.page.totalPage&nbsp;</font>
+			</em>页</span> <span class="previous"> #if($searchResult.page.currentPage
+				<= 1) 上一页 #else <a onclick="PriorPage();" style="cursor: pointer">上一页</a>
+				#end </span>
+			<ul>
+				#foreach($pno in [1..10]) #if($pno <= $searchResult.page.totalPage)
+				<li id="page_top_$pno" #if($searchResult.page.currentPage==
+					$pno) class="currpage" #end><a onclick="GoToPage($pno);"
+					style="cursor: pointer">$pno</a></li> #else
+				<li id="page_top_$pno" style="display: none;"><a
+					onclick="GoToPage($pno);" style="cursor: pointer">$pno</a></li> #end
+				#end
+			</ul>
+			<span class="next"> #if($searchResult.page.currentPage >=
+				$searchResult.page.totalPage) 下一页 #else <a onclick="NextPage();"
+				style="cursor: pointer">下一页</a> #end </span>
+		</div>
+		<div class="hr_10"></div>
+		<div class="custom" id="div_custom">
+			<span>没有搜索到合适的线路？<a href="./diy.htm">那就个性定制吧！</a>&nbsp;&nbsp;&nbsp;&nbsp;<a
+				href="#top">返回顶部↑</a> </span>
+		</div>
+
+		<div class="hr_5"></div>
+
+	</div>
+	<s class="bottom"></s>
+</div>

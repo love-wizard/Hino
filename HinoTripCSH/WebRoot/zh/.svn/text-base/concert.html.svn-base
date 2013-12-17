@@ -1,0 +1,948 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Hino Travel - 海诺旅游 - 王力宏、那英 - 世界巡回演唱会</title>
+
+<meta http-equiv="keywords" content="海诺英国旅游, 王力宏, 那英, 世界巡回演唱会"/>
+<meta http-equiv="description" content="Hino Travel - 海诺旅游 - 王力宏、那英 - 世界巡回演唱会"/>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+<link href="./img/concert/flexslider.css" rel="stylesheet" type="text/css" />
+<link rel=stylesheet type=text/css href="css/qq.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type=text/javascript src="js/kefu.js"></script>
+<script src="js/jquery.flexslider.js"></script>
+<script type="text/javascript">
+	var slider_counter = 0;
+	
+	$(window).load(function() {
+		$('.flexslider').flexslider({
+			animation : "slide",
+			start : function(slider) {
+				$('body').removeClass('loading');
+				$(".flex-next").attr("title", "那英伦敦演唱会");
+				$(".flex-prev").attr("title", "那英伦敦演唱会");
+			},
+			controlNav: false,
+			before: function(){
+				/* slider_counter ++;
+				var l = "./route_detail.htm?routeid=";
+				if (slider_counter % 2 == 0) {
+					//$(".package").removeClass("naying_pack");
+					//$(".package").addClass("lihong_pack");
+					$(".lihong_new_pack").show();
+					$(".naying_new_pack").hide();
+					$(".post_title").html("王力宏《火力全开》伦敦演唱会 &nbsp;时间：2013/4/15 20:00&nbsp; 地点：伦敦O2体育场");
+					$(".avatar").removeClass("naying_avatar");
+					$(".avatar").addClass("lihong_avatar");
+					$(".booking_link").removeClass("naying_bl");
+					$(".booking_link").addClass("lihong_bl");
+					$(".booking_link").find("a").attr("href", l + "130");					
+					$(".flex-next").attr("title", "那英伦敦演唱会");
+					$(".flex-prev").attr("title", "那英伦敦演唱会");										
+				} else {
+					//$(".package").removeClass("lihong_pack");
+					//$(".package").addClass("naying_pack");
+					$(".lihong_new_pack").hide();
+					$(".naying_new_pack").show();
+					$(".post_title").html("那英伦敦演唱会 &nbsp;时间：2013/06/01 20:00 &nbsp;地点：伦敦 Wembley Arena");
+					$(".avatar").removeClass("lihong_avatar");
+					$(".avatar").addClass("naying_avatar");
+					$(".booking_link").removeClass("lihong_bl");
+					$(".booking_link").addClass("naying_bl");
+					$(".booking_link").find("a").attr("href", l + "131");					
+					$(".flex-next").attr("title", "王力宏《火力全开》伦敦演唱会");
+					$(".flex-prev").attr("title", "王力宏《火力全开》伦敦演唱会");
+				} */
+			},
+			slideshow: false
+		});
+		
+		$(".avatar_click_lh").click(function(event){
+					
+			if($(".avatar").hasClass("lihong_avatar")) {
+				//do nothing
+			} else {
+				$(".flex-next").click();
+			}
+		});
+		
+		$(".avatar_click_ny").click(function(event){
+			
+			if($(".avatar").hasClass("naying_avatar")) {
+				//do nothing
+			} else {
+				$(".flex-prev").click();
+			}
+		});
+		
+		kf_createList();
+		
+		refresh_remain_tickets();
+		
+		//setInterval(refresh_remain_tickets, 1000 * 10);
+		
+		$(".booking_inputer_left").html($(".booking_inputer_left_copy").html());
+		
+		$(".booking_inputer_right").html($(".booking_inputer_right_copy").html());
+		
+		$(".price_area_left").mouseover(function(){
+			ToggleBookingBar(1, this);
+		});
+		
+		$(".price_area_right").mouseover(function(){
+			ToggleBookingBar(2, this);
+		});
+	});
+	
+	function refresh_remain_tickets() {
+		var url = "./go_view.htm";
+		var gids = "1868: 1869: 1870: 1871: 1872: 1860: 1863: 1856: 1857: 1858";
+		jQuery.ajax({
+			url: url,
+			async: false,
+			type: "POST",
+			data: {
+				"remain_tickets": "1",
+				"gids": gids
+			},
+			dataType: "JSON",
+			success: function(data, textStatus) {
+				//alert(data.rts.length);
+				jQuery.each(data.rts, function(idx, rt) {
+					$("#price_" + $.trim(rt['gid'])).html("剩余" + rt['st'] + "张");
+				});	
+			}
+		});
+	}
+	
+	function ToggleBookingBar(offset, obj) {
+		$(".price_area_left").each(function(idx) {
+			$(this).parent().parent().next().hide();
+		});
+		
+		$(".price_area_right").each(function(idx) {
+			$(this).parent().parent().next().next().hide();
+		});
+	
+		if (offset == 1) {
+			$(obj).parent().parent().next().toggle();
+		} else if (offset == 2) {
+			$(obj).parent().parent().next().next().toggle();
+		}
+	}
+	
+	function TogglePostAddress(obj) {
+			
+		if ($(obj).attr("checked") == "checked") {		
+			$(obj).parent().parent().parent().parent().parent().parent().find(".post_address").show();
+			
+		} else {
+			$(obj).parent().parent().parent().parent().parent().parent().find(".post_address").hide();
+		}
+	}
+	
+	function Booking(obj){
+		refresh_remain_tickets();
+		
+		var bi = $(obj).parent();
+		var post = ($(bi).find(".is_booking_post").attr("checked") == "checked"? true: false);
+		var num = ($.trim($(bi).find(".booking_num").val()) == ""? 0: parseInt($(obj).parent().find(".booking_num").val()));
+		var r = "";
+		var c = "";
+		var o = "";
+		var pc = "";
+		var sid = "";
+		sid = $(obj).parent().attr("id");
+		sid = sid.replace("gid", "price");
+		var st = $("#" + sid).html();
+		st = st.replace("剩余", "");
+		st = st.replace("张", "");
+		var max = parseInt((st == ""? 0: st));
+		
+		if(num <= 0) {
+			alert("对不起，购买张数必须大于零！");
+			return;
+		}else if(num > max) {
+			alert("对不起，购买张数超出了最大剩余票数！");
+			return;
+		}
+		
+		if(post) {
+			r = $.trim($(bi).find(".road").val());
+			c = $.trim($(bi).find(".city").val());
+			o = $.trim($(bi).find(".other").val());
+			pc = $.trim($(bi).find(".postcode").val());
+			var m = "";
+			
+			if (r == "" || r == "房间号 街道号") {
+				m = "【房间号，街道号】不能为空；\r\n";
+			}
+			
+			if (c == "" || c =="城市") {
+				m = m + "【城市】不能为空；\r\n";
+			}
+			
+			if (pc == "" || pc == "邮编 Postcode") {
+				m = m + "【邮编】不能为空；\r\n";
+			}
+			
+			if (m != "") {
+				alert(m);
+				return;
+			}			
+		}
+		
+		var gid = $(obj).parent().attr("id").replace("gid_", "");
+		
+		$("#booking_frm").attr("action", "./booking.htm?gid=" + gid);		
+		$("#booking_frm #num").val(num);
+		$("#booking_frm #post").val((post? 1: 0));
+		$("#booking_frm #road").val(r);
+		$("#booking_frm #city").val(c);
+		$("#booking_frm #other").val(o);
+		$("#booking_frm #postcode").val(pc);
+		
+		$("#booking_frm").submit();
+		//alert(post + "\t" + num + "\t" + gid);
+	}
+	
+	function ChangeNum(obj, cn) {
+		//alert(cn);
+		var bn = $(obj).parent().parent().parent().find(".booking_num");		
+		var num = ($.trim(bn.val()) == ""? 0: parseInt(bn.val()));
+		var sid = "";
+		sid = $(obj).parent().parent().parent().parent().parent().parent().parent().attr("id");
+		//alert(sid);
+		sid = sid.replace("gid", "price");
+		//alert(sid);
+		var st = $("#" + sid).html();
+		st = st.replace("剩余", "");
+		st = st.replace("张", "");
+		var max = parseInt((st == ""? 0: st));
+		if ((num + cn > 0) & (num + cn <= max)) {
+			bn.val(num + cn);
+		} else if (num + cn <= 0) {
+			bn.val(0);
+		} else if (num + cn > max) {
+			bn.val(max);
+		}
+	}
+	
+</script>
+
+<style type="text/css">
+	body {	
+		height: 2334px;	
+		margin: 0 auto;
+		padding: 0 0 0 0;
+		background-color: black;
+		width: 1500px;
+		color: white;
+	}
+	
+	.main {
+		background: url('./img/concert/concertbg.jpg') -4px 0 no-repeat;
+		height: 2334px;
+		width: 1500px;
+		margin: 0 auto;
+		padding: 0 0 0 0;
+	}
+	
+	.copyright1 {
+		background: url('./img/concert/concertbg.jpg') 0 -2334px no-repeat rgb(54, 54, 54);
+		color: #654226;
+		margin-top: 1810px;
+		position: absolute;
+		letter-spacing: 1px;
+		FONT: 12px/1.5 "微软雅黑";
+		font-weight: 700;
+		width: 1500px;
+		height: 250px;
+	}
+	
+	.copyright {
+		
+	}
+	
+	.foot_menu {
+		/*background: url('./img/je_menu_bg.png') repeat-x;*/
+		background-color: rgb(75, 75, 75);
+		height: 25px;
+		text-align: center;
+		color: white;
+		padding-top: 6px;
+	}
+	
+	a {
+		color: white;
+		text-decoration: none;
+	}
+	
+	.center { MARGIN-RIGHT: auto; MARGIN-LEFT: auto; }
+		
+	
+	.lihong_pack {
+		background: url('./img/concert/LihongPackage.png') no-repeat; 
+		width: 964px; 
+		height: 519px;
+	}
+	
+	.naying_pack {
+		background: url('./img/concert/NayingPackage.png') no-repeat; 
+		width: 964px; 
+		height: 519px;
+	}	
+	
+	.lihong_avatar {
+		background: url('./img/concert/smallLihong.png') no-repeat; 
+		width: 174px; 
+		height: 95px; 
+		margin-top: -98px;
+	}
+	
+	.naying_avatar {
+		background: url('./img/concert/smallNaying.png') no-repeat; 
+		width: 166px; 
+		height: 91px; 
+		margin-top: -98px;
+	}
+	
+	.naying_bl {
+		margin-left: 846px;
+		position: absolute;
+		margin-top: -75px;
+	}
+	
+	.lihong_bl {
+		margin-left: 832px;
+		position: absolute;
+		margin-top: -75px;
+	}
+	
+	.avatar_click {
+		position: absolute;
+		margin-top: -83px;
+		z-index: 15;
+	}
+	
+	.avatar_click_lh {
+		height: 60px;
+		width: 60px;
+		/*background-color: orange;*/
+		position: absolute;
+		margin-left: 685px;
+		cursor: pointer;
+		z-index: 16;
+	}
+	
+	.avatar_click_ny {
+		height: 60px;
+		width: 60px;
+		/*background-color: pink;*/
+		position: absolute;
+		margin-left: 765px;
+		cursor: pointer;
+		z-index: 16;
+	}
+	
+	.change_number {
+		cursor: pointer; 
+		height: 7px; 
+		width: 7px;
+	}
+	
+	.immediate_booking {
+		cursor: pointer;
+		height: 32px; 
+		width: 75px; 
+		margin-left: 282px; 
+		margin-top: 3px; 
+		position: absolute;
+	}
+	
+	.post_address input {
+	 	height: 11px; 
+	 	border:1px solid black;
+	 	width: 200px;
+	 	font-size:9px;
+	}
+	
+	.price_color_left, .price_color_right, .price_color_dummy {
+		height: 23px;
+		width: 75px;
+		margin-left:-20px;
+	}
+	
+	.remain_tickets {
+		color: white;
+		letter-spacing: 1px;
+		FONT: 12px/1.5 "微软雅黑";
+		text-align: center;
+		padding-top: 7px;
+	}
+	
+</style>
+
+</head>
+  
+<body>
+	<div class="main">
+		<div id="floatTools" class="float0831" style="z-index:30000">
+		  	<div class="floatL">
+			  	<a style="display: none" id="aFloatTools_Show" class="btnOpen" title="查看在线客服 " onclick="javascript:$('#divFloatToolsView').animate({width: 'show', opacity: 'show'}, 'normal',function(){ $('#divFloatToolsView').show();kf_setCookie('RightFloatShown', 0, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:none');$('#aFloatTools_Hide').attr('style','display:block');"  href="javascript:void(0);">展开</a> 
+				<a id="aFloatTools_Hide" class="btnCtn" title="关闭在线客服 " onclick="javascript:$('#divFloatToolsView').animate({width: 'hide', opacity: 'hide'}, 'normal',function(){ $('#divFloatToolsView').hide();kf_setCookie('RightFloatShown', 1, '', '/', 'www.istudy.com.cn'); });$('#aFloatTools_Show').attr('style','display:block');$('#aFloatTools_Hide').attr('style','display:none');"  href="javascript:void(0);">收缩</a> 
+			</div>
+		  	<div id="divFloatToolsView" class="floatR">
+		    	<div class="tp"></div>
+			    <div class="cn">
+					<ul>
+						<li class="top_qqkefu">
+						  <h3 class="titZx">海诺客服</h3>
+						</li>
+						<li>
+							<span class="icoZx">在线咨询</span> 
+						</li>
+						<li class="ke_list">
+						
+						</li>			      					    
+					</ul>
+					<ul>
+						<li>
+						  <h3 class="titDh">电话咨询</h3>
+						</li>
+						<li>
+							<span class="icoTl">033-3900-9888</span> 
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	
+		<div style="height: 270px;  ">
+		
+		</div>
+				
+		<div class="center">
+			<div class="center" style="width: 1500px; margin-top: -10px; position: absolute">
+				<table class="center">
+					<tr>
+						<td style="width: 450px;"></td>
+						
+						<td style="width: 350px;">
+							<div class="center" style="background: url('./img/concert/BookingLine.png') no-repeat; height: 79px; width: 344px;">
+															
+							</div>
+						</td>
+						
+						<td style="width: 450px;" align="right">
+							<div class="bshare-custom icon-small" style="width: 300px;">
+								<span style="margin-right:0">
+									<a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a>
+									<a title="分享到人人网" class="bshare-renren"></a><a title="分享到开心网" class="bshare-kaixin001"></a>
+									<a title="分享到豆瓣" class="bshare-douban"></a>
+									<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+									<span class="BSHARE_COUNT bshare-share-count">0</span>
+								</span>
+								<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+								<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+		<div class="center" style="height: 50px; width: 100%; background: url('./img/concert/bookinglinebg.png') repeat-x;">
+		
+		</div>
+		
+		<div style="height: 13px;">
+			
+		</div>
+		
+		<div class="center" style=" width: 1500px; position: absolute; z-index: 12;">
+			<div class="center" style="padding-left: 25%; margin-top: 10px; font-family:'微软雅黑'; font-size: 14px;">
+				<span class="post_title">那英伦敦演唱会 &nbsp;时间：2013/06/01 20:00 &nbsp;地点：伦敦 Wembley Arena</span> <a href="#group_info" style="color: red">(查看详细信息)</a>
+			</div>
+		</div>
+		
+		<div class="center" style=" width: 1500px; position: absolute; z-index: 10;">
+			<div class="center" style="background: url('./img/concert/PostUpper.png') no-repeat; height: 424px; width: 912px;">
+				
+			</div>
+		</div>
+		
+		<div class="center" style="height: 1215px; width: 100%; margin-top: 15px;">
+		
+			<!-- Place somewhere in the <body> of your page -->
+			<div class="center flexslider" style="width: 818px; height:1215px; background:none">
+				<ul class="slides">	
+					<!-- 				
+					<li>
+						<table style="margin:0px; padding:0px; border:0px;border-style:collapse; line-height: 25px;"  border='0' cellpadding='0' cellspacing='0'>
+							<tr>
+								<td>									
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td align="center"><img src="./img/blank.gif" style="background: url('./img/concert/LiHongPost.jpg') no-repeat; height: 1215px; width: 818px;"/></td>
+							</tr>
+						</table>
+					</li> 	
+									
+					-->
+					<li>
+						<table style="margin:0px; padding:0px; border:0px;border-style:collapse; line-height: 25px;"  border='0' cellpadding='0' cellspacing='0'>
+							<tr>
+								<td>
+									&nbsp;
+								</td>
+							</tr>
+							<tr>
+								<td align="center"><img src="./img/blank.gif" style="background: url('./img/concert/NayingPost.jpg') no-repeat; height: 1215px; width: 818px;"/></td>
+							</tr>
+						</table>
+					</li> 
+				</ul>
+			</div>
+		
+		
+		</div>
+		
+		<div class="center" style=" width: 1500px; position: absolute; z-index: 10; margin-top: -195px;">
+			<div class="center" style="background: url('./img/concert/PostBottom.png') no-repeat; height: 271px; width: 912px;">
+				
+			</div>
+		</div>
+		
+		<div style="height: 120px;">
+		</div>
+		
+		<div class="center" style=" width: 1500px; position: absolute; z-index: 10; display: none;">
+			<div class="center avatar naying_avatar" style=""></div>
+		</div>
+		
+		<div class="avatar_click">
+			<div class="avatar_click_lh"></div>
+			<div class="avatar_click_ny"></div>
+		</div>		
+		
+		<a id="group_info"></a>
+		<div class="center" style="height: 619px; width: 100%; ">
+		<!-- 
+			<div class="center package lihong_pack">
+			
+			</div>
+		 -->
+		 
+			 <div class="center lihong_new_pack" style="display: none;">
+			 	<table class="center" style="width: 964px;font-family:'微软雅黑'; font-size: 24px;">
+			 		<tr>
+			 			<td style="width: 380px;"></td>
+			 			<td style="width: 120px;"></td>
+			 			<td style="width: 80px;"></td>
+			 			<td style="width: 120px;"></td>
+			 			<td style="width: 80px;"></td>
+			 			<td ></td>
+			 		</tr>
+			 		<tr>
+			 			<td></td>
+			 			<td colspan="5" style="font-family: 微软雅黑; font-size: 21px; font-weight: 600; letter-spacing: 3px;">
+    						门票免收booking fee！专车往返接送24镑起！
+    					</td>
+			 		</tr>
+					<tr>
+			 			<td>&nbsp; </td>
+			 				 			
+			 		</tr>
+			 		<tr style="height: 30px;">
+			 			<td rowspan="9" style="vertical-align: top;">
+			 				<div class="ground" style="background: url('./img/concert/playground.png') no-repeat; height: 480px; width: 340px;"></div>
+			 			</td>
+			 			<td></td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<div class="price_area_left" style = "margin-left:-30px">£188</div>
+			 			</td>
+			 			<td>
+			 				<div id="price_1868" class="price_area_left price_color_left remain_tickets" style="background-color: red; margin-left:-20px"></div>
+			 			</td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<span class="price_area_right">£68</span>
+			 			</td>
+			 			<td>
+			 				<div id="price_1869" class="price_area_right price_color_right remain_tickets" style="background-color: green;"></div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_left" id="gid_1868">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_right" id="gid_1869">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 30px;">
+						<td></td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<div class="price_area_left" style = "margin-left:-30px">£128</div>
+			 			</td>
+			 			<td>
+			 				<div id="price_1872" class="price_area_left price_color_left remain_tickets" style="background-color: orange;"></div>
+			 			</td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<span class="price_area_right">£58</span>
+			 			</td>
+			 			<td>
+			 				<div id="price_1871" class="price_area_right price_color_right remain_tickets" style="background-color: blue;"></div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_left" id="gid_1872">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_right" id="gid_1871">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 30px;">
+						<td></td>
+						<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<div class="price_area_left" style = "margin-left:-30px">£88</div>
+			 			</td>
+			 			<td>
+			 				<div id="price_1870" class="price_area_left price_color_left remain_tickets" style="background-color: yellow; color: black;"></div>
+			 			</td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<span class="">£38</span>
+			 			</td>
+			 			<td>
+			 				<div class="price_color_dummy remain_tickets" style="background-color: purple;" onclick="javascript: alert('已售罄');">剩余0张</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_left" id="gid_1870">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>			 		
+			 		<tr>
+			 			<td style="height: 15px;"></td> 			
+			 		</tr>
+			 		<tr>
+			 			<td></td>
+			 			<td colspan="4">
+			 			   <div style="background:url('./img/concert/book.png') no-repeat; height: 71px; width: 376px;"></div>
+			 			</td>				 			
+			 		</tr>
+
+			 		<tr>
+			 			<td colspan="5" style="width: 964px;font-family:'微软雅黑'; font-size: 14px; padding-top:10px">
+			 				<div style="background: url('./img/concert/LihongPackage.png') -380px -240px no-repeat; height: 180px; width: 553px;"></div>
+			 			</td>
+			 		</tr>
+			 		<tr>
+				 		<td></td>
+				 		<td></td>
+				 		<td></td>
+			 			<td colspan="2">
+			 				<a href="./route_detail.htm?routeid=130">
+								<div style="background: url('./img/concert/details_btn.png') no-repeat; height: 68px; width: 236px;"></div>
+							</a>
+			 			</td>
+			 		</tr>
+			 	</table>
+			 </div>
+			 
+			 
+			 
+			 <div class="center naying_new_pack">
+			 	<table class="center" style="width: 964px;font-family:'微软雅黑'; font-size: 24px;">
+			 		<tr>
+			 			<td style="width: 380px;"></td>
+			 			<td style="width: 120px;"></td>
+			 			<td style="width: 80px;"></td>
+			 			<td style="width: 120px;"></td>
+			 			<td style="width: 80px;"></td>
+			 			<td ></td>
+			 		</tr>
+			 		<tr>
+			 			<td></td>
+			 			<td colspan="5" style="font-family: 微软雅黑; font-size: 21px; font-weight: 600; letter-spacing: 3px;">
+    						门票免收booking fee！专车往返接送24镑起！
+    					</td>
+			 		</tr>
+					<tr>
+			 			<td>&nbsp; </td>
+			 				 			
+			 		</tr>
+			 		<tr style="height: 30px;">
+			 			<td rowspan="9" style="vertical-align: top;">
+			 				<div class="ground" style="background: url('./img/concert/NayingPackage1.png') no-repeat; height: 480px; width: 413px;"></div>
+			 			</td>
+			 			<td></td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<div class="price_area_left" style="margin-left:-30px">£268</div>
+			 			</td>
+			 			<td>
+			 				<div id="price_1863" class="price_area_left price_color_left remain_tickets" style="background-color: red;"></div>
+			 			</td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<span class="price_area_right">£68</span>
+			 			</td>
+			 			<td>
+			 				<div id="price_1857" class="price_area_right price_color_right remain_tickets" style="background-color: green;"></div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_left" id="gid_1863">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_right" id="gid_1857">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 30px;">
+						<td></td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<div class="price_area_left" style="margin-left:-30px">£168</div>
+			 			</td>
+			 			<td>
+			 				<div id="price_1858" class="price_area_left price_color_left remain_tickets" style="background-color: orange;"></div>
+			 			</td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<span class="price_area_right">£58</span>
+			 			</td>
+			 			<td>
+			 				<div id="price_1856" class="price_area_right price_color_right remain_tickets" style="background-color: blue;"></div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_left" id="gid_1858">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_right" id="gid_1856">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 30px;">
+						<td></td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				<div class="price_area_left" style="margin-left:-30px">£118</div>
+			 			</td>
+			 			<td>
+			 				<div id="price_1860" class="price_area_left price_color_left remain_tickets" style="background-color: yellow; color: black;"></div>
+			 			</td>
+			 			<td style="font-family: 微软雅黑; font-size: 25px; font-weight: 600; letter-spacing: 2px;">
+			 				
+			 			</td>
+			 			<td>
+			 				
+			 			</td>
+			 		</tr>
+			 		<tr style="height: 45px; display: none;">
+			 			<td></td>
+			 			<td colspan="4">
+			 				<div class="booking_inputer_left" id="gid_1860">
+			 				
+			 				</div>
+			 			</td>
+			 		</tr>			 		
+			 		<tr>
+			 			<td style="height: 15px;"></td> 			
+			 		</tr>
+			 		<tr>
+			 			<td></td>
+			 			<td colspan="4">
+			 			   <div style="background:url('./img/concert/book.png') no-repeat; height:71px ; width: 376px;"></div>
+			 			</td>				 			
+			 		</tr>
+			 		<tr>
+			 			<td colspan="5" style="width: 964px; font-family: '微软雅黑'; font-size: 14px;">
+			 				<div style="background: url('./img/concert/NayingPackage1.png') -400px -240px no-repeat; height: 180px; width: 553px;"></div>
+			 			</td>
+			 		</tr>
+			 		<tr>
+				 		<td></td>
+				 		<td></td>
+				 		<td></td>
+			 			<td colspan="2">
+			 				<a href="./route_detail.htm?routeid=131">
+								<div style="background: url('./img/concert/details_btn.png') no-repeat; height: 68px; width: 236px;"></div>
+							</a>
+			 			</td>
+			 		</tr>
+			 	</table>	
+			 </div>
+		</div>
+		
+		<div class="booking_inputer_left_copy" style="display: none;">
+			<div onclick="Booking(this)" class="immediate_booking"></div>
+			<div style="background: url('./img/concert/booking_bar.png') no-repeat; height: 43px; width: 363px;">
+				<table>
+					<tr>
+						<td style="width: 75px;"></td>
+						<td style="align: left;">
+							<input class="booking_num" style="height: 14px; width: 35px; text-align: center;" value="1"/>
+						</td>
+						<td style="width: 20px;">
+							<div style="margin-left: 0px; margin-top: 10px;">
+								<div onclick="ChangeNum(this, 1)" class="change_number"></div>
+								<div style="height: 3px; width: 3px;"></div>
+								<div onclick="ChangeNum(this, -1)" class="change_number"></div>
+							</div>
+						</td>
+						<td style="width: 73px;"></td>
+						<td style="padding-top: 3px;">
+							<input class="is_booking_post" onclick="TogglePostAddress(this)" type="checkbox"/>
+						</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="post_address" style="display: none; background: url('./img/concert/booking_bar_pa.png') no-repeat; height: 88px; width: 363px; margin-top: -2px; padding-left: 83px;">
+				<div style="padding-top:5px;line-height:10px;">
+					<input class="road" type="text"  style="color:gray;" value="房间号 街道号" onfocus="javascript:if(this.value=='房间号 街道号')this.value='';">
+				</div>
+				<div style="line-height:10px">
+					<input class="city" type="text"  style="color:gray;" value="城市" onfocus="javascript:if(this.value=='城市')this.value='';">
+				</div>
+				<div style="line-height:10px">
+					<input class="other"/>
+				</div>
+				<div style="line-height:10px">
+					<input class="postcode" type="text"  style="color:gray;" value="邮编 Postcode" onfocus="javascript:if(this.value=='邮编 Postcode')this.value='';">
+				</div>
+			</div>
+		</div>
+		
+		<div class="booking_inputer_right_copy" style="display: none;">
+			<div onclick="Booking(this)" class="immediate_booking"></div>
+			<div style="background: url('./img/concert/booking_bar_right.png') no-repeat; height: 43px; width: 363px;">
+				<table>
+					<tr>
+						<td style="width: 75px;"></td>
+						<td style="align: left;">
+							<input class="booking_num" style="height: 14px; width: 35px; text-align: center;" value="1"/>
+						</td>
+						<td style="width: 20px;">
+							<div style="margin-left: 0px; margin-top: 10px;">
+								<div onclick="ChangeNum(this, 1)" class="change_number"></div>
+								<div style="height: 3px; width: 3px;"></div>
+								<div onclick="ChangeNum(this, -1)" class="change_number"></div>
+							</div>
+						</td>
+						<td style="width: 73px;"></td>
+						<td style="padding-top: 3px;">
+							<input class="is_booking_post" onclick="TogglePostAddress(this)" type="checkbox"/>
+						</td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="post_address" style="display: none; background: url('./img/concert/booking_bar_pa.png') no-repeat; height: 88px; width: 363px; margin-top: -2px; padding-left: 83px;">
+				<div style="padding-top:5px;line-height:10px;">
+					<input class="road" type="text"  style="color:gray;" value="房间号 街道号" onfocus="javascript:if(this.value=='房间号 街道号')this.value='';">
+				</div>
+				<div style="line-height:10px">
+					<input class="city" type="text"  style="color:gray;" value="城市" onfocus="javascript:if(this.value=='城市')this.value='';">
+				</div>
+				<div style="line-height:10px">
+					<input class="other"/>
+				</div>
+				<div style="line-height:10px">
+					<input class="postcode" type="text"  style="color:gray;" value="邮编 Postcode" onfocus="javascript:if(this.value=='邮编 Postcode')this.value='';">
+				</div>
+			</div>
+		</div>		
+		
+		<div>
+			<form id="booking_frm" action="" method="post">				
+				<input id="num" name="num" value="" type="hidden"/>
+				<input id="post" name="post" value="" type="hidden"/>
+				<input id="road" name="road" value="" type="hidden"/>
+				<input id="city" name="city" value="" type="hidden"/>
+				<input id="other" name="other" value="" type="hidden"/>
+				<input id="postcode" name="postcode" value="" type="hidden"/>
+			</form>
+		</div>
+		
+		<!-- <div class="booking_link lihong_bl">
+			<a href="./route_detail.htm?routeid=130">
+				<div style="height: 55px; width: 210px;"></div>
+			</a>
+		</div> -->
+	</div>
+	
+	<!--版权-->
+	<div class="copyright1"  style="margin: 0 auto; padding: 0 0 0 0;">
+		<div>
+			<div class="foot_menu"><a href="http://www.hinotravel.com/zh/index.htm">海诺旅游网首页</a> | <a href="#">English</a> | <a href="#">刮刮卡</a> | <a href="#">导游风采</a> | <a href="#">会刊</a> | <a href="http://www.hinotravel.com/zh/route_detail.htm?routeid=60">会员专享</a> | <a href="http://www.hinotravel.com/zh/recruit.htm">诚聘英才</a> | <a href="http://www.hinotravel.com/zh/about.htm">关于我们</a> | <a href="http://www.hinotravel.com.cn/">中国海诺旅游网</a> </div>
+		</div>
+		<div class="blank"></div>
+		<div class="copyright">
+			<div>
+	  			<table style="margin: 0 auto; padding: 0 0 0 0;">
+					<tr>
+						<td>
+							<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+						</td>
+	
+						<td style="padding-left: 30px;color: rgb(126, 122, 122); text-align: left; vertical-align: top; padding-top: 20px;">
+				    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888<br>
+				    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842 <script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script>
+	    				    		
+			    		</td>
+			    	</tr>
+			    </table>
+			</div>
+			<!-- <div style="margin-top: -38px; margin-left: 720px;"><script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script></div>-->
+		</div>    
+
+		<div style="height:10px;"></div>
+		<div style="text-align: center">
+			<a href="http://www.vosa.gov.uk/"><img style="border: 0; background: url(./img/concert/certs.png) no-repeat; height:56px; width:116px;" src="./img/blank.gif"></img></a>
+			&nbsp;&nbsp;<a href="http://www.iata.org/about/Pages/index.aspx"><img style="border: 0; background: url(./img/concert/certs.png) -131px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+			&nbsp;&nbsp;<a href="http://www.ukinbound.org/"><img style="border: 0; background: url(./img/concert/certs.png) -261px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+			&nbsp;&nbsp;<a href="http://www.caa.co.uk/default.aspx?catid=27&pageid=13227"><img style="border: 0; background: url(./img/concert/certs.png) -391px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+		</div>
+	</div>   
+	<!--版权-->
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h2>新增航线分类 </h2>
+$airline_catalog_cam_form <br>
+
+<br />
+<hr />
+<br />
+
+<h2>已有航线分类列表</h2>
+$airlineCatalogTable

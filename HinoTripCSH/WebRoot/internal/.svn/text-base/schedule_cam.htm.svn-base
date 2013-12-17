@@ -1,0 +1,46 @@
+<div class="clickform">$schedule_cam_form</div>
+<div class="clear"></div>
+
+<br />
+<hr />
+<br />
+
+<b>行程图片预览1</b><br />
+#if($image1)
+$image1
+#end
+
+<br />
+<hr />
+<br />
+
+<b>图片预览2</b><br />
+#if($image2)
+$image2
+#end
+
+<br />
+<hr />
+<br />
+
+<b>图片预览3</b><br />
+#if($image3)
+$image3
+#end
+
+
+<script charset="utf-8" src="$icxt/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="$icxt/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+    	var editor;
+		KindEditor.ready(function(K) {
+			editor = K.create('textarea[name="scheduleDesc"]', {
+				uploadJson : '$icxt/kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '$icxt/kindeditor/jsp/file_manager_json.jsp',
+				allowFileManager : true,
+				afterBlur: function(){this.sync();}
+			});
+		});
+	});
+</script>

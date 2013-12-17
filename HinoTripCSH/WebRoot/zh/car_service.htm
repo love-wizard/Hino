@@ -1,0 +1,136 @@
+<style>
+<!--
+.f_r {
+	float: none;
+}
+-->
+</style>
+<script type="text/javascript">
+function showButtonTab(id) {
+	$("#car_big_1").hide();
+	$("#car_big_2").hide();
+	$("#car_big_3").hide();
+	$("#car_big_" + id).show();
+	$("#car_big_title_1").css({'background-image':'url(./images/car_tab_title_disable.png)'})
+	$("#car_big_title_2").css({'background-image':'url(./images/car_tab_title_disable.png)'})
+	$("#car_big_title_3").css({'background-image':'url(./images/car_tab_title_disable.png)'})
+	$("#car_big_title_" + id).css({'background-image':'url(./images/car_tab_title_enable.png)'})
+}
+</script>
+<!--网站主体开始-->
+<div class="main">
+	<div class="second_menu">
+		<a href="#" id="show_car1">在线订车 </a><a href="#" id="show_car2">车型展示</a>
+		<a href="#" id="show_car3">机场接送</a> <a href="#" id="show_car4">旅行用车</a>
+	</div>
+
+	<div class="auto_service_desc">
+		<div class="cate">
+			<span>车型展示</span>
+		</div>
+		<div class="text_area">
+			海诺巴士服务公司拥有“海诺”品牌巴士5辆、“利德斯”品牌巴士20辆、16座尼桑巴士、17座奔驰商务巴士以及9座奔驰、5座大众商务车等车。我们可以提供5座，
+			9座，17座商务车，29座，49座，53座，55座，59座豪华巴士，70座经济型单层巴士，74座双层等各种规格的车辆以满足市场对用车需求。我们的巴士绝大部分为3年内
+			新车，并配备拥有多媒体播放设备，洗手间，空调，饮水机，三点式安全带。舒适豪华的大巴设施，专业的车辆管理体系，定期的车辆安全检查，海诺巴士是您平安旅
+			途的保障。选择海诺巴士，一路畅通！</div>
+	</div>
+	<div class="line_gray"></div>
+	<div class="car_8">
+		<div class="car_small_left_8"></div>
+		<div class="car_small_right">
+			<div class="car_title">
+				<span><b>8座奔驰Viano</b>
+				</span>
+			</div>
+			<div class="car_service_desc_small">
+				<span>&nbsp;司机工作时间：10小时 司机国籍： 华人 <br> &nbsp;伦敦内 (100英里）: 320英镑
+					伦敦外(250英里)：350英镑 接送</span>
+			</div>
+			<div class="car_service_bref">
+				<span>作为轻型商用车的典范之作，梅赛德斯-奔驰唯雅诺Viano一向被誉为“移动的总裁办公室”
+					。梅赛德斯-奔驰唯雅诺Viano是戴姆勒-克莱斯勒公司针对全球商务车市场的倾情力作，秉
+					承豪华轿车的设计理念，实现了艺术与科技的完美结合，是唯一一款获得欧洲新车评估程序
+					（EURO-NCAP）五星级安全标准的MPV。Viano在车辆整体的舒适性、安全性、操控性等
+					方面有了大幅度的提高，尤其是应用了同类别车型中罕有的ESP（电子稳定程序），将豪华商 务车行业的标准提升到了一个新的高度。 </span>
+			</div>
+		</div>
+	</div>
+	<div class="car_16">
+		<div class="car_small_left_16"></div>
+		<div class="car_small_right">
+			<div class="car_title">
+				<span><b>16座奔驰高档商务车 Sprinter</b></span>
+			</div>
+			<div class="car_service_desc_small">
+				<span>&nbsp;司机工作时间：13小时 司机国籍： 英国人<br> &nbsp;伦敦内 (100英里）: 300英镑
+					伦敦外(250英里)：350英镑 接送机(半天)：180英镑</span>
+			</div>
+			<div class="car_service_bref">
+				<span> 爽朗流畅的造型轮廓，时尚高雅的车灯组合，精细上乘的金属喷漆，加上格外高大的车身，从
+					外观上就能感受到Sprinter充满了现代感的气息。典雅大气的内部空间，更让驾乘者尊享Spr-
+					inter车与众不同的高贵：细腻周到的上车扶手，豪华的欧式木质地板，带头枕的座椅舒适宽大
+					，足够宽敞的过道行走自如，高后门的行李存放空间便捷开阔，潇洒大气的欧洲风尚将一般轻 型乘用客车给人的局促感一扫而净。 </span>
+			</div>
+		</div>
+	</div>
+	<div class="car_big_tab">
+		<div id = "car_big_title_1" class = "car_big_title_1"> 
+		<br>
+		<a id= "buttonTab1" href="javascript:void(0);" onclick="showButtonTab(1)" style = "position:relative;margin-left:15px;"><b>29座奔驰小型巴士</b></a>
+		</div>
+		<div id = "car_big_title_2" class = "car_big_title_2"> 
+		<br>
+		<a id= "buttonTab2" href="javascript:void(0);" onclick="showButtonTab(2)" style = "position:relative;margin-left:15px;"><b>49-59 座豪华大巴</b></a>
+		</div>
+		
+		<div id = "car_big_title_3" class = "car_big_title_3"> 
+		<br>
+		<a id= "buttonTab3" href="javascript:void(0);" onclick="showButtonTab(3)" style = "position:relative;margin-left:15px;;"><b>74 座豪华大巴</b></a>
+		</div>
+	</div>
+	<div id="car_big_1" style="display:none">
+		<div class="car_service_desc_big">
+			<span> <b>座次</b>:29 座 <b>品牌</b>：白色奔驰商务车 <b>有无厕所</b>：无 <b>行李箱</b>：有 <b>司机工作时间</b>：13小时 <b>司机国籍</b>：英国人
+				<b>伦敦内 (100英里）</b>: 400英镑 <b>伦敦外 （250英里）</b>：450英镑 接送机（半天）：250 英镑 </span>
+		</div>
+		<div class="car_29"></div>
+	</div>
+	<div id="car_big_2" style="display:none">
+		<div class="car_service_desc_big">
+			<span> <b>座次</b>:49-59 座 <b>品牌</b>：豪华大巴 <b>有无厕所</b>：有 <b>行李箱</b>：有 <b>司机工作时间</b>：13小时 <b>司机国籍</b>：英国人
+				<b>伦敦内 (100英里）</b>: 450英镑 <b>伦敦外 （250英里）</b>：500英镑 接送机（半天）：290 英镑 </span>
+		</div>
+		<div class="car_49"></div>
+	</div>
+	<div id="car_big_3" style="display:block">
+		<div class="car_service_desc_big">
+			<span> <b>座次</b>:74 座 <b>品牌</b>：豪华大巴 <b>有无厕所</b>：有 <b>行李箱</b>：有 <b>司机工作时间</b>：13小时 <b>司机国籍</b>：英国人 <b>伦敦内 (100英里）</b>: 650英镑 <b>伦敦外 （250英里）</b>：750英镑 接送机（半天）：350 英镑 </span>
+		</div>
+		<div class="car_70"></div>
+	</div>
+	<!--car 内容开始-->
+
+	<!--car 内容结束-->
+
+	<div class="blank15"></div>
+	<div class="blank15"></div>
+	<!--资质证明开始-->
+	<div class="zzzm_t"></div>
+	<div class="zzzm_box">
+		<ul>
+			<li><img src="images/zz1.jpg" />
+			</li>
+			<li><img src="images/zz2.jpg" />
+			</li>
+			<li><img src="images/zz3.jpg" />
+			</li>
+			<li style="border:none;"><img src="images/zz4.jpg" />
+			</li>
+		</ul>
+		<div class="clearfix"></div>
+	</div>
+	<!--资质证明结束-->
+	<div class="blank15"></div>
+
+</div>
+<!--网站主体结束-->

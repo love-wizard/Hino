@@ -1,0 +1,348 @@
+<!-- 预订 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 预订表单 -->
+	<script language="javascript">
+	
+	</script>
+
+	<!-- 多步骤表单 -->
+	<div class="col_full">
+		<div class="full_img">
+		<img src="./images/step_booking.png" />
+		</div>
+		<div class="full_form">
+		<div class="full_form_top">
+			#if($groupname) $groupname #else ERROR #end #if($groupdate) $groupdate #else ERROR #end 
+		</div>
+		<div class="full_form_mid">
+
+			$jsData
+
+			<div class="general feature_tour wrapper">
+				<div class="tab">
+					<span class="current">Booking</span>
+					<span>Payment</span>
+					<span>Confirm</span>
+					<span>Review</span>
+				</div>
+				<a href="route_detail.htm?routeid=$routeid" class="cancel">[ Back to group ]</a>
+				<div class="nav">
+					<p>
+						<a href="#" class="prev_en"></a>
+						<a href="#" class="next_en"></a>
+					</p>
+				</div>
+				<div class="mask">	
+					<div class="maskCon">
+
+					<form class="niceform">
+				        <div id="con1" class="innerCon">
+				        
+				        	<!-- First customer (current user) -->
+							<div id="cus_1">
+							
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>Last name<span style="color:red">*</span></td>
+								<td><input id="fn_1" type="text" size="50" value="#if($customerFisrtName)$customerFisrtName #end"/></td>
+							</tr>
+							<tr>
+								<td>First name<span style="color:red">*</span></td>
+								<td><input id="ln_1" type="text" size="50" value="#if($customerLastName)$customerLastName #end"/></td>
+							</tr>
+							<tr>
+								<td>Full name</td>
+								<td><input id="cn_1" type="text" size="50" value="#if($customerCnName)$customerCnName #end"/></td>
+							</tr>
+							<tr>
+								<td>Gender<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_1" name="gender_1">
+								<option value="">Choose your gender</option>
+								<option value="0" #if($customerGenderM)$customerGenderM #end>Male</option>
+								<option value="1" #if($customerGenderFM)$customerGenderFM #end>Female</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td><input id="email_1" type="text" size="50" readonly="readonly" value="#if($customerEmail)$customerEmail #end"/></td>
+							</tr>
+							<tr>
+								<td>Phone<span style="color:red">*</span></td>
+								<td><input id="phone_1" type="text" size="50" value="#if($customerPhone)$customerPhone #end"/></td>
+							</tr>
+							<tr>
+								<td>Pickup place<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_1" name="pickup_1" style="width:280px">
+								<option value="">Choose pickup place</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Room</td>
+								<td><input id="room_1" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							
+							<div id="more">
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form"><tbody>
+							<tr>
+								<td>Booking for partners: </td>
+								<td>
+								<select id="morecustomer" name="morecustomer">
+								<option value="" selected="selected">How many partners</option>
+								<option value="2">1</option>
+								<option value="3">2</option>
+								<option value="4">3</option>
+								</select>
+								</td>
+							</tr>
+							</tbody></table>
+							</div>
+							
+							<!-- Second customer -->
+							<div id="cus_2">
+							
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>Last name<span style="color:red">*</span></td>
+								<td><input id="fn_2" type="text" size="50"/></td>
+							</tr>
+							<tr>
+								<td>First name<span style="color:red">*</span></td>
+								<td><input id="ln_2" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>Full name</td>
+								<td><input id="cn_2" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>Gender<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_2" name="gender_2">
+								<option value="">Choose your gender</option>
+								<option value="0">Male</option>
+								<option value="1">Female</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Pickup place<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_2" name="pickup_2" style="width:280px">
+								<option value="">Choose pickup place</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Room</td>
+								<td><input id="room_2" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							
+							<!-- Third customer -->
+							<div id="cus_3">
+							
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>First name<span style="color:red">*</span></td>
+								<td><input id="fn_3" type="text" size="50"/></td>
+							</tr>
+							<tr>
+								<td>Last name<span style="color:red">*</span></td>
+								<td><input id="ln_3" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>Full name</td>
+								<td><input id="cn_3" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>Gender<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_3" name="gender_3">
+								<option value="">Choose your gender</option>
+								<option value="0">Male</option>
+								<option value="1">Female</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Pickup place<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_3" name="pickup_3" style="width:280px">
+								<option value="">Choose pickup place</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Room</td>
+								<td><input id="room_3" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							</div>
+							
+							<!-- Fourth customer (current user) -->
+							<div id="cus_4">
+							
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>First name<span style="color:red">*</span></td>
+								<td><input id="fn_4" type="text" size="50"/></td>
+							</tr>
+							<tr>
+								<td>Last name<span style="color:red">*</span></td>
+								<td><input id="ln_4" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>Full name</td>
+								<td><input id="cn_4" type="text" size="50" /></td>
+							</tr>
+							<tr>
+								<td>Gender<span style="color:red">*</span></td>
+								<td>
+								<select id="gender_4" name="gender_4">
+								<option value="">Choose your gender</option>
+								<option value="0">Male</option>
+								<option value="1">Female</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Pickup place<span style="color:red">*</span></td>
+								<td>
+								<select id="pickup_4" name="pickup_4" style="width:280px">
+								<option value="">Choose pickup place</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Room</td>
+								<td><input id="room_4" type="text" size="50" /></td>
+							</tr>
+							</tbody>
+							</table>
+							
+							</div>
+							
+						</div>
+						
+						
+				        <div id="con2" class="innerCon">
+				        	
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+				        	<table class="form"><tr><td>Please read and agree the <a id="agreementlink" href="../resource/Hino_Customer_Contract.pdf" target="_blank">Hino Travel Contract</a></td></tr></table>
+
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form" id="paymethod">
+							<tbody>
+							<tr>
+								<td>Payment</td>
+								<td>
+								<select id="paymethodsel" name="paymethodsel">
+								<option value="-1">Please read contract</option>
+								<option value="1">Bank transfer</option>
+								<option value="2">Online checkout</option>
+								<option value="3">Cash</option>
+								</select>
+								<span style="margin-top:-35px;float:right;color:red">Click above link to continue 　　　　　　　</span>
+								</td>
+							</tr>
+							<tr>
+								<td>How to pay</td>
+								<td><textarea id="paymethoddetail" rows="10" cols="45" style="line-height:1.5em"></textarea></td>
+							</tr>
+							</tbody>
+							</table>
+						</div>
+						
+				        <div id="con3" class="innerCon">
+
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>Tickets you've booked</td>
+								<td><input id="ticketno" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							<tr>
+								<td>Single price(£)</td>
+								<td><input id="price_ori" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							<tr>
+								<td>Your credit point</td>
+								<td><input id="credit_total" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							<tr>
+								<td>You can use <span id="max_credit">ERROR</span> credit point<br />
+									Credit point used must be n*100 <br />
+									(n is integer)</td>
+								<td><input id="credit_use" type="text" size="50" value="0" /></td>
+							</tr>
+							<tr>
+								<td><br/><input id="calculator" type="button" value="Calculate again"/></td>
+								<td><br/><input id="price_total" type="text" size="50" value="ERROR" readonly="readonly"/></td>
+							</tr>
+							</tbody>
+							</table>
+							
+						</div>
+						
+					</form>
+					
+				        <div id="con4" class="innerCon">
+
+							<img src="../images/full_form_line.png" class="breakline" />
+							
+							<table class="form">
+							<tbody>
+							<tr>
+								<td>Your booking reference number: </td>
+								<td><span id="refno">Processing...</span></td>
+							</tr>
+							<tr>
+								<td>Please pay for your booking using: </td>
+								<td><span id="pay"></span></td>
+							</tr>
+							</tbody>
+							</table>
+						</div>
+					</div>
+			    </div>
+			</div>			
+		</div>
+		<div class="full_form_bot"></div>
+		</div>
+	</div>
+
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

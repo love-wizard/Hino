@@ -1,0 +1,497 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+	background:url(../images/airline_bg.png) repeat-x;
+	background-color:RGB(247,251,254);
+}
+
+/*头部开始*/
+.head
+{
+	width:974px;
+	height:155px;
+	background:url(../images/ny_head.png) no-repeat;
+	margin:0 auto;
+	overflow:hidden;
+}
+
+.head .logo_link {
+    display: block;
+    padding-top: 44px;
+}
+
+/*导航菜单 begin*/
+.second_menu{
+	position:absolute; 
+	top:0px; 
+	right:100px;
+}
+	
+.second_menu a{ 
+	color:#a95c00
+}
+
+/*网站主体  begin*/
+.main
+{
+	/* background:url(../img/airline/main_bg.png) no-repeat; */
+	background-color: white;
+	color: black;
+	min-height:1550px;
+	/*background:#fff;*/
+	padding:25px 0px 0px;
+	width:974px;
+	margin:0 auto;
+}
+
+.layout_left {
+ 	width: 727px;
+ 	min-height: 1550px;
+ 	/* background-color:RGB(234,234,234); */
+ 	float: left;
+}
+
+.layout_left .slider {
+	width: 700px;
+	height: 230px;
+	border: 1px solid #orange;
+	/*background-color: green;*/
+}
+
+.layout_left .slider #airline_slider {
+	border:1px solid #orange;
+}
+
+
+.layout_left .airlines {
+	width: 700px;
+	min-height: 240px;
+	
+	/*background-color: red;*/
+}
+
+.layout_left .airlines .areas {
+	width: 180px;
+	float: left;
+	font-size: 15px;
+	color: blue;
+}
+
+.layout_left .airlines .area div {
+	width: 150px;	
+	padding-left: 35px;
+}
+
+.layout_left .airlines .area_selected {
+	width: 180px;
+	height: 58px;
+	line-height: 58px;
+	color: black;
+	font-size: 20px;
+	background: url('../img/airline/area_selected_bg.png') no-repeat;
+}
+
+.layout_left .airlines .area_selected div {
+	text-align: right;
+	width: 150px;
+	margin-left: -5px;
+}
+
+.layout_left .airlines .area {
+	width: 180px;
+	height: 38px;
+	line-height: 38px;	
+	cursor: pointer;
+}
+
+.layout_left .airlines .table {
+	width: 520px;
+	float: right;
+}
+
+.layout_left .airlines .table 。list table thead {
+	overflow: hidden;
+}
+
+.layout_left .airlines .table .list {
+	height: 195px;
+	font-weight: bold;
+	padding-left: 10px;
+	overflow: hidden;
+}
+
+.layout_left .airlines .table .list thead td {
+	text-align: left;
+	height: 25px;
+}
+
+.layout_left .airlines .table .list tbody td {	
+	text-align: left;
+	height: 25px;
+}
+
+.layout_left .questions {
+	/* background-color:RGB(234,234,234); */
+}
+
+.layout_left .questions .row {
+	width: 720px;
+	min-height: 200px;
+	margin-left: 16px;
+	/*background-color: white;*/
+}
+
+.layout_left .questions .row .question_banner {
+	width: 217px;
+	height: 20px;
+	float: left;	
+}
+
+.layout_left .questions .row .booking_process .question_banner {
+	background: url('../img/airline/question_icons.png') no-repeat;	
+}
+
+.layout_left .questions .row .booking_process .question_list a:hover {
+	color: rgb(255, 126, 0); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .booking_process .question_desc {
+	color: rgb(255, 126, 0); 
+}
+
+.layout_left .questions .row .pay_method .question_banner {
+	background: url('../img/airline/question_icons.png') -253px 0 no-repeat;	
+}
+
+.layout_left .questions .row .pay_method .question_list a:hover {
+	color: rgb(86, 157, 1); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .pay_method .question_desc {
+	color: rgb(86, 157, 1); 
+}
+
+.layout_left .questions .row .electric_ticket .question_banner {
+	background: url('../img/airline/question_icons.png') -507px 0 no-repeat;	
+}
+
+.layout_left .questions .row .electric_ticket .question_list a:hover {
+	color: rgb(37, 104, 211); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .electric_ticket .question_desc {
+	color: rgb(37, 104, 211); 
+}
+
+.layout_left .questions .row .update_ticket .question_banner {
+	background: url('../img/airline/question_icons.png') 0 -20px no-repeat;	
+}
+
+.layout_left .questions .row .update_ticket .question_list a:hover {
+	color: rgb(174, 139, 99); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .update_ticket .question_desc {
+	color: rgb(174, 139, 99); 
+}
+
+.layout_left .questions .row .flight_info_confirm .question_banner {
+	background: url('../img/airline/question_icons.png') -253px -20px no-repeat;	
+}
+
+.layout_left .questions .row .flight_info_confirm .question_list a:hover {
+	color: rgb(145, 49, 77); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .flight_info_confirm .question_desc {
+	color: rgb(145, 49, 77); 
+}
+
+.layout_left .questions .row .network_checkin .question_banner {
+	background: url('../img/airline/question_icons.png') -507px -20px no-repeat;	
+}
+
+.layout_left .questions .row .network_checkin .question_list a:hover {
+	color: rgb(248, 127, 254); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .network_checkin .question_desc {
+	color: rgb(248, 127, 254); 
+}
+
+.layout_left .questions .row .baggage_question .question_banner {
+	background: url('../img/airline/question_icons.png') 0 -40px no-repeat;	
+}
+
+.layout_left .questions .row .baggage_question .question_list a:hover {
+	color: rgb(0, 0, 0); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .baggage_question .question_desc {
+	color: rgb(0, 0, 0); 
+}
+
+.layout_left .questions .row .special_ticket .question_banner {
+	background: url('../img/airline/question_icons.png') -253px -40px no-repeat;	
+}
+
+.layout_left .questions .row .special_ticket .question_list a:hover {
+	color: rgb(120, 0, 255); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .special_ticket .question_desc {
+	color: rgb(120, 0, 255); 
+}
+
+.layout_left .questions .row .other_question .question_banner {
+	background: url('../img/airline/question_icons.png') -507px -40px no-repeat;	
+}
+
+.layout_left .questions .row .other_question .question_list a:hover {
+	color: rgb(211, 37, 62); 
+	text-decoration: none;
+}
+
+.layout_left .questions .row .other_question .question_desc {
+	color: rgb(211, 37, 62); 
+}
+
+.layout_left .questions .row .question_desc {
+	text-align: left;
+	font-size: 20px;
+	float: left;
+	width: 217px;
+	color: orange;
+}
+
+.layout_left .questions .row .question_list {
+	text-align: left;
+	padding-left: 18px;
+	float: left;
+}
+
+.layout_left .questions .row .question_list ul li {
+	list-style-type: disc;	
+}
+
+.layout_left .questions .info_required {
+	width: 700px;
+	height: 150px;
+	padding-top: 12px;	
+	background: url('../img/airline/question_bg_booking_process.png') no-repeat;	 
+}
+
+.layout_left .questions .info_required .info_question {
+	width: 682px;
+	height: 38px;
+	font-size: 20px;
+	color: white;
+	float: left;
+	padding-top: 5px;
+	padding-left: 15px;
+	/* background-color: brown;	 */
+}
+
+.layout_left .questions .info_required .info_text {
+	width: 675px;
+	height: 90px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 20px;
+	padding-left: 5px;
+	color: white;
+}
+
+.layout_right {
+	width: 237px;
+	mini-height: 1200px;
+	padding-right: 10px;
+	/*background-color: orange;*/
+	float: right;
+}
+
+.layout_right .online_customer_service {
+	width: 192px;
+	height: 82px;
+	
+	/*background: url('../img/airline/kefu.jpg') no-repeat;*/	
+}
+
+.layout_right .ticket_enquiry {
+	width: 237px;
+	height: 588px;
+	
+	background: url('../img/airline/enquiry_bg.png') no-repeat;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .form {
+	margin-left: 35px;
+	padding-top: 20px;
+	height: 442px;
+	display:table;
+	*position:relative;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .form .waiting {
+	display: table-cell;
+	vertical-align: middle;
+    *position: absolute;
+    *top: 50%;
+    width: 180px;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .form .waiting .text {
+	*position: relative;
+	*top: -50%;
+	color: #00A0E9; 
+	font-size: 20px;
+	text-align: center;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .result {
+	height: 260px;
+	font-size: 14px;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .result .single {
+	padding-top: 40px;
+	text-align: center;
+	width: 180px;
+	color: #00A0E9; 
+	font-size: 14px;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .result .single .airline_and_date {
+	font-size: 14px;
+	color: rgb(255, 126, 0); 
+}
+
+.layout_right .ticket_enquiry .enquiry_form .result .single .price {
+	font-size: 48px;
+	color: rgb(37, 104, 211); 
+}
+
+.layout_right .ticket_enquiry .enquiry_form .result .multiple {
+	font-size: 14px;
+	padding-top: 20px;
+	width: 180px;
+	color: black;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .result .multiple table {
+	width: 180px;
+}
+
+.layout_right .ticket_enquiry .enquiry_form .result .multiple .brief_list {
+	height: 130px;
+	overflow: hidden;
+}
+
+.layout_right .airline_link {
+	width: 235px;
+	height: 700px;
+	background: url('../img/airline/link_bg_all.png') 5px no-repeat;
+	color: white;
+	border-radious: 3px 3px 3px 3px;
+}
+
+.blank {
+	height: 15px;
+	width: 100%;
+}
+
+.hidden_area {
+	display: none;
+}
+
+#ticket_button {	
+	color: white;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+    width: 165px;
+    margin-left: 42px;
+    margin-top: -2px;
+    height: 35px;    
+}
+
+.questions .row .horizon {
+	float: left; 
+	text-align: center; 
+	padding-bottom: 0px;
+	width: 240px;
+}
+
+.airline_link .iata {
+	width: 237px;
+	height: 50px;
+	background: url('../img/airline/iata_logo.png') no-repeat;
+}
+
+.airline_link .china_air {
+	width: 237px;
+	height: 100px;
+	background: url('../img/airline/china_air_logo.png') no-repeat;
+}
+
+.ticket_status_enquiry {
+	height: 23px;
+	width: 87px;
+	float: right;
+	margin-top: 5px;
+	font-size: 13px;
+	color: white;	
+	background: url('../img/airline/question_icons.png') 0 -60px no-repeat;	
+}
+
+.black_font {
+	color: black;
+}
+
+.orange_font {
+	color: orange;
+}
+
+.long_select {
+	width: 160px;
+	height: 25px;	
+	font-size: 14px;
+}
+
+.short_select {
+	width: 50px;
+	height: 25px;
+	font-size: 14px;
+}
+
+.answer_area {
+	display: none;
+}
+
+.more_question {
+	cursor: pointer;
+}
+
+.scroll {
+    float:left;
+    _display:inline;
+    
+    height:160px;
+    overflow: scroll;
+    position:relative;
+    padding-right:10px;
+}
+
+
+/*版权*/
+.copyright{ clear:both; width:974px; height:32px; background:#5C8EB2; text-align:center}
+.copyright .word{color:white}

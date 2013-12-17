@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Click"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hibernate"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaEE6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Junit"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Util"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SpringSecurity"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Hino"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/HinoLib"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

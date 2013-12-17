@@ -1,0 +1,6 @@
+<h2>区域管理</h2>
+	<div class="clickform">$areaform</div>
+	<div class="clear"></div>
+<hr />
+<h2>已有区域</h2>
+$areatable

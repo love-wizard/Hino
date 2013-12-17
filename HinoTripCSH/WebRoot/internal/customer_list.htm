@@ -1,0 +1,114 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Update credit
+	jQuery(".ajaxCredit").click(function(event){
+		
+		var targetCreditObj = jQuery(this).parent().prev();
+		
+		var newCredit = window.prompt("请输入新积分值", targetCreditObj.html());
+		if(newCredit ==null)
+		{	
+			return false;
+		}
+		if(!(/^\d+$/.test(newCredit))) {
+			alert(newCredit+"不是正整数");
+			return false;
+		}
+		
+		// In order for Click to identify the Ajax target, we pass the link ID
+		// attribute as request parameters
+		var extraData = "newcredit="+newCredit;
+		// The Ajax URL is set to the link 'href' URL which contains all the link default parameters,
+		// including it's name/value pair: 'actionLink=link'
+		var url = jQuery(this).attr('href');
+	
+		//alert("url: "+url+" data: "+extraData);
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+					alert("Result: "+json.result);
+					targetCreditObj.html(newCredit);
+		});
+		
+		// Prevent the default browser behavior of navigating to the link
+		return false;
+	});
+
+	// Update VIP date
+	jQuery(".ajaxVip").click(function(event){
+		
+		var targetCreditObj = jQuery(this).parent().prev().prev();
+		
+		var newVipDate = window.prompt("请输入新VIP到期日期 yyyy-mm-dd", targetCreditObj.html());
+		if(newVipDate ==null)
+		{	
+			return false;
+		}
+		if(!(/^\d{4}-\d{2}-\d{2}$/.test(newVipDate))) {
+			alert(newVipDate+"请按照yyyy-mm-dd格式输入");
+			return false;
+		}
+		
+		// In order for Click to identify the Ajax target, we pass the link ID
+		// attribute as request parameters
+		var extraData = "newvipdate="+newVipDate;
+		// The Ajax URL is set to the link 'href' URL which contains all the link default parameters,
+		// including it's name/value pair: 'actionLink=link'
+		var url = jQuery(this).attr('href');
+	
+		//alert("url: "+url+" data: "+extraData);
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+					alert("Result: "+json.result);
+					targetCreditObj.html(newVipDate);
+		});
+		
+		// Prevent the default browser behavior of navigating to the link
+		return false;
+	});
+
+	// Show customer detail
+	jQuery(".ajaxDetail").click(function(event){
+		
+		var extraData = "";
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+				var customerDetail = "<table>"+
+					"<tr><td><b>名</b></td><td>"+json.lastname+"</td></tr>"+
+					"<tr><td><b>姓</b></td><td>"+json.firstname+"</td></tr>"+
+					"<tr><td><b>中文名</b></td><td>"+json.chinesename+"</td></tr>"+
+					"<tr><td><b>电邮</b></td><td>"+json.email+"</td></tr>"+
+					"<tr><td><b>性别</b></td><td>"+json.gender+"</td></tr>"+
+					"<tr><td><b>生日</b></td><td>"+json.dob+"</td></tr>"+
+					"<tr><td><b>地址</b></td><td>"+json.address+"</td></tr>"+
+					"<tr><td><b>城市</b></td><td>"+json.city+"</td></tr>"+
+					"<tr><td><b>邮编</b></td><td>"+json.postcode+"</td></tr>"+
+					"<tr><td><b>积分</b></td><td>"+json.point+"</td></tr>"+
+					"<tr><td><b>卡号</b></td><td>"+json.cardno+"</td></tr>"+
+					"</table>";
+
+				jQuery("#facebox_title").html("用户详细信息")
+				jQuery("#facebox_content").html(customerDetail);
+				jQuery.facebox({ div: '#facebox_container' });
+		});
+		
+		return false;
+	});
+	
+});
+
+</script>
+
+<h2>注册用户列表</h2>
+	$sform<br/>
+	$customertable <br />

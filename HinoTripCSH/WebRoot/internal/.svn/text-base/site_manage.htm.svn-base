@@ -1,0 +1,9 @@
+<h2>新增景点 </h2>
+$addsite <br>
+
+<br />
+<hr />
+<br />
+
+<h2>已有景点列表</h2>
+$siteTable

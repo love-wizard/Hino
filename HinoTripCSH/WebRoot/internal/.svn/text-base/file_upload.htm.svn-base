@@ -1,0 +1,45 @@
+$form 
+
+<p>&nbsp;</p>
+
+#if ($fileItem1)
+<table border="1" cellspacing="0" cellpadding="6" style="margin-left:1em;empty-cells:show;width:300px">
+ <tr>
+     <td colspan="2"><span style="font-size:110%; color:green"><b>File Upload 1 Result</b></span></td>
+ </tr>
+ <tr>
+  <td><b>File Name</b></td> <td>$fileItem1.name</td>
+ </tr>
+ <tr>
+  <td><b>File Size</b></td> <td>$format.decimal($fileItem1.size) bytes</td>
+ </tr>
+ <tr>
+  <td><b>Content Type</b></td> <td>$fileItem1.contentType</td>
+ </tr>
+ <tr>
+  <td><b>Description</b></td> <td>$fileDesc1</td>
+ </tr>
+</table> 
+#end
+
+<p/><p/>
+
+#if ($fileItem2)
+<table border="1" cellspacing="0" cellpadding="6" style="margin-left:1em;empty-cells:show;width:300px">
+ <tr>
+     <td colspan="2"><span style="font-size:110%; color:green"><b>File Upload 2 Result</b></span></td>
+ </tr>
+ <tr>
+  <td><b>File Name</b></td> <td>$fileItem2.name</td>
+ </tr>
+ <tr>
+  <td><b>File Size</b></td> <td>$format.decimal($fileItem2.size) bytes</td>
+ </tr>
+ <tr>
+  <td><b>Content Type</b></td> <td>$fileItem2.contentType</td>
+ </tr>
+ <tr>
+  <td><b>Description</b></td> <td>$fileDesc2</td>
+ </tr>
+</table> 
+#end

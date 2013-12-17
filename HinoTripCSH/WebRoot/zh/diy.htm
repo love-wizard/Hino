@@ -1,0 +1,492 @@
+<style>
+<!--
+.f_r {float: none;}
+-->
+</style>
+
+<style>
+	.more {
+		
+	}
+	
+	.copyright {
+		display: none;
+	}
+	
+	.copyright-diy {
+		display: block;
+		background-color: white;
+	}
+		
+	.foot_menu2 {
+		width: 100%;
+		margin: 0 auto;
+		height: 24px;
+		line-height: 24px;
+		color: white;
+		text-align: center;
+		letter-spacing: 1px;
+		background-color: #5C8EB2;
+	}
+	
+	.foot_menu2 b {
+		color:white;
+	}
+	
+	.foot_menu2 a {
+		padding:0px 5px;
+		color:white;
+		text-decoration:none;
+	}
+</style>
+
+    <!--网站主体开始-->
+    <div class="main">
+        <div class="second_menu"></div>
+        <div style="height: 15px; width: 100%;"></div>
+        <div class="diy_route_title" style="text-align: right; line-height: 45px; color: #8d2e51;">DIY相关问答 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div class="diy_route">
+        	<div style="height: 70px; width: 100%;">
+        		
+        	</div>
+        	<div class="areas">
+        		<table style="width:100%;" id="areas-titles">
+        			<tr>
+        				<td align="center" valign="bottom">
+        					<span class="areas-title areas-selected">英国境内</span>
+        				</td>
+        				<td align="center" valign="bottom">
+        					<span class="areas-title areas-normal">欧洲大陆</span>
+        				</td>
+        				<td align="center" valign="bottom">
+        					<span class="areas-title areas-normal">还有哦！</span>
+        				</td>
+        				<td width="65%"></td>
+        			</tr>
+        			<tr>
+        				<td colspan="4">
+        					<hr style="color: #8D2E51; width: 100%;">
+        				</td>        				
+        			</tr>
+        			<tr>
+        				<td height="9px;" align="center">
+        					<img src="./img/diy/arrow.png"/>
+        				</td>
+        				<td align="center"></td>
+        				<td align="center"></td>
+        				<td></td>
+        			</tr>
+        		</table>
+        	</div>
+        	<div style="height: 10px; width: 100%;">
+        	
+        	</div>
+        	
+        	<div class="area-routes area-england">
+		        #set($idx = 0)
+		        <table>
+		        	<tr><td></td><td width="30px"></td><td></td></tr>
+		        	
+		        	
+				#foreach( $Route in $DIYUKlist)
+					#set($idx = $idx + 1)
+					#if($idx % 2 == 1)
+					<tr>
+					#else
+					<td></td>
+					#end
+					
+					<td>
+					<div class="item" id="item_$idx" style="#if($idx > 4) display: none; #end">
+						<div class="pic">
+							<a href="route_detail.htm?routeid=$Route.id">
+								<img width="285px" height="175px" src="../$pathpre$Route.thumbUrl" />
+							</a>
+						</div>
+						<div class="title">$Route.getOriginalRouteName()</div>
+						<div class="buttom">
+							<span><b>出发地：</b>不限 &nbsp;&nbsp;</span>
+							<span><b>人数：</b>1人以上 &nbsp;&nbsp;</span>
+							<span><b>出团时间：</b>任意</span>
+						</div>
+					</div>
+					</td>
+					
+					#if($idx % 2 == 0)
+					</tr>
+					#end
+				#end
+				
+				#if($idx % 2 == 1)
+					</tr>
+				#end
+				
+				#if($idx > 4)
+				<tr>
+					<td colspan="3" align="right" height="30px">
+			    		<div class="route_buttom"><span class="more">【显示全部】</span></div>
+			    	</td>
+			    </tr>
+			    #end
+			    
+			    </table>
+		    
+		    </div>
+		    
+		    
+		    <div class="area-routes area-european area-hide">
+		        #set($idx = 0)
+				<table>
+		        	<tr><td></td><td width="30px"></td><td></td></tr>
+		        	
+		        	
+				#foreach( $Route in $DIYEurolist)
+					#set($idx = $idx + 1)
+					#if($idx % 2 == 1)
+					<tr>
+					#else
+					<td></td>
+					#end
+					
+					<td>
+					<div class="item" id="item_$idx" style="#if($idx > 4) display: none; #end">
+						<div class="pic">
+							<a href="route_detail.htm?routeid=$Route.id">
+								<img width="285px" height="175px" src="../$pathpre$Route.thumbUrl" />
+							</a>
+						</div>
+						<div class="title">$Route.getOriginalRouteName()</div>
+						<div class="buttom">
+							<span><b>出发地：</b>不限 &nbsp;&nbsp;</span>
+							<span><b>人数：</b>1人以上 &nbsp;&nbsp;</span>
+							<span><b>出团时间：</b>任意</span>
+						</div>
+					</div>
+					</td>
+					
+					#if($idx % 2 == 0)
+					</tr>
+					#end
+				#end
+				
+				#if($idx % 2 == 1)
+					</tr>
+				#end
+				
+				#if($idx > 4)
+				<tr>
+					<td colspan="3" align="right" height="30px">
+			    		<div class="route_buttom"><span class="more">【显示全部】</span></div>
+			    	</td>
+			    </tr>
+			    #end
+			    
+			    </table>
+		    
+		    </div>
+		    
+		   	<div class="area-routes area-others area-hide">
+		        #set($idx = 0)
+				<table>
+		        	<tr><td></td><td width="30px"></td><td></td></tr>
+		        	
+		        	
+				#foreach( $Route in $DIYlist)
+					#set($idx = $idx + 1)
+					#if($idx % 2 == 1)
+					<tr>
+					#else
+					<td></td>
+					#end
+					
+					<td>
+					<div class="item" id="item_$idx" style="#if($idx > 4) display: none; #end">
+						<div class="pic">
+							<a href="route_detail.htm?routeid=$Route.id">
+								<img width="285px" height="175px" src="../$pathpre$Route.thumbUrl" />
+							</a>
+						</div>
+						<div class="title">$Route.getOriginalRouteName()</div>
+						<div class="buttom">
+							<span><b>出发地：</b>不限 &nbsp;&nbsp;</span>
+							<span><b>人数：</b>1人以上 &nbsp;&nbsp;</span>
+							<span><b>出团时间：</b>任意</span>
+						</div>
+					</div>
+					</td>
+					
+					#if($idx % 2 == 0)
+					</tr>
+					#end
+				#end
+				
+				#if($idx % 2 == 1)
+					</tr>
+				#end
+				
+				#if($idx > 4)
+				<tr>
+					<td colspan="3" align="right" height="30px">
+			    		<div class="route_buttom"><span class="more">【显示全部】</span></div>
+			    	</td>
+			    </tr>
+			    #end
+			    
+			    </table>
+		    
+		    </div>
+		</div>
+		<div style="height: 15px; width: 100%;"></div>
+    	<div class="diy_box">
+        	<div class="t" style="text-align: center;">
+        		<img src="./img/diy/procedure_bg.png"/>
+        	</div>
+            <div class="c">
+            	<div class="tit"></div>
+                <div class="frm">
+                	<H2>请认真填写并提交DIY线路申请表</H2>
+                    
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0"  class="diy_frm">
+                          <tr>
+                            <td width="130" align="right" >称呼: </td>
+                            <td>
+                              <input name="textfield" type="text" class="diy_input" id="textfield" size="25" /> <span class="red">*</span>                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right" >邮箱:</td>
+                            <td><input name="textfield2" type="text" class="diy_input" id="textfield2" size="25" /> <span class="red">*</span></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >电话:</td>
+                            <td><input name="textfield3" type="text" class="diy_input" id="textfield3" size="25" /> <span class="red">*</span></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" align="right" style="border-bottom:1px solid #8d2e51; height:5px;"></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" align="right" ></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >出游目的地:</td>
+                            <td><input name="textfield4" type="text" class="diy_input" id="textfield4" size="25" /></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >出发日期:</td>
+                            <td><input name="textfield5" type="text" class="diy_input" id="textfield5" size="25" /></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >行程天数:</td>
+                            <td><input name="textfield6" type="text" class="diy_input" id="textfield6" size="25" /></td>
+                          </tr>
+                          <tr>
+                            <td rowspan="2" align="right" valign="top" >出游人数:</td>
+                            <td>成人
+                            <input name="textfield7" type="text" class="diy_input" id="textfield7" size="5" />
+                            位 &nbsp;&nbsp;&nbsp;&nbsp;儿童(2-12岁)
+                            <input name="textfield8" type="text" class="diy_input" id="textfield8" size="5" />
+                            位 </td>
+                          </tr>
+                          <tr>
+                            <td>婴儿(0-2岁)
+                              <input name="textfield9" type="text" class="diy_input" id="textfield9" size="5" />
+位</td>
+                          </tr>
+                          <tr>
+                            <td align="right" >出游人员关系:</td>
+                            <td><label>家庭成员
+                              <select name="select" id="select" style="height: 21px; line-height: 21px; width: 76px; border: 1px solid #8D2E51; background: url('../img/diy/input_bg.png');">
+                                <option>家庭</option>
+                                <option>朋友</option>
+                                <option>情侣</option>
+                              </select>
+                            </label></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >护照签发地:</td>
+                            <td><input name="textfield10" type="text" class="diy_input" id="textfield10" size="25" /></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >出游目的:</td>
+                            <td><select name="select2" id="select2" style="height: 21px; line-height: 21px; width: 196px; border: 1px solid #8D2E51; background: url('../img/diy/input_bg.png');">
+                              <option>探亲</option>
+                              <option>访问</option>
+                              <option>商务</option>
+                              <option>旅游</option>
+                                                        </select></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >预算(每人):</td>
+                            <td><input name="textfield11" type="text" class="diy_input" id="textfield11" size="25" /></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >出行方式:</td>
+                            <td><select name="select3" id="select3" style="height: 21px; line-height: 21px; width: 196px; border: 1px solid #8D2E51; background: url('../img/diy/input_bg.png');">
+                              <option>飞机</option>
+                                                        </select>
+                              <select name="select4" id="select4" style="height: 21px; line-height: 21px; width: 196px; border: 1px solid #8D2E51; background: url('../img/diy/input_bg.png');">
+                                <option>经济舱</option>
+                                <option>商务舱</option>
+                                                            </select></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >酒店星级:</td>
+                            <td><select name="select5" id="select5" style="height: 21px; line-height: 21px; width: 196px; border: 1px solid #8D2E51; background: url('../img/diy/input_bg.png');">
+                              <option>五星级</option>
+                              <option>四星级</option>
+                              <option>三星级</option>
+                              <option>B&B</option>
+                              </select></td>
+                          </tr>
+                          <tr>
+                            <td align="right" >酒店所在区域:</td>
+                            <td><label>
+                              <input type="radio" name="radio" id="radio" value="radio" />
+                            </label>
+                            市中心
+                            <input type="radio" name="radio" id="radio2" value="radio" />
+                            城市周边 
+                            <input type="radio" name="radio" id="radio3" value="radio" />
+                            城市郊区</td>
+                          </tr>
+                          <tr>
+                            <td align="right" >房间类型:</td>
+                            <td><label>
+                              <input type="radio" name="radio4" id="radio4" value="radio4" />
+                            </label>
+                              标准间 
+                              <input type="radio" name="radio4" id="radio5" value="radio4" />
+                              大床房
+                              <input type="radio" name="radio4" id="radio6" value="radio4" />
+                              豪华套房</td>
+                          </tr>
+                          <tr>
+                            <td align="right" >行程中是否需要:</td>
+                            <td>
+                            	<select name="select6" id="select6" style="height: 21px; line-height: 21px; width: 196px; background-color: #8D2E51; border: 1px solid #8D2E51; background: url('../img/diy/input_bg.png') no-repeat;">
+                              <option>导游</option>
+                              <option>司机兼导游</option>
+                              <option>无导游</option>
+                             </select></td>
+                          </tr>
+                        </table>
+						<div class="kzxq">
+                       	  <div class="bt"></div>
+                            <div class="kz_frm">
+                                  <table width="80%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                      <td>您是旅游达人吗？您对旅途中的城市、景点、餐食等有特殊要求吗？<br />
+                                        请在拓展信息中进一步完善，旅游顾问会根据您的详细需求，在行程设计上尽量满足您的要求。</td>
+                                    </tr>
+                                    <tr>
+                                      <td align="">
+                                        <div class="name">我想要</div>
+                                        <textarea style="background: url(./img/diy/thumb_icon.png) no-repeat;" name="textfield12" cols="65" rows="5" id="textfield12"></textarea>                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="">
+                                        <div class="name">我想吃</div>
+                                        <textarea style="background: url(./img/diy/thumb_icon.png) 0 -105px no-repeat;"  name="textfield12" cols="65" rows="5" id="textfield13"></textarea>                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="">
+                                        <div class="name">我想玩</div>
+                                        <textarea style="background: url(./img/diy/thumb_icon.png) 0 -213px no-repeat;"  name="textfield12" cols="65" rows="5" id="textfield14"></textarea>                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="">
+                                        <div class="name">我还有一些其他的特殊要求</div>
+                                        <textarea style="background: url(./img/diy/thumb_icon.png) 0 -313px  no-repeat;"  name="textfield12" cols="65" rows="5" id="textfield12"></textarea>                                      </td>
+                                    </tr>
+                                  </table>
+                            </div>
+                            <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                      <td align="right" style="padding-top:10px;"><a href="#" id="diy_button"><img src="img/diy/btn_apply_bg.png"/></a></td>
+                                    </tr>
+                           </table>
+                           
+                        </div>
+                  
+                </div>
+            </div>
+        </div>
+        
+        <div class="clearfix"></div>
+        <div class="blank15"></div>
+        <div class="blank15"></div>
+        <!-- 
+   	<div class="foot_menu2" style="position:relative;z-index:40;margin-top:-22px"><a href="http://www.hinotravel.com/zh/index.htm">海诺旅游网首页</a> | <a href="#">English</a> | <a href="#">刮刮卡</a> | <a href="#">导游风采</a> | <a href="#">会刊</a> | <a href="http://www.hinotravel.com/zh/route_detail.htm?routeid=60">会员专享</a> | <a href="http://www.hinotravel.com/zh/recruit.htm">诚聘英才</a> | <a href="http://www.hinotravel.com/zh/about.htm">关于我们</a> | <a href="http://www.hinotravel.com.cn/">中国海诺旅游网</a> </div>
+    
+    <div class="copyright1" style="margin-top:15px; position:relative; z-index:40">
+    	<center>
+		    <table>
+		    	<tr>
+		    		<td>
+		    			<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+		    		</td>
+		    		
+		    		<td style="padding-left: 30px;color: grey; text-align: left; line-height: 25px;">
+		    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888<br>
+		    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842
+		    		<div style="margin-top:-27px;margin-left:425px; position: absolute;"><script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script></div> 
+		    				    		
+		    		</td>
+		    	</tr>
+		    </table>
+		</center>		
+    </div> 
+    
+    <div style="text-align: center;position:relative;z-index:40; --margin-top:80px">
+		<a href="http://www.vosa.gov.uk/"><img style="background: url(./img/certs_transparent.png) no-repeat; height:56px; width:116px;" src="./img/blank.gif"></img></a>
+		&nbsp;&nbsp;<a href="http://www.iata.org/about/Pages/index.aspx"><img style="background: url(./img/certs_transparent.png) -131px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+		&nbsp;&nbsp;<a href="http://www.ukinbound.org/"><img style="background: url(./img/certs_transparent.png) -261px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+		&nbsp;&nbsp;<a href="http://www.caa.co.uk/default.aspx?catid=27&pageid=13227"><img style="background: url(./img/certs_transparent.png) -391px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+    </div>
+    
+    <div class="clearfix"></div>
+    <div class="blank15"></div>
+    -->
+    </div>
+<script type="text/javascript">    
+$(document).ready(function() {
+	$(".kzxq .bt").bind("click",function(){
+	 var element=$(this).parent();
+	  if (element.hasClass("kzxq_current")){
+	   element.removeClass("kzxq_current");
+	  }else{
+	  element.addClass("kzxq_current");
+	 }
+	});
+	
+	$(".more").click(function(event){
+		var t = $(this).html();
+		var c = $(this).parent().parent().parent().parent().find(".item:eq(4)").is(":visible");
+		
+		if (! c) {
+			t = t.replace("【显示全部】", "【隐藏】");
+		} else {
+			t = t.replace("【隐藏】", "【显示全部】");
+		}
+		
+		$(this).html(t);
+		$(this).parent().parent().parent().parent().find("tr:gt(2) .item").toggle();		
+	});
+	
+	
+	$(".areas-title").click(function(event){	
+		$(".areas-title").removeClass("areas-selected");
+		$(".areas-title").addClass("areas-normal");
+		$(this).addClass("areas-selected");
+		
+		var tr = $(this).parent().parent();		
+		var col = tr.children().index($(this).parent());
+		
+		$("#areas-titles tr:eq(2) td").html("");		
+		$("#areas-titles tr:eq(2) td:eq(" + col + ")").html("<img src='./img/diy/arrow.png'/>");
+		
+		$(".area-routes").hide();
+		$(".area-routes:eq(" + col + ")").show();
+	});
+	
+});
+</script>

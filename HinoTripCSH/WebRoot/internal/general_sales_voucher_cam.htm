@@ -1,0 +1,49 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+    // Register a 'click' handler on the submit button
+    jQuery("#voucher_cam_form_generate").click(function(event){
+        // Post form to server
+        postForm(event);
+
+        // Prevent the default browser behavior of navigating to the link
+        return false;
+    })
+})
+
+function postForm(event) {
+    // Retrieve the Form and submit button elements
+    var form = jQuery("#voucher_cam_form");
+    var submit = jQuery(event.currentTarget);
+
+    // The server URL can be retrieved from the Form 'action' event
+    var url = form.attr('action');
+
+    // Use jQuery serialize function to serialize the Form controls into key/value pairs
+    // Note: the jQuery serialize function will *not* add the button name/value
+    // that submitted the form. We will add the submit button name/value manually
+    var formData = form.serialize();
+
+    // Append the form ID attribute so that Click can identify the Ajax target Control
+    formData+='&'+form.attr('id')+'=1';
+
+    // Append the name/value pair of the Submit button that submitted the Form
+    formData+='&'+submit.attr('name')+'='+submit.attr('value');
+
+    jQuery.post(url, formData, function(data) {
+        // Update the target div with the server response and style the div by adding a CSS class
+        var div = jQuery('#voucher_cam_form_result');
+        //div.addClass('infoMsg');
+        div.val(data);
+    });
+}
+
+</script>
+
+<h2>优惠券生成器</h2>
+	$voucher_cam_form<br/>
+	
+

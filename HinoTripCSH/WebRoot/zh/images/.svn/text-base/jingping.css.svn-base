@@ -1,0 +1,103 @@
+body {
+	margin: 0px;
+	padding: 0px;	
+	font-family:'微软雅黑';
+	background-color: black;
+	background: url(../img/white_light_bg.png) repeat-x;
+}
+
+#jingping_main { /* width: 1200px; */
+	height: 1262px;
+	background: url(../img/jp_bg.jpg) no-repeat 50% 0;
+	/* background-repeat: repeat-x; */
+	/* background-position:center; */
+}
+
+#jingping_top {
+	width: 100%;
+	height: 170px;
+	margin: 0;
+	padding: 0px;
+}
+
+#jingping_tuan {
+	width: 100%;
+	height: 344px;
+	margin: 0;
+	padding: 0px;
+}
+
+.route_detail_link {
+	padding-left: 260px;
+	font-size: 12.5px;
+    width: 130px;
+}
+
+.route_detail_link a {
+	padding: 0px 5px;
+	color: white;
+	text-decoration: none;
+}
+
+#jingping_service_options {
+	width: 100%;
+	height: 540px;
+	background: url(../img/jp_service_options.png) no-repeat 50% 0;
+	margin-top: 30px;
+	padding: 0px;
+}
+
+#jingping_service_break {
+	width: 100%;
+	height: 35px;
+	margin: 0;
+	padding: 0px;
+}
+
+#jingping_service_detail {
+	width: 100%;
+	height: 310px;
+	background: url(../img/jingping_service_detail.jpg) no-repeat 50% 0;
+	margin: 0;
+	padding: 0px;
+}
+
+#jingping_bottom_line {
+	width: 100%;
+	height: 40px;
+	background: url(../img/jingping_bottom_line.jpg) no-repeat 50% 0;
+	margin: 0 auto;
+}
+
+　
+#jingping_tuan ul li a {
+	color: white;
+	text-decoration: none;
+}
+
+#jingping_bottom {
+	width: 100%;
+	height: 100px;
+	background: url(../img/jingping_bottom.jpg) no-repeat 50% 0;
+	margin: 0 auto;
+}
+
+.foot_menu {
+	font-size: 12.5px;
+	width: 950px;
+	margin: 0 auto;
+	height: 24px;
+	line-height: 24px;
+	color: white;
+	text-align: center;
+}
+
+.foot_menu b {
+	color: white;
+}
+
+.foot_menu a {
+	padding: 0px 5px;
+	color: white;
+	text-decoration: none;
+}

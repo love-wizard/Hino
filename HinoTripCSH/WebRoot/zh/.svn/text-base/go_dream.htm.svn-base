@@ -1,0 +1,146 @@
+
+    <!--网站主体开始-->
+    <div class="main">
+    	<div class="second">	
+        <div class="second_menu"><a href="./go_index.htm">团购首页</a> <a href="#">团购记录</a> <a href="./go_dream.htm">团梦想</a></div>
+        </div>
+    	<!--团购记录左侧开始-->
+        <div class="group_h_l">
+        	
+			#foreach ($tour in $ts_list)
+        	<!--单个产品记录开始-->
+            <div class="group_item2">
+           	  <div class="t">
+               	<div class="ctrq">出团日期：$tour.genEst_string()</div>
+                    <div class="tit"><span class="red">团购：</span>&nbsp;$tour.title</div>
+              </div>
+              <div class="info">
+                    <div class="price2"><a href="#">$tour.est_price</a></div>
+                    <div class="item_l">
+                    	<div class="vote">
+                        	<div class="tit">参与投票，开启梦想之旅</div>
+                            
+                            <div class="frm">
+                            	<ul>
+                                	<li><input name="votep_$tour.id" type="image" src="images/like.gif" id="votep_$tour.id"  class="vote_bt"/>$tour.posi</li>
+                                	<li><input name="voten_$tour.id" type="image" src="images/unlike.gif" id="voten_$tour.id" class="vote_bt"/>$tour.negi</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="item_r">
+                    	<img src="../$pathpre$tour.img_link" class="pic">
+                    </div>
+                   <div class="clearfix"></div>
+                   <div class="intro2">
+                        	<span class="zs"></span>
+                            <span class="yx"></span>
+                            $tour.description 
+                    </div>
+                   
+                    <div class="blank"></div>
+                    <!--分享代码开始-->
+                    <div class="share">
+                    	<div class="tit">快乐分享本团</div>
+                        <div class="button">
+                       	<!-- JiaThis Button BEGIN -->
+                       	<div id="ckepop">
+                               <a class="jiathis_button_tsina">新浪微博</a>  
+                               <a class="jiathis_button_tqq">腾讯微薄</a>
+                               <a class="jiathis_button_renren">人人网</a>
+                               <a class="jiathis_button_kaixin001">开心网</a>    
+                               <a class="jiathis_button_xiaoyou">朋友网</a>
+                               <a class="jiathis_button_taobao">淘江湖</a>
+                               <a class="jiathis_button_baidu">百度搜索</a>
+                               <a class="jiathis_button_douban">豆瓣</a>
+                           </div>
+                           <script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+                           <!-- JiaThis Button END -->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--分享代码结束-->
+              </div>
+            </div>
+        	<!--单个产品记录结束-->
+            #end
+            
+
+        </div>
+        <!--团购记录左侧结束-->
+    	<!--团购记录右侧开始-->
+        <div class="group_r">
+        	<div class="tit">驴友团购活动规则：</div>
+            <div class="content">
+                1.本周团购：海诺旅游每周会推
+                出一日游或多日游的驴友限时团
+                购活动，欢迎您挑选您喜爱的
+                旅游线路；<br />
+                2.“团”一下：对本次团购感兴
+                趣？赶紧报名参团吧！点击“马
+                上团”即可参与活动；<br />
+                3.付款方式：在您“团”产品的
+                同时，请您使用PayPal支付，为
+                了方便我们查看您的款项，请您
+                付款后拨打免费热线0333 9009
+                 888确认到款；<br />
+                4.出团确认：每个团购项目都有
+                最低成团人数，一旦团购人数达
+                到出团标准，系统会为您发送出
+                团确认通知，如果团购人数不足
+                ，则团购失败，公司最迟会在出
+                团前两天通知您并退还您的参团
+                费用；<br />
+                5.您可以在团购记录中查看以往
+                的特惠团次；<br />
+                6.海诺推出“团你所爱”活动，
+                您可以投票选择您心仪的旅游目
+                的地，海诺会定期地推出大家最
+                喜爱的旅游产品；<br />
+                7.团购产品为特价产品，恕不接
+                受改期和转让，请旅客谅解；<br />
+                8.在法律允许的范围内，海诺旅
+                游享有对活动的最终解释权。 
+            </div>
+        	<div class="tit">驴友团购攻略：</div>
+            <div class="content">
+                1.注册会员：请先注册成为海诺
+                旅游的会员，您将享受参与本次
+                活动的资格并可以获得500个海
+                诺币；<br />
+                
+                2.挑选产品：您可以根据个人喜
+                好，提前选择您中意的产品，并
+                及时参与团购，团购人数越多，
+                越能保证团购成功；<br />
+                
+                3.“团我所爱”：海诺会为即将
+                推出团购的线路提供一个价格范
+                围，最终价格由投票人数决定，
+                所以千万不要吝啬您宝贵的一
+                票哦；<br />
+                
+                4.推荐浏览器：我们推荐您使用
+                IE、360、谷歌Chrome和搜狗浏
+                览器，以保证您可以团购成功。
+            </div>
+            <div class="tit">团购承诺：</div>
+            <div class="content">
+            优惠承诺 放心预定<br />
+            当季新颖产品<br />
+            旅游热门目的地<br />
+            </div>
+            <DIV class="tit">客户服务：</DIV>
+            <div class="content2">
+            全英国免费热线<br />
+            <span class="dh">03339009888</span><br />
+            周一至周日 9:00 - 21:00<br />
+            </div>
+        </div>
+    	<!--团购记录右侧结束-->
+        <div class="clearfix"></div>
+        <div class="blank15"></div>
+    </div>
+

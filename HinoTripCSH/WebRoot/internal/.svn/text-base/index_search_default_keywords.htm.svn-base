@@ -1,0 +1,6 @@
+
+<h2>搜索框默认的搜索文字&nbsp;<em style="font-size: 10px; color:grey; font-weight: normal;"> ('|' 为分隔符，'$' 为换行符)</em></h2>
+<div class="clickform">$defaultSearchKeywordsForm</div>
+<div class="clear"></div>
+
+

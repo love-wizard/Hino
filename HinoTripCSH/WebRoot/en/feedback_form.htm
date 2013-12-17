@@ -1,0 +1,725 @@
+<script>
+jQuery(document).ready(function() {
+	
+	jQuery(document).ready(function() {
+
+    // Register a 'click' handler on the submit button
+    jQuery("#submitBtn").click(function(event){
+        // Post form to server
+        if(validation())
+        {
+        	postForm();
+        	
+       	} else
+       	{
+       		alert("Make sure you complete the questionaire!");
+       	}
+        
+        // Prevent the default browser behavior of navigating to the link
+        return false;
+    })
+})
+
+function postForm() {
+    // Retrieve the Form and submit button elements
+    var form = jQuery("#feedback_form");
+
+    // The server URL can be retrieved from the Form 'action' event
+    var url = form.attr('action');
+
+	//alert(jQuery('#feedback_form_fbvalue').val());
+    // Use jQuery serialize function to serialize the Form controls into key/value pairs
+    // Note: the jQuery serialize function will *not* add the button name/value
+    // that submitted the form. We will add the submit button name/value manually
+    var formData = form.serialize();
+
+    // Append the form ID attribute so that Click can identify the Ajax target Control
+    formData+='&'+form.attr('id')+'=1';
+
+    // Append the name/value pair of the Submit button that submitted the Form
+    formData+='&submitBtn=1';
+
+    jQuery.post(url, formData, function(data) {
+        if(data == "0")
+        {
+        	alert('submit successfully, 50 points have been added into your account, thanks!');
+        	window.location = "./index.htm";
+        } else
+        {
+        	alert(data);
+        	window.location = "./index.htm";
+       	}
+    });
+}
+	
+	function validation()
+	{
+		var q1a = jQuery('input[name="q1"]:checked').val();
+		//alert(q1a);
+		if(q1a === undefined)
+		{
+			jQuery('input[name="q1"]').focus();
+			return false;
+		}
+		
+		var q2a = ""; 
+		jQuery('input[name="q2[]"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q2a = q2a+jQuery(this).val();
+			}	
+		});
+		
+		if(q2a.length==0)
+		{
+			jQuery('input[name="q2[]"]').focus();
+			return false;
+		}
+		
+		var q3a = "";
+		jQuery('input[name*="q3_"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q3a = q3a+jQuery(this).val();
+			}	
+		});
+		
+		if(q3a.length!=10)
+		{
+			jQuery('input[name="q3_1"]').focus();
+			return false;
+		}
+		
+		var q4a = "";
+		jQuery('input[name*="q4_"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q4a = q4a+jQuery(this).val();
+			}	
+		});
+		
+		if(q4a.length!=4)
+		{
+			jQuery('input[name="q4_1"]').focus();
+			return false;
+		}
+		
+		var q5a = jQuery('input[name="q5"]:checked').val();
+		if(q5a === undefined)
+		{
+			jQuery('input[name="q5"]').focus();
+			return false;
+		}
+		
+		var q6a = ""; 
+		jQuery('input[name="q6[]"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q6a = q6a+jQuery(this).val();
+			}	
+		});
+		
+		if(q6a.length==0)
+		{
+			jQuery('input[name="q6[]"]').focus();
+			return false;
+		}
+		//alert(q6a);
+		
+		var q7a = ""; 
+		jQuery('input[name="q7[]"]:checked').each(function(e){
+			if(jQuery(this).attr("checked") == true)
+			{
+				q7a = q7a+jQuery(this).val();
+			}	
+		});
+		
+		if(q7a.length==0)
+		{
+			jQuery('input[name="q7[]"]').focus();
+			return false;
+		}
+		//alert(q7a);
+		
+		var q8a = jQuery('#q8').val();
+		if(q8a == "")
+		{
+			jQuery('#q8').focus();
+			return false;
+		}
+		
+		var q9a = jQuery('#q9').val();
+		if(q9a == "")
+		{
+			jQuery('#q9').focus();
+			return false;
+		}
+		
+		var qfinish = q1a + "-" + q2a + "-" + q3a + "-" + q4a + "-" + q5a + "-" + q6a + "-" + q7a + "-" + q8a + "-" + q9a;
+		jQuery("#feedback_form_fbvalue").val(qfinish);
+		return true;
+	}
+	
+	
+		
+});
+</script>
+					
+<div class="con_top"></div>
+<div class="prev_box">
+
+     <div class="fullhead_top"></div>
+     <div class="fullhead_bg">
+         <p style="font-size:12px; line-height: 18px; text-align:left; margin:5px;"><strong>Dear customer</strong><br />
+	        <strong>Hope you had a pleasant trip with us. In order to improve our service quality and offer better service to you, we would like to take up you several minutes to finish this questionnaire. Our customer service department will summarize all your opinions. We will do proper improvement and send you our solutions and feedbacks. Thank you!</strong>
+	     </p>
+         <!-- <div class="more"><a href="#">more info</a></div> -->
+         <div style="clear: both"></div>
+     </div><!-- more_bg -->
+     <div class="fullhead_bot"></div>
+
+
+<div width="500px">
+<div align="center">
+  <br />
+  <table border="0" cellspacing="0" cellpadding="0" width="700px">
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>1. Are you satisfied with your journey? (single choice) [compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="radio" name="q1" value="1"/>
+      Very satisfied</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="2"/>
+      satisfied</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="3"/>
+      Normal</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="4"/>
+      Partially Satisfied</p></td>
+              <td><p>
+                <input type="radio" name="q1" value="5"/>
+      Not Satisfied</p></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>2. Which part do you think we can do better? (Multiple choices) [compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="1"/>
+                Transportation</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="2"/>
+                Tour Guide</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="3"/>
+                Hotel</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="4"/>
+                Route</p></td>
+              <td><p>
+                <input type="checkbox" name="q2[]" value="5"/>
+                Others</p></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>3. Please tick one for each aspect of our services: (1. Not satisfied 2. Partially satisfied 3. Normal 4. Satisfied 5. Very satisfied) [Matrix multiple choices][Compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td></td>
+              <td width="72"><p>Extremely unsatisfied</p></td>
+              <td width="72"><p>Unsatisfied</p></td>
+              <td width="72"><p>Normal</p></td>
+              <td width="72"><p>Satisfied</p></td>
+              <td width="72"><p>Very Satisfied</p></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Serving manner and enthusiasm</p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_1" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Timing arrangement</p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_2" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Communication</p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_3" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Guiding speed</p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_4" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Guiding content</p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_5" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Expression</p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_6" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Effectiveness</p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_7" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Ability of handling emergencies</p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_8" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Concerns to customer </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_9" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="180"><p align="left">Professional ethics</p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q3_10" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>4. Please grading the following services: 1. Not satisfied 2. Partially satisfied 3. Normal 4. Satisfied 5. Very satisfied) [Matrix multiple choices][Compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td></td>
+              <td width="72"><p>Extremely unsatisfied</p></td>
+              <td width="72"><p>Unsatisfied</p></td>
+              <td width="72"><p>Normal</p></td>
+              <td width="72"><p>Satisfied</p></td>
+              <td width="72"><p>Very Satisfied</p></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">Route arrangement</p></td>
+             <td><p>
+                <input type="radio" name="q4_1" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_1" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">Timing arrangement</p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_2" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">Shopping arrangement</p></td>
+             <td><p>
+                <input type="radio" name="q4_3" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_3" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td width="140"><p align="left">Transportation</p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="1"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="2"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="3"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="4"/>
+              </p></td>
+              <td><p>
+                <input type="radio" name="q4_4" value="5"/>
+              </p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>5. How do you think the expenses of this trip? [single choice] [compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="radio" name="q5" value="1"/>
+               Very expensive</p></td>
+              <td><p>
+                <input type="radio" name="q5" value="2"/>
+                Expensive</p></td>
+              <td><p>
+                <input type="radio" name="q5" value="3"/>
+                Normal</p></td>
+              <td><p>
+                <input type="radio" name="q5" value="4"/>
+                Reasonable</p></td>
+                <td><p>
+                <input type="radio" name="q5" value="5"/>
+               Very reasonable</p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>6. How did you know about us? [multiple choices] [compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="1"/>
+                Supermarket </p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="2"/>
+                Friends</p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="3"/>
+               Hino staff</p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="4"/>
+               CSSA or other associations</p></td>
+              <td><p>
+                <input type="checkbox" name="q6[]" value="5"/>
+                Internet or email</p></td>
+                <td><p>
+                <input type="checkbox" name="q6[]" value="6"/>
+                Others</p></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>7. What travel routes do you expect?  [multiple choices] [compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><table border="0" cellpadding="0">
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="1"/>
+                One day trip(Oxford, Cambridge, York, etc.)</p></td>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="2"/>
+                Two-days trip (Windsor, Bath and Stonehenge， Churchill Manor and Cardiff. etc.)</p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="3"/>
+                Multiday Tours (Scotland, Northern Ireland, etc.)</p></td>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="4"/>
+                Abroad Tours (Egypt, Europe, etc.)</p></td>
+            </tr>
+            <tr>
+              <td><p>
+                <input type="checkbox" name="q7[]" value="5"/>
+                Other Tours</p></td>
+              <td></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>8. Where do you want to travel to in the following months? [Subjective question] [Compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><textarea rows="3" cols="80" id="q8"></textarea> 
+          </td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+    <tr>
+      <td><table border="0" cellpadding="0" align="left" style="text-align:left">
+        <tr>
+          <td><strong>9. Your opinions and suggestions to Hino Travel:<br/>
+(If your valuable suggestions were accepted by Hino Travel, we will offer you a free one day trip during a year）[Subjective question] [Compulsory]</strong></td>
+        </tr>
+        <tr>
+          <td><textarea rows="3" cols="80" id="q9"></textarea> </td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td><div align="left">
+        <hr size="2" width="100%" align="left" style="margin-top:10px; margin-bottom:10px;"/>
+      </div></td>
+    </tr>
+  </table>
+  $feedback_form
+</div>
+</div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

@@ -1,0 +1,10 @@
+<h2>新增Airline</h2>
+$addAirline <br>
+<hr />
+<div class="clickform">$airlineFilter</div>
+<br />
+<hr />
+<br />
+
+<h2>已有Airline列表</h2>
+$airlineTable

@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>Hino - 海诺旅游</title>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript">
+function GetRadioValue(RadioName){
+    var obj;   
+    obj=document.getElementsByName(RadioName);
+    if(obj!=null){
+        var i;
+        for(i=0;i<obj.length;i++){
+            if(obj[i].checked){
+                return obj[i].value;           
+            }
+        }
+    }
+    return null;
+}
+
+function BookGroup(rid, gid) {
+	
+	var name = document.getElementById("t_n").value;
+	name = jQuery.trim(name);
+	var cname = document.getElementById("t_cn").value;
+	cname = jQuery.trim(cname);
+	var gender = document.getElementById("t_mg").checked;
+	var email = document.getElementById("t_e").value;
+	email = jQuery.trim(email);
+	var phone = document.getElementById("t_p").value;
+	phone = jQuery.trim(phone);
+	var pickup = document.getElementById("t_pus").value;
+	pickup = jQuery.trim(pickup);
+	var paym = GetRadioValue("pay_radio");
+	paym = jQuery.trim(paym);
+	
+	/*
+	var url = "./groups_booking.htm?routeid=" + rid + "&gid=" + gid + "&step=3&n=" + name + "&cn=" + cname + "&g=" + (gender? "m": "f") + "&e=" + email + "&p=" + phone + "&pus=" + pickup + "&pm=" + paym;
+	//alert(url);
+	window.location.href = url;
+	*/
+	
+	if(name == "") {
+		alert("姓名(拼音)不能为空！");
+		return false;
+	} else {
+		$("#n").val(name);
+	}
+	
+	if(cname == "") {
+		alert("中文名不能为空！");
+		return false;
+	} else {
+		$("#cn").val(cname);
+	}
+	
+	$("#g").val((gender? "0": "1"));
+	
+	if(email == "") {
+		alert("邮箱地址不能为空！");
+		return false;
+	} else {
+		$("#e").val(email);
+	}
+	
+	$("#p").val(phone);
+	
+	if(pickup == "") {
+		alert("接车点不能为空！");
+		return false;
+	} else {
+		$("#pus").val(pickup);
+	}
+	
+	$("#pm").val(paym);
+	
+	$("#b_form").submit();
+}
+
+function BookGroupUrlWithPoint(cp, gp) {
+	var point = document.getElementById("t_pt").value;
+	point = jQuery.trim(point);
+	/*var url = document.getElementById("hurl").value;
+	//alert(url);
+	url = url + "&pt=" + point;
+	window.location.href = url;
+	*/
+	
+	if(point <= 0 || point % 100 > 0) {
+		alert("积分必须是100的正整数倍！");
+		return false;
+	}
+	
+	if (point > cp || point > gp) {
+		alert("输入错误，此团您最大可使用积分数为：" + (cp > gp? gp: cp) + "!");
+		return false;
+	}
+	
+	$("#pt").val(point);
+	$("#b_form").submit();
+}
+
+function BookGroupUrlNoPoint() {
+	/*var url = document.getElementById("hurl").value;	
+	url = url + "&pt=0";
+	window.location.href = url;*/
+	
+	$("#pt").val(0);	
+	$("#b_form").submit();
+}
+
+function SelectPaymentMethod(){
+	var name = document.getElementById("t_n").value;
+	name = jQuery.trim(name);
+	var cname = document.getElementById("t_cn").value;
+	cname = jQuery.trim(cname);
+	var email = document.getElementById("t_e").value;
+	email = jQuery.trim(email);
+	var pickup = document.getElementById("t_pus").value;
+	pickup = jQuery.trim(pickup);
+	
+	if(name == "") {
+		alert("姓名(拼音)不能为空！");
+		return false;
+	} 
+	
+	if(cname == "") {
+		alert("中文名不能为空！");
+		return false;
+	} 
+	
+	if(email == "") {
+		alert("邮箱地址不能为空！");
+		return false;
+	}
+
+	if(pickup == "") {
+		alert("接车点不能为空！");
+		return false;
+	} 
+
+	$(".booking_form").hide();
+	
+	$("#name_confirm").html($("#t_n").val());
+	$("#email_confirm").html($("#t_e").val());
+	$("#phone_confirm").html($("#t_p").val());
+	$("#pickup_confirm").html($("#t_pus").val());
+	$(".info_confirm").show();
+}
+
+function BackToUpdateDetails(){
+	$(".booking_form").show();
+	$(".info_confirm").hide();
+}
+
+/*
+$(document).ready(function() {
+
+});
+*/
+</script>
+
+<style>
+<!--
+.main {
+	width: 336px;
+	margin: 0 auto;
+}
+
+.section_hidden {
+	display: none;
+}
+
+.route {
+
+}
+
+.route_title {
+	background: url('../img/mobile/route_title_bg.png') no-repeat;
+	width: 100%;
+	height: 48px;
+	line-height: 48px;
+	text-align: center;
+	color: white;
+}
+
+.route_image {
+	width: 290px;
+	margin: 0 auto;
+}
+
+.group_title {
+	background: url('../img/mobile/group_item_bg.png') no-repeat;
+	width: 290px;
+	height: 35px;
+	line-height: 35px;
+	padding-left: 10px;
+}
+
+.price {
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+.groups {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.section_title, .group_section_title {
+	width: 100%;
+	text-align: center;
+	font-size: 13px;
+}
+
+.group_list {
+	width: 290px;
+	margin: 0 auto;
+}
+
+.group_item {
+	margin: 0 auto;
+}
+
+.blank {
+	width: 100%;
+	height: 10px;
+}
+
+a, a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+.booking_button {
+	background: url('../img/mobile/book_button_bg.png') no-repeat;
+	width: 290px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.booking_form, .info_confirm {
+	width: 290px;
+	margin: 0 auto;
+}
+
+.booking_form input {
+	width: 200px;
+}
+
+.booking_form select {
+	width: 200px;
+}
+
+.use_point {
+	background: url('../img/mobile/point_bg.png') no-repeat;
+	width: 290px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+-->
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+	<div class="route">
+		<div class="route_title">$route.originalRouteName</div>
+		<div class="blank"></div>
+		<div class="route_image"><img src="../../$pathpre$route.thumbUrl"/></div>
+	</div>
+    
+    #if($step == 2)
+    <!--出团信息-->
+    <div class="groups">
+    	<div class="blank"></div>
+    	<div class="group_section_title">出团信息 </div>
+    	<div class="blank"></div>
+       	<div class="group_list">
+           #foreach( $group in $groups )
+           	<div class="group_item">
+           		<table>
+           			<tr>
+           				<td><div class="group_title"><a href="./groups_booking.htm?routeid=$route.id&gid=$group.id&step=$step">$group.genMobileGroupName()</a></div></td>
+           			</tr>
+           			<tr>
+           				<td>
+           					#if($group.group_price > 0 )
+								<div class="price">$group.genDepartDateString() £$group.group_price  VIP £$group.group_vip_price</div>
+	                        #else
+								<div class="price">$group.genDepartDateString() £$group.price  VIP £$group.vip_price</div>
+	                        #end
+           				</td>
+           			</tr>
+           		</table>
+               </div>
+			#end
+           </div>
+    </div>  
+    #end 
+
+	#if($step == 3)
+
+    <div class="blank15"></div> 
+    
+    <!--报名表单-->
+    <div class="booking_details">
+    	<div class="blank"></div>
+    	<div class="section_title">报名表单</div>
+    	<div class="blank"></div>
+        <div class="booking_form">        	
+        	<table style="width:100%;">
+        		<tr>
+        			<td width="30%" height="1px"></td><td width="70%"></td>
+        		</tr>
+        		<tr>
+        			<td>姓&nbsp;名：</td><td><input id="t_n" name="t_n"></td>
+        		</tr>
+        		<tr>
+        			<td>中文名：</td><td><input id="t_cn" name="t_cn"></td>
+        		</tr>
+        		<tr>
+        			<td>性&nbsp;别：</td><td><input type="radio" style="width: 25px;" id="t_mg" name="t_g" value="m" checked>男  <input type="radio" style="width: 25px;" id="t_fg" name="t_g" value="f">女 </td>
+        		</tr>
+        		<tr>
+        			<td>Email：</td><td><input id="t_e" name="t_e"></td>
+        		</tr>
+        		<tr>
+        			<td>电&nbsp;话：</td><td><input id="t_p" name="t_p"></td>
+        		</tr>
+        		<tr>
+        			<td>接车点：</td><td>
+        			<select id="t_pus" name="t_pus">
+        				#foreach($pu in $pickups)
+        					<option value="$pu">$pu</option>
+        				#end
+        			</select>
+        			</td>
+        		</tr>
+        		<tr>
+        			<td colspan="2" style="height: 15px;"></td>
+        		</tr>
+        		<tr>
+        			<td colspan="2">
+        				<div class="booking_button" onclick="SelectPaymentMethod()">选择支付方式</div>        			
+        			</td>
+        		</tr>
+        		<tr>
+        			<td colspan="2" align="left"></td>
+        		</tr>
+        	</table>        	
+        </div>
+        
+        <div class="info_confirm section_hidden">
+        	<table style="width:100%;">
+        		<tr>
+        			<td>旅客信息确认:</td>
+        		</tr>
+        		<tr>
+        			<td>姓名：<span id="name_confirm"></span></td>
+        		</tr>
+        		<tr>
+        			<td>Email：<span id="email_confirm"></span></td>
+        		</tr>
+        		<tr>
+        			<td>电话：<span id="phone_confirm"></span></td>
+        		</tr>
+        		<tr>
+        			<td>接车：<span id="pickup_confirm"></span></td>
+        		</tr>
+        		<tr>
+        			<td height="35px;"><hr/></td>
+        		</tr>
+              	<tr>
+                	<td class="text"><input name="pay_radio" type="radio" id="pm_1" value="2" checked="checked" />
+                 		 在线支付 (paypal账户)
+                 	</td>
+              	</tr>
+              	<tr>
+                	<td class="text"><input type="radio" name="pay_radio" id="pm_2" value="1"/>
+                  		银行转账 (sort code:206325 account number: 33250482) 
+                  	</td>
+              	</tr>
+              	<tr>
+                	<td class="text"><input type="radio" name="pay_radio" id="pm_3" value="3" />
+            			现金支付 (直接交至旅游社或者销售代表) 
+            		</td>
+              	</tr>
+              	<tr>
+                	<td class="text"><input type="radio" name="pay_radio" id="pm_4" value="4" />
+           				 网银在线支付
+           			</td>
+              	</tr>
+              	
+              	<tr>
+              		<td>
+              			<div class="booking_button" onclick="BookGroup($route.id , $group.id)">完成预定并支付#if($group.group_price > 0 ) £$group.group_price #else £$group.price #end</div>
+              			<div style="height: 5px;"></div>
+              			<div class="booking_button" onclick="BackToUpdateDetails()">返回上页修改信息</div>
+              		</td>
+              	</tr>
+              	
+              	<tr>
+                	<td style="color: red; font-size: 12px;">
+           				*<br/>
+           				1. 注册用户，请用注册时E-Mail进行预订。<br/>
+           				2. 非注册用户将在完成预订时自动注册，密码将发送给该预订E-Mail邮箱！<br/>
+           				3. 有积分的用户，请直接点击“完成预定并支付”您可以在下一个页面输入积分并使用<br/>
+           				<br/>
+           			</td>
+              	</tr>
+        	</table>
+        </div>
+    </div>
+    
+    #end
+    
+    #if($step == 4)
+    
+    <!--用户积分检查-->
+    <div class="point_checking">
+    	<div class="blank"></div>
+    	<div class="section_title">报名表单</div>
+    	<div class="blank"></div>
+        <div class="point">
+        	<table style="width:100%;">
+        		<tr>
+        			<td>
+        				您好：
+        			</td>
+              	</tr>
+              	<tr>
+        			<td>
+        				您账户还剩下$customer.point积分，可用积分#if($customer.point > $group.max_point) $group.max_point #else $customer.point #end积分<em style="color: red;">（100积分=£1）</em>
+        			</td>
+              	</tr>
+              	<tr>
+              		<td height="150px"></td>
+              	</tr>
+              	<tr>
+              		<td style="font-size: 12px; color:red;">*请输入100的倍数（例如：300）</td>
+              	</tr>
+              	<tr>
+              		<td>
+              			<div class="use_point">
+              				<table>
+              					<tr>
+              						<td width="210px;">
+              							使用 <input id="t_pt" style="width: 50px;">积分
+              						</td>
+              						<td>
+              							<div style="cursor: pointer;" onclick="BookGroupUrlWithPoint($customer.point, $group.max_point)">完成支付</div>
+              						</td>
+              					</tr>
+              				</table>
+              			</div>
+              		</td>
+              	</tr>
+              	<tr>
+              		<td height="10px;">
+              			<input type="hidden" id="hurl" value="./groups_booking.htm?routeid=$route.id&gid=$group.id&cid=$customer.id&step=4&n=$br.fn&cn=$br.cn&g=$br.gender&e=$br.email&p=$br.phone&pus=$br.pickup&pm=$br.paymethod">
+              		</td>
+              	</tr>
+              	<tr>
+              		<td>              			
+              			<div class="booking_button" onclick="BookGroupUrlNoPoint()">不使用积分支付#if($group.group_price > 0 ) £$group.group_price #else £$group.price #end</div>
+              		</td>
+              	</tr>
+        	</table>
+        </div>
+    </div>
+    #end
+    
+    #if($step == 5)
+    
+    <!-- 预定结果 -->
+    <div class="booking_result">
+    	<div class="blank"></div>
+    	<div class="section_title">预定结果</div>
+    	<div class="blank"></div>
+        <div class="result">
+        	$message <br/>
+        	
+        	#if ($paymethod == 2 && $status == 1) 
+        	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+				<input type="hidden" name="cmd" value="_xclick">
+				<input type="hidden" name="business" value="justin@hinotravel.com">
+				<input type="hidden" name="lc" value="GB">
+				<input type="hidden" name="item_name" value="$group.name: $booking.bookingRef">
+				<input type="hidden" name="item_number" value="$booking.bookingRef">
+				<input type="hidden" name="amount" value="$booking.pd_credit">
+				<input type="hidden" name="currency_code" value="GBP">
+				<input type="hidden" name=button_subtype" value="services">
+				<input type="hidden" name="no_note" value="0">
+				<input type="hidden" name="cn" value="Add special instructions to the seller">
+				<input type="hidden" name=no_shipping" value="1">
+				<input type="hidden" name="rm" value="1">
+				<input type="hidden" name="return" value="http://www.hinotravel.com">
+				<input type="hidden" name=cancel_return" value="http://www.hinotravel.com">
+				<input type="hidden" name="shipping" value="0.00">
+				<input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynowCC_LG.gif:NonHosted">
+				<input type="image" src="../../images/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+				<img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110429-1/en_GB/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			#end
+			
+			#if ($paymethod == 4 && $status == 1) 									
+				<form name="form1" id="form1" action="https://payments.epdq.co.uk/ncol/prod/orderstandard.asp" method="post">
+					<input type="hidden" value="epdq1010898" name="PSPID">
+					<input type="hidden" value="$booking.bookingRef" name="ORDERID">
+					<input type="hidden" value="$newtopy" name="AMOUNT">
+					<input type="hidden" value="GBP" name="CURRENCY">
+					<input type="hidden" value="en_US" name="LANGUAGE">
+					<input type="hidden" value="" name="CN">
+					<input type="hidden" value="" name="EMAIL">
+					<input type="hidden" value="" name="OWNERZIP">
+					<input type="hidden" value="" name="OWNERADDRESS">
+					<input type="hidden" value="" name="OWNERCTY">
+					<input type="hidden" value="" name="OWNERTOWN">
+					<input type="hidden" value="" name="OWNERTELNO">
+					<input type="hidden" value="" name="SHASIGN">
+					<input type="hidden" value="$group.name_en" name="TITLE">
+					<input type="hidden" value="" name="BGCOLOR">
+					<input type="hidden" value="" name="TXTCOLOR">
+					<input type="hidden" value="" name="TBLBGCOLOR">
+					<input type="hidden" value="" name="TBLTXTCOLOR">
+					<input type="hidden" value="" name="BUTTONBGCOLOR">
+					<input type="hidden" value="" name="BUTTONTXTCOLOR">
+					<input type="hidden" value="" name="LOGO">
+					<input type="hidden" value="" name="FONTTYPE">
+					<input type="hidden" value="http://www.hinotravel.com" name="ACCEPTURL">
+					<input type="hidden" value="http://www.hinotravel.com" name="DECLINEURL">
+					<input type="hidden" value="http://www.hinotravel.com" name="EXCEPTIONURL">
+					<input type="hidden" value="http://www.hinotravel.com" name="CANCELURL">
+					<!-- <input type="submit" name="submit2" id="submit2" value=""> -->
+					<input type="image" border="0" alt="网银在线支付" name="submit" title="网银在线支付" src="../../images/barclaycard_pay.png">
+				</form>
+			#end
+        </div>
+    </div>
+    #end
+    
+</div>
+
+<form action="./groups_booking.htm?routeid=$route.id&gid=$group.id" id="b_form" method="post">
+	<input type="hidden" id="step" name="step" value="$step"></input>
+	<input type="hidden" id="n" name="n" value="#if($br)$br.fn#end"></input>
+	<input type="hidden" id="cn" name="cn" value="#if($br)$br.cn#end"></input>
+	<input type="hidden" id="g" name="g" value="#if($br)$br.gender#end"></input>
+	<input type="hidden" id="e" name="e" value="#if($br)$br.email#end"></input>
+	<input type="hidden" id="p" name="p" value="#if($br)$br.phone#end"></input>
+	<input type="hidden" id="pus" name="pus" value="#if($br)$br.pickup#end"></input>
+	<input type="hidden" id="pm" name="pm" value="#if($br)$br.paymethod#end"></input>
+	<input type="hidden" id="pt" name="pt" value="#if($br)$br.pd_point#end"></input>
+	<input type="hidden" id="cid" name="cid" value="#if($customer)$customer.id#end"></input>
+</form>
+</body>
+</html>

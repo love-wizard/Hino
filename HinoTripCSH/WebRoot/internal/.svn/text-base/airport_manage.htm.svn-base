@@ -1,0 +1,9 @@
+<h2>新增机场 </h2>
+$airline_cam_form <br>
+
+<br />
+<hr />
+<br />
+
+<h2>已有机场列表</h2>
+$airportTable

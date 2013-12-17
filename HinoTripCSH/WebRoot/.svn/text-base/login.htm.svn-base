@@ -1,0 +1,32 @@
+			
+<!-- 快速登录 -->
+<div class="con_top"></div>
+<div class="prev_box">
+	<div style="clear: both"></div>
+
+	<!-- 登录表单 -->
+	<div class="col_full">
+		<div class="full_img">
+		<img src="./images/step_login.png" />
+		</div>
+		<div class="full_form">
+		<div class="full_form_top">用户登录</div>
+		<div class="full_form_mid">
+			#if($error)
+				<span style="margin-left:40%; color:red;">$error</span>
+			#end
+			$form
+			<br />
+			<a style="margin-left:40%;" href="./reset_password.htm" class="ls_style">忘记密码</a>
+			<a style="margin-left:40%;" href="./registration.htm" class="ls_style">免费注册</a>
+			<br />
+		</div>
+		<div class="full_form_bot"></div>
+		</div>
+	</div>
+
+	<div style="clear: both"></div>
+
+</div><!-- prev_box -->
+<div class="con_bot"></div>
+<div class="clear_con"></div>

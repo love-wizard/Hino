@@ -1,0 +1,233 @@
+$jsData
+    <!--网站主体开始-->
+    <div class="main"  id="data_page">
+    <div class="second_menu"></div>
+    <div class="pay_step"><img src="images/pay_setp1.gif" /></div>
+    <div class="pay_contair">
+    	<div class="pay_bg">
+        	<div class="line_title">#if($groupname) $groupname #else ERROR #end #if($groupdate) $groupdate #else ERROR #end #if ($groupcredituse) 每单积分使用上限$groupcredituse #end #if($cur_customer) 您有积分$cur_customer.point #end #if ($bt==0)【预订】#elseif($bt==1) 【团购】 #elseif($bt==2) 【秒杀】#end</div>
+            <!-- 第一位报名信息开始 -->
+            <div class="pay_frm" id="pf_0">
+           	  <div class="number"><span class="t">首要旅客</span></div>
+                <form id="form1" name="form1" method="post" action="">
+                <table border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                  <td colspan = "2"><b><font color="Red">*注册用户，请用注册时E-Mail进行预订；非注册用户将在完成预订时自动注册，密码将发送给该预订E-Mail邮箱！</font></b></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">姓 &nbsp;&nbsp;名：</td>
+                    <td class="text"><input type="text" name="textfield2" id="ln_0" class="pay_input w2" value="#if ($cur_customer.lastname) $cur_customer.lastname #end"/>
+                    <input type="text" name="textfield3" id="fn_0" class="pay_input w2" value="#if ($cur_customer.firstname) $cur_customer.firstname #end"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">中文名：</td>
+                    <td class="text"><input type="text" name="textfield4" id="cn_0" class="pay_input w1" value="#if ($cur_customer.chinesename) $cur_customer.chinesename #end"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">性 &nbsp;&nbsp;别：</td>
+                    <td class="text">
+                      <input name="gd_0" type="radio" id="male_0" #if($customerGenderM) $customerGenderM #end  /> 
+                      男
+                      <input type="radio" name="gd_0" id="female_0" #if($customerGenderFM) $customerGenderFM #end />
+                      女
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">Email：</td>
+                    <td class="text"><input type="text" name="textfield6" id="em_0" class="pay_input w1" value="#if ($cur_customer.email) $cur_customer.email #end"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">电 &nbsp;&nbsp;话：</td>
+                    <td class="text"><input type="text" name="textfield5" id="ph_0" class="pay_input w1" value="#if ($cur_customer.phone) $cur_customer.phone #end"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">接车点：</td>
+                    <td class="text"><label>
+                    <select name="select" id="pickup_0" class="w5">
+                        
+                    </select>
+                    </label></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">住 &nbsp;&nbsp;宿：</td>
+                    <td class="text"><input type="text" name="textfield6" id="rm_0" class="pay_input w1"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">其他需求</td>
+                    <td class="text"><input type="text" name="textfield6" id="cm_0" class="pay_input w1"/></td>
+                  </tr>
+                  <tr>
+                    <td align="right" class="text">使用积分</td>
+                    <td class="text"><input type="text" name="textfield6" id="pt_0" value="0" class="pay_input w3"/>请输入100的整数倍</td>
+                  </tr>
+                  #if($voucherApplied=="Y") 
+                  <tr>
+                    <td align="right" class="text">使用优惠券</td>
+                    <td class="text"><input type="text" id="vc_0" class="pay_input w3"/>抵值<input type="text" id="vcv_0" disabled="disabled" value=0 class="pay_input w4"/></td>
+                  </tr>
+                  #end
+              </table>
+            </form>
+           </div>
+           #if ($bt==0)
+           <a href="#" id="add_additional"><img src="images/zj_bg.png" width="100" height="37" /></a>
+           <span class="text" ><font color="Red">（如需为另一位客人报名，请点击追加按钮，继续报名）</font></span>
+           #end
+           <!--第一位报名信息结束-->
+           <!--第2位报名信息开始-->
+           <div id="add_customer">
+           </div>
+        </div>
+         <div class="pay_bt">
+              <input type="button" id="next_button" value="下一步" class="pay_submit"/>
+         </div>    
+		 <div class="blank15"></div>
+    </div>
+    
+    <div class="blank15"></div> 
+    </div>
+
+<div class="main" style="display:none" id="pay_page">
+        <div class="second_menu"></div>
+    <div class="pay_step"><img src="images/pay_step2.gif" /></div>
+    <div class="choose_contair">
+   	  <div class="pay_bg">
+        <div class="line_title">#if($groupname) $groupname #else ERROR #end #if($groupdate) $groupdate #else ERROR #end #if ($bt==0)【预订】#elseif($bt==1) 【团购】 #elseif($bt==2) 【秒杀】#end </div>
+        <div class="pay_choose">
+        	<div class="title">旅客信息确认:</div>
+            <div class="intro" id="info_review">
+            	
+            </div>
+        </div>
+
+      <div class="pay_way">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			#if($isOverseaRoute) 
+			  <tr>
+                <td class="text"><input type="radio" name="pay_radio" id="pm_2" value="radio" checked="checked">
+                  银行转账 (sort code:206325 account number: 33250482) </td>
+              </tr>
+			#else
+              <tr>
+                <td class="text"><input name="pay_radio" type="radio" id="pm_1" value="radio" checked="checked" />
+                  在线支付 (paypal账户)</td>
+              </tr>
+              <tr>
+                <td class="text"><input type="radio" name="pay_radio" id="pm_2" value="radio"/>
+                  银行转账 (sort code:206325 account number: 33250482) </td>
+              </tr>
+            #end
+              
+              <tr>
+                <td class="text"><input type="radio" name="pay_radio" id="pm_3" value="radio" />
+            现金支付 (直接交至旅游社或者销售代表) </td>
+              </tr>
+              <tr>
+                <td class="text"><input type="radio" name="pay_radio" id="pm_4" value="radio" />
+            网银在线支付 </td>
+              </tr>
+        </table>
+      </div>
+      <div class="pay_bt">
+            <table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center"><input type="button" name="button2" id="back_info_page" value="返回上页修改信息" class="pay_submit"/></td>
+                <td align="center"><input type="button" name="button" id="go_final_page" value="同意服务协议并下一步" class="pay_submit"/></td>
+              </tr>
+          </table>
+       </div>    
+       <div class="pay_xy"><a href="../resource/Hino_Customer_Contract.pdf"> 《海诺旅游注册协议》</a></div>          
+
+      </div>
+	  <div class="blank15"></div>
+    </div>
+    <div class="blank15"></div> 
+</div>
+
+<div class="main" id="final_page" style="display:none">
+        <div class="second_menu"></div>
+    <div class="pay_step"><img src="images/pay_step3.gif" /></div>
+    <div class="choose_contair">
+   	  <div class="pay_bg">
+        <div class="line_title">#if($groupname) $groupname #else ERROR #end #if($groupdate) $groupdate #else ERROR #end #if ($bt==0)【预订】#elseif($bt==1) 【团购】 #elseif($bt==2) 【秒杀】#end  </div>
+        <div class="pay_confirm" id="payment_info">
+           
+                     
+                     
+        
+        </div>
+        <div class="pay_way_intro" id="pay_way_1">
+        	<div class="t">您选择的支付方式是： 到公司前台支付</div>
+            <div class="c">&nbsp;&nbsp;&nbsp;&nbsp;公司地址：Days Building, 17-31 Wollaton Street, Nottingham, NG1 5FW. (near Royal Theater)<br>&nbsp;&nbsp;&nbsp;&nbsp;公司目前只接受现金付款，多谢您的配合
+            </div>
+            <div class="map"><img src="images/pay_map.jpg" /></div>
+        </div>
+        <div class="pay_way_intro" id="pay_way_2">
+        	<div class="t">您选择的支付方式是： 使用在线支付 (paypal账户)</div>
+            <div class="c">&nbsp;&nbsp;&nbsp;&nbsp;PayPal是倍受全球商户和个人追捧的国际贸易支付工具，即时支付，即时到账，全中文操作界面。PayPal庞大的用户群可在 全球190个国家交易使用。更大的好处是：完全免费注册！目前跨国交易超过90%的卖家和超过85%的买家认可并使用PayPal电 子支付业务。</div>
+        </div>
+			<div class="pay_way_intro" id="pay_way_3">
+				<div class="t">您选择的支付方式是： 银行转账</div>
+				<div class="c" style="line-height:24px;">
+					请根据您选择的旅游线路，团次价格，报名人数和附加服务的情况，通过银行柜台汇款或者网上银行转帐到Hino
+					travel的账户中。请尽量选择同行转账以提高到账时间方便您出行的确认）<br /> Barclays Business
+					Debit: Hino Travel Limited<br /> Sort Code: 20-63-25<br />
+					Account number: 33250482<br /> <br /> 请务必在付款当天发送邮件到：
+					info@hinotravel.com
+					，告知：付款人姓名，您参团的路线名称和时间，支付时间，支付金额，付款方式和您留下的reference(团号+姓名)（例如：张晓
+					明，支付3人9月12日苏格兰3日游，8月15日今天，通过Natwest银行网上转账方式支付600英镑到Hino
+					Travel账户，留下的reference是Scotland3 Zhang Xiaoming），发至邮箱:
+					info@hinotravel.com<br /> <br /> 或拨打我们的工作电话07803505182 通知我们员工.
+					以方便我们及时为您查账确认<br /> <br /> 公司邮件回复（2个工作日内完成）<br />
+					公司会在收到您的付款通知邮件之后的48个工作小时之内，出具电子票到您的邮箱内。您需打印并携带电子票，到选定上车地点上车，电子票将是您参团的凭证。感谢您的理解和配合！<br />
+					<br /> 备注：报名以到款日期为序，满团后到款的游客公司将及时与您联系协商转团或者退款退团。
+				</div>
+			</div>
+			<div class="pay_way_intro" id="pay_way_4">
+        	<div class="t">您选择的支付方式是： 网银在线支付</div>
+            <div class="c">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网银在线支付，即时到帐。</div>
+        	</div>
+			<div class="pay_bt">
+            <table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center"><input type="button" id="back_to_pay" value="重选支付方式" class="pay_submit"/></td>
+                <td align="center"><input type="button" id="reserve_button" value="预订" class="pay_submit"/></td>
+              </tr>
+          </table>
+       </div>    
+      </div>
+	  <div class="blank15"></div>
+    </div>
+    <div class="blank15"></div> 
+</div>
+
+<div class="main" id="result_page" style="display:none">
+    <div class="pay_step"><img src="images/pay_step4.gif" /></div>
+    <div class="choose_contair">
+   	  <div class="pay_bg">
+        <div class="line_title">#if($groupname) $groupname #else ERROR #end #if($groupdate) $groupdate #else ERROR #end #if ($bt==0)【预订】#elseif($bt==1) 【团购】 #elseif($bt==2) 【秒杀】#end   </div>
+        <div class="pay_success">
+        	<div class="t">感谢您参加海诺旅行团 您的预定</div>
+            <div class="c" id="booking_result"></div>
+            
+        </div>
+        <div class="pay_bt">
+            <table width="50%" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center"><a href="./index.htm"><input type="button" value="回到首页" class="pay_submit"/></a> </td><td align="center"><span id="paypal_area"></span><span id="epdq_pay_detail"></span></td>
+              </tr>
+          </table>
+       </div>    
+      </div>
+	  <div class="blank15"></div>
+    </div>
+    <div class="blank15"></div> 
+</div>
+
+<div>
+	<input type="hidden" id="post" name="post" value="$post"/>
+	<input type="hidden" id="road" name="road" value="$road"/>
+	<input type="hidden" id="city" name="city" value="$city"/>
+	<input type="hidden" id="other" name="other" value="$other"/>
+	<input type="hidden" id="postcode" name="postcode" value="$postcode"/>	
+</div>

@@ -1,0 +1,20 @@
+<h2>System Messges</h2>
+
+#if($title)
+	<hr />
+	
+	<br /><h3>Title:</h3>
+	$title 
+	<br /><br /><h3>Date:</h3>
+	$date <br />
+	<br /><h3>Content：</h3>
+	$content <br />
+	#if($attachment)
+	<br /><h3>Attachment：</h3>
+	<a href="$attachment">Download attachment</a> <br /> <br />
+	#end
+	<hr /><br />
+#end
+
+	$msgtable
+	<br />

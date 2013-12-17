@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+background:url(ny_bg.jpg) repeat-x #f2f5f6;
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+.head .logo_link
+{
+display:block;
+padding-top:44px;
+}
+/*导航菜单 begin*/
+.second_menu{position:absolute; top:0px; right:100px;}
+.second_menu a{ color:#a95c00}
+
+.main
+{
+width:907px;
+padding:15px 33px 0px 34px;
+margin:0 auto;
+background:#fff;
+}
+
+/*注册左侧*/
+.reg_l
+{
+width:184px;
+float:left;
+}
+.reg_l .setep1
+{
+width:184px;
+height:330px;
+background:url(reg_1.gif) no-repeat left 63px;
+}
+.reg_l .setep2
+{
+width:184px;
+height:330px;
+background:url(reg_2.jpg) no-repeat left 63px;
+}
+.reg_l .setep3
+{
+width:184px;
+height:330px;
+background:url(reg_3.jpg) no-repeat left 63px;
+}
+/*注册右侧*/
+.reg_r
+{
+width:723px;
+height:460px;
+background:url(reg_r_bg.jpg) no-repeat;
+float:right;
+}
+
+.reg_r .frm1
+{
+padding:60px 0px 0px 85px;
+}
+
+.reg_r .text
+{
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+line-height:35px;
+}
+.reg_r td
+{
+padding:8px 5px;
+}
+.reg_r .reg_input
+{
+height:33px;
+border:1px solid #188899;
+background:url(reg_input_bg.gif) no-repeat;
+padding:0px 5px;
+line-height:33px;
+}
+.reg_r .reg_bt
+{
+width:100%;
+height:41px;
+background:url(reg_s_bg.png) repeat-x left center;
+margin-top:15px;
+text-align:center;
+}
+.reg_r .reg_bt .reg_submit
+{
+background:url(reg_submit.png) no-repeat;
+width:196px;
+height:41px;
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+}
+.reg_r .reg_xy
+{
+width:100%;
+text-align:center;
+padding-top:15px;
+}
+.reg_r .reg_xy a
+{
+color:#fff;
+}
+.reg_r .w1
+{
+width:460px;
+}
+.reg_r .w2
+{
+width:200px;
+}
+.reg_r .w3
+{
+width:267px;
+}
+.reg_r .w4
+{
+width:150px;
+}
+
+.reg_r .success
+{
+background:url(reg_success.png) no-repeat;
+width:100%;
+height:99px;
+margin-top:15px;
+}
+.reg_r .success_c
+{
+width:530px;
+height:210px;
+margin:15px auto 0px;
+padding:20px 70px;
+background:url(success_bg.png) repeat;
+color:#fff;
+}
+
+/*版权*/
+.copyright{ width:974px; height:32px; background:#c9cccb; text-align:center}

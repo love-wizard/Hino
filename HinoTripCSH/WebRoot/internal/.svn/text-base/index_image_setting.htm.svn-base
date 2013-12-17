@@ -1,0 +1,24 @@
+<h2>设置首页滚动图片</h2>
+
+	<div class="clickform">$imageform</div>
+	<div class="clear"></div>
+
+<br />
+<hr />
+
+<h2>公告列表</h2>
+	$NoticeTable
+	
+<hr />
+
+<a href="./msg_email_manage.htm">取消并返回首页</a>
+<br />
+<br />
+<hr />
+<h2>设置首页侧边导航栏搜索信息&nbsp;<em style="font-size: 10px; color:grey; font-weight: normal;"> ('|' 为分隔符，'$' 为换行符)</em></h2>
+
+<div class="clickform">$idxnaviform</div>
+<div class="clear"></div>
+<br />
+<hr />
+

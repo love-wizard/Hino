@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh_cn">
+
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta content="en-gb" http-equiv="Content-Language" />
+	<meta content="Hino Trip" name="keywords" />
+	<meta content="Hino Trip Official Website." name="description" />
+		
+	<script language="javascript" type="text/javascript" src="js/hino.js"></script>
+	<script language="javascript" type="text/javascript" src="js/dateselector_text1.js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="js/cal.js"></script>
+	<script language="javascript" type="text/javascript" src="js/json2.js"></script>
+	<script language="javascript" type="text/javascript" src="js/internal.js"></script>
+	<!-- jQuery Configuration -->
+	<script type="text/javascript" src="resources/scripts/simpla.jquery.configuration.js"></script>
+	<!-- Facebox jQuery Plugin -->
+	<script type="text/javascript" src="resources/scripts/facebox.js"></script>
+	<!-- jQuery WYSIWYG Plugin -->
+	<script type="text/javascript" src="resources/scripts/jquery.wysiwyg.js"></script>
+	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
+	
+	<link rel="stylesheet" href="resources/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="resources/css/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="resources/css/invalid.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="resources/css/calendar.css" type="text/css" media="screen" />
+	$headElements 
+	$jsElements
+	
+	<title>海诺旅游后台管理系统V2.0Beta</title>
+
+</head>
+<body>
+
+<!-- BlockUI configuration -->
+<script type="text/javascript">
+jQuery(document).ready(function() {
+jQuery.blockUI.defaults.message = " <h2><b>HinoTrip</b>: Please be patient...</h2> ";
+jQuery.blockUI.defaults.overlayCSS.backgroundColor = '#CCC';
+jQuery.blockUI.defaults.overlayCSS.opacity = .8;
+jQuery(document).ajaxStart(jQuery.blockUI).ajaxStop(jQuery.unblockUI);
+});
+</script>
+
+<div id="body-wrapper">
+
+	<div id="main-content">
+		#parse($path)
+	</div>
+	
+	<div id="sidebar">
+		<div id="sidebar-wrapper">
+			<!-- Sidebar with logo and menu -->
+			<h1 id="sidebar-title"><a href="#">Hino Travel Admin</a></h1>
+			<!-- Logo (221px wide) -->
+			<wicket:link><img id="logo" src="resources/images/logo.png" alt="Simpla Admin logo" /></wicket:link>
+			<!-- Sidebar Profile links -->
+			<div id="profile-links">
+				Hello, <a href="basic_info_manage.htm" title="Edit your profile">$curStaffName</a><br /><br />
+				$logoutLink
+			</div>
+			<ul id="main-nav">
+				<!-- Accordion Menu -->
+				<!-- Add the class "no-submenu" to menu items with no sub menu -->
+				<!-- Add the class "current" to current menu item -->
+				
+				<li>
+					<a href="./msg_email_manage.htm" class="nav-top-item no-submenu">
+					Messages
+					</a>
+				</li>
+
+				<li>
+					<a href="#" class="nav-top-item">Personal Information</a>
+					<ul>
+						<li><a href="./basic_info_manage.htm">Basic Info</a></li>
+	            		<li><a href="./password_manage.htm">Change Password</a></li>
+					</ul>
+				</li>
+
+#if($switchHr)
+				<li>
+					<a href="#" class="nav-top-item">Strategy</a>
+					<ul>
+						<li><a href="./area_cam.htm">Area Manage</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchMarketing)
+				<li>
+					<a href="#" class="nav-top-item">Marketing Manage</a>
+					<ul>
+						<li><a href="./customer_list.htm">注册用户列表</a></li>
+	            		<li><a href="./customer_email_cam.htm">用户邮件群发</a></li>
+	            		<li><a href="./customer_vip_order_record.htm">VIP发卡管理</a></li>
+	            		<li><a href="./data_export_index.htm">客户资料导出</a></li>
+	            		<li><a href="./tour_survey_manage.htm">团梦想调查</a></li>
+	            		<li><a href="./index_search_default_keywords.htm">设置关键词</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchSalesManage)
+				<li>
+					<a href="#" class="nav-top-item">Sales Manage</a>
+					<ul>
+						<li><a href="./general_sales_group_cam.htm">Create Tour</a></li>
+	            		<li><a href="./general_sales_group_manage.htm">Tour Management</a></li>
+	            		<li><a href="./diy_route_list.htm">DIY线路管理</a></li>
+	            		<li><a href="./gen_market_report_manage.htm">Sales Report</a></li>
+	            		<li><a href="./general_external_booking.htm">New Booking</a></li>
+	            		<li><a href="./financial_vip_order_record.htm">VIP购买记录</a></li>
+	            		<li><a href="./sales_carrequest_record.htm">Car Request</a></li>
+	            		<li><a href="./general_sales_voucher_cam.htm">Create Voucher</a></li>
+	            		<li><a href="./general_sales_voucher_view.htm">Voucher checker</a></li>
+	            		<li><a href="./general_sales_credit_adjust.htm">调整积分</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchHr)
+				<li>
+					<a href="#" class="nav-top-item">Human Resource</a>
+					<ul>
+						<li><a href="./staff_create.htm">创建员工帐户</a></li>
+	            		<li><a href="./staff_view.htm">员工信息管理</a></li>
+	            		<li><a href="./msg_email_cam.htm">系统消息管理</a></li>
+	            		<li><a href="./regulation_manage.htm">规章制度管理</a></li>
+	            		<li><a href="./recruitment_manage.htm">人员招聘管理</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchFinance)
+				<li>
+					<a href="#" class="nav-top-item">Finance Manage</a>
+					<ul>
+						<li><a href="./financial_booking_record.htm">订单记录</a></li>
+	            		<li><a href="./financial_transfer_record.htm">转账申报记录</a></li>
+	            		<li><a href="./financial_group_profit_manage.htm">团利润管理</a></li>
+	            		<li><a href="./financial_sales_reward.htm">销售人员业绩</a></li>
+	            		<li><a href="./airline_booking_record.htm">Airline订单记录</a></li>
+	            		<li><a href="./booking_repay.htm">订单追回链接生成</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchResource)
+				<li>
+					<a href="#" class="nav-top-item">Document Manage</a>
+					<ul>
+						<li><a href="./site_manage.htm">景点管理</a></li>
+	            		<li><a href="./route_manage.htm">线路管理</a></li>
+	            		<li><a href="./vehicle_manage.htm">车辆管理</a></li>
+	            		<li><a href="./distinguished_group_manage.htm">尊享团管理</a></li>
+	            		<li><a href="./service_option_manage.htm">服务项目管理</a></li>
+	            		<li><a href="./airline_manage.htm">airline管理</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchWebMaster)
+				<li>
+					<a href="#" class="nav-top-item">Web Manage</a>
+					<ul>
+	            		<li><a href="./index_route_cam.htm">热门线路管理</a></li>
+						<li><a href="./menu_cam.htm">区域板块管理</a></li>
+	            		<li><a href="./menu_route_cam.htm">区域内容管理</a></li>
+	            		<li><a href="./index_image_setting.htm">首页滚动图片设置</a></li>
+	            		<li><a href="./index_qq_cam.htm">首页客服QQ设置</a></li>
+	            		<!-- <li><a href="credit.htm">编辑积分板块</a></li> -->
+	            		<li><a href="./airport_manage.htm">机场管理</a></li>
+	            		<li><a href="./airline_company_manage.htm">航空公司管理</a></li>
+	            		<li><a href="./airline_catalog_manage.htm">航线分类设置</a></li>
+	            		<li><a href="./airline_qa_manage.htm">airline问题区域设置</a></li>  
+	            		<li><a href="./airline_settings.htm">airline滚动图片设置</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchGuideManage)
+				<li>
+					<a href="#" class="nav-top-item">Tour Guide Manage</a>
+					<ul>
+						<li><a href="./general_guide_assign.htm">分派导游</a></li>
+	            		<li><a href="./general_guide_resource_cam.htm">导游资料管理</a></li>
+	            		<li><a href="./general_guide_review.htm">报告及反馈</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchGuide)
+				<li>
+					<a href="#" class="nav-top-item">Tour Guide</a>
+					<ul>
+						<li><a href="./guide_group_cam.htm">Apply</a></li>
+	            		<li><a href="./guide_group_manage.htm">Record</a></li>
+	            		<li><a href="./guide_resource_cam.htm">Document</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchSalesRep)
+				<li>
+					<a href="#" class="nav-top-item">Sale Represent</a>
+					<ul>
+						<li><a href="./sales_rep_booking_select.htm">Booking</a></li>
+	            		<li><a href="./sales_rep_booking_record.htm">Record</a></li>
+	            		<li><a href="./sales_rep_transfer_form.htm">Transaction</a></li>
+	            		<li><a href="./sales_rep_transfer_record.htm">Transaction Record</a></li>
+	            		<li><a href="./sales_market_report_manage.htm">upload Report</a></li>
+	            		<li><a href="./sales_rep_order_vip.htm">Apply VIP</a></li>
+	            		<li><a href="./general_sales_voucher_view.htm">Voucher checker</a></li>
+	            		<li><a href="./airline_internal_booking.htm">Airline Booking</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchAreaRep)
+				<li>
+					<a href="#" class="nav-top-item">Brand Manager</a>
+					<ul>
+						<li><a href="./area_rep_profit_view.htm">销售人员业绩</a></li>
+						<li><a href="./financial_leader_sales_reward.htm">区域销售人员业绩</a></li>
+					</ul>
+				</li>
+#end
+
+#if($switchGuideManage || $switchSalesManage || $switchHr || $switchMarketing)
+				<li>
+					<a href="#" class="nav-top-item">Customer Feedback</a>
+					<ul>
+	            		<li><a href="./group_feedback_manage.htm">团反馈统计</a></li>
+					</ul>
+				</li>
+#end
+			</ul>
+			<!-- End #main-nav -->
+			<div id="footer">
+				<small>
+				<!-- Remove this notice or replace it with whatever you want -->
+				&#169; Copyright 2010 Hino Travel | Powered by X 
+				</small>
+			</div>
+		</div>
+	</div>
+
+	<!-- Facebox -->
+	<div id="facebox_container" style="display: none">
+		<h3 id="facebox_title">Title</h3>
+		<div id="facebox_content">
+        Content
+        </div>
+	</div>
+</div>
+</body>
+</html>

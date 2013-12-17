@@ -1,0 +1,85 @@
+package com.hino.dev;
+
+
+import org.apache.click.Page;
+import org.apache.click.control.FieldSet;
+import org.apache.click.control.FileField;
+import org.apache.click.control.Form;
+import org.apache.click.control.Submit;
+import org.apache.click.control.TextField;
+import org.apache.click.util.Bindable;
+
+import com.hino.util.FileCenter;
+
+/**
+ * Provides File Upload example using the FileField control.
+ */
+public class FileUpload extends Page{
+
+    private static final long serialVersionUID = 1L;
+
+    @Bindable protected Form form = new Form();
+
+    private FileField fileField1;
+    private TextField descField1;
+
+    private FileField fileField2;
+    private TextField descField2;
+
+    // Constructor ------------------------------------------------------------
+
+    public FileUpload() {
+        form.setLabelsPosition("top");
+
+        FieldSet fieldSet1 = new FieldSet("upload1", "<b>Upload File 1</b>");
+        form.add(fieldSet1);
+
+        fileField1 = new FileField("selectFile1", "Select File 1", 40);
+        fieldSet1.add(fileField1);
+
+        descField1 = new TextField("description1", "File Description 1", 30);
+        fieldSet1.add(descField1);
+
+        FieldSet fieldSet2 = new FieldSet("upload2", "<b>Upload File 2</b>");
+        form.add(fieldSet2);
+
+        fileField2 = new FileField("selectFile2", "Select File 2", 40);
+        fieldSet2.add(fileField2);
+
+        descField2 = new TextField("description2", "File Description 2", 30);
+        fieldSet2.add(descField2);
+
+        form.add(new Submit("ok", "  OK  ", this, "onOkClick"));
+        //form.add(new PageSubmit("cancel", HomePage.class));
+    }
+
+    // Event Handlers ---------------------------------------------------------
+
+    public boolean onOkClick() throws Exception {
+
+        if (form.isValid()) {
+            if (fileField1.getFileItem() != null) {
+            	System.out.println("before write: File in mem " + fileField1.getFileItem().isInMemory());
+            	
+            	
+            	FileCenter fc = new FileCenter();
+            	
+            	System.out.println(fc.save_file(fileField1.getFileItem(),false));
+            	
+            	System.out.println("after write: File in mem " + fileField1.getFileItem().isInMemory());
+                addModel("fileItem1", fileField1.getFileItem());
+            }
+            addModel("fileDesc1", descField1.getValue());
+
+            if (fileField2.getFileItem() != null) {
+                addModel("fileItem2", fileField2.getFileItem());
+            }
+            addModel("fileDesc2", descField2.getValue());
+        }
+        return true;
+    }
+
+}
+
+
+

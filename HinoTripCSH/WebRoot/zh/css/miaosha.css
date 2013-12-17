@@ -1,0 +1,296 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+background:url(ny_bg.jpg) repeat-x #f2f5f6;
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+
+/*导航菜单 begin*/
+.second_menu{position:absolute; top:0px; right:100px;}
+.second_menu a{ color:#a95c00}
+
+/*网站主体  begin*/
+.main
+{
+background:#fff;
+padding:25px 25px 0px 77px;
+width:872px;
+margin:0 auto;
+}
+
+.ms_t
+{
+width:872px;
+height:64px;
+background:url(ms_t.gif) no-repeat;
+position:relative;
+}
+.ms_t .ms_time
+{
+width:166px;
+height:116px;
+background:url(ms_time.png) no-repeat;
+position:absolute;
+top:-29px;
+left:-66px;
+font-family:"微软雅黑", Arial, Helvetica, sans-serif;
+font-size:44px;
+line-height:116px;
+padding-left:125px;
+font-style:italic;
+color:#666;
+}
+.ms_t .now_time
+{
+padding-left:290px;
+line-height:64px;
+color:#fff;
+}
+/*秒杀左侧*/
+.ms_l
+{
+background:url(gz_bg.gif) no-repeat;
+width:190px;
+padding:95px 10px 0px;
+height:auto!important;
+height:755px;  
+min-height:755px;
+float:left;
+line-height:21px;
+color:#fff;
+}
+/*秒杀右侧*/
+.ms_r
+{
+width:650px;
+float:right;
+}
+.ms_lib
+{
+width:100%;
+padding-top:10px;
+}
+.ms_box
+{
+border:1px solid #1c8090;
+background:url(ms_box_bg.gif) repeat-x #e3f5f7;
+padding:10px;
+}
+/*单个秒杀商品*/
+.ms_item
+{
+width:628px;
+position:relative;
+margin-bottom:25px;
+}
+.ms_item .pic
+{
+width:192px;
+float:left;
+position:relative;
+}
+.ms_item .qgzt
+{
+width:115px;
+height:121px;
+position:absolute;
+bottom:-5px;
+right:25px;
+}
+.ms_item .pic .ms_pic
+{
+width:190px;
+height:190px;
+border:1px solid #000;
+}
+.ms_item .info
+{
+width:425px;
+float:right;
+}
+.ms_item .info .t
+{
+height:48px;
+border-bottom:1px solid #2ab3c8;
+}
+.ms_item .info .t span
+{
+float:left;
+margin-right:8px;
+}
+.ms_item .info .t .tit
+{
+font-family:"微软雅黑", " 黑体", "宋体";
+font-size:24px;
+color:#037687;
+line-height:41px;
+height:41px;
+width:290px;
+overflow:hidden;
+}
+
+.ms_item .info .t .me
+{
+background:url(me_bg.png) no-repeat;
+width:55px;
+height:23px;
+text-align:center;
+line-height:23px;
+color:#fff;
+margin-top:10px;
+}
+.ms_item .info .t .zt
+{
+padding-top:13px;
+}
+
+.ms_item .info .intro
+{
+padding:10px 0px;
+line-height:22px;
+border-bottom:1px solid #2ab3c8;
+width:429px;
+height:85px;
+overflow:hidden;
+}
+.ms_item .info .price
+{
+padding-top:15px;
+text-align:right;
+font-size:30px;
+color:#ff0000;
+font-family:"黑体", Arial, Helvetica, sans-serif;
+}
+.ms_item .info .price .yj
+{
+font-family:"黑体", Arial, Helvetica, sans-serif;
+font-size:14px;
+color:#000;
+padding-left:10px;
+text-decoration:line-through;
+}
+.ms_item .qg_bt
+{
+width:240px;
+height:52px;
+position:absolute;
+left:214px;
+bottom:-15px;
+}
+.ms_item .bt1
+{
+background:url(qg_bg1.png) no-repeat;
+}
+.ms_item .bt2
+{
+background:url(qg_bg2.png) no-repeat;
+}
+.ms_item .qg_bt .qg
+{
+width:80px;
+height:40px;
+overflow:hidden;
+float:left;
+margin-left:23px;
+margin-top:6px;
+display:inline;
+}
+.ms_item .qg_bt .qg a
+{
+width:80px;
+height:40px;
+padding-left:200px;
+display:block;
+}
+.ms_item .qg_bt .ckyj
+{
+float:left;
+margin-left:40px;
+display:inline;
+line-height:52px;
+text-align:left;
+}
+.ms_item .bt1 .ckyj a
+{
+color:#fff;
+}
+/*昨日抢购*/
+.ms_zrqg
+{
+width:628px;
+position:relative;
+overflow:hidden;
+padding-bottom:0px;
+}
+.ms_zrqg .zs
+{
+background:url(zr_qg.png) no-repeat;
+position:absolute;
+top:0px;
+left:0px;
+width:92px;
+height:67px;
+}
+.ms_zrqg .lib
+{
+padding-left:95px;
+width:550px;
+}
+
+.zrqg_item
+{
+float:left;
+width:270px;
+height:110px;
+overflow:hidden;
+}
+.zrqg_item .pic
+{
+width:105px;
+float:left;
+}
+.zrqg_item .pic img
+{
+width:95px;
+height:95px;
+border:1px solid #000;
+}
+.zrqg_item .info
+{
+padding-top:10px;
+width:160px;
+float:left;
+overflow:hidden;
+}
+.zrqg_item .info li
+{
+line-height:20px;
+white-space:nowrap;
+}
+.zrqg_item .info li.yj
+{
+text-decoration:line-through;
+}
+.zrqg_item .info li.ckyj a
+{
+color:#155864;
+}
+/*秒杀攻略*/
+.msgl
+{
+background:#d8e2e4;
+padding:15px 30px;
+line-height:21px;
+margin-top:15px;
+}
+/*版权*/
+.copyright{ width:974px; height:32px; background:#c9cccb; text-align:center}

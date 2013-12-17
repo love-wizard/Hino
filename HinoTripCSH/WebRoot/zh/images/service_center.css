@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* index 首页样式 */
+/*网站风格背景*/
+body
+{
+background:url(ny_bg.jpg) repeat-x #f2f5f6;
+/* background:url(../img/site_bg.jpg) repeat #f2f5f6; */
+}
+
+
+/*导航菜单 begin*/
+.second_menu{position:absolute; top:0px; right:100px;}
+.second_menu a{ color:#a95c00}
+
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+.main
+{
+background:#fff;
+width:974px;
+margin:0 auto;
+position:relative;
+padding-top:25px;
+}
+
+.head .logo_link
+{
+display:block;
+padding-top:44px;
+}
+.line_contair
+{
+width:945px;
+margin:0 auto;
+}
+/*路线搜索*/
+.line_search
+{
+padding:10px 35px;
+height:27px;
+}
+.line_search .hot
+{
+height:27px;
+line-height:27px;
+color:#ff0024;
+float:left;
+}
+.line_search .hot a
+{
+color:#155864;
+}
+.line_search .line_frm
+{
+width:425px;
+float:right;
+}
+.line_search .line_frm .line_input
+{
+width:343px;
+height:25px;
+line-height:25px;
+padding:0px 5px;
+border:1px solid #8bb5bb;
+background:url(search_Bg.gif) no-repeat right bottom #e7f3f4;
+display:inline;
+float:left;
+}
+.line_search .line_frm .line_s
+{
+float:right;
+width:56px;
+height:27px;
+padding:0px;
+margin:0px;
+display:inline;
+}
+
+.box_line
+{
+width:920px;
+margin:10px auto 0px;
+background:url(box_line_ft.gif) no-repeat left bottom;
+padding-bottom:20px;
+}
+.box_line .t
+{
+width:890px;
+height:40px;
+background:url(box_line_t.gif) no-repeat;
+padding-left:30px;
+font-size:16px;
+font-family:"微软雅黑","黑体";
+color:#000;
+line-height:30px;
+}
+.box_line .c
+{
+width:880px;
+background:url(box_line_bg.gif) repeat-y;
+overflow:hidden;
+padding:0px 20px;
+color:#07899a;
+line-height:21px;
+}
+.help{
+width:875px;
+margin:0 auto;
+border:1px solid #3db0c0;
+padding:10px 0px 0px 40px;
+background:url(help.gif) no-repeat -20px;
+}
+.help dl{width:190px; float:left; letter-spacing:1px;  display:inline;padding-left:28px; padding-top:20px}
+.help dt{height:35px; line-height:24px; font-family:"微软雅黑","黑体"; font-weight:bold; font-size:14px;}
+.help dt a{color:#525252; text-decoration:none;}
+.help dd{height:20px; line-height:22px; font-family:"微软雅黑","黑体";}
+.help dd a{color:#747474}
+.help .bt{width:100%; height:30px; clear:both;}
+/* .help .bt li{float:left; height:68px;}
+.help .bt li.nav1{height:68px; width:290px; overflow:hidden;}
+.help .bt li.nav2{height:68px; width:208px; overflow:hidden;}
+.help .bt li.nav3{height:68px; width:160px; overflow:hidden;}
+.help .bt li.nav4{height:68px; width:180px; overflow:hidden;}
+.help .bt li a{ width:100%; height:68px; padding-top:200px; display:block;} */

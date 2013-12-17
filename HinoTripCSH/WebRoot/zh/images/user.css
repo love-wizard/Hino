@@ -1,0 +1,283 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+background:url(../img/myaccount/myacc_bg.jpg) repeat-x #fefefe;
+}
+/*头部开始*/
+.head
+{
+width:974px;
+height:155px;
+background:url(ny_head.png) no-repeat;
+margin:0 auto;
+overflow:hidden;
+}
+.head .logo_link
+{
+display:block;
+padding-top:44px;
+}
+/*导航菜单 begin*/
+.second_menu{position:absolute; top:-5px; right:100px;}
+.second_menu a{ color:#a95c00}
+
+/*网站主体  begin*/
+.main
+{
+background:#fff;
+padding:15px 0px 0px;
+width:974px;
+margin:0 auto;
+}
+.main .user
+{
+width:948px;
+margin:0 auto;
+/*background:url(user_bg.gif) repeat-y;*/
+height:auto!important;
+height:540px;  
+min-height:540px;
+}
+.main .user_t
+{
+background:url(user_t.gif) no-repeat;
+width:100%;
+height:45px;
+}
+.main .user_l
+{
+width: 200px;
+float:left;
+background-color: rgb(238, 238, 238);
+}
+.main .user_l li
+{
+width:100%;
+/*height:38px;*/
+line-height:30px;
+}
+
+.main .user_l li ul li
+{
+width: 170px;
+line-height: 30px;
+padding-left:15px;
+padding-right:15px;
+}
+
+.main .user_l li a
+{
+padding-left:5px;
+/*color:#FFF;*/
+}
+.main .user_c
+{
+width:568px;
+float:left;
+}
+.main .user_c .user_info
+{
+padding:20px 20px 0px;
+position:relative;
+width:530px;
+height:26px;
+}
+.main .user_c .user_info .user_name
+{
+font-size:36px;
+font-family:"微软雅黑","黑体","宋体";
+line-height:12px;
+color:#1fa8bd;
+}
+.main .user_c .user_info .vip
+{
+position:absolute;
+bottom:10px;
+right:20px;
+}
+.main .user_c .jifen
+{
+padding: 10px 0 15px;
+font-size:14px;
+font-weight:bold;
+font-family:"黑体","宋体";
+}
+.main .user_c .user_lm
+{
+width:555px;
+height:21px;
+font-size:14px;
+padding-left:10px;
+font-weight:bold;
+line-height:23px;
+}
+.main .user_c .user_lm .xx
+{
+padding-left:45px;
+color:#98a9ac;
+}
+.main .user_c .user_content
+{
+padding: 10px;
+}
+
+/*会员首页*/
+.main .user_c .user_content .home_order_lib
+{
+padding:15px;
+}
+.main .user_c .user_content .home_order_lib li
+{
+height:22px;
+line-height:22px;
+background:url(order_icon.gif) no-repeat left center;
+overflow:hidden;
+letter-spacing:1.5px;
+}
+.main .user_c .user_content .home_order_lib li a
+{
+text-decoration:underline;
+padding-left:15px;
+}
+.main .user_c .user_content .home_order_lib li.new
+{
+font-weight:bold;
+}
+/*我的订单*/
+.main .user_c .user_content .order_lib
+{
+margin:0px;
+padding:0px;
+}
+
+.main .user_c .user_content .order_name
+{
+	text-align: center;
+}
+.main .user_c .user_content .order_lib .order_list
+{
+border-bottom:1px solid #21b8ce;
+}
+.main .user_c .user_content .order_lib td
+{
+height:22px;
+line-height:22px;
+padding-left:8px;
+}
+/*我的订单 详细*/
+.main .user_c .user_content .order_intro
+{
+padding:0px 20px;
+}
+.main .user_c .user_content .order_intro li
+{
+height:22px;
+line-height:22px;
+}
+/*修改密码*/
+.main .user_c .c_password
+{
+padding-top:20px;
+padding-left: 90px;
+padding-right: 90px;
+}
+.main .user_c .c_password td
+{
+height:30px;
+line-height:30px;
+padding-right:5px;
+}
+.c_input
+{
+border:1px solid rgb(195, 195, 195);
+height:24px;
+line-height:24px;
+padding:0px 5px;
+width:228px;
+}
+.c_submit
+{
+width:70px;
+height:25px;
+line-height:25px;
+background: #C3C3C3;
+color:#fff;
+}
+
+/*升级VIP*/
+.main .user_c .user_sj
+{
+/*background:url(sj_bg.gif) no-repeat;*/
+background-color: #B9B9B9;
+border-radius: 10px 10px 10px 10px; 
+width:383px;
+height:43px;
+margin:150px auto 50px;
+font-size:18px;
+font-family:"微软雅黑","黑体","宋体";
+line-height:43px;
+text-align:center;
+}
+.main .user_c .user_sj a
+{
+color:#fff;
+}
+.main .user_r
+{
+width:180px;
+float:right;
+}
+.main .user_r .user_r_box
+{
+background:url(user_r_bg.gif) repeat-y;
+border-top:1px solid #a3e2eb;
+border-bottom:1px solid #a3e2eb;
+}
+.main .user_r .user_r_box2
+{
+margin-top:10px;
+}
+.main .user_r .tit
+{
+height:30px;
+line-height:30px;
+border-bottom:1px solid #FFFFFF;
+font-size:15px;
+font-family:"微软雅黑","黑体","宋体";
+color:#fff;
+padding-left:15px;
+/*width:210px;*/
+font-weight:bold;
+}
+.main .user_r .lib
+{
+padding:15px 10px 10px 5px;
+}
+.main .user_r .lib li
+{
+height:22px;
+line-height:22px;
+color:#FFFFFF;
+overflow:hidden;
+}
+.main .user_r .lib li a
+{
+color:#FFFFFF;
+}
+.main .user_ft
+{
+clear:both;
+background:url(user_ft.gif) no-repeat;
+width:915px;
+margin:0 auto;
+height:21px;
+}
+.survey_q{
+	style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px;background-color:#EEEEEE"
+}
+.survey_a{
+	style="FONT-FAMILY: 宋体; FONT-SIZE: 9pt; LINE-HEIGHT: 25px;background-color:#D7D7D7"
+}
+/*版权*/
+.copyright{ width:974px; height:32px; background:#c9cccb; text-align:center}

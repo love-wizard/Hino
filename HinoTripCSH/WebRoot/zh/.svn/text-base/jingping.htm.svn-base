@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>精品尊享团</title>
+<link href="./images/jingping.css" rel="stylesheet" type="text/css" />
+<link href="./images/flexslider.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookies.2.2.0.min.js"></script>
+<script defer src="js/jquery.flexslider.js"></script>
+<script type="text/javascript">
+	$(function() {
+		SyntaxHighlighter.all();
+	});
+	$(window).load(function() {
+		$('.flexslider').flexslider({
+			animation : "slide",
+			start : function(slider) {
+				$('body').removeClass('loading');
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="jingping_main" class="jingping_main" align="center">
+		<div id="jingping_top" class="jingping_top"></div>
+		<div id="jingping_tuan" class="jingping_tuan">
+			<!-- Place somewhere in the <body> of your page -->
+			<div class="flexslider" style="width:1050px; height:344px; background:none">
+				<ul class="slides">
+					#foreach($DGroup in $DistGroupList)
+					<li>
+						<ul>
+							<li style="z-index:-1">
+								<a href="route_detail.htm?routeid=$DGroup.getRoute().getId()" target="_blank">
+									<img alt="$DGroup.getTitle()" src="../$pathpre$DGroup.getImage()" title="$DGroup.getTitle()" height="344px" width="300px"/>
+								</a>
+							</li>
+							
+							<li style="float:left;margin-top:-344px;text-align:left; z-index:3000">
+								<div style="height:100%; width:450px; padding-left:105px; padding-top:80px; color:white;">
+									<div style="font-size:20px; letter-spacing: 1px;">
+										￡$DGroup.getPrice()
+									</div>
+									<div style="font-size:30px; letter-spacing: 1px;">
+										$DGroup.getTitle()<br/>
+									</div>
+									<br/>
+									<div style="font-size: 11px; letter-spacing: 1px; width:355px; ">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$DGroup.getDescription()<br/><br/><br/>
+										<div class="route_detail_link">
+											<a href="route_detail.htm?routeid=$DGroup.getRoute().getId()">查看路线详情 →</a>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li> 	
+					#end
+				</ul>
+			</div>
+		</div>
+		<div id="jingping_service_options" calss="jingping_service_options"></div>
+		<!--
+		<div id="jingping_service_break" calss="jingping_service_break">jingping_service_break</div>
+		<img alt="" src="images/jingping_service.jpg">
+		-->
+		<!-- <div id="jingping_service_detail" calss="jingping_service_detail">
+			
+		<div class=“jingping_service_detail_hotel”></div>
+		<div class=“jingping_service_detail_car”></div>
+		<div class=“jingping_service_detail_food”></div>
+		<div class=“jingping_service_detail_touris”></div>
+		-->
+		<div style="height: 90px;"></div>
+		
+		<div class="foot_menu">
+				
+				<a href="http://www.hinotravel.com/zh/index.htm">首页</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">English</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">导游风采</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.hinotravel.com/zh/route_detail.htm?routeid=60">会员专享</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.hinotravel.com/zh/recruit.htm">诚聘英才</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.hinotravel.com/zh/about.htm">关于我们</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.hinotravel.com.cn/">中国海诺旅游网</a>
+			</div>
+			
+		</div>
+</body>
+
+</html>

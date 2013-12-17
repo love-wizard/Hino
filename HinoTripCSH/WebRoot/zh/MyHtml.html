@@ -1,0 +1,42 @@
+<link href="images/common.css" rel="stylesheet" type="text/css" />
+<link href="images/banner.css" rel="stylesheet" type="text/css" />
+<link href="images/index_new.css" rel="stylesheet" type="text/css" />>
+<link href="images/line.css" rel="stylesheet" type="text/css" />
+<link href="images/reg.css" rel="stylesheet" type="text/css" />
+
+
+	<div class="head"></div>
+
+========jquery代码=======
+$(function(){
+    $.fn.extend({
+        showtime:function(){
+            var today = new Date();
+            var y = today.getFullYear();//年
+            var m = today.getMonth()+1;//月
+            var d = today.getDate();//日
+            var h = today.getHours();//时
+            var ms = today.getMinutes();//分
+            var s = today.getSeconds();//秒
+            var w = today.getDay();//周
+            $('#time').html('time:'+y+'/'+m+'/'+d+'-'+''+h+':'+ms+':'+s+'周：'+w);
+            setTimeout('$(this).showtime()',100);
+        }
+    });
+    $(this).showtime();
+});
+");
+    <div class="menu">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">DIY自由行</a></li>
+                <li><a href="#">精品路线</a></li>
+                <li><a href="#">酒店机票</a></li>
+                <li><a href="#">海诺车服</a></li>
+                <li><a href="#">海诺服务</a></li>
+                <li><a href="#">海诺集团</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        <div class="menu_line"></div>
+    </div>
+

@@ -1,0 +1,946 @@
+<script type="text/javascript">
+function displayimg() {
+	$("#banner").slideUp(1000, function() {
+		$("#top").slideDown(1000);
+	})
+}
+/* if(getShowBigAdCookie()==true)
+{
+	$("#banner").slideDown(1000, function() {
+		$("#top").slideUp(1000);
+	})
+	setTimeout("displayimg()", 5000);
+}
+else
+{
+$("#top").show();
+} */
+$("#top").show();
+
+function displaynotice() {
+	$("#noticescroll").slideUp(1000)
+}
+function closeAD(){
+	$("#banner").hide();
+	$("#top").hide();
+}
+
+/* $("#corner").show(); */
+setTimeout("displaynotice()", 15000);
+
+//+Kevin Ad, Notice, Count Down
+
+$("#noticescroll").slideDown();
+
+jQuery("#countdown").countDown({
+	startNumber : 15
+});
+//-Kevin Ad, Notice, Count Down
+</script>
+
+<style>
+<!--
+.navi_schedule_days{ 
+	width:245px; 
+	background:url(./img/left_navi_bg.gif) no-repeat; 
+	height:25px; 
+	padding-top:45px;
+	padding-left:35px; 
+	overflow:hidden;
+	margin-top: -5px;
+	font-size:14px;
+}
+
+.navi_destination{ 
+	width:245px; 
+	background:url(./img/left_navi_bg.gif) -280px 0 no-repeat; 
+	padding-top:45px; 
+	padding-left:35px; 
+	overflow:hidden;
+	font-size:14px;
+}
+
+.navi_budget{ 
+	width:245px; 
+	background:url(./img/left_navi_bg.gif) -562px 0 no-repeat; 
+	padding-top:45px; 
+	padding-left:35px; 
+	overflow:hidden;
+	font-size:14px;
+}
+
+.navi_famous_places{ 
+	width:245px; 
+	background:url(./img/left_navi_bg.gif) -840px 0 no-repeat; 
+	padding-top:45px; 
+	padding-left:35px; 
+	overflow:hidden;
+	font-size:14px;
+}
+
+.navi_sns{ 
+	width:245px; 
+	background:url(./img/left_navi_bg.gif) -1122px 0 no-repeat; 
+	padding-top:45px; 
+	padding-left:35px; 
+	overflow:hidden;
+	min-height: 245px;
+}
+
+.sns_tab{
+	cursor: pointer;
+}
+
+.sns_arrow{
+	background: url(./img/left_navi_bg.gif) -1680px -20px no-repeat; 
+	height:9px; 
+	width:9px;
+	margin-top: -3px;
+}
+
+.group_button{
+padding-left: 5px;
+}
+
+.seckill_flow {
+	height: 120px; 
+	width: 260px; 
+	margin-top: 12px;
+}
+
+.seckill_flow_sel_prod {
+	background: url('./img/seckill/seckill_flow_icons.png') 0 -128px no-repeat;	
+}
+
+.seckill_flow_begin {
+	background: url('./img/seckill/seckill_flow_icons.png') no-repeat;
+}
+
+.seckill-section {
+	height: 120px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.seckill-section .seckill-begin-button {
+	background: url('./img/seckill_bg.png') -400px 0 no-repeat;
+	height: 120px;
+	width: 170px;
+	margin: 0 auto;
+	font-fimaly: "微软雅黑";
+}
+
+.seckill-section .seckill-clock {
+	background: url('./img/seckill_bg.png') no-repeat;
+	height: 120px;
+	width: 380px;
+	margin: 0 auto;
+	font-fimaly: "微软雅黑";
+}
+
+.clock-hour2 {
+	float: left;
+	width: 58px;
+	height:80px;
+	line-height:80px;
+	font-size: 42pt;
+	text-align: center;
+	color: white;
+}
+
+.clock-hour1 {
+	float: left;
+	width: 50px;
+	height:80px;
+	line-height:80px;
+	font-size: 42pt;
+	text-align: center;
+	color: white;
+}
+
+.clock-min1 {
+	float: left;
+	width: 54px;
+	height:80px;
+	line-height:80px;
+	font-size: 42pt;
+	text-align: center;
+	color: white;
+}
+
+.clock-min2 {
+	float: left;
+	width: 54px;
+	height:80px;
+	line-height:80px;
+	font-size: 42pt;
+	text-align: center;
+	color: white;
+}
+
+.clock-sec1 {
+	float: left;
+	width: 60px;
+	height:80px;
+	line-height:80px;
+	font-size: 42pt;
+	text-align: center;
+	color: white;
+}
+
+.clock-sec2 {
+	float: left;
+	width: 48px;
+	height:80px;
+	line-height:80px;
+	font-size: 42pt;
+	text-align: center;
+	color: white;
+}
+
+.clock-colon1 {
+	float: left;
+	width: 30px;
+	height: 80px;
+}
+
+.clock-colon2 {
+	float: left;
+	width: 26px;
+	height: 80px;
+}
+
+.seckill-text {
+	background: url('./img/seckill_bg.png') 0 -120px no-repeat;
+	height: 80px;
+	width: 640px;
+	margin-top: 160px;	
+}
+
+.seckill-hide {
+	display: none;
+}
+-->
+</style>
+
+<script type="text/javascript">
+function searchByPriceRange(lp, up) {
+//./search_result.htm?idx=1&dcode=178&lp=lp&up=up
+	window.location.href= "./search_result.htm?idx=1&st=4&dcode=" + $("#ct_code").val() + "&lp=" + lp + "&up=" + up;
+}
+
+function searchByDayRange(ld, ud) {
+//./search_result.htm?idx=1&dcode=178&lp=lp&up=up
+	window.location.href= "./search_result.htm?idx=1&st=5&dcode=" + $("#ct_code").val() + "&ld=" + ld + "&ud=" + ud;
+}
+
+//window.location.href= "./search_result.htm?idx=1&st=5&dcode=" + $("#ct_code").val() + "&fp=" + fp;
+function searchByFamousPlace(fp){
+	$("#txt_s_k").val(fp);
+	//$("#ct_code").val()
+	$("#frm_s").attr("action", "./search_result.htm?idx=1&st=6&dcode=-1");
+	$("#frm_s").submit();
+}
+
+	function showTab(id) {
+		$(".group1").hide();
+		$(".group2").hide();
+		$(".group3").hide();
+		$(".group4").hide();
+		$(".group5").hide();
+		$(".group" + id).show();
+		$("#button1").css("z-index", "10");
+		$("#button2").css("z-index", "10");
+		$("#button3").css("z-index", "10");
+		$("#button4").css("z-index", "10");
+		$("#button5").css("z-index", "10");
+		$("#button" + id).css("z-index", "12");
+	}
+
+	function showButtonTab(id) {
+
+		$("#buttonItem1").hide();
+		$("#buttonItem2").hide();
+		$("#buttonItem3").hide();
+		$("#buttonItem4").hide();
+		$("#buttonItem" + id).show();
+
+		$("#buttonTab1").css("z-index", "10");
+		$("#buttonTab2").css("z-index", "10");
+		$("#buttonTab3").css("z-index", "10");
+		$("#buttonTab4").css("z-index", "10");
+		$("#buttonTab" + id).css("z-index", "12");
+
+	}
+
+	$(document).ready(
+			function() {
+				var tm;
+				$(".sns_tab").mouseover(
+						function(event) {
+							var sid = $(this).attr("id");
+							var tr = $(this).parent().parent();
+							var col = tr.children().index($(this).parent());
+
+							$("#sns_table tr:eq(3) td:not(:last) div")
+									.removeClass("sns_arrow");
+							//alert(1);
+							$("#sns_table tr:eq(3) td:eq(" + col + ") div")
+									.addClass("sns_arrow");
+							// alert(2);
+
+							$(".sns_con").each(function(i) {
+								$(this).css({
+									"display" : "none"
+								});
+							});
+
+							$("#" + sid + "_con").css({
+								"display" : "block"
+							});
+						});
+
+				function detailMouse(n) {
+					if (n == "over") {
+						$("detail").removeClass("detail_out");
+						$("detail").addClass("detail_over");
+					}
+					if (n == "out") {
+						$("detail").removeClass("detail_over");
+						$("detail").addClass("detail_out");
+					}
+				}
+
+				$(".copyright").remove();
+
+				//Ken Chen 2013/02/05 Monday to Wen 秒杀，其他时间 经理推荐
+				var today = new Date();
+				if (today.getDay() > 0 && today.getDay() < 4) {
+					//$("#button4").css("display","block");
+					$("#button5").css("display", "none");
+				} else {
+					$("#button4").css("display", "none");
+					//$("#button5").css("display","block");
+				}
+ 
+ 
+			});
+
+	/*首页倒计时 begin*/
+	
+	function seckillClockTick(hr, min, sec){
+	
+		$(".seckill-clock .clock-hour1").html(Math.floor(hr / 10));
+		$(".seckill-clock .clock-hour2").html(hr % 10);
+		
+		$(".seckill-clock .clock-min1").html(Math.floor(min / 10));
+		$(".seckill-clock .clock-min2").html(min % 10);
+		
+		$(".seckill-clock .clock-sec1").html(Math.floor(sec / 10));
+		$(".seckill-clock .clock-sec2").html(sec % 10);
+	}
+
+	function showTime() {
+		var nowdt = new Date(); /* --获取当前时间（这个是客户端的时间 ）*/
+		var dt1 = new Date(); /* --获取页面隐藏输入框的截至时间 */
+		dt1.setHours(15, 0, 0, 0);
+		//alert("今天星期"+"天一二三四五六".charAt(new Date().getDay()));
+
+		if (nowdt.getDay() > 0 && nowdt.getDay() < 4) {
+			var time = dt1.getTime() - nowdt.getTime();
+			var display;
+			
+			if (time > 0) {
+				//秒杀没有开始
+
+				d = Math.floor(time / 86400000);
+				h = Math.floor((time % 86400000) / 3600000);
+				m = Math.floor(((time % 86400000) % 3600000) / 60000);
+				s = Math.floor(((time % 86400000) % 3600000 % 60000) / 1000);
+				
+				seckillClockTick(h, m, s);
+				
+				if($(".seckill-clock").is(":visible")) {
+					// do noting
+				} else {
+					$(".seckill-clock").show();
+					$(".seckill-begin-button").hide();
+					
+					$(".seckill_flow").removeClass("seckill_flow_begin");
+					$(".seckill_flow").addClass("seckill_flow_sel_prod");
+				}		
+			} else if (time > -60 * 60 * 1000) {
+				display = "您好，今日秒杀正在进行中！";
+				
+				if ($(".seckill-begin-button").is(":visible")) {
+					// do nothing
+				} else {
+	
+					$(".seckill_flow").removeClass("seckill_flow_sel_prod");
+					$(".seckill_flow").addClass("seckill_flow_begin");
+					
+					$(".seckill-clock").hide();
+					$(".seckill-begin-button").show();
+				}
+			} else {
+				if(nowdt.getDay() < 3)
+				{
+					//计算第二天的时间
+					dt1.setDate(dt1.getDate() + 1);
+					dt1.setHours(15, 0, 0, 0);
+					var time = dt1.getTime() - nowdt.getTime();
+					d = Math.floor(time / 86400000);
+					h = Math.floor((time % 86400000) / 3600000);
+					m = Math.floor(((time % 86400000) % 3600000) / 60000);
+					s = Math.floor(((time % 86400000) % 3600000 % 60000) / 1000);
+					
+					seckillClockTick(h, m, s);
+					
+					if($(".seckill-clock").is(":visible")) {
+						// do noting
+					} else {
+						$(".seckill-clock").show();
+						$(".seckill-begin-button").hide();
+						
+						$(".seckill_flow").removeClass("seckill_flow_begin");
+						$(".seckill_flow").addClass("seckill_flow_sel_prod");
+					}
+
+					//Ken Chen 2013/04/14 TD#136 周三下午16:00秒杀结束后就换成经理推荐
+					$("#button4").show();
+					$("#button5").hide();
+					
+				}
+				else{
+					//Ken Chen 2013/04/14 TD#136 周三下午16:00秒杀结束后就换成经理推荐
+					$("#button4").hide();
+					$("#button5").show();
+				}
+			}
+
+		} else {
+			
+			seckillClockTick(0, 0, 0);			
+		}
+		
+		setTimeout("showTime();", 1000); /* --延时1秒重复执行 */
+	}
+
+	showTime();
+	/*首页倒计时 end*/
+</script>
+
+<div class="main" style = "position:relative;z-index:20; margin-top:-10px">
+<div class="second_menu"></div>
+    <!--左侧开始-->
+	<div class="m_l f_l">
+    	<!--网站公告-->
+        <div class="navi_schedule_days"> <!-- 40 / 280 -->
+        	<div style="float: right;  margin-top: -40px; margin-right: 18px; text-shadow: #524F4F 1px 1px 1px; font-family: 宋体;"><a href="#" style="color: white;"> MORE </a></div>
+			<a href="javascript:void(0);" onclick="searchByDayRange(1, 2)">1-2天</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="javascript:void(0);" onclick="searchByDayRange(3, 5)">3-5天</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="javascript:void(0);" onclick="searchByDayRange(6, 9)">6-9天</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="javascript:void(0);" onclick="searchByDayRange(10, 15)">10-15天</a>
+        </div>
+        <div class="navi_destination"> <!-- 40 / 280 -->
+        	<div style="float: right; margin-top: -36px; margin-right: 18px; text-shadow: #524F4F 1px 1px 1px; font-family: 宋体;"><a href="#" style="color: white;"> MORE </a></div>
+			<a href="./classic.htm?rid=1">英格兰</a>&nbsp;<em style="color: grey;">|</em>&nbsp; 
+			<a href="./classic.htm?rid=2">苏格兰</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="./classic.htm?rid=3">北爱尔兰</a> <br/>
+			<a href="./classic.htm?rid=6">威尔士</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="javascript:void(0);" onclick="SearchByDestination('埃及');">埃&nbsp;&nbsp; 及</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="./classic.htm?rid=5">欧&nbsp; 洲</a>
+        </div>
+        <div class="navi_budget"> <!-- 40 / 280 -->
+        	<div style="float: right; margin-top: -34px; margin-right: 18px; text-shadow: #524F4F 1px 1px 1px; font-family: 宋体;"><a href="#" style="color: white;"> MORE </a></div>
+			<a href="javascript:void(0);" onclick="searchByPriceRange(1, 20)">£1-20</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="javascript:void(0);" onclick="searchByPriceRange(20.1, 100)">£20-100</a>&nbsp;<em style="color: grey;">|</em>&nbsp; 
+			<a href="javascript:void(0);" onclick="searchByPriceRange(101, 200)">£101-200</a><br/> 
+			<a href="javascript:void(0);" onclick="searchByPriceRange(201, 300)">£201-300</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="javascript:void(0);" onclick="searchByPriceRange(301, 400)">£301-400</a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+			<a href="javascript:void(0);" onclick="searchByPriceRange(401, 500)">£401-500</a>
+        </div>
+        <div class="navi_famous_places"> <!-- 40 / 280 -->
+        	<div style="float: right; margin-top: -36px; margin-right: 18px; text-shadow: #524F4F 1px 1px 1px; font-family: 宋体;"><a href="#" style="color: white;"> MORE </a></div>
+        	
+        	#foreach( $fp in $famousPlaces)
+        		#if($fp eq "$")
+        			<br/>
+        		#else
+        			<a href="javascript:void(0);" onclick="searchByFamousPlace('$fp')"> $fp </a>&nbsp;<em style="color: grey;">|</em>&nbsp;
+        		#end
+        	#end
+        </div>
+        <div class="navi_sns"> <!-- 40 / 280 -->        	
+       		<div id="thumbnail_" style="">
+       			 <table id="sns_table">
+       			 	<tr>
+       			 		<td width="45px"><div id="sns_weixin" class="sns_tab" style="background: url(./img/left_navi_bg.gif) -1510px 0 no-repeat; height:37px; width:37px;"></div></td>
+       			 		<td width="37px"><div id="sns_xinlan" class="sns_tab" style="background: url(./img/left_navi_bg.gif) -1420px 0 no-repeat; height:37px; width:37px;"></div></td>
+       			 		<td width="45px"><div id="sns_renren" class="sns_tab" style="background: url(./img/left_navi_bg.gif) -1465px 0 no-repeat; height:37px; width:37px;"></div></td>
+       			 		<td width="45px"><div id="sns_facebook" class="sns_tab" style="background: url(./img/left_navi_bg.gif) -1553px 0 no-repeat; height:37px; width:37px;"></div></td>
+       			 		<td width="45px"><div id="sns_qq" class="sns_tab" style="background: url(./img/left_navi_bg.gif) -1600px 0 no-repeat; height:37px; width:37px;"></div></td>
+       			 		<td></td>
+       			 	</tr>
+       			 	<tr>
+       			 		<td height="10px;"></td>
+       			 		<td></td>
+       			 		<td></td>
+       			 		<td></td>
+       			 		<td></td>
+       			 		<td></td>
+       			 	</tr>
+       			 	<tr>
+       			 		<td colspan="5" height="1px" style="background: url(./img/left_navi_bg.gif) -1680px 0 no-repeat;"></td>
+       			 		<td></td>
+       			 	</tr>
+       			 	<tr>
+       			 		<td height="9px"><div class="sns_arrow"></div></td>
+       			 		<td><div class=""></div></td>
+       			 		<td><div class=""></div></td>
+       			 		<td><div class=""></div></td>
+       			 		<td><div class=""></div></td>
+       			 		<td></td>
+       			 	</tr>
+       			 </table>
+       		</div>
+       		
+       		<div style="height:10px; width:100%;"></div>
+       		
+       		<div id="sns_weixin_con" class="sns_con" style="padding-left: 0px;">
+       			<!-- weixin -->
+       			<img alt="hinotravel" src="./img/weixing_2.jpg" width="222px" height="222px">
+       		</div>
+       		<div id="sns_xinlan_con" class="sns_con" style="display: none;">
+       			 <!--
+       			<iframe width="350" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=350&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1914684074&verifier=a06243e0&dpc=1"></iframe>
+        		<iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=350&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=2680429091&verifier=a4fa3086&dpc=1"></iframe><br>
+        		-->
+        		<iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=2680429091&verifier=a4fa3086&dpc=1"></iframe>
+        		<iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=75&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1914684074&verifier=a06243e0&dpc=1"></iframe>
+       		</div>
+       		<div id="sns_renren_con" class="sns_con" style="display: none;">
+       			<!-- renren -->
+       			<iframe scrolling="no" frameborder="0" allowtransparency="true" src="http://widget.renren.com/plugin/followbutton?page_id=601242643&color=0&model=1" style="width:150px;height:40px;" ></iframe>  
+       		</div>
+       		<div id="sns_facebook_con" class="sns_con" style="display: none;">
+       			<!-- facebook -->
+       			<a href="http://facebook.com/hino.hinotravel"><img alt="hinotravel" src="./img/facebook.jpg"></a>
+       		</div>
+       		<div id="sns_qq_con" class="sns_con" style="display: none;">
+       			<iframe src="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=hinotravel&style=1&t=1358449862102&f=1" frameborder="0" scrolling="auto" width="227" height="75" marginwidth="0" marginheight="0" allowtransparency="true"></iframe>
+       		</div>
+        </div>
+        <div class="vip_link"><a href="$vipImglink"><img width="235" height="79"  src="../$pathpre1/vip.png"/></a></div>
+    	<!--网站公告结束-->
+    </div>
+    <!--左侧结束，右侧开始-->
+	<div class="m_r f_r">
+    	<!--焦点图开始-->
+    	<div class="focus2">
+            <div id="focus">
+                <ul>
+                    <li><a href="$imagel1"><IMG class="cssshadow" alt="" src="../$pathpre1/album01.jpg"></a></li>
+                    <li><a href="$imagel2"><IMG class="cssshadow" alt="" src="../$pathpre1/album02.jpg"></a></li>
+                    <li><a href="$imagel3"><IMG class="cssshadow" alt="" src="../$pathpre1/album03.jpg"></a></li>
+                    <li><a href="$imagel4"><IMG class="cssshadow" alt="" src="../$pathpre1/album04.jpg"></a></li>
+                    <li><a href="$imagel5"><IMG class="cssshadow" alt="" src="../$pathpre1/album05.jpg"></a></li>
+                    <li><a href="$imagel6"><IMG class="cssshadow" alt="" src="../$pathpre1/album06.jpg"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="height:5px;"></div>
+        <!--焦点图结束，团购线路开始-->
+		<div class="group">
+			<div class="buttons" style="">
+				<a id= "button1" href="javascript:void(0);" onmouseover="showTab(1)" style = "position:relative;margin-left:15px;Z-INDEX:12;"><IMG alt="" src="./images/remenbutton2.png"></a>
+ 				<a id= "button2" href="javascript:void(0);" onmouseover="showTab(2)" style = "position:relative;margin-left:15px;Z-INDEX:10;"><IMG alt="" src="./images/remaibutton2.png"></a>
+                <a id= "button3" href="javascript:void(0);" onmouseover="showTab(3)" style = "position:relative;margin-left:15px;Z-INDEX:10;"><IMG alt="" src="./images/zhutibutton2.png"></a>
+                <a id= "button4" href="javascript:void(0);" onmouseover="showTab(4)" style = "position:relative;margin-left:15px;Z-INDEX:10;"><IMG alt="" src="./images/miaoshabutton2.png"></a>
+                <a id= "button5" href="javascript:void(0);" onmouseover="showTab(5)" style = "position:relative;margin-left:15px;Z-INDEX:10;"><IMG alt="" src="./images/manager_recomand.png"></a>
+            </div>
+        	<div class="group1" style="height:628px ;position:relative;clear:both; margin-top:-37px;background:url(./images/group_bg2.png) no-repeat;Z-INDEX:11;">
+        			#set($gCnt = 0)
+        			#foreach( $group in $golist)
+        			#set($gCnt = $gCnt + 1)
+        			<div class="Item" style="float:left;position:relative;width:285px;height:264px;">
+                		<div class="title">$group.route.getOriginalRouteName()</div>
+                        	<div class="depart_date">出团日期：$group.genDepartDateString()</div>
+                        	<div id="depart_place" class="depart_place" title="$group.genPickup_info()">出发地：$group.genPickupCity()</div>
+                        	<div class = "pic">
+                        	<a href="route_detail.htm?routeid=$group.route.id" ><img width="285px" heigth="175px" src="../$pathpre$group.route.thumbUrl" /></a>
+                        	</div>
+                        	<div class = "price">
+                        	<span class="vip_price">VIP £$group.group_vip_price </span>|
+                        	<span class = "normal"> £$group.group_price </span>
+                        	<span style = "align:right"><a id="detail" class="detail_out" href="route_detail.htm?routeid=$group.route.id" onmouseover="detailMouse('over')" onmouseout="detailMouse('out')">
+                        	 </a></span>
+                        </div>
+                    </div>
+                    	#if($gCnt >= 4)
+							#break
+						#end 
+                	#end
+            </div>
+            <div class="group2" style="height:628px;position:relative;clear:both; margin-top:-37px;background:url(./images/group_bg2.png) no-repeat;Z-INDEX:11; display:none">
+            		#set($gCnt = 0)
+                	#foreach( $sGroup in $superValuelist)
+                	#set($gCnt = $gCnt + 1)
+        			<div class="Item" style="float:left;position:relative;width:285px;height:264px;">
+                		<div class="title">$sGroup.route.getOriginalRouteName()</div>
+                        	<div class="depart_date">出团日期：$sGroup.genDepartDateString()</div>
+                        	<div id="depart_place" class="depart_place" title="$sGroup.genPickup_info()">出发地：$sGroup.genPickupCity()</div>
+                        	<div class = "pic">
+                        	<a href="route_detail.htm?routeid=$sGroup.route.id"><img width="285px" heigth="175px" src="../$pathpre$sGroup.route.thumbUrl" /></a>
+                        	</div>
+                        	<div class = "price">
+                        	#if($sGroup.getRoute().genRouteType()==3)
+                        		<span class="vip_price">VIP £$sGroup.group_vip_price </span>|
+                        		<span class = "normal"> £$sGroup.group_price </span>
+                        	#else
+	                        	<span class="vip_price">VIP £$sGroup.vip_price </span>|
+	                        	<span class = "normal"> £$sGroup.price </span>
+                        	#end
+                        	<span style = "align:right;margin-top:-20px"> 
+                        	<a id="detail" class="detail_out" href="route_detail.htm?routeid=$sGroup.route.id">
+                        	 </a></span>
+                        </div>
+
+                    </div>
+                    
+                    	#if($gCnt >= 4)
+							#break
+						#end 
+                	#end
+            </div>
+            <div class="group3" style="height:628px;position:relative;clear:both; margin-top:-37px;background:url(./images/group_bg2.png) no-repeat;Z-INDEX:11;display:none">
+            		#set($gCnt = 0)
+                	#foreach( $tGroup in $themelist)
+                	#set($gCnt = $gCnt + 1)
+        			<div class="Item" style="float:left;position:relative;width:285px;height:264px;">
+                		<div class="title">$tGroup.route.getOriginalRouteName()</div>
+                        	<div class="depart_date">出团日期：$tGroup.genDepartDateString()</div>
+                        	<div id="depart_place" class="depart_place" title="$tGroup.genPickup_info()">出发地：$tGroup.genPickupCity()</div>
+  							<div class = "pic">
+                        	<a href="route_detail.htm?routeid=$tGroup.route.id"><img width="285px" heigth="175px" src="../$pathpre$tGroup.route.thumbUrl" /></a>
+                        	</div>
+                        	<div class = "price">
+                        	<span class="vip_price">VIP £$tGroup.vip_price </span>|
+                        	<span class = "normal"> £$tGroup.price </span>
+                        	<span style = "align:right"> 
+                        	<a id="detail" class="detail_out" href="route_detail.htm?routeid=$tGroup.route.id">
+                        	 </a></span>
+                        </div>
+                    </div>
+	                    #if($gCnt >= 4)
+							#break
+						#end 
+                	#end
+            </div>
+            <div class="group4" style="height:628px;position:relative;clear:both; margin-top:-37px;background:url(./images/group_bg2.png) no-repeat;Z-INDEX:11;display:none">
+            <!-- 
+            
+            <div class="secKill" style="height:245px;position:relative;clear:both;">
+            		<div id ="secTime" class="secTimeGreen" style="align:center">
+            		<br><br>
+            		<span><span id="tm1"></span><br>
+            		15秒后自动刷新
+ 					</span>           	
+            		</div>
+            		
+            		</div>
+                	#foreach( $kGroup in $secopeninglist)
+        			<div class="Item" style="float:left;position:relative;width:285px;height:264px;">
+                		<div class="title">$kGroup.route.getOriginalRouteName()</div>
+                        	<div class="depart_date">出团日期：$kGroup.genDepartDateString()</div>
+                        	<div id="depart_place" class="depart_place" title="$kGroup.genPickup_info()">出发地：$kGroup.genPickupCity()</div>
+                        	<div class = "pic">
+                        	<a href="sec_index.htm"><img width="285px" heigth="175px" src="../$pathpre$kGroup.route.thumbUrl" /></a>
+                        	</div>
+                        	<div class = "price">
+                        	<span class="vip_price">£$kGroup.seckill_price </span>|
+                        	<span class = "normal">原价 £$kGroup.price </span>
+                        	<span style = "align:right"><a id="detail" class="detail_out" href="sec_index.htm">
+                        	 </a></span>
+                        </div>
+
+                    </div>
+                	#end
+            
+             -->
+            	<div style="height: 60px;"></div>
+            	<div style="height: 133px;">      		      		
+		      		<div class="seckill_flow seckill_flow_sel_prod">
+		      		
+		      		</div>
+		      		
+		      		<div style="background: url('./img/seckill/seckill_flow_text.png') no-repeat; height: 50px; width: 120px; margin-right: 95px; margin-top: -132px;">
+		      			
+		      		</div>
+		      	</div>
+		      	
+		      	<div class="seckill-section">
+		      		<div style="height: 50px;"></div>
+		      		<div class="seckill-clock">
+		      			<div class="clock-hour1"></div><div class="clock-hour2"></div>
+		      			<div class="clock-colon1"></div>
+		      			<div class="clock-min1"></div><div class="clock-min2"></div>
+		      			<div class="clock-colon2"></div>
+		      			<div class="clock-sec1"></div><div class="clock-sec2"></div>
+		      		</div>
+		      		<div class="seckill-begin-button seckill-hide"></div>
+		      	</div>
+		      	
+		      	<div class="seckill-text">
+		      		
+		      	</div>
+            </div>
+			<div class="group5"
+				style="height:628px;position:relative;clear:both; margin-top:-37px;background:url(./images/group_bg2.png) no-repeat;Z-INDEX:11;display:none">
+				#set($gCnt = 0)
+				#foreach( $rGroup in $recomandlist)
+				#set($gCnt = $gCnt + 1)
+				<div class="Item"
+					style="float:left;position:relative;width:285px;height:264px;">
+					<div class="title">$rGroup.route.getOriginalRouteName()</div>
+					<div class="depart_date">出团日期：$rGroup.genDepartDateString()</div>
+					<div id="depart_place" class="depart_place"
+						title="$rGroup.genPickup_info()">出发地：$rGroup.genPickupCity()</div>
+					<div class="pic">
+						<a href="route_detail.htm?routeid=$rGroup.route.id"><img
+							width="285px" heigth="175px"
+							src="../$pathpre$rGroup.route.thumbUrl" />
+						</a>
+					</div>
+					<div class="price">
+						<span class="vip_price">VIP £$rGroup.vip_price </span>| <span
+							class="normal"> £$rGroup.price </span> <span style="align:right">
+							<a id="detail" class="detail_out"
+							href="route_detail.htm?routeid=$rGroup.route.id"> </a>
+						</span>
+					</div>
+				</div>
+				
+					#if($gCnt >= 4)
+						#break
+					#end 
+				#end
+			</div>
+		</div>
+        <!--团购线路结束-->
+    </div>
+    <!--右侧结束-->
+    <!-- <div class="clearfix"></div> -->
+    <!--秒杀-->
+    <!-- <div class="index_ad"><a href="./sec_index.htm"><img src="images/miaosha.gif" /></a></div>-->
+    <div class="index_ad">
+    <div class="blank"></div>
+    <a href="./edinburgh.html"><img src="./img/edinburgh.jpg" /></a>
+    </div>  
+    <!--秒杀 结束-->
+	<!--热门线路-->
+    <!-- <div class="hot_line">
+          #foreach( $route in $webMenuRouteList )
+          <div class="line_item">
+          	<a href="./route_detail.htm?routeid=$route.route.id">
+              	<div class="title">$route.route.originalRouteName</div>
+                  <div class="pic"><img src="../$pathpre$route.route.thumbUrl" /></div>
+              	<div class="intro" title="$route.route.thumbDesc">
+                  $route.route.limitedThumbDesc
+                  </div>
+              </a>
+          </div>
+		  #end
+      <div class="clearfix"></div>
+    </div> -->
+    <div class = "group_button">
+    <div class="buttons">
+		<a id= "buttonTab1" href="javascript:void(0);" onclick="showButtonTab(1)" style = "position:relative;margin-left:44px;Z-INDEX:12;"><IMG alt="" src="./images/qsyry.png"></a>
+		<a id= "buttonTab2" href="javascript:void(0);" onclick="showButtonTab(2)" style = "position:relative;margin-left:-25px;Z-INDEX:10;"><IMG alt="" src="./images/zmxxlry.png"></a>
+		<a id= "buttonTab3" href="javascript:void(0);" onclick="showButtonTab(3)" style = "position:relative;margin-left:-25px;Z-INDEX:10;"><IMG alt="" src="./images/qyjndry.png"></a>
+		<a id= "buttonTab4" href="javascript:void(0);" onclick="showButtonTab(4)" style = "position:relative;margin-left:-25px;Z-INDEX:10;"><IMG alt="" src="./images/bfjwdry.png"></a>
+	</div>
+	
+    <div id="buttonItem1" class="buttonItem1" style="display:block;position:relative;Z-INDEX:20; ">
+    	<div style="width:964px;height:35px"></div>
+   		#foreach( $route in $lazyOnelist )
+          <div class="line_item">
+          	<a href="./route_detail.htm?routeid=$route.id">
+              	<div class="title">$route.originalRouteName</div>
+                  <div class="pic"><img src="../$pathpre$route.thumbUrl" /></div>
+              	<div class="intro" title="$route.thumbDesc">
+                  $route.limitedThumbDesc
+                  </div>
+              </a>
+          </div>
+		#end
+	</div>
+	<div id="buttonItem2" class="buttonItem2" style="display:none;position:relative;Z-INDEX:20;">
+		<div style="width:964px;height:35px"></div>
+   		#foreach( $tRoute in $lazyTwolist )
+          <div class="line_item">
+          	<a href="./route_detail.htm?routeid=$tRoute.id">
+              	<div class="title">$tRoute.originalRouteName</div>
+                  <div class="pic"><img src="../$pathpre$tRoute.thumbUrl" /></div>
+              	<div class="intro" title="$tRoute.thumbDesc">
+                  $tRoute.limitedThumbDesc
+                  </div>
+              </a>
+          </div>
+		#end
+	</div>
+	<div id="buttonItem3" class="buttonItem3" style="display:none;position:relative;Z-INDEX:20;">
+		<div style="width:964px;height:35px"></div>
+   		#foreach( $cRoute in $civillist )
+          <div class="line_item">
+          	<a href="./route_detail.htm?routeid=$cRoute.id">
+              	<div class="title">$cRoute.originalRouteName</div>
+                  <div class="pic"><img src="../$pathpre$cRoute.thumbUrl" /></div>
+              	<div class="intro" title="$cRoute.thumbDesc">
+                  $cRoute.limitedThumbDesc
+                  </div>
+              </a>
+          </div>
+		#end
+	</div>
+	<div id="buttonItem4" class="buttonItem4" style="display:none;position:relative;Z-INDEX:20;">
+		<div style="width:964px;height:35px"></div>
+   		#foreach( $sRoute in $oversealist )
+          <div class="line_item">
+          	<a href="./route_detail.htm?routeid=$sRoute.id">
+              	<div class="title">$sRoute.originalRouteName</div>
+                  <div class="pic"><img src="../$pathpre$sRoute.thumbUrl" /></div>
+              	<div class="intro" title="$sRoute.thumbDesc">
+                  $sRoute.limitedThumbDesc
+                  </div>
+              </a>
+          </div>
+		#end
+	</div>
+    </div>
+    <!--热门线路 结束-->
+    <!--秒杀-->
+    <!-- <div class="index_ad"><img src="images/vip_index.jpg" /></div> -->
+    <!--秒杀 结束-->
+  <div class="blank"></div>
+    <!-- <!--帮助信息 开始-->
+    <div class="help" style ="position:relative;z-index:30">
+          <!-- <div class="bt">
+          <ul>
+          	<li class="nav1"><a href="#">学生自己的旅游</a></li>
+          	<li class="nav2"><a href="http://page.renren.com/601242643">人人网</a></li>
+            <li class="nav3"><a href="http://1.t.qq.com/hainuolvyou?pref=qqcom.mininav">腾讯微博</a></li>
+            <li class="nav4"><a href="http://www.facebook.com/home.php#!/profile.php?id=100002119193841">facebook</a></li>
+            </ul>
+          </div> -->
+          
+    </div>
+   
+
+<div class="blank"></div>
+    <div class="blank"></div>
+
+    <!-- <div class="copyright1" style="margin-top:30px">
+    	<center>
+		    <table>
+		    	<tr>
+		    		<td>
+		    			<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+		    		</td>
+		    		
+		    		<td style="padding-left: 30px;color: grey; text-align: left;">
+		    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888<br>
+		    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842 
+		    				    		
+		    		</td>
+		    	</tr>
+		    </table>
+		</center>
+		<div style="margin-top:-32px;margin-left:380px"><script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script></div>
+    </div>    --> 
+
+    <div style="height:10px;"></div>
+    
+    <div style="height:130px;"></div> 
+    <div style="height:90px;"></div> 
+    </div>
+    
+    <!--帮助信息 开始-->
+    <div class="help2" style ="position:relative;z-index:40; ;margin-top:-385px">
+          <!-- <dl style="">
+              <dt><a href="#">如何付款和发票</a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(1)">支付宝网银支付</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(2)">信用卡电话支付</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(3)">门店支付或银行汇款</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(4)">悠币抵用和发票</a></dd>
+          </dl> -->
+          <dl>
+              <dt><a href="#">境外游须知</a></dt>
+
+                <dd><a href="#" onclick="ShowHelpContent(5)">关于跟团地点以及接送详情</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(6)">团费介绍</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(7)">酒店相关事宜</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(8)">其他旅行小贴士</a></dd>
+          </dl>
+         <dl>
+              <dt><a href="#">英国境内团次须知 </a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(9)">关于团次区别</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(10)">参团相关事宜</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(11)">关于多日旅行中酒店的问题</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(12)">其他旅游小贴士</a></dd>
+          </dl>
+          <dl>
+              <dt><a href="#">海诺会员、积分、会刊 </a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(17)">海诺会员注册</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(18)">海诺会员积分</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(19)">会员种类介绍</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(20)">海诺会刊</a></dd>
+          </dl>
+          <dl>
+              <dt><a href="#">合同范本及签证须知</a></dt>
+                <dd><a href="#" onclick="ShowHelpContent(13)">海诺出境游旅游合同范本</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(14)">签证须知</a></dd>
+                <dd><a href="#" onclick="ShowHelpContent(15)">海诺旅游公司英国境内旅游合同</a></dd>
+
+          </dl>
+          <div class="bt">
+          <ul>
+          	<!-- <li class="nav1"><a href="#">学生自己的旅游</a></li>
+          	<li class="nav2"><a href="http://page.renren.com/601242643">人人网</a></li>
+            <li class="nav3"><a href="http://1.t.qq.com/hainuolvyou?pref=qqcom.mininav">腾讯微博</a></li>
+            <li class="nav4"><a href="http://www.facebook.com/home.php#!/profile.php?id=100002119193841">facebook</a></li>
+            </ul> -->
+          </div>
+          
+    </div>
+    <!--帮助信息  结束-->
+    <div class="foot_menu" style="position:relative;z-index:20; margin-top:45px"></div> 
+    <div class="foot_menu2" style="position:relative;z-index:40;margin-top:-22px"><a href="http://www.hinotravel.com/zh/index.htm">海诺旅游网首页</a> | <a href="#">English</a> | <a href="#">刮刮卡</a> | <a href="#">导游风采</a> | <a href="#">会刊</a> | <a href="http://www.hinotravel.com/zh/route_detail.htm?routeid=60">会员专享</a> | <a href="http://www.hinotravel.com/zh/recruit.htm">诚聘英才</a> | <a href="http://www.hinotravel.com/zh/about.htm">关于我们</a> | <a href="http://www.hinotravel.com.cn/">中国海诺旅游网</a> </div>
+    
+    <div class="copyright1" style="margin-top:15px; position:relative; z-index:40">
+    	<center>
+		    <table>
+		    	<tr>
+		    		<td>
+		    			<img style="background: url(./img/bottom_logo.png) no-repeat; height:70px; width:90px;" src="./img/blank.gif"></img>
+		    		</td>
+		    		
+		    		<td style="padding-left: 30px;color: grey; text-align: left;">
+		    		投诉建议邮箱：headoffice@hinotravel.com 海诺旅游公司总部设立于诺丁汉郡，免费咨询热线：0333 9009 888<br>
+		    		Copyright 2010 Hino Travel Limited 海诺集团版权所有 许可证编号:7335842 
+		    				    		
+		    		</td>
+		    	</tr>
+		    </table>
+		</center>
+		<div style="margin-top:-32px;margin-left:380px"><script src="http://s17.cnzz.com/stat.php?id=4944619&web_id=4944619&show=pic1" language="JavaScript"></script></div>
+    </div> 
+    
+    <div style="text-align: center;position:relative;z-index:40; --margin-top:80px">
+		<a href="http://www.vosa.gov.uk/"><img style="background: url(./img/certs_transparent.png) no-repeat; height:56px; width:116px;" src="./img/blank.gif"></img></a>
+		&nbsp;&nbsp;<a href="http://www.iata.org/about/Pages/index.aspx"><img style="background: url(./img/certs_transparent.png) -131px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+		&nbsp;&nbsp;<a href="http://www.ukinbound.org/"><img style="background: url(./img/certs_transparent.png) -261px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+		&nbsp;&nbsp;<a href="http://www.caa.co.uk/default.aspx?catid=27&pageid=13227"><img style="background: url(./img/certs_transparent.png) -391px 0 no-repeat; height:56px; width:115px;" src="./img/blank.gif"></img></a>
+    </div>
+    <div class = "bottombg"></div>      
+

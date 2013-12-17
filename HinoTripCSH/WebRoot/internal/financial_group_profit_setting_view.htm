@@ -1,0 +1,83 @@
+<script type="text/javascript">
+
+// This example uses jQuery for making Ajax requests:
+// Register a function that is invoked as soon as the entire DOM has been loaded
+jQuery(document).ready(function() {
+
+	// Show customer detail
+	jQuery(".ajaxReload").click(function(event){
+		var extraData = "update=1&gid=" + jQuery("#hidden").val();
+		var url = jQuery(this).attr('href');
+		
+		jQuery.post(url, 
+	          extraData,
+	          function(json) {
+				alert(json.sales_in);
+				//var sales_exp = parseFloat(json.sales_exp).toFix(2);
+		
+				jQuery("#profit_form_sales_in").val(json.sales_in);
+				
+				jQuery("#profit_form_sales_total").val(json.sales_total);
+				jQuery("#profit_form_rep_order").val(json.rep_order);
+				jQuery("#profit_form_total_order").val(json.total_order);
+				jQuery("#profit_form_point_in").val(json.point_in);
+				jQuery("#profit_form_point_exp").val(json.point_exp);
+				recalculate();
+				
+		});
+		
+		return false;
+	});
+});
+
+function recalculate()
+{
+	var bus_exp = parseFloat(jQuery("#profit_form_bus_exp").val());
+
+	var hotel_exp = parseFloat(jQuery("#profit_form_hotel_exp").val());
+	var guide_exp = parseFloat(jQuery("#profit_form_guide_exp").val());
+	var driver_exp = parseFloat(jQuery("#profit_form_driver_exp").val());
+	var gift_exp = parseFloat(jQuery("#profit_form_gift_exp").val());
+	var food_exp = parseFloat(jQuery("#profit_form_food_exp").val());
+	var plane_exp = parseFloat(jQuery("#profit_form_plane_exp").val());
+	var ship_exp = parseFloat(jQuery("#profit_form_ship_exp").val());
+	var others_exp = parseFloat(jQuery("#profit_form_others_exp").val());
+
+	var tips_in = parseFloat(jQuery("#profit_form_tips_in").val());
+	var sales_in = parseFloat(jQuery("#profit_form_sales_in").val());
+	var sales_total = parseFloat(jQuery("#profit_form_sales_total").val());
+	var rep_order = parseInt(jQuery("#profit_form_rep_order").val());
+	
+	var reward_type = parseInt(jQuery("#profit_form_reward_type").val());
+	var reward_rate = parseFloat(jQuery("#profit_form_reward_rate").val());
+	
+	
+	if(reward_type==0)
+	{
+		var sales_exp = sales_in*reward_rate;
+		var total_exp = bus_exp + hotel_exp+guide_exp+driver_exp+gift_exp+food_exp+plane_exp+ship_exp+others_exp + sales_exp;
+		var total_in = tips_in+sales_total;
+		var total_profit = total_in - total_exp;
+		jQuery("#profit_form_sales_exp").val(''+sales_exp);
+		jQuery("#profit_form_total_exp").val(''+total_exp);
+		jQuery("#profit_form_total_in").val(''+total_in);
+		jQuery("#profit_form_total_profit").val(''+total_profit);
+		
+	} else
+	{
+		var sales_exp = rep_order*reward_rate;
+		var total_exp = bus_exp + hotel_exp+guide_exp+driver_exp+gift_exp+food_exp+plane_exp+ship_exp+others_exp + sales_exp;
+		var total_in = tips_in+sales_total;
+		var total_profit = total_in - total_exp;
+		jQuery("#profit_form_sales_exp").val(sales_exp);
+		jQuery("#profit_form_total_exp").val(total_exp);
+		jQuery("#profit_form_total_in").val(total_in);
+		jQuery("#profit_form_total_profit").val(total_profit);
+	}
+	
+}
+
+</script>
+<h2 style="color:blue">$groupinfo</h2>
+$profit_form
+<a href="./financial_group_profit_manage.htm">返回团利润管理</a>
